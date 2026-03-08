@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PDF Viewer</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  #pdfViewer {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+</style>
+</head>
+<body>
+
+<object id="pdfViewer" type="application/pdf">
+  <p>Your device cannot display PDFs. 
+     <a id="downloadLink" href="#">Download PDF</a>
+  </p>
+</object>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const file = params.get("file");
+
+  if (file) {
+    const path = file;
+    document.getElementById("pdfViewer").data = path;
+    document.getElementById("downloadLink").href = path;
+  }
+</script>
+
+</body>
+</html>
