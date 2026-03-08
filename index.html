@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jonathan's Workshop</title>
+
+<style>
+
+/* ------------------------------
+   BASE PAGE STYLING (DESKTOP)
+   ------------------------------ */
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  font-size: 18px;
+}
+
+h1 {
+  color: #003399;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #004d00;
+  font-size: 24px;
+  margin-top: 30px;
+}
+
+/* YouTube viewer */
+iframe {
+  width: 560px;
+  height: 315px;
+  max-width: 100%;
+  border: none;
+}
+
+/* Base link block style */
+a {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 0;
+  width: 90%;
+  max-width: 400px;
+  border: 2px solid #003399;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* Bible Study link colors */
+.bible-link {
+  color: #006600;          /* dark green */
+
+}
+
+/* Woodworking link color */
+.wood-link {
+  color: #990000;          /* dark red */
+
+}
+
+/* Return box (if you use one later) */
+.return-box {
+  margin-top: 40px;
+  padding: 12px;
+  background-color: #cce6ff;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+/* -----------------------------------------
+   PHONE‑ONLY ADJUSTMENTS — 25% LARGER
+   ----------------------------------------- */
+
+@media (max-width: 480px) {
+
+  body {
+    font-size: 22px;   /* +25% */
+  }
+
+  h1 {
+    font-size: 40px;   /* +25% */
+  }
+
+  h2 {
+    font-size: 30px;   /* +25% */
+  }
+
+  a {
+    font-size: 22px;   /* +25% */
+    padding: 14px 0;   /* +25% */
+  }
+
+  iframe {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Jonathan's Workshop</h1>
+
+<!-- YouTube Video -->
+<iframe 
+  src="https://www.youtube.com/embed/0c6kgNgWmt8?loop=1&playlist=0c6kgNgWmt8"
+  allowfullscreen>
+</iframe>
+
+<!-- Bible Study Section -->
+<h2>Bible Study</h2>
+
+<a class="bible-link" href="contentment/index.html">The Rare Jewel of Christian Contentment</a>
+<a class="bible-link" href="Precious Remedies/index.html">Precious Remedies</a>
+<a class="bible-link" href="Unfolding Redemptions Plan/index.html">Sermons: Unfolding Redemption’s Plan</a>
+
+<!-- Woodworking Section -->
+<h2>Woodworking</h2>
+
+<a class="wood-link" href="Woodworking/index.html">Woodworking Videos</a>
+
+</body>
+</html>
+
