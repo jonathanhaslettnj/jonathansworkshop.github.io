@@ -2,46 +2,68 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>PDF Files</title>
+<title>Precious Remedies – Chapter 2</title>
 
 <style>
   body {
+    text-align: center;
     font-family: Arial, sans-serif;
     padding: 20px;
-    text-align: center;
   }
 
   h1 {
-    margin-bottom: 10px;
+    font-size: 48px;
     color: blue;
-    font-size: 36px;
   }
 
-  ul {
-    line-height: 1.8;
-    list-style-type: none;
-    padding: 0;
+  .unit-box {
+    border: 2px solid #444;
+    padding: 20px;
+    margin: 30px auto;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
   }
 
-  ul li a {
+  .doc-link-box {
+    border: 2px solid #888;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 6px;
+    background: #f9f9f9;
+  }
+
+  .doc-link-box a {
     font-size: 20px;
     text-decoration: none;
   }
 
-  /* Standard return box used across your site */
+  iframe {
+    width: 100%;
+    height: 260px;
+    border: none;
+    border-radius: 6px;
+  }
+
+  .placeholder {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+</style>
+<style>
   .return-box {
-    background: #e6f2ff;
+    background: #e6f2ff;      /* light blue */
     border: 2px solid #7aaee6;
     padding: 12px;
-    margin: 40px auto 0 auto;
-    width: 70%;
+    margin: 20px auto;
+    width: 70%;               /* smaller than lesson boxes */
     max-width: 350px;
     border-radius: 8px;
-    font-size: 20px;
-    text-align: center;
   }
 
   .return-box a {
+    font-size: 18px;
     text-decoration: none;
     color: #004a99;
   }
@@ -50,40 +72,121 @@
 </head>
 <body>
 
-<h1>Wait for </h1>
-<h1>PDF Files in This Folder</h1>
+<h1>How Jesus Teaches Contentment</h1>
 
-<ul id="fileList"></ul>
 
-<script>
-const owner = "jonathanhaslettnj";
-const repo = "jonathansworkshop.github.io";
-const folder = "Questions";
+<!-- How Can I Act Like a Believer -->
+<div class="unit-box">
 
-fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(folder)}`)
-  .then(response => response.json())
-  .then(files => {
-    const list = document.getElementById("fileList");
+  <iframe 
+    src="https://www.youtube.com/embed/xxx?playlist=xxx&loop=1"
+    allowfullscreen>
+  </iframe>
 
-    files.forEach(file => {
-      if (file.name.toLowerCase().endsWith(".pdf")) {
-        const li = document.createElement("li");
+  <div class="doc-link-box">
+    <a href="How Can I Act Like a Believer.pdf">
+      How Can I Act Like a Believer?
+    </a>
+  </div>
 
-        // Link to viewer page instead of direct PDF
-        li.innerHTML = `<a href="viewer.html?file=${encodeURIComponent(file.name)}" target="_blank">${file.name}</a>`;
+</div>
 
-        list.appendChild(li);
-      }
-    });
-  })
-  .catch(err => console.error("Error loading files:", err));
-</script>
+<!-- How Can I Continue Walking With the Lord? -->
+<div class="unit-box">
+
+  <iframe 
+    src="https://www.youtube.com/embed/xxx?playlist=xxx&loop=1"
+    allowfullscreen>
+  </iframe>
+
+  <div class="doc-link-box">
+    <a href="How Can I Continue Walking with the Lord.pdf">
+      How Can I Continue Walking With the Lord?
+    </a>
+  </div>
+
+<!-- How Can I Have Hope? -->
+<div class="unit-box">
+
+  <iframe 
+    src="https://www.youtube.com/embed/xxx?playlist=xxx&loop=1"
+    allowfullscreen>
+  </iframe>
+
+  <div class="doc-link-box">
+    <a href="How Can I Have Hope.pdf">
+      How Can I Have Hope?
+    </a>
+  </div>
+
+<!-- How Can I Have Peace with God? -->
+<div class="unit-box">
+
+  <iframe 
+    src="https://www.youtube.com/embed/xxx?playlist=xxx&loop=1"
+    allowfullscreen>
+  </iframe>
+
+  <div class="doc-link-box">
+    <a href="How Can I Have Peace with God.pdf">
+      How Can I Have Peace with God?
+    </a>
+  </div>
+
+<!-- How Can I Resist Temptation? -->
+<div class="unit-box">
+
+  <iframe 
+    src="https://www.youtube.com/embed/xxx?playlist=xxx&loop=1"
+    allowfullscreen>
+  </iframe>
+
+  <div class="doc-link-box">
+    <a href="How Can I Resist Temptation.pdf">
+      How Can I Resist Temptation?
+    </a>
+  </div>
+
+<!-- How Will Being Forgiven Change Me? -->
+<div class="unit-box">
+
+  <iframe 
+    src="https://www.youtube.com/embed/xxx?playlist=xxx&loop=1"
+    allowfullscreen>
+  </iframe>
+
+  <div class="doc-link-box">
+    <a href="How Will Being Forgiven Change Me.pdf">
+      How Will Being Forgiven Change Me?
+    </a>
+  </div>
+
+<!-- Why Do Christians Pray to Jesus? -->
+<div class="unit-box">
+
+  <iframe 
+    src="https://www.youtube.com/embed/xxx?playlist=xxx&loop=1"
+    allowfullscreen>
+  </iframe>
+
+  <div class="doc-link-box">
+    <a href="Why do Christians pray to Jesus.pdf">
+      Why Do Christians Pray to Jesus?
+    </a>
+  </div>
+
+<br><br>
+
+<div class="unit-box" style="margin-top: 40px;">
 
 <div class="return-box">
-  <a href="../index.html">Return to Opening Page</a>
+  <a href="../index.html">
+    Return to Previous Page
+  </a>
+</div>
+
+
 </div>
 
 </body>
 </html>
-
-
