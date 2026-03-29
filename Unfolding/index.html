@@ -4,69 +4,8 @@
 <meta charset="UTF-8">
 <title>Precious Remedies – Chapter 2</title>
 
-<style>
-  body {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    padding: 20px;
-  }
-
-  h1 {
-    font-size: 48px;
-    color: blue;
-  }
-
-  .unit-box {
-    border: 2px solid #444;
-    padding: 20px;
-    margin: 30px auto;
-    width: 90%;
-    max-width: 500px;
-    border-radius: 10px;
-  }
-
-  .doc-link-box {
-    border: 2px solid #888;
-    padding: 10px;
-    margin-top: 15px;
-    border-radius: 6px;
-    background: #f9f9f9;
-  }
-
-  .doc-link-box a {
-    font-size: 20px;
-    text-decoration: none;
-  }
-
-  iframe {
-    width: 100%;
-    height: 260px;
-    border: none;
-    border-radius: 6px;
-  }
-
-  .return-box {
-    background: #e6f2ff;
-    border: 2px solid #7aaee6;
-    padding: 12px;
-    margin: 20px auto;
-    width: 70%;
-    max-width: 350px;
-    border-radius: 8px;
-  }
-
-  .return-box a {
-    font-size: 18px;
-    text-decoration: none;
-    color: #004a99;
-  }
-</style>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Precious Remedies – Chapter 2</title>
+<!-- REQUIRED FOR iPHONE SCALING -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
   body {
@@ -108,7 +47,7 @@
   iframe {
     width: 100%;
     height: calc(100vw * 0.5625); /* 16:9 ratio */
-    max-height: 315px;            /* prevents it from getting too tall on desktop */
+    max-height: 315px;
     border: none;
     border-radius: 6px;
   }
@@ -127,6 +66,22 @@
     font-size: 18px;
     text-decoration: none;
     color: #004a99;
+  }
+
+  /* MOBILE ENLARGEMENT (iPhone SE and similar) */
+  @media (max-width: 600px) {
+    body {
+      font-size: 125%;
+    }
+    h1 {
+      font-size: 60px;
+    }
+    .doc-link-box a {
+      font-size: 24px;
+    }
+    .return-box a {
+      font-size: 22px;
+    }
   }
 </style>
 
@@ -157,7 +112,6 @@
   </div>
 
 </div>
-
 
 <!-- Sermon #2 - Idolatry -->
 <div class="unit-box">
@@ -203,8 +157,6 @@
 
 </div>
 
-
-
 <br><br>
 
 <!-- Return Box -->
@@ -216,3 +168,4 @@
 
 </body>
 </html>
+
