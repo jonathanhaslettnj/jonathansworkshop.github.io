@@ -1,358 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <meta charset="UTF-8">
-<title>Precious Remedies – Chapter 2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jonathan's Workshop</title>
 
 <style>
-  body {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    padding: 20px;
-  }
 
-  h1 {
-    font-size: 48px;
-    color: blue;
-  }
+/* ------------------------------
+   BASE PAGE STYLING (DESKTOP)
+   ------------------------------ */
 
-  .unit-box {
-    border: 2px solid #444;
-    padding: 20px;
-    margin: 30px auto;
-    width: 90%;
-    max-width: 500px;
-    border-radius: 10px;
-  }
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  font-size: 18px;
+}
 
-  .doc-link-box {
-    border: 2px solid #888;
-    padding: 10px;
-    margin-top: 15px;
-    border-radius: 6px;
-    background: #f9f9f9;
-  }
+h1 {
+  color: #003399;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
 
-  .doc-link-box a {
-    font-size: 20px;
-    text-decoration: none;
-  }
+h2 {
+  color: #004d00;
+  font-size: 24px;
+  margin-top: 30px;
+}
 
-  iframe {
-    width: 100%;
-    height: 260px;
-    border: none;
-    border-radius: 6px;
-  }
+/* YouTube viewer */
+iframe {
+  width: 560px;
+  height: 315px;
+  max-width: 100%;
+  border: none;
+}
 
-  .placeholder {
-    font-size: 18px;
-    color: #666;
-    margin-bottom: 10px;
-  }
-</style>
-<style>
-  .return-box {
-    background: #e6f2ff;      /* light blue */
-    border: 2px solid #7aaee6;
-    padding: 12px;
-    margin: 20px auto;
-    width: 70%;               /* smaller than lesson boxes */
-    max-width: 350px;
-    border-radius: 8px;
-  }
+/* Base link block style */
+a {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 0;
+  width: 90%;
+  max-width: 400px;
+  border: 2px solid #003399;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 18px;
+}
 
-  .return-box a {
-    font-size: 18px;
-    text-decoration: none;
-    color: #004a99;
-  }
+/* Bible Study link colors */
+.bible-link {
+  color: #006600;          /* dark green */
+
+}
+
+/* Woodworking link color */
+.wood-link {
+  color: #990000;          /* dark red */
+
+}
+
+/* Return box (if you use one later) */
+.return-box {
+  margin-top: 40px;
+  padding: 12px;
+  background-color: #cce6ff;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+/* -----------------------------------------
+   PHONE‑ONLY ADJUSTMENTS — 25% LARGER
+   ----------------------------------------- */
+
 @media (max-width: 480px) {
 
   body {
-    font-size: 22px;
+    font-size: 22px;   /* +25% */
   }
 
   h1 {
-    font-size: 60px;
+    font-size: 40px;   /* +25% */
   }
 
-  .unit-box {
-    padding: 25px;
+  h2 {
+    font-size: 30px;   /* +25% */
   }
 
-  .doc-link-box a {
-    font-size: 25px;
-  }
-
-  .return-box a {
-    font-size: 25px;
+  a {
+    font-size: 22px;   /* +25% */
+    padding: 14px 0;   /* +25% */
   }
 
   iframe {
-    height: 325px; /* or 394px if you want the full 25% increase */
+    width: 100% !important;
+    height: auto !important;
   }
 }
 
- /* -----------------------------------------
-     PHONE‑ONLY ADJUSTMENTS — 25% LARGER
-     ----------------------------------------- */
-  @media (max-width: 480px) {
-
-    body {
-      font-size: 22px;
-    }
-
-    h1 {
-      font-size: 60px;
-    }
-
-    h2 {
-      font-size: 40px;
-    }
-
-    .simple-box {
-      font-size: 25px;
-      padding: 15px;
-    }
-
-    .return-box {
-      font-size: 25px;
-      padding: 15px;
-    }
-
-    iframe {
-      height: 394px; /* 315 × 1.25 */
-    }
-  }
-
 </style>
-
 </head>
+
 <body>
 
-<h1>Remedies for Satan's Temptations</h1>
+<h1>Jonathan's Workshop</h1>
+
+<!-- YouTube Video -->
+<iframe 
+  src="https://www.youtube.com/embed/0c6kgNgWmt8?loop=1&playlist=0c6kgNgWmt8"
+  allowfullscreen>
+</iframe>
+
+<!-- Bible Study Section -->
+<h2>Bible Study</h2>
+
+<a class="bible-link" href="Questions/index.html">Questions with Answers"</a>
+
+<a class="bible-link" href="contentment/index.html">The Rare Jewel of Christian Contentment</a>
+<a class="bible-link" href="Precious Remedies/index.html">Precious Remedies</a>
+
+<a class="bible-link" href="Unfolding/index.html">Sermons: Unfolding Redemption's Plan</a>
 
 
-<!-- Device 1 -->
-<div class="unit-box">
+<!-- Woodworking Section -->
+<h2>Woodworking</h2>
 
-  <iframe 
-    src="https://www.youtube.com/embed/MU1tUB4xo0M?playlist=MU1tUB4xo0M&loop=1"
-    allowfullscreen>
-  </iframe>
+<a class="wood-link" href="Woodworking/index.html">Woodworking Videos</a>
 
-  <div class="doc-link-box">
-    <a href="S01 Devices to Sin.pdf">
-      Device #1 PRESENTING THE BAIT WHILE HIDING THE HOOK
+<!-- Seeds of Hope Contact Box -->
+<div style="
+    margin-top: 40px;
+    padding: 15px;
+    background-color: #f7faff;
+    border: 1px solid #003399;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+">
+  <p style="margin: 0; font-size: 18px;">
+    For spiritual questions or guidance, please contact Seeds of Hope Ministries at:<br>
+<a href="mailto:info@seedsofhopeministries.org"
+   style="color: #003399; text-decoration: none; font-weight: bold; word-break: break-all;">
+       info@seedsofhopeministries.org
     </a>
-  </div>
-
+  </p>
 </div>
 
-
-<!-- Device 2 -->
-<div class="unit-box">
-
-  <iframe 
-    src="https://www.youtube.com/embed/7CV67l0Vljw?playlist=7CV67l0Vljw&loop=1"
-    allowfullscreen>
-  </iframe>
-
-  <div class="doc-link-box">
-    <a href="S02 Devices to Sin.pdf">
-      Device #2 PAINTING SIN WITH THE COLORS OF VIRTUE
-    </a>
-  </div>
-
-</div>
-
-
-<!-- Device 3 -->
-<div class="unit-box">
-
-   <iframe 
-    src="https://www.youtube.com/embed/XIWCv_VYjiw?playlist=O4TAZcRH9pE&loop=1"
-    allowfullscreen>
-  </iframe>
-
-  <div class="doc-link-box">
-    <a href="S03 Devices to Sin.pdf">
-      Device #3 CAUSING US TO THINK SIN IS NOT SERIOUS
-    </a>
-  </div>
-
-</div>
-
-
-<!-- Device 4 -->
-<div class="unit-box">
-
-    <iframe 
-    src="https://www.youtube.com/embed/iuOJRV6rI-k?playlist=iuOJRV6rI-k&loop=1"
-    allowfullscreen>
-  </iframe>
-
-  <div class="doc-link-box">
-    <a href="S04 Devices to Sin.pdf">
-      Device #4 Satan shows us that even the heroes of the faith
-committed terrible acts of sin
-    </a>
-  </div>
-
-</div>
-
-
-<!-- Device 5 -->
-<div class="unit-box">
-
- <iframe 
-    src="https://www.youtube.com/embed/hpbN7x0RW18?playlist=hpbN7x0RW18&loop=1"
-    allowfullscreen>
-  </iframe>
-
-  <div class="doc-link-box">
-    <a href="S05 Devices to Sin.pdf">
-     Device #5 Satan causes us to see only God’s mercy but hides His
-judgement from us.
-    </a>
-  </div>
-
-  </div>
-
-<!-- Part 6 -->
-<div class="unit-box">
-
- <iframe 
-    src="https://www.youtube.com/embed/_-iarL7bG_8?playlist=_-iarL7bG_8&loop=1"
-    allowfullscreen>
-  </iframe>
-
-  <div class="doc-link-box">
-    <a href="S06 Devices to Sin.pdf">
-     Device #6 Satan deludes us by convincing us to “Sin now,” and
-“Repent later.”
-    </a>
-  </div>
-
-  </div>
-
-<!-- Part 7 -->
-<div class="unit-box">
-
- <iframe 
-    src="https://www.youtube.com/embed/ZALKw9DbD2s?playlist=ZALKw9DbD2s&loop=1"
-    allowfullscreen>
-  </iframe>
-
-  <div class="doc-link-box">
-    <a href="S07 Devices to Sin.pdf">
-     Device #7 : Satan tells us, “It’s okay to look as long as you don’t touch.”
-    </a>
-  </div>
-
-  </div>
-
-<!-- Part 8 -->
-<div class="unit-box">
-
- <iframe 
-    src="https://www.youtube.com/embed/TatE9D4Oc50?playlist=TatE9D4Oc50&loop=1"
-    allowfullscreen>
-  </iframe>
-
-  <div class="doc-link-box">
-    <a href="S08 Devices to Sin.pdf">
-     Device #8 Satan convinces us that sinners have more fun
-    </a>
-  </div>
-
-  </div>
-
-<!-- Part 9 -->
-<div class="unit-box">
-
- <iframe 
-    src="https://www.youtube.com/embed/ZX_f4L38ua8?playlist=ZX_f4L38ua8&loop=1"
-    allowfullscreen>
-  </iframe>
-
-  <div class="doc-link-box">
-    <a href="S09 Devices to Sin.pdf">
-     Device #9 Satan convinces us it just isn't worth it to endure as a Christian
-    </a>
-  </div>
-  </div>
-
-<!-- Part 10 -->
-<div class="unit-box">
-
- <iframe 
-    src="https://www.youtube.com/embed/b-kBNOZ4WBc?playlist=b-kBNOZ4WBc&loop=1"
-    allowfullscreen>
-  </iframe>
-
-  <div class="doc-link-box">
-    <a href="S10 Devices to Sin.pdf">
-     Device #10 Satan asks us, "Even heros sinned, why not you?"
-    </a>
-  </div>
-  </div>
-
-
-<!-- Part 11 -->
-<div class="unit-box">
-
- <iframe 
-    src="https://www.youtube.com/embed/Y0Qp_PpG6Pk?playlist=Y0Qp_PpG6Pk&loop=1"
-    allowfullscreen>
-  </iframe>
-
-  <div class="doc-link-box">
-    <a href="S11 Devices to Sin.pdf">
-     Device #11 Satan confuses our discenment
-    </a>
-  </div>
-  </div>
-
-
-<!-- Part 12 -->
-<div class="unit-box">
-
- <iframe 
-    src="https://www.youtube.com/embed/s70R7TPeWd8?playlist=s70R7TPeWd8&loop=1"
-    allowfullscreen>
-  </iframe>
-
-  <div class="doc-link-box">
-    <a href="S12 Devices to Sin.pdf">
-     Device #12 Satan gets us to follow the wrong crowd
-    </a>
-  </div>
-  </div>
-
-
-
-
- 
-
-  </div>
-
-
-<br><br>
-
-<div class="unit-box" style="margin-top: 40px;">
-
-<div class="return-box">
-  <a href="../index.html">
-    Return to Previous Page
-  </a>
-</div>
-
-
-</div>
 
 </body>
 </html>
+
+
