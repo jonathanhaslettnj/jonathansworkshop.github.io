@@ -8,43 +8,23 @@
 <style>
   body {
     font-family: Arial, sans-serif;
-    padding: 0; /* removed padding for edge-to-edge video */
+    padding: 0;
     max-width: 800px;
     margin: auto;
   }
 
   h1 {
     text-align: center;
-    margin: 20px 0 10px 0; /* restores spacing above title */
+    margin: 20px 0 10px 0;
   }
 
-  #sizeToggle {
-    display: block;
-    margin: 0 auto 25px auto;
-    padding: 10px 18px;
-    font-size: 1em;
-    border-radius: 6px;
-    border: 2px solid #444;
-    background: #eee;
-    cursor: pointer;
-  }
+  /* Removed toggle button styling (button no longer exists) */
 
   .video-wrapper {
     position: relative;
     width: 100%;
     padding-bottom: 56.25%;
     margin-bottom: 15px;
-    transition: max-width 0.3s ease;
-  }
-
-  .large .video-wrapper {
-    max-width: 100%; /* full width */
-  }
-
-  .compact .video-wrapper {
-    max-width: 420px;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .video-wrapper iframe {
@@ -63,49 +43,51 @@
     font-size: 1em;
   }
 
-  .return-link {
-    text-align: center;
-    margin-top: 40px;
+  /* ⭐ Center ONLY the first intro iframe */
+  .video-description:first-of-type iframe {
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 560px;
+    height: 315px;
   }
 
-.return-box {
-  background: #e6f2ff;      /* light blue */
-  border: 2px solid #7aaee6;
-  padding: 12px;
-  margin: 40px auto 0 auto;
-  width: 70%;
-  max-width: 350px;
-  border-radius: 8px;
-  font-size: 20px;
-  text-align: center;
-}
+  .return-box {
+    background: #e6f2ff;
+    border: 2px solid #7aaee6;
+    padding: 12px;
+    margin: 40px auto 0 auto;
+    width: 70%;
+    max-width: 350px;
+    border-radius: 8px;
+    font-size: 20px;
+    text-align: center;
+  }
 
-.return-box a {
-  text-decoration: none;
-  color: #004a99;
-}
-
-  
+  .return-box a {
+    text-decoration: none;
+    color: #004a99;
+  }
 </style>
-  
+
 </head>
 
-<body class="large">
+<body>
 
 <h1>Jonathan's Woodworking Videos</h1>
 
-<button id="sizeToggle">Switch to Compact Size</button>
-
+<!-- ⭐ Removed the toggle button -->
 
 <!-- Introduction -->
 <div class="video-description">
-  <strong>An introduction to my philosophy of woodworking </strong><br>
-  My entire philosopy explained in less than five minutes.
+  <strong>Why Am I Here?</strong><br>
+  Why should you watch these videos?
   <br><br>
- 
-  <a href="https://www.youtube.com/watch?v=8rRva3vmGoo&list=8rRva3vmGoo&index=1">
-    My Philosphy of Woodworking
-  </a>
+
+  <iframe 
+    src="https://www.youtube.com/embed/8rRva3vmGoo?playlist=8rRva3vmGoo&loop=1"
+    allowfullscreen>
+  </iframe>
 </div>
 
 <!-- VIDEO 1 -->
@@ -116,15 +98,14 @@
   </iframe>
 </div>
 
-
 <div class="video-description">
-  <strong>Someday I might want to sell my house, </strong><br>
+  <strong>Someday I might want to sell my house,</strong><br>
   but to do that it would be best to get a new septic system put in, so I did. Then I had to take out the old deck, and build a new one. (To be clear: I did not put in the septic system myself, just the deck).
   This is a list of YouTube Videos I found helpful –
   <a href="https://www.youtube.com/watch?v=qhYw6n89cZA&list=PLo9HKMBicqL7hoIBa_KSpwLMDpBFRCwsW">My Deck Building Links</a>.
 </div>
 
-  <!-- VIDEO 2 -->
+<!-- VIDEO 2 -->
 <div class="video-wrapper">
   <iframe 
     src="https://www.youtube.com/embed/f7gh5zHrO14?playlist=f7gh5zHrO14&loop=1"
@@ -133,10 +114,11 @@
 </div>
 
 <div class="video-description">
-  <strong>What's going on under my deck? </strong><br> Lattice and Trex painted black provide a visual dressing for what is below the deck. Leftover black coated aluminum balustrades from the deck construction provided a method to secure the lattice. The balustrades were screwed to the joists above them, and then to the lattice in front of them.   
+  <strong>What's going on under my deck?</strong><br>
+  Lattice and Trex painted black provide a visual dressing for what is below the deck. Leftover black coated aluminum balustrades from the deck construction provided a method to secure the lattice.
 </div>
 
- <!-- VIDEO 3 -->
+<!-- VIDEO 3 -->
 <div class="video-wrapper">
   <iframe 
     src="https://www.youtube.com/embed/mp7FnpHm-t0?playlist=mp7FnpHm-t0&loop=1"
@@ -144,11 +126,10 @@
   </iframe>
 </div>
 
-
 <div class="video-description">
-  <strong>You don't always need to buy a hose reel, or hose holder. I made this out of leftover pieces from making my deck, plus a dowel I had left over in my shop. 
+  <strong>You don't always need to buy a hose reel, or hose holder.</strong><br>
+  I made this out of leftover pieces from making my deck, plus a dowel I had left over in my shop.
 </div>
-
 
 <!-- VIDEO 4 -->
 <div class="video-wrapper">
@@ -158,14 +139,12 @@
   </iframe>
 </div>
 
-
 <div class="video-description">
   <strong>How to Prevent Tools from Slipping Off a Dowell</strong><br>
-  A simple trick that keeps tools stable and prevents accidental drops. Start making the wooden rings using a half inch bit, to match the half inch diamter of the dowel. Then use a 3/4" hole saw to cut a ring arond the 1/2" hole. Then cut 3/8" inch thickness on the table saw, and the rings will fall out.
+  A simple trick that keeps tools stable and prevents accidental drops. Start making the wooden rings using a half inch bit, to match the half inch diameter of the dowel. Then use a 3/4" hole saw to cut a ring around the 1/2" hole. Then cut 3/8" inch thickness on the table saw, and the rings will fall out.
 </div>
 
-
-  <!-- VIDEO 5 -->
+<!-- VIDEO 5 -->
 <div class="video-wrapper">
   <iframe 
     src="https://www.youtube.com/embed/7_G9jrtcuHc?playlist=7_G9jrtcuHc&loop=1"
@@ -173,12 +152,12 @@
   </iframe>
 </div>
 
-
 <div class="video-description">
-  <strong>These are ideas for how to make the most of a small living space. </strong><br> I built these things for a very special person who lives in an efficiency appartment. 
+  <strong>These are ideas for how to make the most of a small living space.</strong><br>
+  I built these things for a very special person who lives in an efficiency apartment.
 </div>
 
-  <!-- VIDEO 6 -->
+<!-- VIDEO 6 -->
 <div class="video-wrapper">
   <iframe 
     src="https://www.youtube.com/embed/lVHiLJfQv_0?playlist=lVHiLJfQv_0&loop=1"
@@ -186,12 +165,12 @@
   </iframe>
 </div>
 
-
 <div class="video-description">
-  <strong>Bird netting can be frustrating! </strong><br> I won't say I've perfected it yet, but I've been working on this design for years. The idea is to be able to lift up the netting like a curtain, allowing me to pick my strawberries and blueberries, but not allowing the birds to eat them up.  
+  <strong>Bird netting can be frustrating!</strong><br>
+  I won't say I've perfected it yet, but I've been working on this design for years. The idea is to be able to lift up the netting like a curtain, allowing me to pick my strawberries and blueberries, but not allowing the birds to eat them up.
 </div>
 
-  <!-- VIDEO 7 -->
+<!-- VIDEO 7 -->
 <div class="video-wrapper">
   <iframe 
     src="https://www.youtube.com/embed/M0nSIRTjpHc?playlist=M0nSIRTjpHc&loop=1"
@@ -200,12 +179,11 @@
 </div>
 
 <div class="video-description">
-  <strong>Bird netting can be frustrating, again! </strong><br> I definitely have not perfected this method of using bird netting, but this is another way of constructing a framework for birdnetting that allows me to pick the strawberries, but keep the birds away.   
+  <strong>Bird netting can be frustrating, again!</strong><br>
+  I definitely have not perfected this method of using bird netting, but this is another way of constructing a framework for bird netting that allows me to pick the strawberries, but keep the birds away.
 </div>
 
-
-
-<!-- VIDEO x -->
+<!-- VIDEO X -->
 <div class="video-wrapper">
   <iframe 
     src="https://www.youtube.com/embed/13S09HINmoE?playlist=13S09HINmoE&loop=1"
@@ -214,7 +192,7 @@
 </div>
 
 <div class="video-description">
-  <strong>Three clamps are compared as they are used with a pocket hole jig. </strong><br>
+  <strong>Three clamps are compared as they are used with a pocket hole jig.</strong><br>
   Check out the three types of clamps I use with a pocket hole jig. See if you agree with me about which is best.
   <br><br>
   Here are some of my links that show how to do some of these things:
@@ -224,37 +202,11 @@
   </a>
 </div>
 
- 
-
-
-
-
-
-
-
 <div class="return-box">
   <a href="../index.html">Return to Opening Page</a>
 </div>
 
-
-<script>
-  const body = document.body;
-  const toggle = document.getElementById('sizeToggle');
-
-  toggle.addEventListener('click', () => {
-    body.classList.toggle('compact');
-    body.classList.toggle('large');
-
-    if (body.classList.contains('compact')) {
-      toggle.textContent = "Switch to Large Size";
-    } else {
-      toggle.textContent = "Switch to Compact Size";
-    }
-  });
-</script>
+<!-- ⭐ Removed the entire toggle script -->
 
 </body>
 </html>
-
-
-
