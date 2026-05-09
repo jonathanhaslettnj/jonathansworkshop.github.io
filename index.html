@@ -17,16 +17,17 @@ body {
   margin: 0;
   padding: 20px;
   font-size: 18px;
+  background-color: #ffffff;   /* ⭐ restored white background */
 }
 
 h1 {
-  color: #003399;
+  color: #003399;     /* deep blue */
   font-size: 32px;
   margin-bottom: 20px;
 }
 
 h2 {
-  color: #004d00;
+  color: #004d00;     /* dark green */
   font-size: 24px;
   margin-top: 30px;
 }
@@ -39,7 +40,7 @@ iframe {
   border: none;
 }
 
-/* Matching your other pages */
+/* Centered bordered video box */
 .unit-box {
   border: 2px solid #444;
   padding: 20px;
@@ -47,9 +48,10 @@ iframe {
   width: 90%;
   max-width: 560px;
   border-radius: 10px;
+  background: #ffffff;
 }
 
-/* Base link block style */
+/* Link blocks */
 a {
   display: block;
   margin: 10px auto;
@@ -60,25 +62,60 @@ a {
   border-radius: 8px;
   text-decoration: none;
   font-size: 18px;
+  background: #ffffff;
 }
 
 /* Bible Study link colors */
 .bible-link {
-  color: #006600;          /* dark green */
+  color: #006600;
 }
 
 /* Woodworking link color */
 .wood-link {
-  color: #990000;          /* dark red */
+  color: #990000;
 }
 
-/* Return box (if you use one later) */
+/* ⭐ Reusable return box (NOT used on this page) */
 .return-box {
-  margin-top: 40px;
+  background: #e6f2ff;
+  border: 2px solid #7aaee6;
   padding: 12px;
-  background-color: #cce6ff;
+  margin: 40px auto 0 auto;
+  width: 70%;
+  max-width: 350px;
+  border-radius: 8px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.return-box a {
+  text-decoration: none;
+  color: #004a99;
+}
+
+/* Seeds of Hope contact box */
+.contact-box {
+  margin-top: 40px;
+  padding: 15px;
+  background-color: #f7faff;
+  border: 1px solid #003399;
   border-radius: 10px;
-  display: inline-block;
+  width: 90%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-box p {
+  margin: 0;
+  font-size: 18px;
+}
+
+.contact-box a {
+  color: #003399;
+  text-decoration: none;
+  font-weight: bold;
+  word-break: break-all;
 }
 
 /* -----------------------------------------
@@ -88,20 +125,20 @@ a {
 @media (max-width: 480px) {
 
   body {
-    font-size: 22px;   /* +25% */
+    font-size: 22px;
   }
 
   h1 {
-    font-size: 40px;   /* +25% */
+    font-size: 40px;
   }
 
   h2 {
-    font-size: 30px;   /* +25% */
+    font-size: 30px;
   }
 
   a {
-    font-size: 22px;   /* +25% */
-    padding: 14px 0;   /* +25% */
+    font-size: 22px;
+    padding: 14px 0;
   }
 
   iframe {
@@ -119,29 +156,21 @@ a {
 
 <!-- YouTube Video -->
 <div class="unit-box">
-<iframe 
-  src="https://www.youtube.com/embed/0c6kgNgWmt8?loop=1&playlist=0c6kgNgWmt8"
-  allowfullscreen>
-</iframe>
+  <iframe 
+    src="https://www.youtube.com/embed/0c6kgNgWmt8?loop=1&playlist=0c6kgNgWmt8"
+    allowfullscreen>
+  </iframe>
 </div>
 
 <!-- Bible Study Section -->
-
 <h2>Bible Study</h2>
 
 <a class="bible-link" href="Toolboxes/index.html">Spiritual Toolboxes</a>
-
 <a class="bible-link" href="Friday/index.html">Formerly Friday Bible Studies</a>
-
 <a class="bible-link" href="Questions/index.html">Questions with Answers</a>
-
 <a class="bible-link" href="contentment/index.html">The Rare Jewel of Christian Contentment</a>
-
 <a class="bible-link" href="Precious Remedies/index.html">Precious Remedies</a>
-
 <a class="bible-link" href="Unfolding/index.html">Sermons: Unfolding Redemption's Plan</a>
-
-
 
 <!-- Woodworking Section -->
 <h2>Woodworking</h2>
@@ -149,23 +178,10 @@ a {
 <a class="wood-link" href="Woodworking/index.html">Woodworking Videos</a>
 
 <!-- Seeds of Hope Contact Box -->
-<div style="
-    margin-top: 40px;
-    padding: 15px;
-    background-color: #f7faff;
-    border: 1px solid #003399;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-">
-  <p style="margin: 0; font-size: 18px;">
+<div class="contact-box">
+  <p>
     For spiritual questions or guidance, please contact Seeds of Hope Ministries at:<br>
-<a href="mailto:info@seedsofhopeministries.org"
-   style="color: #003399; text-decoration: none; font-weight: bold; word-break: break-all;">
-       info@seedsofhopeministries.org
-    </a>
+    <a href="mailto:info@seedsofhopeministries.org">info@seedsofhopeministries.org</a>
   </p>
 </div>
 
