@@ -1,75 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Toolboxes</title>
 
 <style>
-  body {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    padding: 20px;
-  }
 
-  h1 {
-    font-size: 48px;
-    color: blue;
-  }
+/* ------------------------------
+   BASE PAGE STYLING
+   ------------------------------ */
 
-  .unit-box {
-    border: 2px solid #444;
-    padding: 20px;
-    margin: 30px auto;
-    width: 90%;
-    max-width: 500px;
-    border-radius: 10px;
-  }
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  background: #ffffff;
+  font-size: 18px;
+}
 
-  .doc-link-box {
-    border: 2px solid #888;
-    padding: 10px;
-    margin-top: 15px;
-    border-radius: 6px;
-    background: #f9f9f9;
-  }
+h1 {
+  font-size: 48px;
+  color: #003399;   /* deep blue */
+  margin-bottom: 20px;
+}
 
-  .doc-link-box a {
-    font-size: 20px;
-    text-decoration: none;
-  }
+/* Centered bordered video box */
+.unit-box {
+  border: 2px solid #444;
+  padding: 20px;
+  margin: 30px auto;
+  width: 90%;
+  max-width: 560px;
+  border-radius: 10px;
+  background: #ffffff;
+}
 
-  iframe {
-    width: 100%;
-    height: 260px;
-    border: none;
-    border-radius: 6px;
-  }
+/* YouTube viewer */
+iframe {
+  width: 100%;
+  height: 260px;
+  border: none;
+  border-radius: 6px;
+}
 
-  .placeholder {
-    font-size: 18px;
-    color: #666;
-    margin-bottom: 10px;
-  }
-</style>
+/* Resource lists */
+.resource-list {
+  text-align: left;
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.5;
+}
 
-<style>
-  .return-box {
-    background: #e6f2ff;
-    border: 2px solid #7aaee6;
-    padding: 12px;
-    margin: 20px auto;
-    width: 70%;
-    max-width: 350px;
-    border-radius: 8px;
-  }
+.resource-list a {
+  color: #003399;
+  text-decoration: none;
+  word-break: break-all;
+}
 
-  .return-box a {
-    font-size: 18px;
-    text-decoration: none;
-    color: #004a99;
-  }
+/* Return box */
+.return-box {
+  background: #e6f2ff;
+  border: 2px solid #7aaee6;
+  padding: 12px;
+  margin: 40px auto 0 auto;
+  width: 70%;
+  max-width: 350px;
+  border-radius: 8px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.return-box a {
+  text-decoration: none;
+  color: #004a99;
+}
+
+/* ------------------------------
+   MOBILE ADJUSTMENTS
+   ------------------------------ */
 
 @media (max-width: 480px) {
 
@@ -85,62 +95,30 @@
     padding: 25px;
   }
 
-  .doc-link-box a {
-    font-size: 25px;
-  }
-
-  .return-box a {
-    font-size: 25px;
-  }
-
   iframe {
     height: 325px;
-  }
-}
-
-@media (max-width: 480px) {
-
-  body {
-    font-size: 22px;
-  }
-
-  h1 {
-    font-size: 60px;
-  }
-
-  h2 {
-    font-size: 40px;
-  }
-
-  .simple-box {
-    font-size: 25px;
-    padding: 15px;
   }
 
   .return-box {
     font-size: 25px;
     padding: 15px;
   }
-
-  iframe {
-    height: 394px;
-  }
 }
-</style>
 
+</style>
 </head>
+
 <body>
 
 <h1>Toolboxes</h1>
 
 <!-- Introductory Video -->
 <div class="unit-box">
-<iframe 
-  src="https://www.youtube.com/embed/HYAZEQyjKXg?loop=1&playlist=HYAZEQyjKXg"
-  allowfullscreen>
-</iframe>
+  <iframe 
+    src="https://www.youtube.com/embed/HYAZEQyjKXg?loop=1&playlist=HYAZEQyjKXg"
+    allowfullscreen>
+  </iframe>
 </div>
-
 
 <!-- Toolbox for Bible Study -->
 <div class="unit-box">
@@ -150,15 +128,15 @@
     allowfullscreen>
   </iframe>
 
-  <!-- Inserted Bible Study Resources -->
-  <div style="text-align:left; margin-top:20px; font-size:18px; line-height:1.5;">
+  <div class="resource-list">
+
     <strong>World Wide Study Bible</strong><br>
-    General Site Address – <br>
+    General Site Address:<br>
     <a href="https://www.ccel.org/study" target="_blank">https://www.ccel.org/study</a><br><br>
 
     <strong>The Bible Project</strong><br>
     <a href="https://bibleproject.com/" target="_blank">https://bibleproject.com/</a><br>
-    <a href="https://bibleproject.com/bible/nasb/genesis/1/" target="_blank">Genesis 1 Example</a><br><br>
+    <a href="https://bibleproject.com/bible/nasb/genesis/1/" target="_blank">https://bibleproject.com/bible/nasb/genesis/1/</a><br><br>
 
     <strong>The Blue Letter Bible</strong><br>
     Use the instructional videos. This is a very powerful tool.<br>
@@ -175,17 +153,17 @@
     <a href="https://biblehub.com/" target="_blank">https://biblehub.com/</a><br><br>
 
     <strong>YouVersion</strong><br>
-    This includes a download for an excellent free app for phone.<br>
+    Excellent free phone app.<br>
     <a href="https://youversion.com/" target="_blank">https://youversion.com/</a><br><br>
 
     <strong>Literal Word</strong><br>
-    This is a very simple but very fast phone app of the Bible that is free.<br>
+    Very fast, simple Bible app.<br>
     <a href="https://nasb.literalword.com/mobile" target="_blank">https://nasb.literalword.com/mobile</a><br><br>
 
     <strong>Bible Gateway</strong><br>
     <a href="https://www.biblegateway.com/" target="_blank">https://www.biblegateway.com/</a>
-  </div>
 
+  </div>
 </div>
 
 <!-- Toolbox for Devotions -->
@@ -196,45 +174,30 @@
     allowfullscreen>
   </iframe>
 
- 
-  <!-- Inserted Devotion Resources -->
-  <div style="text-align:left; margin-top:20px; font-size:18px; line-height:1.5;">
+  <div class="resource-list">
 
     <strong>Truth for Life – Alistair Begg</strong><br>
-    <a href="https://www.truthforlife.org/" target="_blank">
-      https://www.truthforlife.org/
-    </a><br><br>
+    <a href="https://www.truthforlife.org/" target="_blank">https://www.truthforlife.org/</a><br><br>
 
     <strong>Ligonier Ministries</strong><br>
-    <a href="https://www.ligonier.org/" target="_blank">
-      https://www.ligonier.org/
-    </a><br><br>
+    <a href="https://www.ligonier.org/" target="_blank">https://www.ligonier.org/</a><br><br>
 
     <strong>Grace to You – John MacArthur</strong><br>
-    <a href="https://www.gty.org/" target="_blank">
-      https://www.gty.org/
-    </a><br><br>
+    <a href="https://www.gty.org/" target="_blank">https://www.gty.org/</a><br><br>
 
     <strong>Paul Tripp Ministries</strong><br>
-    <a href="https://www.paultripp.com/" target="_blank">
-      https://www.paultripp.com/
-    </a><br><br>
+    <a href="https://www.paultripp.com/" target="_blank">https://www.paultripp.com/</a><br><br>
 
     <strong>Gospel in Life – Tim Keller</strong><br>
-    <a href="https://gospelinlife.com/" target="_blank">
-      https://gospelinlife.com/
-    </a><br><br>
+    <a href="https://gospelinlife.com/" target="_blank">https://gospelinlife.com/</a><br><br>
 
     <strong>Our Daily Bread Ministries</strong><br>
-    <a href="https://www.odbm.org/en/" target="_blank">
-      https://www.odbm.org/en/
-    </a>
+    <a href="https://www.odbm.org/en/" target="_blank">https://www.odbm.org/en/</a>
 
   </div>
-
 </div>
 
-<!-- Toolbox for Preaching Resources -->
+<!-- Toolbox for Preaching -->
 <div class="unit-box">
 
   <iframe 
@@ -242,14 +205,14 @@
     allowfullscreen>
   </iframe>
 
-   <div style="text-align:left; margin-top:20px; font-size:18px; line-height:1.5;">
+  <div class="resource-list">
 
-     <strong>This is an exerpt from my favorite sermon.</strong><br>
-    <a href="https://www.youtube.com/watch?v=9ibqUrAjrZI">
-https://www.youtube.com/watch?v=9ibqUrAjrZI
+    <strong>This is an excerpt from my favorite sermon.</strong><br>
+    <a href="https://www.youtube.com/watch?v=9ibqUrAjrZI" target="_blank">
+      https://www.youtube.com/watch?v=9ibqUrAjrZI
     </a><br><br>
 
-   <strong>Got Questions – Sermon Preparation</strong><br>
+    <strong>Got Questions – Sermon Preparation</strong><br>
     <a href="https://www.gotquestions.org/preparing-a-sermon.html" target="_blank">
       https://www.gotquestions.org/preparing-a-sermon.html
     </a><br><br>
@@ -277,10 +240,9 @@ https://www.youtube.com/watch?v=9ibqUrAjrZI
     <strong>John MacArthur – Sermon Preparation Videos</strong><br>
     <a href="https://www.youtube.com/watch?v=-jCyfWwz3-Y" target="_blank">Video 1</a><br>
     <a href="https://www.youtube.com/watch?v=9P5obISaYZI" target="_blank">Video 2</a>
-  </div>
 
   </div>
-
+</div>
 
 <!-- Toolbox for Learning More -->
 <div class="unit-box">
@@ -290,56 +252,43 @@ https://www.youtube.com/watch?v=9ibqUrAjrZI
     allowfullscreen>
   </iframe>
 
+  <div class="resource-list">
 
-<div style="text-align:left; margin-top:20px; font-size:18px; line-height:1.5;">
+    <strong>The Biblical Theology of Gregory K. Beale</strong><br>
+    <a href="https://www.gkbeale.com/new-testament-biblical-theology-course" target="_blank">
+      https://www.gkbeale.com/new-testament-biblical-theology-course
+    </a><br><br>
 
-  <strong>The Biblical Theology of Gregory K. Beale</strong><br>
-  <a href="https://www.gkbeale.com/new-testament-biblical-theology-course" target="_blank">
-    https://www.gkbeale.com/new-testament-biblical-theology-course
-  </a><br><br>
+    <strong>The Teachings of Sinclair Ferguson</strong><br>
+    <a href="https://www.monergism.com/dr-sinclair-b-ferguson-aggregated-resources-free-mp3s-essays-videos" target="_blank">
+      https://www.monergism.com/dr-sinclair-b-ferguson-aggregated-resources-free-mp3s-essays-videos
+    </a><br><br>
 
-  <strong>The Teachings of Sinclair Ferguson</strong><br>
-  <a href="https://www.monergism.com/dr-sinclair-b-ferguson-aggregated-resources-free-mp3s-essays-videos" target="_blank">
-    https://www.monergism.com/dr-sinclair-b-ferguson-aggregated-resources-free-mp3s-essays-videos
-  </a><br><br>
+    <strong>Free Resources from Vern Poythress and John Frame</strong><br>
+    <a href="https://frame-poythress.org/about/vern-poythress-full-bio/" target="_blank">
+      https://frame-poythress.org/about/vern-poythress-full-bio/
+    </a><br><br>
 
-  <strong>Free Resources from Vern Poythress and John Frame</strong><br>
-  <a href="https://frame-poythress.org/about/vern-poythress-full-bio/" target="_blank">
-    https://frame-poythress.org/about/vern-poythress-full-bio/
-  </a><br><br>
+    <strong>The Gospel Coalition</strong><br>
+    <a href="https://www.thegospelcoalition.org/" target="_blank">
+      https://www.thegospelcoalition.org/
+    </a><br><br>
 
-  <strong>The Gospel Coalition</strong><br>
-  <a href="https://www.thegospelcoalition.org/" target="_blank">
-    https://www.thegospelcoalition.org/
-  </a><br><br>
+    <strong>Ligonier Ministries</strong><br>
+    <a href="https://www.ligonier.org/" target="_blank">
+      https://www.ligonier.org/
+    </a>
 
-  <strong>Ligonier Ministries</strong><br>
-  <a href="https://www.ligonier.org/" target="_blank">
-    https://www.ligonier.org/
-  </a>
-
+  </div>
 </div>
 
-
-</div>
-
-
-<br><br>
-
-<div class="unit-box" style="margin-top: 40px;">
-
+<!-- Return Box -->
 <div class="return-box">
-  <a href="../index.html">
-    Return to Previous Page
-  </a>
-</div>
-
+  <a href="../index.html">Return to Home Page</a>
 </div>
 
 </body>
 </html>
-
-****
 
 
 
