@@ -2,42 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jonathan's Workshop</title>
+<title>Formerly Friday Bible Studies</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 
 /* ------------------------------
-   BASE PAGE STYLING (DESKTOP)
+   BASE PAGE STYLING
    ------------------------------ */
 
 body {
-  font-family: Arial, sans-serif;
   text-align: center;
-  margin: 0;
+  font-family: Arial, sans-serif;
   padding: 20px;
+  background: #ffffff;
   font-size: 18px;
-  background-color: #ffffff;   /* ⭐ restored white background */
 }
 
 h1 {
-  color: #003399;     /* deep blue */
-  font-size: 32px;
-  margin-bottom: 20px;
-}
-
-h2 {
-  color: #004d00;     /* dark green */
-  font-size: 24px;
-  margin-top: 30px;
-}
-
-/* YouTube viewer */
-iframe {
-  width: 560px;
-  height: 315px;
-  max-width: 100%;
-  border: none;
+  font-size: 48px;
+  color: #003399;   /* deep blue */
+  margin-bottom: 10px;
 }
 
 /* Centered bordered video box */
@@ -51,31 +37,31 @@ iframe {
   background: #ffffff;
 }
 
-/* Link blocks */
-a {
-  display: block;
-  margin: 10px auto;
-  padding: 10px 0;
-  width: 90%;
-  max-width: 400px;
-  border: 2px solid #003399;
-  border-radius: 8px;
+/* PDF link boxes */
+.doc-link-box {
+  border: 2px solid #888;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 6px;
+  background: #f9f9f9;
+}
+
+.doc-link-box a {
+  font-size: 20px;
   text-decoration: none;
-  font-size: 18px;
-  background: #ffffff;
+  color: #003399;
+  word-break: break-word;
 }
 
-/* Bible Study link colors */
-.bible-link {
-  color: #006600;
+/* Responsive video */
+iframe {
+  width: 100%;
+  height: 260px;
+  border: none;
+  border-radius: 6px;
 }
 
-/* Woodworking link color */
-.wood-link {
-  color: #990000;
-}
-
-/* ⭐ Reusable return box (NOT used on this page) */
+/* Return box */
 .return-box {
   background: #e6f2ff;
   border: 2px solid #7aaee6;
@@ -85,7 +71,6 @@ a {
   max-width: 350px;
   border-radius: 8px;
   font-size: 20px;
-  text-align: center;
 }
 
 .return-box a {
@@ -93,70 +78,31 @@ a {
   color: #004a99;
 }
 
-/* qr-image */
-.qr-image {
-  max-width: 90%;
-  width: 200px;
-  height: auto;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  padding: 5px;
-  background: white;
-  display: block;
-  margin: 0 auto;
-}
-
-/* Seeds of Hope contact box */
-.contact-box {
-  margin-top: 40px;
-  padding: 15px;
-  background-color: #f7faff;
-  border: 1px solid #003399;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.contact-box p {
-  margin: 0;
-  font-size: 18px;
-}
-
-.contact-box a {
-  color: #003399;
-  text-decoration: none;
-  font-weight: bold;
-  word-break: break-all;
-}
-
 /* -----------------------------------------
-   PHONE‑ONLY ADJUSTMENTS — 25% LARGER
+   MOBILE ENLARGEMENT — 25% LARGER
    ----------------------------------------- */
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
 
   body {
     font-size: 22px;
   }
 
   h1 {
-    font-size: 40px;
+    font-size: 60px;
   }
 
-  h2 {
-    font-size: 30px;
+  .doc-link-box a {
+    font-size: 24px;
   }
 
-  a {
-    font-size: 22px;
-    padding: 14px 0;
+  .return-box {
+    font-size: 25px;
+    padding: 15px;
   }
 
   iframe {
-    width: 100% !important;
-    height: auto !important;
+    height: 325px;
   }
 }
 
@@ -165,43 +111,39 @@ a {
 
 <body>
 
-<h1>Jonathan's Workshop</h1>
+<h1>Formerly, Friday Bible Studies</h1>
 
-<!-- YouTube Video -->
+<!-- How Can I Be a Born Again Father? -->
 <div class="unit-box">
   <iframe 
-    src="https://www.youtube.com/embed/0c6kgNgWmt8?loop=1&playlist=0c6kgNgWmt8"
+    src="https://www.youtube.com/embed/sZHc-YsJWyI?"
     allowfullscreen>
   </iframe>
+
+  <div class="doc-link-box">
+    <a href="Father/index.html">
+      Huh? What's a Born Again Father?
+    </a>
+  </div>
 </div>
 
-<!-- Bible Study Section -->
-<h2>Bible Study</h2>
+<!-- Can I Trust the Bible? -->
+<div class="unit-box">
+  <iframe 
+    src="https://www.youtube.com/embed/XMv073cE_Ug?"
+    allowfullscreen>
+  </iframe>
 
-<a class="bible-link" href="Toolboxes/index.html">Spiritual Toolboxes</a>
-<a class="bible-link" href="Friday/index.html">Formerly Friday Bible Studies</a>
-<a class="bible-link" href="Questions/index.html">Questions with Answers</a>
-<a class="bible-link" href="contentment/index.html">The Rare Jewel of Christian Contentment</a>
-<a class="bible-link" href="Precious Remedies/index.html">Precious Remedies</a>
-<a class="bible-link" href="Unfolding/index.html">Sermons: Unfolding Redemption's Plan</a>
-
-<!-- Woodworking Section -->
-<h2>Woodworking</h2>
-
-<a class="wood-link" href="Woodworking/index.html">Woodworking Videos</a>
-
-<!-- Seeds of Hope Contact Box -->
-<div class="contact-box">
-  <p>
-    For spiritual questions or guidance, please contact Seeds of Hope Ministries at:<br>
-    <a href="mailto:info@seedsofhopeministries.org">info@seedsofhopeministries.org</a>
-  </p>
+  <div class="doc-link-box">
+    <a href="Bible/index.html">
+      Can I Trust the Bible?
+    </a>
+  </div>
 </div>
 
-<!-- QR Code Section -->
-<div class="qr-section">
-  <h2>Scan to Share Jonathan’s Workshop</h2>
-  <img src="qr.jpeg" alt="QR code for Jonathan's Workshop" class="qr-image">
+<!-- Return Box -->
+<div class="return-box">
+  <a href="../index.html">Return to Home Page</a>
 </div>
 
 </body>
