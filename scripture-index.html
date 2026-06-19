@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scripture Index — Jonathan's Workshop</title>
+<style>
+
+/* ── Base ── */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #111;
+  margin: 0;
+  padding: 20px;
+  font-size: 18px;
+}
+
+h1 {
+  color: #003399;
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #555;
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+
+/* ── Top navigation bar ── */
+.top-nav {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+.top-nav a {
+  display: inline;
+  text-decoration: none;
+  color: #003399;
+  margin: 0 8px;
+  border: none;
+  padding: 0;
+  font-size: 16px;
+  background: none;
+  width: auto;
+  max-width: none;
+}
+.top-nav a:hover { text-decoration: underline; }
+
+/* ── Book navigation pills ── */
+.book-nav {
+  max-width: 860px;
+  margin: 0 auto 30px auto;
+  text-align: center;
+  line-height: 2.2;
+}
+.nav-pill {
+  display: inline-block;
+  text-decoration: none;
+  color: #003399;
+  border: 1px solid #99bbff;
+  background: #f0f5ff;
+  border-radius: 14px;
+  padding: 3px 10px;
+  margin: 3px 4px;
+  font-size: 14px;
+  transition: background 0.15s;
+}
+.nav-pill:hover {
+  background: #d0e4ff;
+}
+.pill-count {
+  font-size: 12px;
+  color: #666;
+}
+
+/* ── Section headings ── */
+.scripture-body {
+  max-width: 860px;
+  margin: 0 auto;
+}
+section {
+  margin-bottom: 32px;
+}
+h2 {
+  color: #0a4d0a;
+  font-size: 22px;
+  margin-top: 36px;
+  margin-bottom: 8px;
+  border-bottom: 2px solid #c8e6c9;
+  padding-bottom: 4px;
+}
+.entry-count {
+  font-size: 14px;
+  font-weight: normal;
+  color: #888;
+}
+
+/* ── List items ── */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+li {
+  margin-bottom: 6px;
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  line-height: 1.5;
+}
+li:hover {
+  background-color: #f0f5ff;
+}
+.ref {
+  font-weight: bold;
+  color: #222;
+}
+.sep {
+  margin: 0 8px;
+  color: #888;
+}
+.files a {
+  text-decoration: none;
+  color: #003399;
+  font-size: 16px;
+}
+.files a:hover {
+  text-decoration: underline;
+}
+
+/* ── Summary badge ── */
+.summary-bar {
+  max-width: 860px;
+  margin: 0 auto 20px auto;
+  background: #e6f0ff;
+  border: 1px solid #99bbff;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 15px;
+  color: #003;
+  text-align: center;
+}
+
+/* ── Return box ── */
+.return-box {
+  background: #e6f2ff;
+  border: 2px solid #7aaee6;
+  padding: 12px;
+  margin: 40px auto 0 auto;
+  width: 70%;
+  max-width: 350px;
+  border-radius: 8px;
+  font-size: 20px;
+  text-align: center;
+}
+.return-box a {
+  text-decoration: none;
+  color: #004a99;
+  display: inline;
+  border: none;
+  background: none;
+  width: auto;
+  padding: 0;
+  font-size: 20px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  body { font-size: 16px; padding: 12px; }
+  h1 { font-size: 26px; }
+  h2 { font-size: 19px; }
+  .files a { font-size: 14px; }
+  .nav-pill { font-size: 13px; padding: 2px 8px; }
+}
+
+</style>
+</head>
+<body>
+
+<h1>Scripture Index</h1>
+<p class="subtitle">Every Scripture reference used across all Bible studies and sermons on Jonathan's Workshop</p>
+
+<div class="top-nav">
+  <a href="scripture index site wide.html">Scripture Index</a> |
+  <a href="alphabetical-index.html">Alphabetical Index</a> |
+  <a href="topical-index.html">Topical Index</a>
+</div>
+
+<div class="summary-bar">
+  <strong>331 total references</strong> across <strong>43 books</strong> of Scripture
+  &nbsp;&mdash;&nbsp; Genesis through Revelation
+</div>
+
+<div class="book-nav">
+  <strong>Jump to book:</strong><br>
+    <a href="#genesis" class="nav-pill">Genesis <span class="pill-count">(29)</span></a>
+    <a href="#exodus" class="nav-pill">Exodus <span class="pill-count">(6)</span></a>
+    <a href="#leviticus" class="nav-pill">Leviticus <span class="pill-count">(1)</span></a>
+    <a href="#numbers" class="nav-pill">Numbers <span class="pill-count">(4)</span></a>
+    <a href="#deuteronomy" class="nav-pill">Deuteronomy <span class="pill-count">(3)</span></a>
+    <a href="#joshua" class="nav-pill">Joshua <span class="pill-count">(3)</span></a>
+    <a href="#judges" class="nav-pill">Judges <span class="pill-count">(2)</span></a>
+    <a href="#ruth" class="nav-pill">Ruth <span class="pill-count">(1)</span></a>
+    <a href="#1-samuel" class="nav-pill">1 Samuel <span class="pill-count">(1)</span></a>
+    <a href="#2-samuel" class="nav-pill">2 Samuel <span class="pill-count">(2)</span></a>
+    <a href="#1-kings" class="nav-pill">1 Kings <span class="pill-count">(1)</span></a>
+    <a href="#1-chronicles" class="nav-pill">1 Chronicles <span class="pill-count">(2)</span></a>
+    <a href="#2-chronicles" class="nav-pill">2 Chronicles <span class="pill-count">(2)</span></a>
+    <a href="#job" class="nav-pill">Job <span class="pill-count">(4)</span></a>
+    <a href="#psalms" class="nav-pill">Psalms <span class="pill-count">(37)</span></a>
+    <a href="#proverbs" class="nav-pill">Proverbs <span class="pill-count">(11)</span></a>
+    <a href="#ecclesiastes" class="nav-pill">Ecclesiastes <span class="pill-count">(3)</span></a>
+    <a href="#isaiah" class="nav-pill">Isaiah <span class="pill-count">(18)</span></a>
+    <a href="#jeremiah" class="nav-pill">Jeremiah <span class="pill-count">(8)</span></a>
+    <a href="#lamentations" class="nav-pill">Lamentations <span class="pill-count">(1)</span></a>
+    <a href="#ezekiel" class="nav-pill">Ezekiel <span class="pill-count">(7)</span></a>
+    <a href="#hosea" class="nav-pill">Hosea <span class="pill-count">(1)</span></a>
+    <a href="#joel" class="nav-pill">Joel <span class="pill-count">(1)</span></a>
+    <a href="#malachi" class="nav-pill">Malachi <span class="pill-count">(1)</span></a>
+    <a href="#matthew" class="nav-pill">Matthew <span class="pill-count">(29)</span></a>
+    <a href="#mark" class="nav-pill">Mark <span class="pill-count">(1)</span></a>
+    <a href="#luke" class="nav-pill">Luke <span class="pill-count">(12)</span></a>
+    <a href="#john" class="nav-pill">John <span class="pill-count">(25)</span></a>
+    <a href="#acts" class="nav-pill">Acts <span class="pill-count">(4)</span></a>
+    <a href="#romans" class="nav-pill">Romans <span class="pill-count">(38)</span></a>
+    <a href="#1-corinthians" class="nav-pill">1 Corinthians <span class="pill-count">(11)</span></a>
+    <a href="#2-corinthians" class="nav-pill">2 Corinthians <span class="pill-count">(9)</span></a>
+    <a href="#galatians" class="nav-pill">Galatians <span class="pill-count">(7)</span></a>
+    <a href="#ephesians" class="nav-pill">Ephesians <span class="pill-count">(12)</span></a>
+    <a href="#philippians" class="nav-pill">Philippians <span class="pill-count">(7)</span></a>
+    <a href="#colossians" class="nav-pill">Colossians <span class="pill-count">(6)</span></a>
+    <a href="#1-thessalonians" class="nav-pill">1 Thessalonians <span class="pill-count">(1)</span></a>
+    <a href="#1-timothy" class="nav-pill">1 Timothy <span class="pill-count">(2)</span></a>
+    <a href="#hebrews" class="nav-pill">Hebrews <span class="pill-count">(4)</span></a>
+    <a href="#james" class="nav-pill">James <span class="pill-count">(4)</span></a>
+    <a href="#1-peter" class="nav-pill">1 Peter <span class="pill-count">(6)</span></a>
+    <a href="#1-john" class="nav-pill">1 John <span class="pill-count">(2)</span></a>
+    <a href="#revelation" class="nav-pill">Revelation <span class="pill-count">(2)</span></a>
+</div>
+
+<div class="scripture-body">
+
+  <section id="genesis">
+    <h2>Genesis <span class="entry-count">(29 references)</span></h2>
+    <ul>
+      <li><span class="ref">Genesis 1:3</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/01 What Is the Bible.pdf">01 What Is the Bible</a></span></li>
+      <li><span class="ref">Genesis 1:3–5</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/04 Why Trust.pdf">04 Why Trust</a></span></li>
+      <li><span class="ref">Genesis 2:4–25</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/04 Why Trust.pdf">04 Why Trust</a></span></li>
+      <li><span class="ref">Genesis 18:18</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/Why do Christians pray to Jesus.pdf">Why Do Christians Pray to Jesus</a></span></li>
+      <li><span class="ref">Genesis 22:18</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/Why do Christians pray to Jesus.pdf">Why Do Christians Pray to Jesus</a></span></li>
+      <li><span class="ref">Genesis 5:1</span><span class="sep">—</span><span class="files"><a href="Friday/Father/02 Be a Born-Again Son.pdf">Be a Born‑Again Son</a></span></li>
+      <li><span class="ref">Genesis 5:3</span><span class="sep">—</span><span class="files"><a href="Friday/Father/02 Be a Born-Again Son.pdf">Be a Born‑Again Son</a></span></li>
+      <li><span class="ref">Genesis 18:18</span><span class="sep">—</span><span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span></li>
+      <li><span class="ref">Genesis 22:17</span><span class="sep">—</span><span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span></li>
+      <li><span class="ref">Genesis 22:18</span><span class="sep">—</span><span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span></li>
+      <li><span class="ref">Genesis 8:15–17</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/01 Contentment.pdf">01 Contentment.pdf</a></span></li>
+      <li><span class="ref">Genesis 6:5</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/03 How.pdf">03 How.pdf</a></span></li>
+      <li><span class="ref">Genesis 50:20</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/05 Contentment.pdf">05 Contentment.pdf</a></span></li>
+      <li><span class="ref">Genesis 37:7</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Depression/D03 Antidepression.pdf">D03 Antidepression.pdf</a></span></li>
+      <li><span class="ref">Genesis 19:30–38</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Depression/D07 Antidepression.pdf">D07 Antidepression.pdf</a></span></li>
+      <li><span class="ref">Genesis 12:10–20</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Depression/D07 Antidepression.pdf">D07 Antidepression.pdf</a></span></li>
+      <li><span class="ref">Genesis 20</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Depression/D07 Antidepression.pdf">D07 Antidepression.pdf</a></span></li>
+      <li><span class="ref">Genesis 26:7–11</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Depression/D07 Antidepression.pdf">D07 Antidepression.pdf</a></span></li>
+      <li><span class="ref">Genesis 3:4–5</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S01 Devices to Sin.pdf">S01 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Genesis 19:20</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S03 Devices to Sin.pdf">S03 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Genesis 39:10</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S07 Devices to Sin.pdf">S07 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Genesis 3:24</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S05 Devices to Sin.pdf">S05 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Genesis 7:17–23</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S05 Devices to Sin.pdf">S05 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Genesis 1:26–31</span><span class="sep">—</span><span class="files"><a href="Unfolding/01 - Latter Days - Anchor Deeply.pdf">Anchor Deeply for the Last Days</a></span></li>
+      <li><span class="ref">Genesis 3:15</span><span class="sep">—</span><span class="files"><a href="Unfolding/03 Resurrection - Born Again.pdf">Begin Again, Born Again</a></span></li>
+      <li><span class="ref">Genesis 5:1–3</span><span class="sep">—</span><span class="files"><a href="Unfolding/02 Be a Born-Again Son.pdf">Be a Born-Again Son</a></span></li>
+      <li><span class="ref">Genesis 9:20–21</span><span class="sep">—</span><span class="files"><a href="Unfolding/06 God Wants to Move in Closer than Next Door.pdf">God Wants to Move in Much Closer</a></span></li>
+      <li><span class="ref">Genesis 12:7</span><span class="sep">—</span><span class="files"><a href="Unfolding/09 Want Better.pdf">Wanting Better</a></span></li>
+      <li><span class="ref">Genesis 49:1, 8–12</span><span class="sep">—</span><span class="files"><a href="Unfolding/01 - Latter Days - Anchor Deeply.pdf">Anchor Deeply for the Last Days</a></span></li>
+    </ul>
+  </section>
+
+  <section id="exodus">
+    <h2>Exodus <span class="entry-count">(6 references)</span></h2>
+    <ul>
+      <li><span class="ref">Exodus 16:3</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Depression/D07 Antidepression.pdf">D07 Antidepression.pdf</a></span></li>
+      <li><span class="ref">Exodus 10:16, 19</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S03 Devices to Sin.pdf">S03 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Exodus 3:6</span><span class="sep">—</span><span class="files"><a href="Unfolding/03 Resurrection - Born Again.pdf">Begin Again, Born Again</a></span></li>
+      <li><span class="ref">Exodus 20:4–5</span><span class="sep">—</span><span class="files"><a href="Unfolding/02 Idolatry.pdf">Idolatry and the Image of God</a></span></li>
+      <li><span class="ref">Exodus 32</span><span class="sep">—</span><span class="files"><a href="Unfolding/02 Idolatry.pdf">Idolatry and the Image of God</a></span></li>
+      <li><span class="ref">Exodus 40:35</span><span class="sep">—</span><span class="files"><a href="Unfolding/06 God Wants to Move in Closer than Next Door.pdf">God Wants to Move in Much Closer</a></span></li>
+    </ul>
+  </section>
+
+  <section id="leviticus">
+    <h2>Leviticus <span class="entry-count">(1 references)</span></h2>
+    <ul>
+      <li><span class="ref">Leviticus 19:18</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Depression/D07 Antidepression.pdf">D07 Antidepression.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="numbers">
+    <h2>Numbers <span class="entry-count">(4 references)</span></h2>
+    <ul>
+      <li><span class="ref">Numbers 24:22–24</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Depression/D03 Antidepression.pdf">D03 Antidepression.pdf</a></span></li>
+      <li><span class="ref">Numbers 23:9</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Depression/D06 Antidepression.pdf">D06 Antidepression.pdf</a></span></li>
+      <li><span class="ref">Numbers 14:24</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Depression/D04 Antidepression.pdf">D04 Antidepression.pdf</a></span></li>
+      <li><span class="ref">Numbers 24:14, 17</span><span class="sep">—</span><span class="files"><a href="Unfolding/01 - Latter Days - Anchor Deeply.pdf">Anchor Deeply for the Last Days</a></span></li>
+    </ul>
+  </section>
+
+  <section id="deuteronomy">
+    <h2>Deuteronomy <span class="entry-count">(3 references)</span></h2>
+    <ul>
+      <li><span class="ref">Deuteronomy 1:30</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Depression/D01 Antidepression.pdf">D01 Antidepression.pdf</a></span></li>
+      <li><span class="ref">Deuteronomy 8:5</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Depression/D03 Antidepression.pdf">D03 Antidepression.pdf</a></span></li>
+      <li><span class="ref">Deuteronomy 23:14</span><span class="sep">—</span><span class="files"><a href="Unfolding/06 God Wants to Move in Closer than Next Door.pdf">God Wants to Move in Much Closer</a></span></li>
+    </ul>
+  </section>
+
+  <section id="joshua">
+    <h2>Joshua <span class="entry-count">(3 references)</span></h2>
+    <ul>
+      <li><span class="ref">Joshua 1:8–9</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/04 Why Trust.pdf">04 Why Trust</a></span></li>
+      <li><span class="ref">Joshua 4:10</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/01 Contentment.pdf">01 Contentment.pdf</a></span></li>
+      <li><span class="ref">Joshua 1:5</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="judges">
+    <h2>Judges <span class="entry-count">(2 references)</span></h2>
+    <ul>
+      <li><span class="ref">Judges 13–16</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Depression/D07 Antidepression.pdf">D07 Antidepression.pdf</a></span></li>
+      <li><span class="ref">Judges 9:14</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S12 Devices to Sin.pdf">S12 Devices to Sin.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="ruth">
+    <h2>Ruth <span class="entry-count">(1 references)</span></h2>
+    <ul>
+      <li><span class="ref">Ruth 1:15–16</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S11 Devices to Sin.pdf">S11 Devices to Sin.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="1-samuel">
+    <h2>1 Samuel <span class="entry-count">(1 references)</span></h2>
+    <ul>
+      <li><span class="ref">1 Samuel 1:18</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="2-samuel">
+    <h2>2 Samuel <span class="entry-count">(2 references)</span></h2>
+    <ul>
+      <li><span class="ref">2 Samuel 23:5</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">2 Samuel 12:10</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S04 Devices to Sin.pdf">S04 Devices to Sin.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="1-kings">
+    <h2>1 Kings <span class="entry-count">(1 references)</span></h2>
+    <ul>
+      <li><span class="ref">1 Kings 2:10</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="1-chronicles">
+    <h2>1 Chronicles <span class="entry-count">(2 references)</span></h2>
+    <ul>
+      <li><span class="ref">1 Chronicles 29:10–14</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/04 Contentment.pdf">04 Contentment.pdf</a></span></li>
+      <li><span class="ref">1 Chronicles 29:10–14</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/02 How.pdf">02 How.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="2-chronicles">
+    <h2>2 Chronicles <span class="entry-count">(2 references)</span></h2>
+    <ul>
+      <li><span class="ref">2 Chronicles 24:20</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/04 Why Trust.pdf">04 Why Trust</a></span></li>
+      <li><span class="ref">2 Chronicles 24:22</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/04 Why Trust.pdf">04 Why Trust</a></span></li>
+    </ul>
+  </section>
+
+  <section id="job">
+    <h2>Job <span class="entry-count">(4 references)</span></h2>
+    <ul>
+      <li><span class="ref">Job 20:12–14</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S01 Devices to Sin.pdf">S01 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Job 21:18</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S12 Devices to Sin.pdf">S12 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Job 33:10</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S09 Devices to Sin.pdf">S09 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Job 21:12</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S08 Devices to Sin.pdf">S08 Devices to Sin.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="psalms">
+    <h2>Psalms <span class="entry-count">(37 references)</span></h2>
+    <ul>
+      <li><span class="ref">Psalm 19:1</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/01 What Is the Bible.pdf">01 What Is the Bible</a></span></li>
+      <li><span class="ref">Psalm 119:11</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/03 Why Trust the Old Testament Text.pdf">03 Why Trust the Old Testament Text</a></span></li>
+      <li><span class="ref">Psalm 1:2–3</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/04 Why Trust.pdf">04 Why Trust</a></span></li>
+      <li><span class="ref">Psalm 51:5</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Have Peace with God.pdf">How Can I Have Peace with God</a></span></li>
+      <li><span class="ref">Psalm 25:10</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">Psalm 34:18</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">Psalm 51:17</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">Psalm 73:25</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">Psalm 91</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">Psalm 100</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/04 Contentment.pdf">04 Contentment.pdf</a></span></li>
+      <li><span class="ref">Psalm 103:1–5</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/04 Contentment.pdf">04 Contentment.pdf</a></span></li>
+      <li><span class="ref">Psalm 107:8–9</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/04 Contentment.pdf">04 Contentment.pdf</a></span></li>
+      <li><span class="ref">Psalm 119:19</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/04 Contentment.pdf">04 Contentment.pdf</a></span></li>
+      <li><span class="ref">Psalm 81:11–12</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/04 Contentment.pdf">04 Contentment.pdf</a></span></li>
+      <li><span class="ref">Psalm 100</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/02 How.pdf">02 How.pdf</a></span></li>
+      <li><span class="ref">Psalm 103:1–5</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/02 How.pdf">02 How.pdf</a></span></li>
+      <li><span class="ref">Psalm 107:8–9</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/02 How.pdf">02 How.pdf</a></span></li>
+      <li><span class="ref">Psalm 119:19</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/02 How.pdf">02 How.pdf</a></span></li>
+      <li><span class="ref">Psalm 139:23–24</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/03 How.pdf">03 How.pdf</a></span></li>
+      <li><span class="ref">Psalm 1:1</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S12 Devices to Sin.pdf">S12 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Psalm 18:42</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S12 Devices to Sin.pdf">S12 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Psalm 26:3–5</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S05 Devices to Sin.pdf">S05 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Psalm 49:11</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S08 Devices to Sin.pdf">S08 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Psalm 51:1</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S04 Devices to Sin.pdf">S04 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Psalm 51:8</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S04 Devices to Sin.pdf">S04 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Psalm 51:17</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S06 Devices to Sin.pdf">S06 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Psalm 73:7</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S08 Devices to Sin.pdf">S08 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Psalm 73:16–20</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S08 Devices to Sin.pdf">S08 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Psalm 78:26–31</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S08 Devices to Sin.pdf">S08 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Psalm 81:12</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S05 Devices to Sin.pdf">S05 Devices to Sin.pdf</a> &nbsp;|&nbsp; <a href="Rooted/Remedies/Sin/S08 Devices to Sin.pdf">S08 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Psalm 83:13</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S12 Devices to Sin.pdf">S12 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Psalm 89:30, 35</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S04 Devices to Sin.pdf">S04 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Psalm 106:15</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S08 Devices to Sin.pdf">S08 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Psalm 120:5–6</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S12 Devices to Sin.pdf">S12 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Psalm 8:4</span><span class="sep">—</span><span class="files"><a href="Unfolding/07 Who Are You Really.pdf">Who Are You Really?</a></span></li>
+      <li><span class="ref">Psalm 51:10</span><span class="sep">—</span><span class="files"><a href="Unfolding/04 Vindicated by the Resurrection that Sparked a New Creation.pdf">Christ Vindicates Believers</a></span></li>
+      <li><span class="ref">Psalm 115:4–8</span><span class="sep">—</span><span class="files"><a href="Unfolding/02 Idolatry.pdf">Idolatry and the Image of God</a></span></li>
+    </ul>
+  </section>
+
+  <section id="proverbs">
+    <h2>Proverbs <span class="entry-count">(11 references)</span></h2>
+    <ul>
+      <li><span class="ref">Proverbs 3:11–12</span><span class="sep">—</span><span class="files"><a href="Friday/Father/01 Be a Born-Again Father.pdf">Be a Born‑Again Father</a></span></li>
+      <li><span class="ref">Proverbs 15:16</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">Proverbs 16:8</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">Proverbs 20:9</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/03 Contentment.pdf">03 Contentment.pdf</a></span></li>
+      <li><span class="ref">Proverbs 1:25–30</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/04 Contentment.pdf">04 Contentment.pdf</a></span></li>
+      <li><span class="ref">Proverbs 3:5–6</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/05 Contentment.pdf">05 Contentment.pdf</a></span></li>
+      <li><span class="ref">Proverbs 20:9</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/01 How (1).pdf">01 How (1).pdf</a> &nbsp;|&nbsp; <a href="Rooted/contentment/Jesus/01 How.pdf">01 How.pdf</a></span></li>
+      <li><span class="ref">Proverbs 1:10–15</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S12 Devices to Sin.pdf">S12 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Proverbs 4:14–15</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S07 Devices to Sin.pdf">S07 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Proverbs 5:14–15</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S12 Devices to Sin.pdf">S12 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Proverbs 8:13</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S02 Devices to Sin.pdf">S02 Devices to Sin.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="ecclesiastes">
+    <h2>Ecclesiastes <span class="entry-count">(3 references)</span></h2>
+    <ul>
+      <li><span class="ref">Ecclesiastes 1:2; 12:8</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/04 Contentment.pdf">04 Contentment.pdf</a></span></li>
+      <li><span class="ref">Ecclesiastes 5:10</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/04 Contentment.pdf">04 Contentment.pdf</a></span></li>
+      <li><span class="ref">Ecclesiastes 5:10</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/02 How.pdf">02 How.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="isaiah">
+    <h2>Isaiah <span class="entry-count">(18 references)</span></h2>
+    <ul>
+      <li><span class="ref">Isaiah 53:10–11</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/03 Why Trust the Old Testament Text.pdf">03 Why Trust the Old Testament Text</a></span></li>
+      <li><span class="ref">Isaiah 55:2</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/04 Contentment.pdf">04 Contentment.pdf</a></span></li>
+      <li><span class="ref">Isaiah 57:15</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">Isaiah 43:2</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">Isaiah 54:17</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">Isaiah 55:2</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/02 How.pdf">02 How.pdf</a></span></li>
+      <li><span class="ref">Isaiah 64:6</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/01 How (1).pdf">01 How (1).pdf</a> &nbsp;|&nbsp; <a href="Rooted/contentment/Jesus/01 How.pdf">01 How.pdf</a></span></li>
+      <li><span class="ref">Isaiah 1:5</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S08 Devices to Sin.pdf">S08 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Isaiah 5:20</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S02 Devices to Sin.pdf">S02 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Isaiah 10:17</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S12 Devices to Sin.pdf">S12 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Isaiah 11:7</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S12 Devices to Sin.pdf">S12 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Isaiah 55:8–9</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S11 Devices to Sin.pdf">S11 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Isaiah 65:5</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S12 Devices to Sin.pdf">S12 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Isaiah 6:9–10</span><span class="sep">—</span><span class="files"><a href="Unfolding/02 Idolatry.pdf">Idolatry and the Image of God</a></span></li>
+      <li><span class="ref">Isaiah 30:15, 22</span><span class="sep">—</span><span class="files"><a href="Unfolding/02 Idolatry.pdf">Idolatry and the Image of God</a></span></li>
+      <li><span class="ref">Isaiah 32:3</span><span class="sep">—</span><span class="files"><a href="Unfolding/02 Idolatry.pdf">Idolatry and the Image of God</a></span></li>
+      <li><span class="ref">Isaiah 49:6</span><span class="sep">—</span><span class="files"><a href="Unfolding/05 The Greatest Powers of the Holy Spirit.pdf">The Greatest Powers of the Holy Spirit</a></span></li>
+      <li><span class="ref">Isaiah 53:6–10</span><span class="sep">—</span><span class="files"><a href="Unfolding/04 Vindicated by the Resurrection that Sparked a New Creation.pdf">Christ Vindicates Believers</a></span></li>
+    </ul>
+  </section>
+
+  <section id="jeremiah">
+    <h2>Jeremiah <span class="entry-count">(8 references)</span></h2>
+    <ul>
+      <li><span class="ref">Jeremiah 17:9</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/03 Contentment.pdf">03 Contentment.pdf</a></span></li>
+      <li><span class="ref">Jeremiah 17:5–8</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/05 Contentment.pdf">05 Contentment.pdf</a></span></li>
+      <li><span class="ref">Jeremiah 17:9</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/01 How (1).pdf">01 How (1).pdf</a> &nbsp;|&nbsp; <a href="Rooted/contentment/Jesus/01 How.pdf">01 How.pdf</a></span></li>
+      <li><span class="ref">Jeremiah 9:2</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S12 Devices to Sin.pdf">S12 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Jeremiah 17:5</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S11 Devices to Sin.pdf">S11 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Jeremiah 31:18–19</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S06 Devices to Sin.pdf">S06 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Jeremiah 2:11</span><span class="sep">—</span><span class="files"><a href="Unfolding/02 Idolatry.pdf">Idolatry and the Image of God</a></span></li>
+      <li><span class="ref">Jeremiah 31:9</span><span class="sep">—</span><span class="files"><a href="Unfolding/07 Who Are You Really.pdf">Who Are You Really?</a></span></li>
+    </ul>
+  </section>
+
+  <section id="lamentations">
+    <h2>Lamentations <span class="entry-count">(1 references)</span></h2>
+    <ul>
+      <li><span class="ref">Lamentations 3:16–36</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="ezekiel">
+    <h2>Ezekiel <span class="entry-count">(7 references)</span></h2>
+    <ul>
+      <li><span class="ref">Ezekiel 2:6</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S12 Devices to Sin.pdf">S12 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Ezekiel 3:10</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S12 Devices to Sin.pdf">S12 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Ezekiel 20:43</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S06 Devices to Sin.pdf">S06 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Ezekiel 22:18–19</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S12 Devices to Sin.pdf">S12 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Ezekiel 24:6</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S12 Devices to Sin.pdf">S12 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Ezekiel 36:25–27</span><span class="sep">—</span><span class="files"><a href="Unfolding/03 Resurrection - Born Again.pdf">Begin Again, Born Again</a></span></li>
+      <li><span class="ref">Ezekiel 37:5, 9</span><span class="sep">—</span><span class="files"><a href="Unfolding/05 The Greatest Powers of the Holy Spirit.pdf">The Greatest Powers of the Holy Spirit</a></span></li>
+    </ul>
+  </section>
+
+  <section id="hosea">
+    <h2>Hosea <span class="entry-count">(1 references)</span></h2>
+    <ul>
+      <li><span class="ref">Hosea 4:17</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S05 Devices to Sin.pdf">S05 Devices to Sin.pdf</a> &nbsp;|&nbsp; <a href="Rooted/Remedies/Sin/S08 Devices to Sin.pdf">S08 Devices to Sin.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="joel">
+    <h2>Joel <span class="entry-count">(1 references)</span></h2>
+    <ul>
+      <li><span class="ref">Joel 2:12–13</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S06 Devices to Sin.pdf">S06 Devices to Sin.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="malachi">
+    <h2>Malachi <span class="entry-count">(1 references)</span></h2>
+    <ul>
+      <li><span class="ref">Malachi 4:6</span><span class="sep">—</span><span class="files"><a href="Friday/Father/02 Be a Born-Again Son.pdf">Be a Born‑Again Son</a></span></li>
+    </ul>
+  </section>
+
+  <section id="matthew">
+    <h2>Matthew <span class="entry-count">(29 references)</span></h2>
+    <ul>
+      <li><span class="ref">Matthew 23:34–35</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/04 Why Trust.pdf">04 Why Trust</a></span></li>
+      <li><span class="ref">Matthew 10:40</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/04 Why Trust.pdf">04 Why Trust</a></span></li>
+      <li><span class="ref">Matthew 6:9</span><span class="sep">—</span><span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span></li>
+      <li><span class="ref">Matthew 6:14–15</span><span class="sep">—</span><span class="files"><a href="Questions/How Will Being Forgiven Change Me.pdf">How Will Being Forgiven Change Me</a></span></li>
+      <li><span class="ref">Matthew 7:24–27</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Have Peace with God.pdf">How Can I Have Peace with God</a></span></li>
+      <li><span class="ref">Matthew 15:11</span><span class="sep">—</span><span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span></li>
+      <li><span class="ref">Matthew 15:25</span><span class="sep">—</span><span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span></li>
+      <li><span class="ref">Matthew 17:20</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Have Hope.pdf">How Can I Have Hope</a></span></li>
+      <li><span class="ref">Matthew 17:4</span><span class="sep">—</span><span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span></li>
+      <li><span class="ref">Matthew 18:23–35</span><span class="sep">—</span><span class="files"><a href="Questions/How Will Being Forgiven Change Me.pdf">How Will Being Forgiven Change Me</a></span></li>
+      <li><span class="ref">Matthew 25</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Have Hope.pdf">How Can I Have Hope</a></span></li>
+      <li><span class="ref">Matthew 28:17</span><span class="sep">—</span><span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span></li>
+      <li><span class="ref">Matthew 16:26</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/04 Contentment.pdf">04 Contentment.pdf</a></span></li>
+      <li><span class="ref">Matthew 18:20</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/01 Contentment.pdf">01 Contentment.pdf</a></span></li>
+      <li><span class="ref">Matthew 19:15–30</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">Matthew 28:20</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/01 Contentment.pdf">01 Contentment.pdf</a></span></li>
+      <li><span class="ref">Matthew 6:25–34</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/05 Contentment.pdf">05 Contentment.pdf</a></span></li>
+      <li><span class="ref">Matthew 13:23</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/01 How (1).pdf">01 How (1).pdf</a> &nbsp;|&nbsp; <a href="Rooted/contentment/Jesus/01 How.pdf">01 How.pdf</a></span></li>
+      <li><span class="ref">Matthew 15:18–19</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/03 How.pdf">03 How.pdf</a></span></li>
+      <li><span class="ref">Matthew 16:26</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/02 How.pdf">02 How.pdf</a></span></li>
+      <li><span class="ref">Matthew 18:1–4</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/01 How (1).pdf">01 How (1).pdf</a> &nbsp;|&nbsp; <a href="Rooted/contentment/Jesus/01 How.pdf">01 How.pdf</a></span></li>
+      <li><span class="ref">Matthew 7:3–4</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S10 Devices to Sin.pdf">S10 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Matthew 7:6</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S12 Devices to Sin.pdf">S12 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Matthew 12:36</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S08 Devices to Sin.pdf">S08 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Matthew 13:41–42</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S09 Devices to Sin.pdf">S09 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Matthew 16:26</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S03 Devices to Sin.pdf">S03 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Matthew 18:21–35</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S05 Devices to Sin.pdf">S05 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Matthew 5:5</span><span class="sep">—</span><span class="files"><a href="Unfolding/09 Want Better.pdf">Wanting Better</a></span></li>
+      <li><span class="ref">Matthew 22:23–33</span><span class="sep">—</span><span class="files"><a href="Unfolding/03 Resurrection - Born Again.pdf">Begin Again, Born Again</a></span></li>
+    </ul>
+  </section>
+
+  <section id="mark">
+    <h2>Mark <span class="entry-count">(1 references)</span></h2>
+    <ul>
+      <li><span class="ref">Mark 7:21–23</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/01 How (1).pdf">01 How (1).pdf</a> &nbsp;|&nbsp; <a href="Rooted/contentment/Jesus/01 How.pdf">01 How.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="luke">
+    <h2>Luke <span class="entry-count">(12 references)</span></h2>
+    <ul>
+      <li><span class="ref">Luke 24:44</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/04 Why Trust.pdf">04 Why Trust</a></span></li>
+      <li><span class="ref">Luke 11:1–4</span><span class="sep">—</span><span class="files"><a href="Questions/How Will Being Forgiven Change Me.pdf">How Will Being Forgiven Change Me</a></span></li>
+      <li><span class="ref">Luke 15:11–23</span><span class="sep">—</span><span class="files"><a href="Questions/How Will Being Forgiven Change Me.pdf">How Will Being Forgiven Change Me</a></span></li>
+      <li><span class="ref">Luke 10:41–42</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/04 Contentment.pdf">04 Contentment.pdf</a></span></li>
+      <li><span class="ref">Luke 17:10</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/03 Contentment.pdf">03 Contentment.pdf</a></span></li>
+      <li><span class="ref">Luke 18:9–14</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/03 Contentment.pdf">03 Contentment.pdf</a></span></li>
+      <li><span class="ref">Luke 17:10</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/01 How (1).pdf">01 How (1).pdf</a> &nbsp;|&nbsp; <a href="Rooted/contentment/Jesus/01 How.pdf">01 How.pdf</a></span></li>
+      <li><span class="ref">Luke 18:9–14</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/01 How (1).pdf">01 How (1).pdf</a> &nbsp;|&nbsp; <a href="Rooted/contentment/Jesus/01 How.pdf">01 How.pdf</a></span></li>
+      <li><span class="ref">Luke 10:41–42</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/02 How.pdf">02 How.pdf</a></span></li>
+      <li><span class="ref">Luke 13:32</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S12 Devices to Sin.pdf">S12 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Luke 16:10</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S03 Devices to Sin.pdf">S03 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Luke 16:19–31</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S05 Devices to Sin.pdf">S05 Devices to Sin.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="john">
+    <h2>John <span class="entry-count">(25 references)</span></h2>
+    <ul>
+      <li><span class="ref">John 1:1</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/01 What Is the Bible.pdf">01 What Is the Bible</a></span></li>
+      <li><span class="ref">John 1:14</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/01 What Is the Bible.pdf">01 What Is the Bible</a></span></li>
+      <li><span class="ref">John 18:31–33</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/02 Why Trust the New Testament Text.pdf">02 Why Trust the New Testament Text</a></span></li>
+      <li><span class="ref">John 18:37–38</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/02 Why Trust the New Testament Text.pdf">02 Why Trust the New Testament Text</a></span></li>
+      <li><span class="ref">John 9:30–38</span><span class="sep">—</span><span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span></li>
+      <li><span class="ref">John 10:27–28</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Have Peace with God.pdf">How Can I Have Peace with God</a></span></li>
+      <li><span class="ref">John 14:14</span><span class="sep">—</span><span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span></li>
+      <li><span class="ref">John 14:15</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Act Like a Believer.pdf">How Can I Act Like a Believer</a></span></li>
+      <li><span class="ref">John 14:1–2</span><span class="sep">—</span><span class="files"><a href="Questions/How Will Being Forgiven Change Me.pdf">How Will Being Forgiven Change Me</a></span></li>
+      <li><span class="ref">John 15:11</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Act Like a Believer.pdf">How Can I Act Like a Believer</a></span></li>
+      <li><span class="ref">John 1:16</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/01 Contentment.pdf">01 Contentment.pdf</a></span></li>
+      <li><span class="ref">John 4:10; 13–14</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/04 Contentment.pdf">04 Contentment.pdf</a></span></li>
+      <li><span class="ref">John 6:53</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/03 Contentment.pdf">03 Contentment.pdf</a></span></li>
+      <li><span class="ref">John 14:16–18, 23</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/01 Contentment.pdf">01 Contentment.pdf</a></span></li>
+      <li><span class="ref">John 15:4–5</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/03 Contentment.pdf">03 Contentment.pdf</a></span></li>
+      <li><span class="ref">John 4:13–14</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/02 How.pdf">02 How.pdf</a></span></li>
+      <li><span class="ref">John 6:53</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/01 How (1).pdf">01 How (1).pdf</a> &nbsp;|&nbsp; <a href="Rooted/contentment/Jesus/01 How.pdf">01 How.pdf</a></span></li>
+      <li><span class="ref">John 8:34</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/03 How.pdf">03 How.pdf</a></span></li>
+      <li><span class="ref">John 14:6</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/01 How (1).pdf">01 How (1).pdf</a> &nbsp;|&nbsp; <a href="Rooted/contentment/Jesus/01 How.pdf">01 How.pdf</a></span></li>
+      <li><span class="ref">John 15:1–8</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/01 How (1).pdf">01 How (1).pdf</a> &nbsp;|&nbsp; <a href="Rooted/contentment/Jesus/01 How.pdf">01 How.pdf</a></span></li>
+      <li><span class="ref">John 15:4–5</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/01 How (1).pdf">01 How (1).pdf</a> &nbsp;|&nbsp; <a href="Rooted/contentment/Jesus/01 How.pdf">01 How.pdf</a></span></li>
+      <li><span class="ref">John 16:33</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/05 Contentment.pdf">05 Contentment.pdf</a></span></li>
+      <li><span class="ref">John 6:70</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S10 Devices to Sin.pdf">S10 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">John 3:3–10</span><span class="sep">—</span><span class="files"><a href="Unfolding/03 Resurrection - Born Again.pdf">Begin Again, Born Again</a></span></li>
+      <li><span class="ref">John 14:1–4</span><span class="sep">—</span><span class="files"><a href="Unfolding/09 Want Better.pdf">Wanting Better</a></span></li>
+    </ul>
+  </section>
+
+  <section id="acts">
+    <h2>Acts <span class="entry-count">(4 references)</span></h2>
+    <ul>
+      <li><span class="ref">Acts 1:24</span><span class="sep">—</span><span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span></li>
+      <li><span class="ref">Acts 8:24</span><span class="sep">—</span><span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span></li>
+      <li><span class="ref">Acts 10:9–16</span><span class="sep">—</span><span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span></li>
+      <li><span class="ref">Acts 13:36</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="romans">
+    <h2>Romans <span class="entry-count">(38 references)</span></h2>
+    <ul>
+      <li><span class="ref">Romans 2:15</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/01 What Is the Bible.pdf">01 What Is the Bible</a></span></li>
+      <li><span class="ref">Romans 4:6</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Have Peace with God.pdf">How Can I Have Peace with God</a></span></li>
+      <li><span class="ref">Romans 4:23</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Have Peace with God.pdf">How Can I Have Peace with God</a></span></li>
+      <li><span class="ref">Romans 4:24–25</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Have Peace with God.pdf">How Can I Have Peace with God</a></span></li>
+      <li><span class="ref">Romans 5:1–5</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Have Peace with God.pdf">How Can I Have Peace with God</a></span></li>
+      <li><span class="ref">Romans 5:8</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Have Peace with God.pdf">How Can I Have Peace with God</a></span></li>
+      <li><span class="ref">Romans 5:10</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Have Peace with God.pdf">How Can I Have Peace with God</a></span></li>
+      <li><span class="ref">Romans 5:12</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Have Peace with God.pdf">How Can I Have Peace with God</a></span></li>
+      <li><span class="ref">Romans 6:1</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Resist Temptation.pdf">How Can I Resist Temptation</a></span></li>
+      <li><span class="ref">Romans 7:18</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Have Peace with God.pdf">How Can I Have Peace with God</a></span></li>
+      <li><span class="ref">Romans 7:19</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Have Peace with God.pdf">How Can I Have Peace with God</a></span></li>
+      <li><span class="ref">Romans 7:23</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Have Peace with God.pdf">How Can I Have Peace with God</a></span></li>
+      <li><span class="ref">Romans 8:28</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Have Hope.pdf">How Can I Have Hope</a></span></li>
+      <li><span class="ref">Romans 8:37</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Resist Temptation.pdf">How Can I Resist Temptation</a></span></li>
+      <li><span class="ref">Romans 10:8–13</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Act Like a Believer.pdf">How Can I Act Like a Believer</a></span></li>
+      <li><span class="ref">Romans 11:6</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Have Peace with God.pdf">How Can I Have Peace with God</a></span></li>
+      <li><span class="ref">Romans 11:13–19</span><span class="sep">—</span><span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span></li>
+      <li><span class="ref">Romans 3:5</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/01 Contentment.pdf">01 Contentment.pdf</a></span></li>
+      <li><span class="ref">Romans 3:21–25</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/03 Contentment.pdf">03 Contentment.pdf</a></span></li>
+      <li><span class="ref">Romans 6:23</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">Romans 8:9–11</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/01 Contentment.pdf">01 Contentment.pdf</a></span></li>
+      <li><span class="ref">Romans 8:27–30</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">Romans 11:20–22</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/03 Contentment.pdf">03 Contentment.pdf</a></span></li>
+      <li><span class="ref">Romans 12:2</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/03 Contentment.pdf">03 Contentment.pdf</a></span></li>
+      <li><span class="ref">Romans 1:28–31</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/04 Contentment.pdf">04 Contentment.pdf</a></span></li>
+      <li><span class="ref">Romans 3:10–12</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/01 How (1).pdf">01 How (1).pdf</a> &nbsp;|&nbsp; <a href="Rooted/contentment/Jesus/01 How.pdf">01 How.pdf</a></span></li>
+      <li><span class="ref">Romans 3:21–25</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/03 How.pdf">03 How.pdf</a></span></li>
+      <li><span class="ref">Romans 11:19–20</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/03 How.pdf">03 How.pdf</a></span></li>
+      <li><span class="ref">Romans 12:3</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/03 How.pdf">03 How.pdf</a></span></li>
+      <li><span class="ref">Romans 2:4–5</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S06 Devices to Sin.pdf">S06 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Romans 3:10–12</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S10 Devices to Sin.pdf">S10 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Romans 5:3–5</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S09 Devices to Sin.pdf">S09 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Romans 6:11–14</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S04 Devices to Sin.pdf">S04 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Romans 7:24</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S06 Devices to Sin.pdf">S06 Devices to Sin.pdf</a></span></li>
+      <li><span class="ref">Romans 1:20–29</span><span class="sep">—</span><span class="files"><a href="Unfolding/02 Idolatry.pdf">Idolatry and the Image of God</a></span></li>
+      <li><span class="ref">Romans 4:25</span><span class="sep">—</span><span class="files"><a href="Unfolding/04 Vindicated by the Resurrection that Sparked a New Creation.pdf">Christ Vindicates Believers</a></span></li>
+      <li><span class="ref">Romans 6:3–4</span><span class="sep">—</span><span class="files"><a href="Unfolding/04 Vindicated by the Resurrection that Sparked a New Creation.pdf">Christ Vindicates Believers</a></span></li>
+      <li><span class="ref">Romans 8:29</span><span class="sep">—</span><span class="files"><a href="Unfolding/07 Who Are You Really.pdf">Who Are You Really?</a></span></li>
+    </ul>
+  </section>
+
+  <section id="1-corinthians">
+    <h2>1 Corinthians <span class="entry-count">(11 references)</span></h2>
+    <ul>
+      <li><span class="ref">1 Corinthians 6:19–20</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Act Like a Believer.pdf">How Can I Act Like a Believer</a></span></li>
+      <li><span class="ref">1 Corinthians 15:3–4</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Act Like a Believer.pdf">How Can I Act Like a Believer</a></span></li>
+      <li><span class="ref">1 Corinthians 15:3–8</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Continue Walking with the Lord.pdf">How Can I Continue Walking with the Lord</a></span></li>
+      <li><span class="ref">1 Corinthians 15 (whole chapter)</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Have Hope.pdf">How Can I Have Hope</a></span></li>
+      <li><span class="ref">1 Corinthians 3:16</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/01 Contentment.pdf">01 Contentment.pdf</a></span></li>
+      <li><span class="ref">1 Corinthians 6:19</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/01 Contentment.pdf">01 Contentment.pdf</a></span></li>
+      <li><span class="ref">1 Corinthians 15:10</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/03 Contentment.pdf">03 Contentment.pdf</a></span></li>
+      <li><span class="ref">1 Corinthians 10:9–12</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/03 How.pdf">03 How.pdf</a></span></li>
+      <li><span class="ref">1 Corinthians 15:10</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/01 How (1).pdf">01 How (1).pdf</a> &nbsp;|&nbsp; <a href="Rooted/contentment/Jesus/01 How.pdf">01 How.pdf</a></span></li>
+      <li><span class="ref">1 Corinthians 6:20</span><span class="sep">—</span><span class="files"><a href="Unfolding/04 Vindicated by the Resurrection that Sparked a New Creation.pdf">Christ Vindicates Believers</a></span></li>
+      <li><span class="ref">1 Corinthians 15:20–26</span><span class="sep">—</span><span class="files"><a href="Unfolding/04 Vindicated by the Resurrection that Sparked a New Creation.pdf">Christ Vindicates Believers</a></span></li>
+    </ul>
+  </section>
+
+  <section id="2-corinthians">
+    <h2>2 Corinthians <span class="entry-count">(9 references)</span></h2>
+    <ul>
+      <li><span class="ref">2 Corinthians 3:14</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/04 Why Trust.pdf">04 Why Trust</a></span></li>
+      <li><span class="ref">2 Corinthians 7:10</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Act Like a Believer.pdf">How Can I Act Like a Believer</a></span></li>
+      <li><span class="ref">2 Corinthians 4:6–10</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Resist Temptation.pdf">How Can I Resist Temptation</a></span></li>
+      <li><span class="ref">2 Corinthians 3:5</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/01 Contentment.pdf">01 Contentment.pdf</a></span></li>
+      <li><span class="ref">2 Corinthians 7:10</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">2 Corinthians 9:8</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">2 Corinthians 13:5</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/01 Contentment.pdf">01 Contentment.pdf</a></span></li>
+      <li><span class="ref">2 Corinthians 3:5</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/01 How (1).pdf">01 How (1).pdf</a> &nbsp;|&nbsp; <a href="Rooted/contentment/Jesus/01 How.pdf">01 How.pdf</a></span></li>
+      <li><span class="ref">2 Corinthians 12:9–10</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/05 Contentment.pdf">05 Contentment.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="galatians">
+    <h2>Galatians <span class="entry-count">(7 references)</span></h2>
+    <ul>
+      <li><span class="ref">Galatians 2:16</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Have Peace with God.pdf">How Can I Have Peace with God</a></span></li>
+      <li><span class="ref">Galatians 2:20</span><span class="sep">—</span><span class="files"><a href="Questions/How Will Being Forgiven Change Me.pdf">How Will Being Forgiven Change Me</a></span></li>
+      <li><span class="ref">Galatians 3:6</span><span class="sep">—</span><span class="files"><a href="Questions/How Will Being Forgiven Change Me.pdf">How Will Being Forgiven Change Me</a></span></li>
+      <li><span class="ref">Galatians 3:7–9</span><span class="sep">—</span><span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span></li>
+      <li><span class="ref">Galatians 3:16</span><span class="sep">—</span><span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span></li>
+      <li><span class="ref">Galatians 3:28–29</span><span class="sep">—</span><span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span></li>
+      <li><span class="ref">Galatians 2:20</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/01 Contentment.pdf">01 Contentment.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="ephesians">
+    <h2>Ephesians <span class="entry-count">(12 references)</span></h2>
+    <ul>
+      <li><span class="ref">Ephesians 2:8</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/05 Conclusions.pdf">05 Conclusions</a></span></li>
+      <li><span class="ref">Ephesians 1:7</span><span class="sep">—</span><span class="files"><a href="Questions/How Will Being Forgiven Change Me.pdf">How Will Being Forgiven Change Me</a></span></li>
+      <li><span class="ref">Ephesians 2:13–15</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Have Peace with God.pdf">How Can I Have Peace with God</a></span></li>
+      <li><span class="ref">Ephesians 2:19</span><span class="sep">—</span><span class="files"><a href="Questions/How Will Being Forgiven Change Me.pdf">How Will Being Forgiven Change Me</a></span></li>
+      <li><span class="ref">Ephesians 2:6</span><span class="sep">—</span><span class="files"><a href="Questions/How Will Being Forgiven Change Me.pdf">How Will Being Forgiven Change Me</a></span></li>
+      <li><span class="ref">Ephesians 4:22–24</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Resist Temptation.pdf">How Can I Resist Temptation</a></span></li>
+      <li><span class="ref">Ephesians 1:20</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">Ephesians 2:4–7</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">Ephesians 3:17</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/01 Contentment.pdf">01 Contentment.pdf</a></span></li>
+      <li><span class="ref">Ephesians 2:1–3</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/01 How (1).pdf">01 How (1).pdf</a> &nbsp;|&nbsp; <a href="Rooted/contentment/Jesus/01 How.pdf">01 How.pdf</a></span></li>
+      <li><span class="ref">Ephesians 2:4–7</span><span class="sep">—</span><span class="files"><a href="Unfolding/07 Who Are You Really.pdf">Who Are You Really?</a></span></li>
+      <li><span class="ref">Ephesians 2:22</span><span class="sep">—</span><span class="files"><a href="Unfolding/05 The Greatest Powers of the Holy Spirit.pdf">The Greatest Powers of the Holy Spirit</a></span></li>
+    </ul>
+  </section>
+
+  <section id="philippians">
+    <h2>Philippians <span class="entry-count">(7 references)</span></h2>
+    <ul>
+      <li><span class="ref">Philippians 1:6</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Resist Temptation.pdf">How Can I Resist Temptation</a></span></li>
+      <li><span class="ref">Philippians 2:10</span><span class="sep">—</span><span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span></li>
+      <li><span class="ref">Philippians 1:12–14</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/01 Contentment.pdf">01 Contentment.pdf</a></span></li>
+      <li><span class="ref">Philippians 4:7–9</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">Philippians 4:11–13</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/01 Contentment.pdf">01 Contentment.pdf</a></span></li>
+      <li><span class="ref">Philippians 1:9–11</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/01 How (1).pdf">01 How (1).pdf</a> &nbsp;|&nbsp; <a href="Rooted/contentment/Jesus/01 How.pdf">01 How.pdf</a></span></li>
+      <li><span class="ref">Philippians 4:13</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/01 How (1).pdf">01 How (1).pdf</a> &nbsp;|&nbsp; <a href="Rooted/contentment/Jesus/01 How.pdf">01 How.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="colossians">
+    <h2>Colossians <span class="entry-count">(6 references)</span></h2>
+    <ul>
+      <li><span class="ref">Colossians 1:14</span><span class="sep">—</span><span class="files"><a href="Questions/How Will Being Forgiven Change Me.pdf">How Will Being Forgiven Change Me</a></span></li>
+      <li><span class="ref">Colossians 1:21</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Have Peace with God.pdf">How Can I Have Peace with God</a></span></li>
+      <li><span class="ref">Colossians 2:9–12</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Resist Temptation.pdf">How Can I Resist Temptation</a></span></li>
+      <li><span class="ref">Colossians 3:5</span><span class="sep">—</span><span class="files"><a href="Questions/How Can I Resist Temptation.pdf">How Can I Resist Temptation</a></span></li>
+      <li><span class="ref">Colossians 1:9–11</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">Colossians 1:27</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/01 Contentment.pdf">01 Contentment.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="1-thessalonians">
+    <h2>1 Thessalonians <span class="entry-count">(1 references)</span></h2>
+    <ul>
+      <li><span class="ref">1 Thessalonians 2:13</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/02 Why Trust the New Testament Text.pdf">02 Why Trust the New Testament Text</a></span></li>
+    </ul>
+  </section>
+
+  <section id="1-timothy">
+    <h2>1 Timothy <span class="entry-count">(2 references)</span></h2>
+    <ul>
+      <li><span class="ref">1 Timothy 6:6–10</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">1 Timothy 6:17</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/04 Contentment.pdf">04 Contentment.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="hebrews">
+    <h2>Hebrews <span class="entry-count">(4 references)</span></h2>
+    <ul>
+      <li><span class="ref">Hebrews 4:12</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/01 What Is the Bible.pdf">01 What Is the Bible</a></span></li>
+      <li><span class="ref">Hebrews 1:1–3</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/01 What Is the Bible.pdf">01 What Is the Bible</a></span></li>
+      <li><span class="ref">Hebrews 13:5</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">Hebrews 4:12–13</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/03 How.pdf">03 How.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="james">
+    <h2>James <span class="entry-count">(4 references)</span></h2>
+    <ul>
+      <li><span class="ref">James 1:2–4</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">James 4:1</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">James 4:8–10</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">James 1:17</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/02 How.pdf">02 How.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="1-peter">
+    <h2>1 Peter <span class="entry-count">(6 references)</span></h2>
+    <ul>
+      <li><span class="ref">1 Peter 1:3–4</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">1 Peter 1:8–9</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">1 Peter 2:11</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/04 Contentment.pdf">04 Contentment.pdf</a></span></li>
+      <li><span class="ref">1 Peter 2:24</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+      <li><span class="ref">1 Peter 2:11</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/02 How.pdf">02 How.pdf</a></span></li>
+      <li><span class="ref">1 Peter 2:4–10</span><span class="sep">—</span><span class="files"><a href="Unfolding/06 God Wants to Move in Closer than Next Door.pdf">God Wants to Move in Much Closer</a></span></li>
+    </ul>
+  </section>
+
+  <section id="1-john">
+    <h2>1 John <span class="entry-count">(2 references)</span></h2>
+    <ul>
+      <li><span class="ref">1 John 4:13</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/01 Contentment.pdf">01 Contentment.pdf</a></span></li>
+      <li><span class="ref">1 John 4:16</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+    </ul>
+  </section>
+
+  <section id="revelation">
+    <h2>Revelation <span class="entry-count">(2 references)</span></h2>
+    <ul>
+      <li><span class="ref">Revelation 3:20</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/01 Contentment.pdf">01 Contentment.pdf</a></span></li>
+      <li><span class="ref">Revelation 21:22–24</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
+    </ul>
+  </section>
+</div>
+
+<div class="return-box">
+  <a href="index.html">Return to Home</a>
+</div>
+
+</body>
+</html>
