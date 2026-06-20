@@ -6,6 +6,36 @@
 <title>Scripture Index — Jonathan's Workshop</title>
 <style>
 
+.ref {
+  position: relative;
+  cursor: pointer;
+}
+
+.tooltip-bubble {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 120%;
+  z-index: 9999;
+  max-width: 320px;
+  background: #ffffe6;
+  border: 1px solid #d4c98f;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  white-space: pre-wrap;
+  transition: opacity 0.15s;
+}
+
+.ref:hover .tooltip-bubble {
+  visibility: visible;
+  opacity: 1;
+}
+
 /* ── Base ── */
 body {
   font-family: Arial, sans-serif;
@@ -177,8 +207,15 @@ li:hover {
   .nav-pill { font-size: 13px; padding: 2px 8px; }
 }
 
+
+
 </style>
+
 </head>
+
+
+
+
 <body>
 
 <h1>Scripture Index</h1>
@@ -244,40 +281,156 @@ li:hover {
 
 <div class="scripture-body">
 
-  <section id="genesis">
-    <h2>Genesis <span class="entry-count">(29 references)</span></h2>
-    <ul>
-      <li><span class="ref">Genesis 1:3</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/01 What Is the Bible.pdf">01 What Is the Bible</a></span></li>
-      <li><span class="ref">Genesis 1:3–5</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/04 Why Trust.pdf">04 Why Trust</a></span></li>
-      <li><span class="ref">Genesis 2:4–25</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/04 Why Trust.pdf">04 Why Trust</a></span></li>
-      <li><span class="ref">Genesis 18:18</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/Why do Christians pray to Jesus.pdf">Why Do Christians Pray to Jesus</a></span></li>
-      <li><span class="ref">Genesis 22:18</span><span class="sep">—</span><span class="files"><a href="Friday/Bible/Why do Christians pray to Jesus.pdf">Why Do Christians Pray to Jesus</a></span></li>
-      <li><span class="ref">Genesis 5:1</span><span class="sep">—</span><span class="files"><a href="Friday/Father/02 Be a Born-Again Son.pdf">Be a Born‑Again Son</a></span></li>
-      <li><span class="ref">Genesis 5:3</span><span class="sep">—</span><span class="files"><a href="Friday/Father/02 Be a Born-Again Son.pdf">Be a Born‑Again Son</a></span></li>
-      <li><span class="ref">Genesis 18:18</span><span class="sep">—</span><span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span></li>
-      <li><span class="ref">Genesis 22:17</span><span class="sep">—</span><span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span></li>
-      <li><span class="ref">Genesis 22:18</span><span class="sep">—</span><span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span></li>
-      <li><span class="ref">Genesis 8:15–17</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/01 Contentment.pdf">01 Contentment.pdf</a></span></li>
-      <li><span class="ref">Genesis 6:5</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/03 How.pdf">03 How.pdf</a></span></li>
-      <li><span class="ref">Genesis 50:20</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/Jesus/05 Contentment.pdf">05 Contentment.pdf</a></span></li>
-      <li><span class="ref">Genesis 37:7</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Depression/D03 Antidepression.pdf">D03 Antidepression.pdf</a></span></li>
-      <li><span class="ref">Genesis 19:30–38</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Depression/D07 Antidepression.pdf">D07 Antidepression.pdf</a></span></li>
-      <li><span class="ref">Genesis 12:10–20</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Depression/D07 Antidepression.pdf">D07 Antidepression.pdf</a></span></li>
-      <li><span class="ref">Genesis 20</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Depression/D07 Antidepression.pdf">D07 Antidepression.pdf</a></span></li>
-      <li><span class="ref">Genesis 26:7–11</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Depression/D07 Antidepression.pdf">D07 Antidepression.pdf</a></span></li>
-      <li><span class="ref">Genesis 3:4–5</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S01 Devices to Sin.pdf">S01 Devices to Sin.pdf</a></span></li>
-      <li><span class="ref">Genesis 19:20</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S03 Devices to Sin.pdf">S03 Devices to Sin.pdf</a></span></li>
-      <li><span class="ref">Genesis 39:10</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S07 Devices to Sin.pdf">S07 Devices to Sin.pdf</a></span></li>
-      <li><span class="ref">Genesis 3:24</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S05 Devices to Sin.pdf">S05 Devices to Sin.pdf</a></span></li>
-      <li><span class="ref">Genesis 7:17–23</span><span class="sep">—</span><span class="files"><a href="Rooted/Remedies/Sin/S05 Devices to Sin.pdf">S05 Devices to Sin.pdf</a></span></li>
-      <li><span class="ref">Genesis 1:26–31</span><span class="sep">—</span><span class="files"><a href="Unfolding/01 - Latter Days - Anchor Deeply.pdf">Anchor Deeply for the Last Days</a></span></li>
-      <li><span class="ref">Genesis 3:15</span><span class="sep">—</span><span class="files"><a href="Unfolding/03 Resurrection - Born Again.pdf">Begin Again, Born Again</a></span></li>
-      <li><span class="ref">Genesis 5:1–3</span><span class="sep">—</span><span class="files"><a href="Unfolding/02 Be a Born-Again Son.pdf">Be a Born-Again Son</a></span></li>
-      <li><span class="ref">Genesis 9:20–21</span><span class="sep">—</span><span class="files"><a href="Unfolding/06 God Wants to Move in Closer than Next Door.pdf">God Wants to Move in Much Closer</a></span></li>
-      <li><span class="ref">Genesis 12:7</span><span class="sep">—</span><span class="files"><a href="Unfolding/09 Want Better.pdf">Wanting Better</a></span></li>
-      <li><span class="ref">Genesis 49:1, 8–12</span><span class="sep">—</span><span class="files"><a href="Unfolding/01 - Latter Days - Anchor Deeply.pdf">Anchor Deeply for the Last Days</a></span></li>
-    </ul>
-  </section>
+<section id="genesis">
+  <h2>Genesis <span class="entry-count">(29 references)</span></h2>
+  <ul>
+    <li>
+      <span class="ref" data-ref="Genesis 1:3">Genesis 1:3</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Friday/Bible/01 What Is the Bible.pdf">01 What Is the Bible</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 1:3–5">Genesis 1:3–5</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Friday/Bible/04 Why Trust.pdf">04 Why Trust</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 2:4–25">Genesis 2:4–25</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Friday/Bible/04 Why Trust.pdf">04 Why Trust</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 18:18">Genesis 18:18</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Friday/Bible/Why do Christians pray to Jesus.pdf">Why Do Christians Pray to Jesus</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 22:18">Genesis 22:18</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Friday/Bible/Why do Christians pray to Jesus.pdf">Why Do Christians Pray to Jesus</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 5:1">Genesis 5:1</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Friday/Father/02 Be a Born-Again Son.pdf">Be a Born‑Again Son</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 5:3">Genesis 5:3</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Friday/Father/02 Be a Born-Again Son.pdf">Be a Born‑Again Son</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 18:18">Genesis 18:18</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 22:17">Genesis 22:17</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 22:18">Genesis 22:18</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Questions/Why do Christians pray to Jesus.pdf">Why do Christians Pray to Jesus</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 8:15–17">Genesis 8:15–17</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Rooted/contentment/01 Contentment.pdf">01 Contentment.pdf</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 6:5">Genesis 6:5</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Rooted/contentment/Jesus/03 How.pdf">03 How.pdf</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 50:20">Genesis 50:20</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Rooted/contentment/Jesus/05 Contentment.pdf">05 Contentment.pdf</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 37:7">Genesis 37:7</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Rooted/Remedies/Depression/D03 Antidepression.pdf">D03 Antidepression.pdf</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 19:30–38">Genesis 19:30–38</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Rooted/Remedies/Depression/D07 Antidepression.pdf">D07 Antidepression.pdf</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 12:10–20">Genesis 12:10–20</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Rooted/Remedies/Depression/D07 Antidepression.pdf">D07 Antidepression.pdf</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 20">Genesis 20</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Rooted/Remedies/Depression/D07 Antidepression.pdf">D07 Antidepression.pdf</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 26:7–11">Genesis 26:7–11</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Rooted/Remedies/Depression/D07 Antidepression.pdf">D07 Antidepression.pdf</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 3:4–5">Genesis 3:4–5</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Rooted/Remedies/Sin/S01 Devices to Sin.pdf">S01 Devices to Sin.pdf</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 19:20">Genesis 19:20</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Rooted/Remedies/Sin/S03 Devices to Sin.pdf">S03 Devices to Sin.pdf</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 39:10">Genesis 39:10</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Rooted/Remedies/Sin/S07 Devices to Sin.pdf">S07 Devices to Sin.pdf</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 3:24">Genesis 3:24</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Rooted/Remedies/Sin/S05 Devices to Sin.pdf">S05 Devices to Sin.pdf</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 7:17–23">Genesis 7:17–23</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Rooted/Remedies/Sin/S05 Devices to Sin.pdf">S05 Devices to Sin.pdf</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 1:26–31">Genesis 1:26–31</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Unfolding/01 - Latter Days - Anchor Deeply.pdf">Anchor Deeply for the Last Days</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 3:15">Genesis 3:15</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Unfolding/03 Resurrection - Born Again.pdf">Begin Again, Born Again</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 5:1–3">Genesis 5:1–3</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Unfolding/02 Be a Born-Again Son.pdf">Be a Born-Again Son</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 9:20–21">Genesis 9:20–21</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Unfolding/06 God Wants to Move in Closer than Next Door.pdf">God Wants to Move in Much Closer</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 12:7">Genesis 12:7</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Unfolding/09 Want Better.pdf">Wanting Better</a></span>
+    </li>
+    <li>
+      <span class="ref" data-ref="Genesis 49:1, 8–12">Genesis 49:1, 8–12</span>
+      <span class="sep">—</span>
+      <span class="files"><a href="Unfolding/01 - Latter Days - Anchor Deeply.pdf">Anchor Deeply for the Last Days</a></span>
+    </li>
+  </ul>
+</section>
 
   <section id="exodus">
     <h2>Exodus <span class="entry-count">(6 references)</span></h2>
@@ -832,6 +985,24 @@ li:hover {
       <li><span class="ref">Revelation 21:22–24</span><span class="sep">—</span><span class="files"><a href="Rooted/contentment/02 Contentment.pdf">02 Contentment.pdf</a></span></li>
     </ul>
   </section>
+
+
+<script>
+fetch("kjv-verses.json")
+  .then(r => r.json())
+  .then(kjv => {
+    document.querySelectorAll(".ref").forEach(span => {
+      const key = span.dataset.ref;
+      if (!kjv[key]) return;
+
+      const bubble = document.createElement("span");
+      bubble.className = "tooltip-bubble";
+      bubble.textContent = kjv[key];
+      span.appendChild(bubble);
+    });
+  });
+</script>
+
 </div>
 
 <div class="return-box">
