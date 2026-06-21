@@ -1,3 +1,842 @@
 {
-  "Genesis 1:3": "3 And God said, Let there be light: and there was light."
+  "Genesis 1:3": "And God said, Let there be light: and there was light.",
+  "Genesis 1:4": "And God saw the light, that it was good: and God divided the light from the darkness.",
+  "Genesis 1:5": "And God called the light Day, and the darkness he called Night. And the evening and the morning were the first day.",
+  "Genesis 1:26": "And God said, Let us make man in our image, after our likeness: and let them have dominion over the fish of the sea, and over the fowl of the air, and over the cattle, and over all the earth, and over every creeping thing that creepeth upon the earth.",
+  "Genesis 1:27": "So God created man in his own image, in the image of God created he him; male and female created he them.",
+  "Genesis 1:28": "And God blessed them, and God said unto them, Be fruitful, and multiply, and replenish the earth, and subdue it: and have dominion over the fish of the sea, and over the fowl of the air, and over every living thing that moveth upon the earth.",
+  "Genesis 1:29": "And God said, Behold, I have given you every herb bearing seed, which is upon the face of all the earth, and every tree, in the which is the fruit of a tree yielding seed; to you it shall be for meat.",
+  "Genesis 1:30": "And to every beast of the earth, and to every fowl of the air, and to every thing that creepeth upon the earth, wherein there is life, I have given every green herb for meat: and it was so.",
+  "Genesis 1:31": "And God saw every thing that he had made, and, behold, it was very good. And the evening and the morning were the sixth day.",
+
+  "Genesis 2:4": "These are the generations of the heavens and of the earth when they were created, in the day that the LORD God made the earth and the heavens.",
+  "Genesis 2:5": "And every plant of the field before it was in the earth, and every herb of the field before it grew: for the LORD God had not caused it to rain upon the earth, and there was not a man to till the ground.",
+  "Genesis 2:6": "But there went up a mist from the earth, and watered the whole face of the ground.",
+  "Genesis 2:7": "And the LORD God formed man of the dust of the ground, and breathed into his nostrils the breath of life; and man became a living soul.",
+  "Genesis 2:8": "And the LORD God planted a garden eastward in Eden; and there he put the man whom he had formed.",
+  "Genesis 2:9": "And out of the ground made the LORD God to grow every tree that is pleasant to the sight, and good for food; the tree of life also in the midst of the garden, and the tree of knowledge of good and evil.",
+  "Genesis 2:10": "And a river went out of Eden to water the garden; and from thence it was parted, and became into four heads.",
+  "Genesis 2:11": "The name of the first is Pison: that is it which compasseth the whole land of Havilah, where there is gold;",
+  "Genesis 2:12": "And the gold of that land is good: there is bdellium and the onyx stone.",
+  "Genesis 2:13": "And the name of the second river is Gihon: the same is it that compasseth the whole land of Ethiopia.",
+  "Genesis 2:14": "And the name of the third river is Hiddekel: that is it which goeth toward the east of Assyria. And the fourth river is Euphrates.",
+  "Genesis 2:15": "And the LORD God took the man, and put him into the garden of Eden to dress it and to keep it.",
+  "Genesis 2:16": "And the LORD God commanded the man, saying, Of every tree of the garden thou mayest freely eat:",
+  "Genesis 2:17": "But of the tree of the knowledge of good and evil, thou shalt not eat of it: for in the day that thou eatest thereof thou shalt surely die.",
+  "Genesis 2:18": "And the LORD God said, It is not good that the man should be alone; I will make him an help meet for him.",
+  "Genesis 2:19": "And out of the ground the LORD God formed every beast of the field, and every fowl of the air; and brought them unto Adam to see what he would call them: and whatsoever Adam called every living creature, that was the name thereof.",
+  "Genesis 2:20": "And Adam gave names to all cattle, and to the fowl of the air, and to every beast of the field; but for Adam there was not found an help meet for him.",
+  "Genesis 2:21": "And the LORD God caused a deep sleep to fall upon Adam, and he slept: and he took one of his ribs, and closed up the flesh instead thereof;",
+  "Genesis 2:22": "And the rib, which the LORD God had taken from man, made he a woman, and brought her unto the man.",
+  "Genesis 2:23": "And Adam said, This is now bone of my bones, and flesh of my flesh: she shall be called Woman, because she was taken out of Man.",
+  "Genesis 2:24": "Therefore shall a man leave his father and his mother, and shall cleave unto his wife: and they shall be one flesh.",
+  "Genesis 2:25": "And they were both naked, the man and his wife, and were not ashamed.",
+
+  "Genesis 3:4": "And the serpent said unto the woman, Ye shall not surely die:",
+  "Genesis 3:5": "For God doth know that in the day ye eat thereof, then your eyes shall be opened, and ye shall be as gods, knowing good and evil.",
+  "Genesis 3:15": "And I will put enmity between thee and the woman, and between thy seed and her seed; it shall bruise thy head, and thou shalt bruise his heel.",
+  "Genesis 3:24": "So he drove out the man; and he placed at the east of the garden of Eden Cherubims, and a flaming sword which turned every way, to keep the way of the tree of life.",
+
+  "Genesis 5:1": "This is the book of the generations of Adam. In the day that God created man, in the likeness of God made he him;",
+  "Genesis 5:2": "Male and female created he them; and blessed them, and called their name Adam, in the day when they were created.",
+  "Genesis 5:3": "And Adam lived an hundred and thirty years, and begat a son in his own likeness, after his image; and called his name Seth.",
+
+  "Genesis 6:5": "And GOD saw that the wickedness of man was great in the earth, and that every imagination of the thoughts of his heart was only evil continually.",
+
+  "Genesis 7:17": "And the flood was forty days upon the earth; and the waters increased, and bare up the ark, and it was lift up above the earth.",
+  "Genesis 7:18": "And the waters prevailed, and were increased greatly upon the earth; and the ark went upon the face of the waters.",
+  "Genesis 7:19": "And the waters prevailed exceedingly upon the earth; and all the high hills, that were under the whole heaven, were covered.",
+  "Genesis 7:20": "Fifteen cubits upward did the waters prevail; and the mountains were covered.",
+  "Genesis 7:21": "And all flesh died that moved upon the earth, both of fowl, and of cattle, and of beast, and of every creeping thing that creepeth upon the earth, and every man:",
+  "Genesis 7:22": "All in whose nostrils was the breath of life, of all that was in the dry land, died.",
+  "Genesis 7:23": "And every living substance was destroyed which was upon the face of the ground, both man, and cattle, and the creeping things, and the fowl of the heaven; and they were destroyed from the earth: and Noah only remained alive, and they that were with him in the ark.",
+
+  "Genesis 8:15": "And God spake unto Noah, saying,",
+  "Genesis 8:16": "Go forth of the ark, thou, and thy wife, and thy sons, and thy sons' wives with thee.",
+  "Genesis 8:17": "Bring forth with thee every living thing that is with thee, of all flesh, both of fowl, and of cattle, and of every creeping thing that creepeth upon the earth; that they may breed abundantly in the earth, and be fruitful, and multiply upon the earth.",
+
+  "Genesis 9:20": "And Noah began to be an husbandman, and he planted a vineyard:",
+  "Genesis 9:21": "And he drank of the wine, and was drunken; and he was uncovered within his tent.",
+
+  "Genesis 12:7": "And the LORD appeared unto Abram, and said, Unto thy seed will I give this land: and there builded he an altar unto the LORD, who appeared unto him.",
+
+  "Genesis 12:10": "And there was a famine in the land: and Abram went down into Egypt to sojourn there; for the famine was grievous in the land.",
+  "Genesis 12:11": "And it came to pass, when he was come near to enter into Egypt, that he said unto Sarai his wife, Behold now, I know that thou art a fair woman to look upon:",
+  "Genesis 12:12": "Therefore it shall come to pass, when the Egyptians shall see thee, that they shall say, This is his wife: and they will kill me, but they will save thee alive.",
+  "Genesis 12:13": "Say, I pray thee, thou art my sister: that it may be well with me for thy sake; and my soul shall live because of thee.",
+  "Genesis 12:14": "And it came to pass, that, when Abram was come into Egypt, the Egyptians beheld the woman that she was very fair.",
+  "Genesis 12:15": "The princes also of Pharaoh saw her, and commended her before Pharaoh: and the woman was taken into Pharaoh's house.",
+  "Genesis 12:16": "And he entreated Abram well for her sake: and he had sheep, and oxen, and he asses, and menservants, and maidservants, and she asses, and camels.",
+  "Genesis 12:17": "And the LORD plagued Pharaoh and his house with great plagues because of Sarai Abram's wife.",
+  "Genesis 12:18": "And Pharaoh called Abram, and said, What is this that thou hast done unto me? why didst thou not tell me that she was thy wife?",
+  "Genesis 12:19": "Why saidst thou, She is my sister? so I might have taken her to me to wife: now therefore behold thy wife, take her, and go thy way.",
+  "Genesis 12:20": "And Pharaoh commanded his men concerning him: and they sent him away, and his wife, and all that he had.",
+
+  "Genesis 18:18": "Seeing that Abraham shall surely become a great and mighty nation, and all the nations of the earth shall be blessed in him?",
+
+  "Genesis 19:20": "Behold now, this city is near to flee unto, and it is a little one: Oh, let me escape thither, (is it not a little one?) and my soul shall live.",
+  "Genesis 19:30": "And Lot went up out of Zoar, and dwelt in the mountain, and his two daughters with him; for he feared to dwell in Zoar: and he dwelt in a cave, he and his two daughters.",
+  "Genesis 19:31": "And the firstborn said unto the younger, Our father is old, and there is not a man in the earth to come in unto us after the manner of all the earth:",
+  "Genesis 19:32": "Come, let us make our father drink wine, and we will lie with him, that we may preserve seed of our father.",
+  "Genesis 19:33": "And they made their father drink wine that night: and the firstborn went in, and lay with her father; and he perceived not when she lay down, nor when she arose.",
+  "Genesis 19:34": "And it came to pass on the morrow, that the firstborn said unto the younger, Behold, I lay yesternight with my father: let us make him drink wine this night also; and go thou in, and lie with him, that we may preserve seed of our father.",
+  "Genesis 19:35": "And they made their father drink wine that night also: and the younger arose, and lay with him; and he perceived not when she lay down, nor when she arose.",
+  "Genesis 19:36": "Thus were both the daughters of Lot with child by their father.",
+  "Genesis 19:37": "And the firstborn bare a son, and called his name Moab: the same is the father of the Moabites unto this day.",
+  "Genesis 19:38": "And the younger, she also bare a son, and called his name Benammi: the same is the father of the children of Ammon unto this day.",
+
+  "Genesis 20:1": "And Abraham journeyed from thence toward the south country, and dwelled between Kadesh and Shur, and sojourned in Gerar.",
+
+  "Genesis 22:17": "That in blessing I will bless thee, and in multiplying I will multiply thy seed as the stars of the heaven, and as the sand which is upon the sea shore; and thy seed shall possess the gate of his enemies;",
+  "Genesis 22:18": "And in thy seed shall all the nations of the earth be blessed; because thou hast obeyed my voice.",
+
+  "Genesis 37:7": "For, behold, we were binding sheaves in the field, and, lo, my sheaf arose, and also stood upright; and, behold, your sheaves stood round about, and made obeisance to my sheaf.",
+
+  "Genesis 39:10": "And it came to pass, as she spake to Joseph day by day, that he hearkened not unto her, to lie by her, or to be with her.",
+
+  "Genesis 49:1": "And Jacob called unto his sons, and said, Gather yourselves together, that I may tell you that which shall befall you in the last days.",
+  "Genesis 49:8": "Judah, thou art he whom thy brethren shall praise: thy hand shall be in the neck of thine enemies; thy father's children shall bow down before thee.",
+  "Genesis 49:9": "Judah is a lion's whelp: from the prey, my son, thou art gone up: he stooped down, he couched as a lion, and as an old lion; who shall rouse him up?",
+  "Genesis 49:10": "The sceptre shall not depart from Judah, nor a lawgiver from between his feet, until Shiloh come; and unto him shall the gathering of the people be.",
+  "Genesis 49:11": "Binding his foal unto the vine, and his ass's colt unto the choice vine; he washed his garments in wine, and his clothes in the blood of grapes:",
+  "Genesis 49:12": "His eyes shall be red with wine, and his teeth white with milk.",
+
+  "Genesis 50:20": "But as for you, ye thought evil against me; but God meant it unto good, to bring to pass, as it is this day, to save much people alive."
 }
+
+{
+  "Exodus 3:6": "Moreover he said, I am the God of thy father, the God of Abraham, the God of Isaac, and the God of Jacob. And Moses hid his face; for he was afraid to look upon God.",
+  "Exodus 10:16": "Then Pharaoh called for Moses and Aaron in haste; and he said, I have sinned against the LORD your God, and against you.",
+  "Exodus 10:19": "And the LORD turned a mighty strong west wind, which took away the locusts, and cast them into the Red sea; there remained not one locust in all the coasts of Egypt.",
+  "Exodus 16:3": "And the children of Israel said unto them, Would to God we had died by the hand of the LORD in the land of Egypt, when we sat by the flesh pots, and when we did eat bread to the full; for ye have brought us forth into this wilderness, to kill this whole assembly with hunger.",
+  "Exodus 20:4": "Thou shalt not make unto thee any graven image, or any likeness of any thing that is in heaven above, or that is in the earth beneath, or that is in the water under the earth.",
+  "Exodus 20:5": "Thou shalt not bow down thyself to them, nor serve them: for I the LORD thy God am a jealous God, visiting the iniquity of the fathers upon the children unto the third and fourth generation of them that hate me;",
+  "Exodus 32:1": "And when the people saw that Moses delayed to come down out of the mount, the people gathered themselves together unto Aaron, and said unto him, Up, make us gods, which shall go before us; for as for this Moses, the man that brought us up out of the land of Egypt, we wot not what is become of him.",
+  "Exodus 40:35": "And Moses was not able to enter into the tent of the congregation, because the cloud abode thereon, and the glory of the LORD filled the tabernacle.",
+
+  "Leviticus 19:18": "Thou shalt not avenge, nor bear any grudge against the children of thy people, but thou shalt love thy neighbour as thyself: I am the LORD.",
+
+  "Numbers 14:24": "But my servant Caleb, because he had another spirit with him, and hath followed me fully, him will I bring into the land whereinto he went; and his seed shall possess it.",
+  "Numbers 23:9": "For from the top of the rocks I see him, and from the hills I behold him: lo, the people shall dwell alone, and shall not be reckoned among the nations.",
+  "Numbers 24:14": "And now, behold, I go unto my people: come therefore, and I will advertise thee what this people shall do to thy people in the latter days.",
+  "Numbers 24:17": "I shall see him, but not now: I shall behold him, but not nigh: there shall come a Star out of Jacob, and a Sceptre shall rise out of Israel, and shall smite the corners of Moab, and destroy all the children of Sheth.",
+  "Numbers 24:22": "Nevertheless the Kenite shall be wasted, until Asshur shall carry thee away captive.",
+  "Numbers 24:23": "And he took up his parable, and said, Alas, who shall live when God doeth this!",
+  "Numbers 24:24": "And ships shall come from the coast of Chittim, and shall afflict Asshur, and shall afflict Eber, and he also shall perish for ever.",
+
+  "Deuteronomy 1:30": "The LORD your God which goeth before you, he shall fight for you, according to all that he did for you in Egypt before your eyes;",
+  "Deuteronomy 8:5": "Thou shalt also consider in thine heart, that, as a man chasteneth his son, so the LORD thy God chasteneth thee.",
+  "Deuteronomy 23:14": "For the LORD thy God walketh in the midst of thy camp, to deliver thee, and to give up thine enemies before thee; therefore shall thy camp be holy: that he see no unclean thing in thee, and turn away from thee."
+}
+
+{
+  "Joshua 1:5": "There shall not any man be able to stand before thee all the days of thy life: as I was with Moses, so I will be with thee: I will not fail thee, nor forsake thee.",
+  "Joshua 1:8": "This book of the law shall not depart out of thy mouth; but thou shalt meditate therein day and night, that thou mayest observe to do according to all that is written therein: for then thou shalt make thy way prosperous, and then thou shalt have good success.",
+  "Joshua 1:9": "Have not I commanded thee? Be strong and of a good courage; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest.",
+  "Joshua 4:10": "For the priests which bare the ark stood in the midst of Jordan, until every thing was finished that the LORD commanded Joshua to speak unto the people, according to all that Moses commanded Joshua: and the people hasted and passed over.",
+
+  "Judges 9:14": "Then said all the trees unto the bramble, Come thou, and reign over us."
+}
+
+{
+  "Ruth 1:15": "And she said, Behold, thy sister in law is gone back unto her people, and unto her gods: return thou after thy sister in law.",
+  "Ruth 1:16": "And Ruth said, Intreat me not to leave thee, or to return from following after thee: for whither thou goest, I will go; and where thou lodgest, I will lodge: thy people shall be my people, and thy God my God.",
+
+  "1 Samuel 1:18": "And she said, Let thine handmaid find grace in thy sight. So the woman went her way, and did eat, and her countenance was no more sad.",
+
+  "2 Samuel 12:10": "Now therefore the sword shall never depart from thine house; because thou hast despised me, and hast taken the wife of Uriah the Hittite to be thy wife.",
+  "2 Samuel 23:5": "Although my house be not so with God; yet he hath made with me an everlasting covenant, ordered in all things, and sure: for this is all my salvation, and all my desire, although he make it not to grow.",
+
+  "1 Kings 2:10": "So David slept with his fathers, and was buried in the city of David.",
+
+  "1 Chronicles 29:10": "Wherefore David blessed the LORD before all the congregation: and David said, Blessed be thou, LORD God of Israel our father, for ever and ever.",
+  "1 Chronicles 29:11": "Thine, O LORD, is the greatness, and the power, and the glory, and the victory, and the majesty: for all that is in the heaven and in the earth is thine; thine is the kingdom, O LORD, and thou art exalted as head above all.",
+  "1 Chronicles 29:12": "Both riches and honour come of thee, and thou reignest over all; and in thine hand is power and might; and in thine hand it is to make great, and to give strength unto all.",
+  "1 Chronicles 29:13": "Now therefore, our God, we thank thee, and praise thy glorious name.",
+  "1 Chronicles 29:14": "But who am I, and what is my people, that we should be able to offer so willingly after this sort? for all things come of thee, and of thine own have we given thee."
+}
+
+
+{
+  "Psalm 1:1": "Blessed is the man that walketh not in the counsel of the ungodly, nor standeth in the way of sinners, nor sitteth in the seat of the scornful.",
+  "Psalm 1:2": "But his delight is in the law of the LORD; and in his law doth he meditate day and night.",
+  "Psalm 1:3": "And he shall be like a tree planted by the rivers of water, that bringeth forth his fruit in his season; his leaf also shall not wither; and whatsoever he doeth shall prosper.",
+
+  "Psalm 8:4": "What is man, that thou art mindful of him? and the son of man, that thou visitest him?",
+
+  "Psalm 18:42": "Then did I beat them small as the dust before the wind: I did cast them out as the dirt in the streets.",
+
+  "Psalm 19:1": "The heavens declare the glory of God; and the firmament sheweth his handywork.",
+
+  "Psalm 25:10": "All the paths of the LORD are mercy and truth unto such as keep his covenant and his testimonies.",
+
+  "Psalm 26:3": "For thy lovingkindness is before mine eyes: and I have walked in thy truth.",
+  "Psalm 26:4": "I have not sat with vain persons, neither will I go in with dissemblers.",
+  "Psalm 26:5": "I have hated the congregation of evil doers; and will not sit with the wicked.",
+
+  "Psalm 34:18": "The LORD is nigh unto them that are of a broken heart; and saveth such as be of a contrite spirit.",
+
+  "Psalm 49:11": "Their inward thought is, that their houses shall continue for ever, and their dwelling places to all generations; they call their lands after their own names.",
+
+  "Psalm 51:1": "Have mercy upon me, O God, according to thy lovingkindness: according unto the multitude of thy tender mercies blot out my transgressions.",
+  "Psalm 51:5": "Behold, I was shapen in iniquity; and in sin did my mother conceive me.",
+  "Psalm 51:8": "Make me to hear joy and gladness; that the bones which thou hast broken may rejoice.",
+  "Psalm 51:10": "Create in me a clean heart, O God; and renew a right spirit within me.",
+  "Psalm 51:17": "The sacrifices of God are a broken spirit: a broken and a contrite heart, O God, thou wilt not despise."
+}
+
+{
+  "Psalm 73:7": "Their eyes stand out with fatness: they have more than heart could wish.",
+  "Psalm 73:16": "When I thought to know this, it was too painful for me;",
+  "Psalm 73:17": "Until I went into the sanctuary of God; then understood I their end.",
+  "Psalm 73:18": "Surely thou didst set them in slippery places: thou castedst them down into destruction.",
+  "Psalm 73:19": "How are they brought into desolation, as in a moment! they are utterly consumed with terrors.",
+  "Psalm 73:20": "As a dream when one awaketh; so, O Lord, when thou awakest, thou shalt despise their image.",
+  "Psalm 73:25": "Whom have I in heaven but thee? and there is none upon earth that I desire beside thee.",
+
+  "Psalm 78:26": "He caused an east wind to blow in the heaven: and by his power he brought in the south wind.",
+  "Psalm 78:27": "He rained flesh also upon them as dust, and feathered fowls like as the sand of the sea:",
+  "Psalm 78:28": "And he let it fall in the midst of their camp, round about their habitations.",
+  "Psalm 78:29": "So they did eat, and were well filled: for he gave them their own desire;",
+  "Psalm 78:30": "They were not estranged from their lust. But while their meat was yet in their mouths,",
+  "Psalm 78:31": "The wrath of God came upon them, and slew the fattest of them, and smote down the chosen men of Israel.",
+
+  "Psalm 81:11": "But my people would not hearken to my voice; and Israel would none of me.",
+  "Psalm 81:12": "So I gave them up unto their own hearts' lust: and they walked in their own counsels.",
+
+  "Psalm 83:13": "O my God, make them like a wheel; as the stubble before the wind.",
+
+  "Psalm 89:30": "If his children forsake my law, and walk not in my judgments;",
+  "Psalm 89:35": "Once have I sworn by my holiness that I will not lie unto David.",
+
+  "Psalm 91:1": "He that dwelleth in the secret place of the most High shall abide under the shadow of the Almighty.",
+
+  "Psalm 100:1": "Make a joyful noise unto the LORD, all ye lands.",
+
+  "Psalm 103:1": "Bless the LORD, O my soul: and all that is within me, bless his holy name.",
+  "Psalm 103:2": "Bless the LORD, O my soul, and forget not all his benefits:",
+  "Psalm 103:3": "Who forgiveth all thine iniquities; who healeth all thy diseases;",
+  "Psalm 103:4": "Who redeemeth thy life from destruction; who crowneth thee with lovingkindness and tender mercies;",
+  "Psalm 103:5": "Who satisfieth thy mouth with good things; so that thy youth is renewed like the eagle's.",
+
+  "Psalm 106:15": "And he gave them their request; but sent leanness into their soul.",
+
+  "Psalm 107:8": "Oh that men would praise the LORD for his goodness, and for his wonderful works to the children of men!",
+  "Psalm 107:9": "For he satisfieth the longing soul, and filleth the hungry soul with goodness.",
+
+  "Psalm 115:4": "Their idols are silver and gold, the work of men's hands.",
+  "Psalm 115:5": "They have mouths, but they speak not: eyes have they, but they see not:",
+  "Psalm 115:6": "They have ears, but they hear not: noses have they, but they smell not:",
+  "Psalm 115:7": "They have hands, but they handle not: feet have they, but they walk not: neither speak they through their throat.",
+  "Psalm 115:8": "They that make them are like unto them; so is every one that trusteth in them.",
+
+  "Psalm 119:11": "Thy word have I hid in mine heart, that I might not sin against thee.",
+  "Psalm 119:19": "I am a stranger in the earth: hide not thy commandments from me.",
+
+  "Psalm 120:5": "Woe is me, that I sojourn in Mesech, that I dwell in the tents of Kedar!",
+  "Psalm 120:6": "My soul hath long dwelt with him that hateth peace.",
+
+  "Psalm 139:23": "Search me, O God, and know my heart: try me, and know my thoughts:",
+  "Psalm 139:24": "And see if there be any wicked way in me, and lead me in the way everlasting."
+}
+
+
+
+{
+  "Proverbs 1:10": "My son, if sinners entice thee, consent thou not.",
+  "Proverbs 1:11": "If they say, Come with us, let us lay wait for blood, let us lurk privily for the innocent without cause:",
+  "Proverbs 1:12": "Let us swallow them up alive as the grave; and whole, as those that go down into the pit:",
+  "Proverbs 1:13": "We shall find all precious substance, we shall fill our houses with spoil:",
+  "Proverbs 1:14": "Cast in thy lot among us; let us all have one purse:",
+  "Proverbs 1:15": "My son, walk not thou in the way with them; refrain thy foot from their path:",
+  "Proverbs 1:25": "But ye have set at nought all my counsel, and would none of my reproof:",
+  "Proverbs 1:26": "I also will laugh at your calamity; I will mock when your fear cometh;",
+  "Proverbs 1:27": "When your fear cometh as desolation, and your destruction cometh as a whirlwind; when distress and anguish cometh upon you.",
+  "Proverbs 1:28": "Then shall they call upon me, but I will not answer; they shall seek me early, but they shall not find me:",
+  "Proverbs 1:29": "For that they hated knowledge, and did not choose the fear of the LORD:",
+  "Proverbs 1:30": "They would none of my counsel: they despised all my reproof.",
+
+  "Proverbs 3:5": "Trust in the LORD with all thine heart; and lean not unto thine own understanding.",
+  "Proverbs 3:6": "In all thy ways acknowledge him, and he shall direct thy paths.",
+  "Proverbs 3:11": "My son, despise not the chastening of the LORD; neither be weary of his correction:",
+  "Proverbs 3:12": "For whom the LORD loveth he correcteth; even as a father the son in whom he delighteth.",
+
+  "Proverbs 4:14": "Enter not into the path of the wicked, and go not in the way of evil men.",
+  "Proverbs 4:15": "Avoid it, pass not by it, turn from it, and pass away.",
+
+  "Proverbs 5:14": "I was almost in all evil in the midst of the congregation and assembly.",
+  "Proverbs 5:15": "Drink waters out of thine own cistern, and running waters out of thine own well.",
+
+  "Proverbs 8:13": "The fear of the LORD is to hate evil: pride, and arrogancy, and the evil way, and the froward mouth, do I hate.",
+
+  "Proverbs 15:16": "Better is little with the fear of the LORD than great treasure and trouble therewith.",
+
+  "Proverbs 16:8": "Better is a little with righteousness than great revenues without right.",
+
+  "Proverbs 20:9": "Who can say, I have made my heart clean, I am pure from my sin?",
+
+  "Ecclesiastes 1:2": "Vanity of vanities, saith the Preacher, vanity of vanities; all is vanity.",
+  "Ecclesiastes 12:8": "Vanity of vanities, saith the preacher; all is vanity.",
+  "Ecclesiastes 5:10": "He that loveth silver shall not be satisfied with silver; nor he that loveth abundance with increase: this is also vanity.",
+
+  "Isaiah 1:5": "Why should ye be stricken any more? ye will revolt more and more: the whole head is sick, and the whole heart faint.",
+  "Isaiah 5:20": "Woe unto them that call evil good, and good evil; that put darkness for light, and light for darkness; that put bitter for sweet, and sweet for bitter!",
+  "Isaiah 6:9": "And he said, Go, and tell this people, Hear ye indeed, but understand not; and see ye indeed, but perceive not.",
+  "Isaiah 6:10": "Make the heart of this people fat, and make their ears heavy, and shut their eyes; lest they see with their eyes, and hear with their ears, and understand with their heart, and convert, and be healed.",
+  "Isaiah 10:17": "And the light of Israel shall be for a fire, and his Holy One for a flame: and it shall burn and devour his thorns and his briers in one day.",
+  "Isaiah 11:7": "And the cow and the bear shall feed; their young ones shall lie down together: and the lion shall eat straw like the ox.",
+  "Isaiah 30:15": "For thus saith the Lord GOD, the Holy One of Israel; In returning and rest shall ye be saved; in quietness and in confidence shall be your strength: and ye would not.",
+  "Isaiah 30:22": "Ye shall defile also the covering of thy graven images of silver, and the ornament of thy molten images of gold: thou shalt cast them away as a menstruous cloth; thou shalt say unto it, Get thee hence.",
+  "Isaiah 32:3": "And the eyes of them that see shall not be dim, and the ears of them that hear shall hearken.",
+  "Isaiah 43:2": "When thou passest through the waters, I will be with thee; and through the rivers, they shall not overflow thee: when thou walkest through the fire, thou shalt not be burned; neither shall the flame kindle upon thee.",
+  "Isaiah 49:6": "And he said, It is a light thing that thou shouldest be my servant to raise up the tribes of Jacob, and to restore the preserved of Israel: I will also give thee for a light to the Gentiles, that thou mayest be my salvation unto the end of the earth.",
+  "Isaiah 53:6": "All we like sheep have gone astray; we have turned every one to his own way; and the LORD hath laid on him the iniquity of us all.",
+  "Isaiah 53:7": "He was oppressed, and he was afflicted, yet he opened not his mouth: he is brought as a lamb to the slaughter, and as a sheep before her shearers is dumb, so he openeth not his mouth.",
+  "Isaiah 53:8": "He was taken from prison and from judgment: and who shall declare his generation? for he was cut off out of the land of the living: for the transgression of my people was he stricken.",
+  "Isaiah 53:9": "And he made his grave with the wicked, and with the rich in his death; because he had done no violence, neither was any deceit in his mouth.",
+  "Isaiah 53:10": "Yet it pleased the LORD to bruise him; he hath put him to grief: when thou shalt make his soul an offering for sin, he shall see his seed, he shall prolong his days, and the pleasure of the LORD shall prosper in his hand.",
+  "Isaiah 53:11": "He shall see of the travail of his soul, and shall be satisfied: by his knowledge shall my righteous servant justify many; for he shall bear their iniquities.",
+  "Isaiah 54:17": "No weapon that is formed against thee shall prosper; and every tongue that shall rise against thee in judgment thou shalt condemn. This is the heritage of the servants of the LORD, and their righteousness is of me, saith the LORD.",
+  "Isaiah 55:2": "Wherefore do ye spend money for that which is not bread? and your labour for that which satisfieth not? hearken diligently unto me, and eat ye that which is good, and let your soul delight itself in fatness.",
+  "Isaiah 55:8": "For my thoughts are not your thoughts, neither are your ways my ways, saith the LORD.",
+  "Isaiah 55:9": "For as the heavens are higher than the earth, so are my ways higher than your ways, and my thoughts than your thoughts.",
+  "Isaiah 57:15": "For thus saith the high and lofty One that inhabiteth eternity, whose name is Holy; I dwell in the high and holy place, with him also that is of a contrite and humble spirit, to revive the spirit of the humble, and to revive the heart of the contrite ones.",
+  "Isaiah 64:6": "But we are all as an unclean thing, and all our righteousnesses are as filthy rags; and we all do fade as a leaf; and our iniquities, like the wind, have taken us away.",
+  "Isaiah 65:5": "Which say, Stand by thyself, come not near to me; for I am holier than thou. These are a smoke in my nose, a fire that burneth all the day.",
+
+  "Jeremiah 2:11": "Hath a nation changed their gods, which are yet no gods? but my people have changed their glory for that which doth not profit.",
+  "Jeremiah 9:2": "Oh that I had in the wilderness a lodging place of wayfaring men; that I might leave my people, and go from them! for they be all adulterers, an assembly of treacherous men.",
+  "Jeremiah 17:5": "Thus saith the LORD; Cursed be the man that trusteth in man, and maketh flesh his arm, and whose heart departeth from the LORD.",
+  "Jeremiah 17:6": "For he shall be like the heath in the desert, and shall not see when good cometh; but shall inhabit the parched places in the wilderness, in a salt land and not inhabited.",
+  "Jeremiah 17:7": "Blessed is the man that trusteth in the LORD, and whose hope the LORD is.",
+  "Jeremiah 17:8": "For he shall be as a tree planted by the waters, and that spreadeth out her roots by the river, and shall not see when heat cometh, but her leaf shall be green; and shall not be careful in the year of drought, neither shall cease from yielding fruit.",
+  "Jeremiah 17:9": "The heart is deceitful above all things, and desperately wicked: who can know it?",
+  "Jeremiah 31:9": "They shall come with weeping, and with supplications will I lead them: I will cause them to walk by the rivers of waters in a straight way, wherein they shall not stumble: for I am a father to Israel, and Ephraim is my firstborn.",
+  "Jeremiah 31:18": "I have surely heard Ephraim bemoaning himself thus; Thou hast chastised me, and I was chastised, as a bullock unaccustomed to the yoke: turn thou me, and I shall be turned; for thou art the LORD my God.",
+  "Jeremiah 31:19": "Surely after that I was turned, I repented; and after that I was instructed, I smote upon my thigh: I was ashamed, yea, even confounded, because I did bear the reproach of my youth.",
+
+  "Lamentations 3:16": "He hath also broken my teeth with gravel stones, he hath covered me with ashes.",
+  "Lamentations 3:17": "And thou hast removed my soul far off from peace: I forgat prosperity.",
+  "Lamentations 3:18": "And I said, My strength and my hope is perished from the LORD:",
+  "Lamentations 3:19": "Remembering mine affliction and my misery, the wormwood and the gall.",
+  "Lamentations 3:20": "My soul hath them still in remembrance, and is humbled in me.",
+  "Lamentations 3:21": "This I recall to my mind, therefore have I hope.",
+  "Lamentations 3:22": "It is of the LORD'S mercies that we are not consumed, because his compassions fail not.",
+  "Lamentations 3:23": "They are new every morning: great is thy faithfulness.",
+  "Lamentations 3:24": "The LORD is my portion, saith my soul; therefore will I hope in him.",
+  "Lamentations 3:25": "The LORD is good unto them that wait for him, to the soul that seeketh him.",
+  "Lamentations 3:26": "It is good that a man should both hope and quietly wait for the salvation of the LORD.",
+  "Lamentations 3:27": "It is good for a man that he bear the yoke in his youth.",
+  "Lamentations 3:28": "He sitteth alone and keepeth silence, because he hath borne it upon him.",
+  "Lamentations 3:29": "He putteth his mouth in the dust; if so be there may be hope.",
+  "Lamentations 3:30": "He giveth his cheek to him that smiteth him: he is filled full with reproach.",
+  "Lamentations 3:31": "For the Lord will not cast off for ever:",
+  "Lamentations 3:32": "But though he cause grief, yet will he have compassion according to the multitude of his mercies.",
+  "Lamentations 3:33": "For he doth not afflict willingly nor grieve the children of men.",
+  "Lamentations 3:34": "To crush under his feet all the prisoners of the earth,",
+  "Lamentations 3:35": "To turn aside the right of a man before the face of the most High,",
+  "Lamentations 3:36": "To subvert a man in his cause, the Lord approveth not.",
+
+  "Ezekiel 2:6": "And thou, son of man, be not afraid of them, neither be afraid of their words, though briers and thorns be with thee, and thou dost dwell among scorpions: be not afraid of their words, nor be dismayed at their looks, though they be a rebellious house.",
+  "Ezekiel 3:10": "Moreover he said unto me, Son of man, all my words that I shall speak unto thee receive in thine heart, and hear with thine ears.",
+  "Ezekiel 20:43": "And there shall ye remember your ways, and all your doings, wherein ye have been defiled; and ye shall lothe yourselves in your own sight for all your evils that ye have committed.",
+  "Ezekiel 22:18": "Son of man, the house of Israel is to me become dross: all they are brass, and tin, and iron, and lead, in the midst of the furnace; they are even the dross of silver.",
+  "Ezekiel 22:19": "Therefore thus saith the Lord GOD; Because ye are all become dross, behold, therefore I will gather you into the midst of Jerusalem.",
+  "Ezekiel 24:6": "Wherefore thus saith the Lord GOD; Woe to the bloody city, to the pot whose scum is therein, and whose scum is not gone out of it! bring it out piece by piece; let no lot fall upon it.",
+  "Ezekiel 36:25": "Then will I sprinkle clean water upon you, and ye shall be clean: from all your filthiness, and from all your idols, will I cleanse you.",
+  "Ezekiel 36:26": "A new heart also will I give you, and a new spirit will I put within you: and I will take away the stony heart out of your flesh, and I will give you an heart of flesh.",
+  "Ezekiel 36:27": "And I will put my spirit within you, and cause you to walk in my statutes, and ye shall keep my judgments, and do them.",
+  "Ezekiel 37:5": "Thus saith the Lord GOD unto these bones; Behold, I will cause breath to enter into you, and ye shall live:",
+  "Ezekiel 37:9": "Then said he unto me, Prophesy unto the wind, prophesy, son of man, and say to the wind, Thus saith the Lord GOD; Come from the four winds, O breath, and breathe upon these slain, that they may live.",
+
+  "Hosea 4:17": "Ephraim is joined to idols: let him alone.",
+
+  "Joel 2:12": "Therefore also now, saith the LORD, turn ye even to me with all your heart, and with fasting, and with weeping, and with mourning:",
+  "Joel 2:13": "And rend your heart, and not your garments, and turn unto the LORD your God: for he is gracious and merciful, slow to anger, and of great kindness, and repenteth him of the evil.",
+
+  "Malachi 4:6": "And he shall turn the heart of the fathers to the children, and the heart of the children to their fathers, lest I come and smite the earth with a curse."
+}
+
+
+{
+  "Matthew 5:5": "Blessed are the meek: for they shall inherit the earth.",
+
+  "Matthew 6:9": "After this manner therefore pray ye: Our Father which art in heaven, Hallowed be thy name.",
+  "Matthew 6:14": "For if ye forgive men their trespasses, your heavenly Father will also forgive you:",
+  "Matthew 6:15": "But if ye forgive not men their trespasses, neither will your Father forgive your trespasses.",
+  "Matthew 6:25": "Therefore I say unto you, Take no thought for your life, what ye shall eat, or what ye shall drink; nor yet for your body, what ye shall put on. Is not the life more than meat, and the body than raiment?",
+  "Matthew 6:26": "Behold the fowls of the air: for they sow not, neither do they reap, nor gather into barns; yet your heavenly Father feedeth them. Are ye not much better than they?",
+  "Matthew 6:27": "Which of you by taking thought can add one cubit unto his stature?",
+  "Matthew 6:28": "And why take ye thought for raiment? Consider the lilies of the field, how they grow; they toil not, neither do they spin:",
+  "Matthew 6:29": "And yet I say unto you, That even Solomon in all his glory was not arrayed like one of these.",
+  "Matthew 6:30": "Wherefore, if God so clothe the grass of the field, which to day is, and to morrow is cast into the oven, shall he not much more clothe you, O ye of little faith?",
+  "Matthew 6:31": "Therefore take no thought, saying, What shall we eat? or, What shall we drink? or, Wherewithal shall we be clothed?",
+  "Matthew 6:32": "For after all these things do the Gentiles seek: for your heavenly Father knoweth that ye have need of all these things.",
+  "Matthew 6:33": "But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.",
+  "Matthew 6:34": "Take therefore no thought for the morrow: for the morrow shall take thought for the things of itself. Sufficient unto the day is the evil thereof.",
+
+  "Matthew 7:3": "And why beholdest thou the mote that is in thy brother's eye, but considerest not the beam that is in thine own eye?",
+  "Matthew 7:4": "Or how wilt thou say to thy brother, Let me pull out the mote out of thine eye; and, behold, a beam is in thine own eye?",
+  "Matthew 7:6": "Give not that which is holy unto the dogs, neither cast ye your pearls before swine, lest they trample them under their feet, and turn again and rend you.",
+  "Matthew 7:24": "Therefore whosoever heareth these sayings of mine, and doeth them, I will liken him unto a wise man, which built his house upon a rock:",
+  "Matthew 7:25": "And the rain descended, and the floods came, and the winds blew, and beat upon that house; and it fell not: for it was founded upon a rock.",
+  "Matthew 7:26": "And every one that heareth these sayings of mine, and doeth them not, shall be likened unto a foolish man, which built his house upon the sand:",
+  "Matthew 7:27": "And the rain descended, and the floods came, and the winds blew, and beat upon that house; and it fell: and great was the fall of it.",
+
+  "Matthew 10:40": "He that receiveth you receiveth me, and he that receiveth me receiveth him that sent me.",
+
+  "Matthew 12:36": "But I say unto you, That every idle word that men shall speak, they shall give account thereof in the day of judgment.",
+
+  "Matthew 13:23": "But he that received seed into the good ground is he that heareth the word, and understandeth it; which also beareth fruit, and bringeth forth, some an hundredfold, some sixty, some thirty.",
+  "Matthew 13:41": "The Son of man shall send forth his angels, and they shall gather out of his kingdom all things that offend, and them which do iniquity;",
+  "Matthew 13:42": "And shall cast them into a furnace of fire: there shall be wailing and gnashing of teeth.",
+
+  "Matthew 15:11": "Not that which goeth into the mouth defileth a man; but that which cometh out of the mouth, this defileth a man.",
+  "Matthew 15:18": "But those things which proceed out of the mouth come forth from the heart; and they defile the man.",
+  "Matthew 15:19": "For out of the heart proceed evil thoughts, murders, adulteries, fornications, thefts, false witness, blasphemies.",
+  "Matthew 15:25": "Then came she and worshipped him, saying, Lord, help me.",
+
+  "Matthew 16:26": "For what is a man profited, if he shall gain the whole world, and lose his own soul? or what shall a man give in exchange for his soul?",
+
+  "Matthew 17:4": "Then answered Peter, and said unto Jesus, Lord, it is good for us to be here: if thou wilt, let us make here three tabernacles; one for thee, and one for Moses, and one for Elias.",
+  "Matthew 17:20": "And Jesus said unto them, Because of your unbelief: for verily I say unto you, If ye have faith as a grain of mustard seed, ye shall say unto this mountain, Remove hence to yonder place; and it shall remove; and nothing shall be impossible unto you.",
+
+  "Matthew 18:1": "At the same time came the disciples unto Jesus, saying, Who is the greatest in the kingdom of heaven?",
+  "Matthew 18:2": "And Jesus called a little child unto him, and set him in the midst of them,",
+  "Matthew 18:3": "And said, Verily I say unto you, Except ye be converted, and become as little children, ye shall not enter into the kingdom of heaven.",
+  "Matthew 18:4": "Whosoever therefore shall humble himself as this little child, the same is greatest in the kingdom of heaven.",
+  "Matthew 18:20": "For where two or three are gathered together in my name, there am I in the midst of them.",
+  "Matthew 18:21": "Then came Peter to him, and said, Lord, how oft shall my brother sin against me, and I forgive him? till seven times?",
+  "Matthew 18:22": "Jesus saith unto him, I say not unto thee, Until seven times: but, Until seventy times seven.",
+  "Matthew 18:23": "Therefore is the kingdom of heaven likened unto a certain king, which would take account of his servants.",
+  "Matthew 18:24": "And when he had begun to reckon, one was brought unto him, which owed him ten thousand talents.",
+  "Matthew 18:25": "But forasmuch as he had not to pay, his lord commanded him to be sold, and his wife, and children, and all that he had, and payment to be made.",
+  "Matthew 18:26": "The servant therefore fell down, and worshipped him, saying, Lord, have patience with me, and I will pay thee all.",
+  "Matthew 18:27": "Then the lord of that servant was moved with compassion, and loosed him, and forgave him the debt.",
+  "Matthew 18:28": "But the same servant went out, and found one of his fellowservants, which owed him an hundred pence: and he laid hands on him, and took him by the throat, saying, Pay me that thou owest.",
+  "Matthew 18:29": "And his fellowservant fell down at his feet, and besought him, saying, Have patience with me, and I will pay thee all.",
+  "Matthew 18:30": "And he would not: but went and cast him into prison, till he should pay the debt.",
+  "Matthew 18:31": "So when his fellowservants saw what was done, they were very sorry, and came and told unto their lord all that was done.",
+  "Matthew 18:32": "Then his lord, after that he had called him, said unto him, O thou wicked servant, I forgave thee all that debt, because thou desiredst me:",
+  "Matthew 18:33": "Shouldest not thou also have had compassion on thy fellowservant, even as I had pity on thee?",
+  "Matthew 18:34": "And his lord was wroth, and delivered him to the tormentors, till he should pay all that was due unto him.",
+  "Matthew 18:35": "So likewise shall my heavenly Father do also unto you, if ye from your hearts forgive not every one his brother their trespasses.",
+
+  "Matthew 19:15": "And he laid his hands on them, and departed thence.",
+  "Matthew 19:16": "And, behold, one came and said unto him, Good Master, what good thing shall I do, that I may have eternal life?",
+  "Matthew 19:17": "And he said unto him, Why callest thou me good? there is none good but one, that is, God: but if thou wilt enter into life, keep the commandments.",
+  "Matthew 19:18": "He saith unto him, Which? Jesus said, Thou shalt do no murder, Thou shalt not commit adultery, Thou shalt not steal, Thou shalt not bear false witness,",
+  "Matthew 19:19": "Honour thy father and thy mother: and, Thou shalt love thy neighbour as thyself.",
+  "Matthew 19:20": "The young man saith unto him, All these things have I kept from my youth up: what lack I yet?",
+  "Matthew 19:21": "Jesus said unto him, If thou wilt be perfect, go and sell that thou hast, and give to the poor, and thou shalt have treasure in heaven: and come and follow me.",
+  "Matthew 19:22": "But when the young man heard that saying, he went away sorrowful: for he had great possessions.",
+  "Matthew 19:23": "Then said Jesus unto his disciples, Verily I say unto you, That a rich man shall hardly enter into the kingdom of heaven.",
+  "Matthew 19:24": "And again I say unto you, It is easier for a camel to go through the eye of a needle, than for a rich man to enter into the kingdom of God.",
+  "Matthew 19:25": "When his disciples heard it, they were exceedingly amazed, saying, Who then can be saved?",
+  "Matthew 19:26": "But Jesus beheld them, and said unto them, With men this is impossible; but with God all things are possible.",
+  "Matthew 19:27": "Then answered Peter and said unto him, Behold, we have forsaken all, and followed thee; what shall we have therefore?",
+  "Matthew 19:28": "And Jesus said unto them, Verily I say unto you, That ye which have followed me, in the regeneration when the Son of man shall sit in the throne of his glory, ye also shall sit upon twelve thrones, judging the twelve tribes of Israel.",
+  "Matthew 19:29": "And every one that hath forsaken houses, or brethren, or sisters, or father, or mother, or wife, or children, or lands, for my name's sake, shall receive an hundredfold, and shall inherit everlasting life.",
+  "Matthew 19:30": "But many that are first shall be last; and the last shall be first.",
+
+  "Matthew 22:23": "The same day came to him the Sadducees, which say that there is no resurrection, and asked him,",
+  "Matthew 22:24": "Saying, Master, Moses said, If a man die, having no children, his brother shall marry his wife, and raise up seed unto his brother.",
+  "Matthew 22:25": "Now there were with us seven brethren: and the first, when he had married a wife, deceased, and, having no issue, left his wife unto his brother:",
+  "Matthew 22:26": "Likewise the second also, and the third, unto the seventh.",
+  "Matthew 22:27": "And last of all the woman died also.",
+  "Matthew 22:28": "Therefore in the resurrection whose wife shall she be of the seven? for they all had her.",
+  "Matthew 22:29": "Jesus answered and said unto them, Ye do err, not knowing the scriptures, nor the power of God.",
+  "Matthew 22:30": "For in the resurrection they neither marry, nor are given in marriage, but are as the angels of God in heaven.",
+  "Matthew 22:31": "But as touching the resurrection of the dead, have ye not read that which was spoken unto you by God, saying,",
+  "Matthew 22:32": "I am the God of Abraham, and the God of Isaac, and the God of Jacob? God is not the God of the dead, but of the living.",
+  "Matthew 22:33": "And when the multitude heard this, they were astonished at his doctrine.",
+
+  "Matthew 23:34": "Wherefore, behold, I send unto you prophets, and wise men, and scribes: and some of them ye shall kill and crucify; and some of them shall ye scourge in your synagogues, and persecute them from city to city:",
+  "Matthew 23:35": "That upon you may come all the righteous blood shed upon the earth, from the blood of righteous Abel unto the blood of Zacharias son of Barachias, whom ye slew between the temple and the altar.",
+
+  "Matthew 25:1": "Then shall the kingdom of heaven be likened unto ten virgins, which took their lamps, and went forth to meet the bridegroom.",
+
+  "Matthew 28:17": "And when they saw him, they worshipped him: but some doubted.",
+  "Matthew 28:20": "Teaching them to observe all things whatsoever I have commanded you: and, lo, I am with you alway, even unto the end of the world. Amen.",
+
+  "Mark 7:21": "For from within, out of the heart of men, proceed evil thoughts, adulteries, fornications, murders,",
+  "Mark 7:22": "Thefts, covetousness, wickedness, deceit, lasciviousness, an evil eye, blasphemy, pride, foolishness:",
+  "Mark 7:23": "All these evil things come from within, and defile the man.",
+
+  "Luke 10:41": "And Jesus answered and said unto her, Martha, Martha, thou art careful and troubled about many things:",
+  "Luke 10:42": "But one thing is needful: and Mary hath chosen that good part, which shall not be taken away from her.",
+
+  "Luke 13:32": "And he said unto them, Go ye, and tell that fox, Behold, I cast out devils, and I do cures to day and to morrow, and the third day I shall be perfected.",
+
+  "Luke 15:11": "And he said, A certain man had two sons:",
+  "Luke 15:12": "And the younger of them said to his father, Father, give me the portion of goods that falleth to me. And he divided unto them his living.",
+  "Luke 15:13": "And not many days after the younger son gathered all together, and took his journey into a far country, and there wasted his substance with riotous living.",
+  "Luke 15:14": "And when he had spent all, there arose a mighty famine in that land; and he began to be in want.",
+  "Luke 15:15": "And he went and joined himself to a citizen of that country; and he sent him into his fields to feed swine.",
+  "Luke 15:16": "And he would fain have filled his belly with the husks that the swine did eat: and no man gave unto him.",
+  "Luke 15:17": "And when he came to himself, he said, How many hired servants of my father's have bread enough and to spare, and I perish with hunger!",
+  "Luke 15:18": "I will arise and go to my father, and will say unto him, Father, I have sinned against heaven, and before thee,",
+  "Luke 15:19": "And am no more worthy to be called thy son: make me as one of thy hired servants.",
+  "Luke 15:20": "And he arose, and came to his father. But when he was yet a great way off, his father saw him, and had compassion, and ran, and fell on his neck, and kissed him.",
+  "Luke 15:21": "And the son said unto him, Father, I have sinned against heaven, and in thy sight, and am no more worthy to be called thy son.",
+  "Luke 15:22": "But the father said to his servants, Bring forth the best robe, and put it on him; and put a ring on his hand, and shoes on his feet:",
+  "Luke 15:23": "And bring hither the fatted calf, and kill it; and let us eat, and be merry.",
+
+  "Luke 16:10": "He that is faithful in that which is least is faithful also in much: and he that is unjust in the least is unjust also in much.",
+
+  "Luke 16:19": "There was a certain rich man, which was clothed in purple and fine linen, and fared sumptuously
+
+{
+  "Luke 16:19": "There was a certain rich man, which was clothed in purple and fine linen, and fared sumptuously every day:",
+  "Luke 16:20": "And there was a certain beggar named Lazarus, which was laid at his gate, full of sores,",
+  "Luke 16:21": "And desiring to be fed with the crumbs which fell from the rich man's table: moreover the dogs came and licked his sores.",
+  "Luke 16:22": "And it came to pass, that the beggar died, and was carried by the angels into Abraham's bosom: the rich man also died, and was buried;",
+  "Luke 16:23": "And in hell he lift up his eyes, being in torments, and seeth Abraham afar off, and Lazarus in his bosom.",
+  "Luke 16:24": "And he cried and said, Father Abraham, have mercy on me, and send Lazarus, that he may dip the tip of his finger in water, and cool my tongue; for I am tormented in this flame.",
+  "Luke 16:25": "But Abraham said, Son, remember that thou in thy lifetime receivedst thy good things, and likewise Lazarus evil things: but now he is comforted, and thou art tormented.",
+  "Luke 16:26": "And beside all this, between us and you there is a great gulf fixed: so that they which would pass from hence to you cannot; neither can they pass to us, that would come from thence.",
+  "Luke 16:27": "Then he said, I pray thee therefore, father, that thou wouldest send him to my father's house:",
+  "Luke 16:28": "For I have five brethren; that he may testify unto them, lest they also come into this place of torment.",
+  "Luke 16:29": "Abraham saith unto him, They have Moses and the prophets; let them hear them.",
+  "Luke 16:30": "And he said, Nay, father Abraham: but if one went unto them from the dead, they will repent.",
+  "Luke 16:31": "And he said unto him, If they hear not Moses and the prophets, neither will they be persuaded, though one rose from the dead.",
+
+  "Luke 17:10": "So likewise ye, when ye shall have done all those things which are commanded you, say, We are unprofitable servants: we have done that which was our duty to do.",
+
+  "Luke 18:9": "And he spake this parable unto certain which trusted in themselves that they were righteous, and despised others:",
+  "Luke 18:10": "Two men went up into the temple to pray; the one a Pharisee, and the other a publican.",
+  "Luke 18:11": "The Pharisee stood and prayed thus with himself, God, I thank thee, that I am not as other men are, extortioners, unjust, adulterers, or even as this publican.",
+  "Luke 18:12": "I fast twice in the week, I give tithes of all that I possess.",
+  "Luke 18:13": "And the publican, standing afar off, would not lift up so much as his eyes unto heaven, but smote upon his breast, saying, God be merciful to me a sinner.",
+  "Luke 18:14": "I tell you, this man went down to his house justified rather than the other: for every one that exalteth himself shall be abased; and he that humbleth himself shall be exalted.",
+
+  "Luke 24:44": "And he said unto them, These are the words which I spake unto you, while I was yet with you, that all things must be fulfilled, which were written in the law of Moses, and in the prophets, and in the psalms, concerning me.",
+
+  "John 1:1": "In the beginning was the Word, and the Word was with God, and the Word was God.",
+  "John 1:14": "And the Word was made flesh, and dwelt among us, (and we beheld his glory, the glory as of the only begotten of the Father,) full of grace and truth.",
+  "John 1:16": "And of his fulness have all we received, and grace for grace.",
+
+  "John 3:3": "Jesus answered and said unto him, Verily, verily, I say unto thee, Except a man be born again, he cannot see the kingdom of God.",
+  "John 3:4": "Nicodemus saith unto him, How can a man be born when he is old? can he enter the second time into his mother's womb, and be born?",
+  "John 3:5": "Jesus answered, Verily, verily, I say unto thee, Except a man be born of water and of the Spirit, he cannot enter into the kingdom of God.",
+  "John 3:6": "That which is born of the flesh is flesh; and that which is born of the Spirit is spirit.",
+  "John 3:7": "Marvel not that I said unto thee, Ye must be born again.",
+  "John 3:8": "The wind bloweth where it listeth, and thou hearest the sound thereof, but canst not tell whence it cometh, and whither it goeth: so is every one that is born of the Spirit.",
+  "John 3:9": "Nicodemus answered and said unto him, How can these things be?",
+  "John 3:10": "Jesus answered and said unto him, Art thou a master of Israel, and knowest not these things?",
+
+  "John 4:10": "Jesus answered and said unto her, If thou knewest the gift of God, and who it is that saith to thee, Give me to drink; thou wouldest have asked of him, and he would have given thee living water.",
+  "John 4:13": "Jesus answered and said unto her, Whosoever drinketh of this water shall thirst again:",
+  "John 4:14": "But whosoever drinketh of the water that I shall give him shall never thirst; but the water that I shall give him shall be in him a well of water springing up into everlasting life.",
+
+  "John 6:53": "Then Jesus said unto them, Verily, verily, I say unto you, Except ye eat the flesh of the Son of man, and drink his blood, ye have no life in you.",
+  "John 6:70": "Jesus answered them, Have not I chosen you twelve, and one of you is a devil?",
+
+  "John 8:34": "Jesus answered them, Verily, verily, I say unto you, Whosoever committeth sin is the servant of sin.",
+
+  "John 9:30": "The man answered and said unto them, Why herein is a marvellous thing, that ye know not from whence he is, and yet he hath opened mine eyes.",
+  "John 9:31": "Now we know that God heareth not sinners: but if any man be a worshipper of God, and doeth his will, him he heareth.",
+  "John 9:32": "Since the world began was it not heard that any man opened the eyes of one that was born blind.",
+  "John 9:33": "If this man were not of God, he could do nothing.",
+  "John 9:34": "They answered and said unto him, Thou wast altogether born in sins, and dost thou teach us? And they cast him out.",
+  "John 9:35": "Jesus heard that they had cast him out; and when he had found him, he said unto him, Dost thou believe on the Son of God?",
+  "John 9:36": "He answered and said, Who is he, Lord, that I might believe on him?",
+  "John 9:37": "And Jesus said unto him, Thou hast both seen him, and it is he that talketh with thee.",
+  "John 9:38": "And he said, Lord, I believe. And he worshipped him.",
+
+  "John 10:27": "My sheep hear my voice, and I know them, and they follow me:",
+  "John 10:28": "And I give unto them eternal life; and they shall never perish, neither shall any man pluck them out of my hand.",
+
+  "John 14:1": "Let not your heart be troubled: ye believe in God, believe also in me.",
+  "John 14:2": "In my Father's house are many mansions: if it were not so, I would have told you. I go to prepare a place for you.",
+  "John 14:3": "And if I go and prepare a place for you, I will come again, and receive you unto myself; that where I am, there ye may be also.",
+  "John 14:4": "And whither I go ye know, and the way ye know.",
+  "John 14:6": "Jesus saith unto him, I am the way, the truth, and the life: no man cometh unto the Father, but by me.",
+  "John 14:14": "If ye shall ask any thing in my name, I will do it.",
+  "John 14:15": "If ye love me, keep my commandments.",
+  "John 14:16": "And I will pray the Father, and he shall give you another Comforter, that he may abide with you for ever;",
+  "John 14:17": "Even the Spirit of truth; whom the world cannot receive, because it seeth him not, neither knoweth him: but ye know him; for he dwelleth with you, and shall be in you.",
+  "John 14:18": "I will not leave you comfortless: I will come to you.",
+  "John 14:23": "Jesus answered and said unto him, If a man love me, he will keep my words: and my Father will love him, and we will come unto him, and make our abode with him.",
+
+  "John 15:1": "I am the true vine, and my Father is the husbandman.",
+  "John 15:2": "Every branch in me that beareth not fruit he taketh away: and every branch that beareth fruit, he purgeth it, that it may bring forth more fruit.",
+  "John 15:3": "Now ye are clean through the word which I have spoken unto you.",
+  "John 15:4": "Abide in me, and I in you. As the branch cannot bear fruit of itself, except it abide in the vine; no more can ye, except ye abide in me.",
+  "John 15:5": "I am the vine, ye are the branches: He that abideth in me, and I in him, the same bringeth forth much fruit: for without me ye can do nothing.",
+  "John 15:6": "If a man abide not in me, he is cast forth as a branch, and is withered; and men gather them, and cast them into the fire, and they are burned.",
+  "John 15:7": "If ye abide in me, and my words abide in you, ye shall ask what ye will, and it shall be done unto you.",
+  "John 15:8": "Herein is my Father glorified, that ye bear much fruit; so shall ye be my disciples.",
+  "John 15:11": "These things have I spoken unto you, that my joy might remain in you, and that your joy might be full.",
+
+  "John 16:33": "These things I have spoken unto you, that in me ye might have peace. In the world ye shall have tribulation: but be of good cheer; I have overcome the world.",
+
+  "John 18:31": "Then said Pilate unto them, Take ye him, and judge him according to your law. The Jews therefore said unto him, It is not lawful for us to put any man to death:",
+  "John 18:32": "That the saying of Jesus might be fulfilled, which he spake, signifying what death he should die.",
+  "John 18:33": "Then Pilate entered into the judgment hall again, and called Jesus, and said unto him, Art thou the King of the Jews?",
+  "John 18:37": "Pilate therefore said unto him, Art thou a king then? Jesus answered, Thou sayest that I am a king. To this end was I born, and for this cause came I into the world, that I should bear witness unto the truth. Every one that is of the truth heareth my voice.",
+  "John 18:38": "Pilate saith unto him, What is truth? And when he had said this, he went out again unto the Jews, and saith unto them, I find in him no fault at all.",
+
+  "Acts 1:24": "And they prayed, and said, Thou, Lord, which knowest the hearts of all men, shew whether of these two thou hast chosen,",
+  "Acts 8:24": "Then answered Simon, and said, Pray ye to the Lord for me, that none of these things which ye have spoken come upon me.",
+  "Acts 10:9": "On the morrow, as they went on their journey, and drew nigh unto the city, Peter went up upon the housetop to pray about the sixth hour:",
+  "Acts 10:10": "And he became very hungry, and would have eaten: but while they made ready, he fell into a trance,",
+  "Acts 10:11": "And saw heaven opened, and a certain vessel descending unto him, as it had been a great sheet knit at the four corners, and let down to the earth:",
+  "Acts 10:12": "Wherein were all manner of fourfooted beasts of the earth, and wild beasts, and creeping things, and fowls of the air.",
+  "Acts 10:13": "And there came a voice to him, Rise, Peter; kill, and eat.",
+  "Acts 10:14": "But Peter said, Not so, Lord; for I have never eaten any thing that is common or unclean.",
+  "Acts 10:15": "And the voice spake unto him again the second time, What God hath cleansed, that call not thou common.",
+  "Acts 10:16": "This was done thrice: and the vessel was received up again into heaven.",
+  "Acts 13:36": "For David, after he had served his own generation by the will of God, fell on sleep, and was laid unto his fathers, and saw corruption:"
+}
+
+{
+  "Romans 1:20": "For the invisible things of him from the creation of the world are clearly seen, being understood by the things that are made, even his eternal power and Godhead; so that they are without excuse:",
+  "Romans 1:21": "Because that, when they knew God, they glorified him not as God, neither were thankful; but became vain in their imaginations, and their foolish heart was darkened.",
+  "Romans 1:22": "Professing themselves to be wise, they became fools,",
+  "Romans 1:23": "And changed the glory of the uncorruptible God into an image made like to corruptible man, and to birds, and fourfooted beasts, and creeping things.",
+  "Romans 1:24": "Wherefore God also gave them up to uncleanness through the lusts of their own hearts, to dishonour their own bodies between themselves:",
+  "Romans 1:25": "Who changed the truth of God into a lie, and worshipped and served the creature more than the Creator, who is blessed for ever. Amen.",
+  "Romans 1:26": "For this cause God gave them up unto vile affections: for even their women did change the natural use into that which is against nature:",
+  "Romans 1:27": "And likewise also the men, leaving the natural use of the woman, burned in their lust one toward another; men with men working that which is unseemly, and receiving in themselves that recompence of their error which was meet.",
+  "Romans 1:28": "And even as they did not like to retain God in their knowledge, God gave them over to a reprobate mind, to do those things which are not convenient;",
+  "Romans 1:29": "Being filled with all unrighteousness, fornication, wickedness, covetousness, maliciousness; full of envy, murder, debate, deceit, malignity; whisperers,",
+  "Romans 1:30": "Backbiters, haters of God, despiteful, proud, boasters, inventors of evil things, disobedient to parents,",
+  "Romans 1:31": "Without understanding, covenantbreakers, without natural affection, implacable, unmerciful:",
+
+  "Romans 2:4": "Or despisest thou the riches of his goodness and forbearance and longsuffering; not knowing that the goodness of God leadeth thee to repentance?",
+  "Romans 2:5": "But after thy hardness and impenitent heart treasurest up unto thyself wrath against the day of wrath and revelation of the righteous judgment of God;",
+  "Romans 2:15": "Which shew the work of the law written in their hearts, their conscience also bearing witness, and their thoughts the mean while accusing or else excusing one another;",
+
+  "Romans 3:5": "But if our unrighteousness commend the righteousness of God, what shall we say? Is God unrighteous who taketh vengeance? (I speak as a man)",
+  "Romans 3:10": "As it is written, There is none righteous, no, not one:",
+  "Romans 3:11": "There is none that understandeth, there is none that seeketh after God.",
+  "Romans 3:12": "They are all gone out of the way, they are together become unprofitable; there is none that doeth good, no, not one.",
+  "Romans 3:21": "But now the righteousness of God without the law is manifested, being witnessed by the law and the prophets;",
+  "Romans 3:22": "Even the righteousness of God which is by faith of Jesus Christ unto all and upon all them that believe: for there is no difference:",
+  "Romans 3:23": "For all have sinned, and come short of the glory of God;",
+  "Romans 3:24": "Being justified freely by his grace through the redemption that is in Christ Jesus:",
+  "Romans 3:25": "Whom God hath set forth to be a propitiation through faith in his blood, to declare his righteousness for the remission of sins that are past, through the forbearance of God;",
+
+  "Romans 4:6": "Even as David also describeth the blessedness of the man, unto whom God imputeth righteousness without works,",
+  "Romans 4:23": "Now it was not written for his sake alone, that it was imputed to him;",
+  "Romans 4:24": "But for us also, to whom it shall be imputed, if we believe on him that raised up Jesus our Lord from the dead;",
+  "Romans 4:25": "Who was delivered for our offences, and was raised again for our justification.",
+
+  "Romans 5:1": "Therefore being justified by faith, we have peace with God through our Lord Jesus Christ:",
+  "Romans 5:2": "By whom also we have access by faith into this grace wherein we stand, and rejoice in hope of the glory of God.",
+  "Romans 5:3": "And not only so, but we glory in tribulations also: knowing that tribulation worketh patience;",
+  "Romans 5:4": "And patience, experience; and experience, hope:",
+  "Romans 5:5": "And hope maketh not ashamed; because the love of God is shed abroad in our hearts by the Holy Ghost which is given unto us.",
+  "Romans 5:8": "But God commendeth his love toward us, in that, while we were yet sinners, Christ died for us.",
+  "Romans 5:10": "For if, when we were enemies, we were reconciled to God by the death of his Son, much more, being reconciled, we shall be saved by his life.",
+  "Romans 5:12": "Wherefore, as by one man sin entered into the world, and death by sin; and so death passed upon all men, for that all have sinned:",
+
+  "Romans 6:1": "What shall we say then? Shall we continue in sin, that grace may abound?",
+  "Romans 6:3": "Know ye not, that so many of us as were baptized into Jesus Christ were baptized into his death?",
+  "Romans 6:4": "Therefore we are buried with him by baptism into death: that like as Christ was raised up from the dead by the glory of the Father, even so we also should walk in newness of life.",
+  "Romans 6:11": "Likewise reckon ye also yourselves to be dead indeed unto sin, but alive unto God through Jesus Christ our Lord.",
+  "Romans 6:12": "Let not sin therefore reign in your mortal body, that ye should obey it in the lusts thereof.",
+  "Romans 6:13": "Neither yield ye your members as instruments of unrighteousness unto sin: but yield yourselves unto God, as those that are alive from the dead, and your members as instruments of righteousness unto God.",
+  "Romans 6:14": "For sin shall not have dominion over you: for ye are not under the law, but under grace.",
+  "Romans 6:23": "For the wages of sin is death; but the gift of God is eternal life through Jesus Christ our Lord.",
+
+  "Romans 7:18": "For I know that in me (that is, in my flesh,) dwelleth no good thing: for to will is present with me; but how to perform that which is good I find not.",
+  "Romans 7:19": "For the good that I would I do not: but the evil which I would not, that I do.",
+  "Romans 7:23": "But I see another law in my members, warring against the law of my mind, and bringing me into captivity to the law of sin which is in my members.",
+  "Romans 7:24": "O wretched man that I am! who shall deliver me from the body of this death?",
+
+  "Romans 8:9": "But ye are not in the flesh, but in the Spirit, if so be that the Spirit of God dwell in you. Now if any man have not the Spirit of Christ, he is none of his.",
+  "Romans 8:10": "And if Christ be in you, the body is dead because of sin; but the Spirit is life because of righteousness.",
+  "Romans 8:11": "But if the Spirit of him that raised up Jesus from the dead dwell in you, he that raised up Christ from the dead shall also quicken your mortal bodies by his Spirit that dwelleth in you.",
+  "Romans 8:27": "And he that searcheth the hearts knoweth what is the mind of the Spirit, because he maketh intercession for the saints according to the will of God.",
+  "Romans 8:28": "And we know that all things work together for good to them that love God, to them who are the called according to his purpose.",
+  "Romans 8:29": "For whom he did foreknow, he also did predestinate to be conformed to the image of his Son, that he might be the firstborn among many brethren.",
+  "Romans 8:30": "Moreover whom he did predestinate, them he also called: and whom he called, them he also justified: and whom he justified, them he also glorified.",
+  "Romans 8:37": "Nay, in all these things we are more than conquerors through him that loved us.",
+
+  "Romans 10:8": "But what saith it? The word is nigh thee, even in thy mouth, and in thy heart: that is, the word of faith, which we preach;",
+  "Romans 10:9": "That if thou shalt confess with thy mouth the Lord Jesus, and shalt believe in thine heart that God hath raised him from the dead, thou shalt be saved.",
+  "Romans 10:10": "For with the heart man believeth unto righteousness; and with the mouth confession is made unto salvation.",
+  "Romans 10:11": "For the scripture saith, Whosoever believeth on him shall not be ashamed.",
+  "Romans 10:12": "For there is no difference between the Jew and the Greek: for the same Lord over all is rich unto all that call upon him.",
+  "Romans 10:13": "For whosoever shall call upon the name of the Lord shall be saved.",
+
+  "Romans 11:6": "And if by grace, then is it no more of works: otherwise grace is no more grace. But if it be of works, then is it no more grace: otherwise work is no more work.",
+  "Romans 11:13": "For I speak to you Gentiles, inasmuch as I am the apostle of the Gentiles, I magnify mine office:",
+  "Romans 11:14": "If by any means I may provoke to emulation them which are my flesh, and might save some of them.",
+  "Romans 11:15": "For if the casting away of them be the reconciling of the world, what shall the receiving of them be, but life from the dead?",
+  "Romans 11:16": "For if the firstfruit be holy, the lump is also holy: and if the root be holy, so are the branches.",
+  "Romans 11:17": "And if some of the branches be broken off, and thou, being a wild olive tree, wert graffed in among them, and with them partakest of the root and fatness of the olive tree;",
+  "Romans 11:18": "Boast not against the branches. But if thou boast, thou bearest not the root, but the root thee.",
+  "Romans 11:19": "Thou wilt say then, The branches were broken off, that I might be graffed in.",
+  "Romans 11:20": "Well; because of unbelief they were broken off, and thou standest by faith. Be not highminded, but fear:",
+  "Romans 11:21": "For if God spared not the natural branches, take heed lest he also spare not thee.",
+  "Romans 11:22": "Behold therefore the goodness and severity of God: on them which fell, severity; but toward thee, goodness, if thou continue in his goodness: otherwise thou also shalt be cut off.",
+
+  "Romans 12:2": "And be not conformed to this world: but be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God.",
+  "Romans 12:3": "For I say, through the grace given unto me, to every man that is among you, not to think of himself more highly than he ought to think; but to think soberly, according as God hath dealt to every man the measure of faith.",
+
+  "1 Corinthians 3:16": "Know ye not that ye are the temple of God, and that the Spirit of God dwelleth in you?",
+
+  "1 Corinthians 6:19": "What? know ye not that your body is the temple of the Holy Ghost which is in you, which ye have of God, and ye are not your own?",
+  "1 Corinthians 6:20": "For ye are bought with a price: therefore glorify God in your body, and in your spirit, which are God's.",
+
+  "1 Corinthians 10:9": "Neither let us tempt Christ, as some of them also tempted, and were destroyed of serpents.",
+  "1 Corinthians 10:10": "Neither murmur ye, as some of them also murmured, and were destroyed of the destroyer.",
+  "1 Corinthians 10:11": "Now all these things happened unto them for ensamples: and they are written for our admonition, upon whom the ends of the world are come.",
+  "1 Corinthians 10:12": "Wherefore let him that thinketh he standeth take heed lest he fall.",
+
+  "1 Corinthians 15:1": "Moreover, brethren, I declare unto you the gospel which I preached unto you, which also ye have received, and wherein ye stand;",
+  "1 Corinthians 15:3": "For I delivered unto you first of all that which I also received, how that Christ died for our sins according to the scriptures;",
+  "1 Corinthians 15:4": "And that he was buried, and that he rose again the third day according to the scriptures:",
+  "1 Corinthians 15:5": "And that he was seen of Cephas, then of the twelve:",
+  "1 Corinthians 15:6": "After that, he was seen of above five hundred brethren at once; of whom the greater part remain unto this present, but some are fallen asleep.",
+  "1 Corinthians 15:7": "After that, he was seen of James; then of all the apostles.",
+  "1 Corinthians 15:8": "And last of all he was seen of me also, as of one born out of due time.",
+  "1 Corinthians 15:10": "But by the grace of God I am what I am: and his grace which was bestowed upon me was not in vain; but I laboured more abundantly than they all: yet not I, but the grace of God which was with me.",
+  "1 Corinthians 15:20": "But now is Christ risen from the dead, and become the firstfruits of them that slept.",
+  "1 Corinthians 15:21": "For since by man came death, by man came also the resurrection of the dead.",
+  "1 Corinthians 15:22": "For as in Adam all die, even so in Christ shall all be made alive.",
+  "1 Corinthians 15:23": "But every man in his own order: Christ the firstfruits; afterward they that are Christ's at his coming.",
+  "1 Corinthians 15:24": "Then cometh the end, when he shall have delivered up the kingdom to God, even the Father; when he shall have put down all rule and all authority and power.",
+  "1 Corinthians 15:25": "For he must reign, till he hath put all enemies under his feet.",
+  "1 Corinthians 15:26": "The last enemy that shall be destroyed is death.",
+
+  "2 Corinthians 3:5": "Not that we are sufficient of ourselves to think any thing as of ourselves; but our sufficiency is of God;",
+  "2 Corinthians 3:14": "But their minds were blinded: for until this day remaineth the same vail untaken away in the reading of the old testament; which vail is done away in Christ.",
+  "2 Corinthians 4:6": "For God, who commanded the light to shine out of darkness, hath shined in our hearts, to give the light of the knowledge of the glory of God in the face of Jesus Christ.",
+  "2 Corinthians 4:7": "But we have this treasure in earthen vessels, that the excellency of the power may be of God, and not of us.",
+  "2 Corinthians 4:8": "We are troubled on every side, yet not distressed; we are perplexed, but not in despair;",
+  "2 Corinthians 4:9": "Persecuted, but not forsaken; cast down, but not destroyed;",
+  "2 Corinthians 4:10": "Always bearing about in the body the dying of the Lord Jesus, that the life also of Jesus might be made manifest in our body.",
+  "2 Corinthians 7:10": "For godly sorrow worketh repentance to salvation not to be repented of: but the sorrow of the world worketh death.",
+  "2 Corinthians 9:8": "And God is able to make all grace abound toward you; that ye, always having all sufficiency in all things, may abound to every good work:",
+  "2 Corinthians 12:9": "And he said unto me, My grace is sufficient for thee: for my strength is made perfect in weakness. Most gladly therefore will I rather glory in my infirmities, that the power of Christ may rest upon me.",
+  "2 Corinthians 12:10": "Therefore I take pleasure in infirmities, in reproaches, in necessities, in persecutions, in distresses for Christ's
+
+
+{
+  "2 Corinthians 12:10": "Therefore I take pleasure in infirmities, in reproaches, in necessities, in persecutions, in distresses for Christ's sake: for when I am weak, then am I strong.",
+
+  "Galatians 2:16": "Knowing that a man is not justified by the works of the law, but by the faith of Jesus Christ, even we have believed in Jesus Christ, that we might be justified by the faith of Christ, and not by the works of the law: for by the works of the law shall no flesh be justified.",
+  "Galatians 2:20": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+  "Galatians 3:6": "Even as Abraham believed God, and it was accounted to him for righteousness.",
+  "Galatians 3:7": "Know ye therefore that they which are of faith, the same are the children of Abraham.",
+  "Galatians 3:8": "And the scripture, foreseeing that God would justify the heathen through faith, preached before the gospel unto Abraham, saying, In thee shall all nations be blessed.",
+  "Galatians 3:9": "So then they which be of faith are blessed with faithful Abraham.",
+  "Galatians 3:16": "Now to Abraham and his seed were the promises made. He saith not, And to seeds, as of many; but as of one, And to thy seed, which is Christ.",
+  "Galatians 3:28": "There is neither Jew nor Greek, there is neither bond nor free, there is neither male nor female: for ye are all one in Christ Jesus.",
+  "Galatians 3:29": "And if ye be Christ's, then are ye Abraham's seed, and heirs according to the promise.",
+
+  "Ephesians 1:7": "In whom we have redemption through his blood, the forgiveness of sins, according to the riches of his grace;",
+  "Ephesians 1:20": "Which he wrought in Christ, when he raised him from the dead, and set him at his own right hand in the heavenly places,",
+
+  "Ephesians 2:1": "And you hath he quickened, who were dead in trespasses and sins;",
+  "Ephesians 2:2": "Wherein in time past ye walked according to the course of this world, according to the prince of the power of the air, the spirit that now worketh in the children of disobedience:",
+  "Ephesians 2:3": "Among whom also we all had our conversation in times past in the lusts of our flesh, fulfilling the desires of the flesh and of the mind; and were by nature the children of wrath, even as others.",
+  "Ephesians 2:4": "But God, who is rich in mercy, for his great love wherewith he loved us,",
+  "Ephesians 2:5": "Even when we were dead in sins, hath quickened us together with Christ, (by grace ye are saved;)",
+  "Ephesians 2:6": "And hath raised us up together, and made us sit together in heavenly places in Christ Jesus:",
+  "Ephesians 2:7": "That in the ages to come he might shew the exceeding riches of his grace in his kindness toward us through Christ Jesus.",
+  "Ephesians 2:8": "For by grace are ye saved through faith; and that not of yourselves: it is the gift of God:",
+  "Ephesians 2:13": "But now in Christ Jesus ye who sometimes were far off are made nigh by the blood of Christ.",
+  "Ephesians 2:14": "For he is our peace, who hath made both one, and hath broken down the middle wall of partition between us;",
+  "Ephesians 2:15": "Having abolished in his flesh the enmity, even the law of commandments contained in ordinances; for to make in himself of twain one new man, so making peace;",
+  "Ephesians 2:19": "Now therefore ye are no more strangers and foreigners, but fellowcitizens with the saints, and of the household of God;",
+  "Ephesians 2:22": "In whom ye also are builded together for an habitation of God through the Spirit.",
+
+  "Ephesians 3:17": "That Christ may dwell in your hearts by faith; that ye, being rooted and grounded in love,",
+
+  "Ephesians 4:22": "That ye put off concerning the former conversation the old man, which is corrupt according to the deceitful lusts;",
+  "Ephesians 4:23": "And be renewed in the spirit of your mind;",
+  "Ephesians 4:24": "And that ye put on the new man, which after God is created in righteousness and true holiness.",
+
+  "Philippians 1:6": "Being confident of this very thing, that he which hath begun a good work in you will perform it until the day of Jesus Christ:",
+  "Philippians 1:9": "And this I pray, that your love may abound yet more and more in knowledge and in all judgment;",
+  "Philippians 1:10": "That ye may approve things that are excellent; that ye may be sincere and without offence till the day of Christ;",
+  "Philippians 1:11": "Being filled with the fruits of righteousness, which are by Jesus Christ, unto the glory and praise of God.",
+  "Philippians 1:12": "But I would ye should understand, brethren, that the things which happened unto me have fallen out rather unto the furtherance of the gospel;",
+  "Philippians 1:13": "So that my bonds in Christ are manifest in all the palace, and in all other places.",
+  "Philippians 1:14": "And many of the brethren in the Lord, waxing confident by my bonds, are much more bold to speak the word without fear.",
+
+  "Philippians 2:10": "That at the name of Jesus every knee should bow, of things in heaven, and things in earth, and things under the earth;",
+
+  "Philippians 4:7": "And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus.",
+  "Philippians 4:8": "Finally, brethren, whatsoever things are true, whatsoever things are honest, whatsoever things are just, whatsoever things are pure, whatsoever things are lovely, whatsoever things are of good report; if there be any virtue, and if there be any praise, think on these things.",
+  "Philippians 4:9": "Those things, which ye have both learned, and received, and heard, and seen in me, do: and the God of peace shall be with you.",
+  "Philippians 4:11": "Not that I speak in respect of want: for I have learned, in whatsoever state I am, therewith to be content.",
+  "Philippians 4:12": "I know both how to be abased, and I know how to abound: every where and in all things I am instructed both to be full and to be hungry, both to abound and to suffer need.",
+  "Philippians 4:13": "I can do all things through Christ which strengtheneth me.",
+
+  "Colossians 1:9": "For this cause we also, since the day we heard it, do not cease to pray for you, and to desire that ye might be filled with the knowledge of his will in all wisdom and spiritual understanding;",
+  "Colossians 1:10": "That ye might walk worthy of the Lord unto all pleasing, being fruitful in every good work, and increasing in the knowledge of God;",
+  "Colossians 1:11": "Strengthened with all might, according to his glorious power, unto all patience and longsuffering with joyfulness;",
+  "Colossians 1:14": "In whom we have redemption through his blood, even the forgiveness of sins:",
+  "Colossians 1:21": "And you, that were sometime alienated and enemies in your mind by wicked works, yet now hath he reconciled",
+  "Colossians 1:27": "To whom God would make known what is the riches of the glory of this mystery among the Gentiles; which is Christ in you, the hope of glory:",
+
+  "Colossians 2:9": "For in him dwelleth all the fulness of the Godhead bodily.",
+  "Colossians 2:10": "And ye are complete in him, which is the head of all principality and power:",
+  "Colossians 2:11": "In whom also ye are circumcised with the circumcision made without hands, in putting off the body of the sins of the flesh by the circumcision of Christ:",
+  "Colossians 2:12": "Buried with him in baptism, wherein also ye are risen with him through the faith of the operation of God, who hath raised him from the dead.",
+
+  "Colossians 3:5": "Mortify therefore your members which are upon the earth; fornication, uncleanness, inordinate affection, evil concupiscence, and covetousness, which is idolatry."
+}
+
+{
+  "1 Thessalonians 2:13": "For this cause also thank we God without ceasing, because, when ye received the word of God which ye heard of us, ye received it not as the word of men, but as it is in truth, the word of God, which effectually worketh also in you that believe.",
+
+  "1 Timothy 6:6": "But godliness with contentment is great gain.",
+  "1 Timothy 6:7": "For we brought nothing into this world, and it is certain we can carry nothing out.",
+  "1 Timothy 6:8": "And having food and raiment let us be therewith content.",
+  "1 Timothy 6:9": "But they that will be rich fall into temptation and a snare, and into many foolish and hurtful lusts, which drown men in destruction and perdition.",
+  "1 Timothy 6:10": "For the love of money is the root of all evil: which while some coveted after, they have erred from the faith, and pierced themselves through with many sorrows.",
+  "1 Timothy 6:17": "Charge them that are rich in this world, that they be not highminded, nor trust in uncertain riches, but in the living God, who giveth us richly all things to enjoy;",
+
+  "Hebrews 1:1": "God, who at sundry times and in divers manners spake in time past unto the fathers by the prophets,",
+  "Hebrews 1:2": "Hath in these last days spoken unto us by his Son, whom he hath appointed heir of all things, by whom also he made the worlds;",
+  "Hebrews 1:3": "Who being the brightness of his glory, and the express image of his person, and upholding all things by the word of his power, when he had by himself purged our sins, sat down on the right hand of the Majesty on high;",
+  "Hebrews 4:12": "For the word of God is quick, and powerful, and sharper than any twoedged sword, piercing even to the dividing asunder of soul and spirit, and of the joints and marrow, and is a discerner of the thoughts and intents of the heart.",
+  "Hebrews 4:13": "Neither is there any creature that is not manifest in his sight: but all things are naked and opened unto the eyes of him with whom we have to do.",
+  "Hebrews 13:5": "Let your conversation be without covetousness; and be content with such things as ye have: for he hath said, I will never leave thee, nor forsake thee.",
+
+  "James 1:2": "My brethren, count it all joy when ye fall into divers temptations;",
+  "James 1:3": "Knowing this, that the trying of your faith worketh patience.",
+  "James 1:4": "But let patience have her perfect work, that ye may be perfect and entire, wanting nothing.",
+  "James 1:17": "Every good gift and every perfect gift is from above, and cometh down from the Father of lights, with whom is no variableness, neither shadow of turning.",
+  "James 4:1": "From whence come wars and fightings among you? come they not hence, even of your lusts that war in your members?",
+  "James 4:8": "Draw nigh to God, and he will draw nigh to you. Cleanse your hands, ye sinners; and purify your hearts, ye double minded.",
+  "James 4:9": "Be afflicted, and mourn, and weep: let your laughter be turned to mourning, and your joy to heaviness.",
+  "James 4:10": "Humble yourselves in the sight of the Lord, and he shall lift you up.",
+
+  "1 Peter 1:3": "Blessed be the God and Father of our Lord Jesus Christ, which according to his abundant mercy hath begotten us again unto a lively hope by the resurrection of Jesus Christ from the dead,",
+  "1 Peter 1:4": "To an inheritance incorruptible, and undefiled, and that fadeth not away, reserved in heaven for you,",
+  "1 Peter 1:8": "Whom having not seen, ye love; in whom, though now ye see him not, yet believing, ye rejoice with joy unspeakable and full of glory:",
+  "1 Peter 1:9": "Receiving the end of your faith, even the salvation of your souls.",
+  "1 Peter 2:4": "To whom coming, as unto a living stone, disallowed indeed of men, but chosen of God, and precious,",
+  "1 Peter 2:5": "Ye also, as lively stones, are built up a spiritual house, an holy priesthood, to offer up spiritual sacrifices, acceptable to God by Jesus Christ.",
+  "1 Peter 2:6": "Wherefore also it is contained in the scripture, Behold, I lay in Sion a chief corner stone, elect, precious: and he that believeth on him shall not be confounded.",
+  "1 Peter 2:7": "Unto you therefore which believe he is precious: but unto them which be disobedient, the stone which the builders disallowed, the same is made the head of the corner,",
+  "1 Peter 2:8": "And a stone of stumbling, and a rock of offence, even to them which stumble at the word, being disobedient: whereunto also they were appointed.",
+  "1 Peter 2:9": "But ye are a chosen generation, a royal priesthood, an holy nation, a peculiar people; that ye should shew forth the praises of him who hath called you out of darkness into his marvellous light:",
+  "1 Peter 2:10": "Which in time past were not a people, but are now the people of God: which had not obtained mercy, but now have obtained mercy.",
+  "1 Peter 2:11": "Dearly beloved, I beseech you as strangers and pilgrims, abstain from fleshly lusts, which war against the soul;",
+  "1 Peter 2:24": "Who his own self bare our sins in his own body on the tree, that we, being dead to sins, should live unto righteousness: by whose stripes ye were healed.",
+
+  "1 John 4:13": "Hereby know we that we dwell in him, and he in us, because he hath given us of his Spirit.",
+  "1 John 4:16": "And we have known and believed the love that God hath to us. God is love; and he that dwelleth in love dwelleth in God, and God in him.",
+
+  "Revelation 3:20": "Behold, I stand at the door, and knock: if any man hear my voice, and open the door, I will come in to him, and will sup with him, and he with me.",
+  "Revelation 21:22": "And I saw no temple therein: for the Lord God Almighty and the Lamb are the temple of it.",
+  "Revelation 21:23": "And the city had no need of the sun, neither of the moon, to shine in it: for the glory of God did lighten it, and the Lamb is the light thereof.",
+  "Revelation 21:24": "And the nations of them which are saved shall walk in the light of it: and the kings of the earth do bring their glory and honour into it."
+}
+
+
+
+
+
+
+
+
