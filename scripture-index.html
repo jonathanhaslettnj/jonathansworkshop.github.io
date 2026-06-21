@@ -2528,25 +2528,27 @@ li:hover {
       <span class="files"><a href="Rooted/contentment/02 Contentment.pdf">
 
 
-
+</ul>   <!-- end of your list -->
+</section>
+</div>  <!-- end of your container -->
 
 <script>
-fetch("kjv-verses.json")
-  .then(r => r.json())
-  .then(kjv => {
-    document.querySelectorAll(".ref").forEach(span => {
-      const key = span.dataset.ref;
-      if (!kjv[key]) return;
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("kjv-verses.json")
+    .then(r => r.json())
+    .then(kjv => {
+      document.querySelectorAll(".ref").forEach(span => {
+        const key = span.dataset.ref;
+        if (!kjv[key]) return;
 
-      const bubble = document.createElement("span");
-      bubble.className = "tooltip-bubble";
-      bubble.textContent = kjv[key];
-      span.appendChild(bubble);
+        const bubble = document.createElement("span");
+        bubble.className = "tooltip-bubble";
+        bubble.textContent = kjv[key];
+        span.appendChild(bubble);
+      });
     });
-  });
+});
 </script>
-
-</div>
 
 <div class="return-box">
   <a href="index.html">Return to Home</a>
@@ -2554,3 +2556,4 @@ fetch("kjv-verses.json")
 
 </body>
 </html>
+
