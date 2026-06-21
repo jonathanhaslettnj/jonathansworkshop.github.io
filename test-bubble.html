@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tooltip Test Page</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 40px;
+  }
+
+  .ref {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    position: relative;
+    margin-right: 20px;
+  }
+
+  .tooltip-bubble {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    background: #ffffcc;
+    border: 1px solid #999;
+    padding: 8px;
+    border-radius: 4px;
+    width: 250px;
+    z-index: 1000;
+  }
+
+  .ref:hover .tooltip-bubble {
+    display: block;
+  }
+</style>
+</head>
+
+<body>
+
+<h2>Tooltip Test Page</h2>
+
+<p>
+  <span class="ref" data-ref="John 3:16">John 3:16</span>
+  <span class="ref" data-ref="Genesis 1:1">Genesis 1:1</span>
+  <span class="ref" data-ref="Psalm 23:1">Psalm 23:1</span>
+</p>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("test-verses.json")
+    .then(r => r.json())
+    .then(kjv => {
+      document.querySelectorAll(".ref").forEach(span => {
+        const key = span.dataset.ref;
+        if (!kjv[key]) return;
+
+        const bubble = document.createElement("span");
+        bubble.className = "tooltip-bubble";
+        bubble.textContent = kjv[key];
+        span.appendChild(bubble);
+      });
+    });
+});
+</script>
+
+</body>
+</html>
