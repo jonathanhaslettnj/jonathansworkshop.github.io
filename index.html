@@ -2,295 +2,236 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Holiness</title>
-
-<!-- REQUIRED FOR iPHONE SCALING -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jonathan's Workshop</title>
 
 <style>
+
+/* ------------------------------
+   BASE PAGE STYLING (DESKTOP)
+   ------------------------------ */
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  font-size: 18px;
+  background-color: #ffffff;   /* ⭐ restored white background */
+}
+
+h1 {
+  color: #003399;     /* deep blue */
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #003399;     /* deep blue */
+  font-size: 24px;
+  margin-top: 30px;
+}
+
+/* YouTube viewer */
+iframe {
+  width: 560px;
+  height: 315px;
+  max-width: 100%;
+  border: none;
+}
+
+/* Centered bordered video box */
+.unit-box {
+  border: 2px solid #444;
+  padding: 20px;
+  margin: 30px auto;
+  width: 90%;
+  max-width: 560px;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+/* Link blocks */
+a {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 0;
+  width: 90%;
+  max-width: 400px;
+  border: 2px solid #003399;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 18px;
+  background: #ffffff;
+}
+
+/* Bible Study link colors */
+.bible-link {
+  color: #006600;
+}
+
+/* Woodworking link color */
+.wood-link {
+  color: #990000;
+}
+
+/* ⭐ Reusable return box (NOT used on this page) */
+.return-box {
+  background: #e6f2ff;
+  border: 2px solid #7aaee6;
+  padding: 12px;
+  margin: 40px auto 0 auto;
+  width: 70%;
+  max-width: 350px;
+  border-radius: 8px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.return-box a {
+  text-decoration: none;
+  color: #004a99;
+}
+
+/* qr-image */
+.qr-image {
+  max-width: 90%;
+  width: 200px;
+  height: auto;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 5px;
+  background: white;
+  display: block;
+  margin: 0 auto;
+}
+
+
+
+.contact-box p {
+  margin-bottom: 400px;
+  font-size: 18px;
+}
+
+.contact-box a {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  border: none;
+  background: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: #003399;
+  text-decoration: none;
+  word-break: break-all;
+}
+/* -----------------------------------------
+   PHONE‑ONLY ADJUSTMENTS — 25% LARGER
+   ----------------------------------------- */
+
+@media (max-width: 480px) {
+
   body {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    padding: 20px;
+    font-size: 22px;
   }
 
   h1 {
-    font-size: 48px;
-    color: blue;
+    font-size: 40px;
   }
 
-  .unit-box {
-    border: 2px solid #444;
-    padding: 20px;
-    margin: 30px auto;
-    width: 90%;
-    max-width: 500px;
-    border-radius: 10px;
+  h2 {
+    font-size: 30px;
   }
 
-  .doc-link-box {
-    border: 2px solid #888;
-    padding: 10px;
-    margin-top: 15px;
-    border-radius: 6px;
-    background: #f9f9f9;
-  }
-
-  .doc-link-box a {
-    font-size: 20px;
-    text-decoration: none;
+  a {
+    font-size: 22px;
+    padding: 14px 0;
   }
 
   iframe {
-    width: 100%;
-    height: 260px;
-    border: none;
-    border-radius: 6px;
+    width: 100% !important;
+    height: auto !important;
   }
+}
 
-  /* MOBILE ENLARGEMENT (iPhone SE and similar) */
-  @media (max-width: 600px) {
-    body {
-      font-size: 125%;
-    }
-    h1 {
-      font-size: 60px;
-    }
-    .doc-link-box a {
-      font-size: 24px;
-    }
-    .return-box a {
-      font-size: 22px;
-    }
-  }
-
-  .return-box {
-    background: #e6f2ff;      /* light blue */
-    border: 2px solid #7aaee6;
-    padding: 12px;
-    margin: 20px auto;
-    width: 70%;
-    max-width: 350px;
-    border-radius: 8px;
-  }
-
-  .return-box a {
-    font-size: 18px;
-    text-decoration: none;
-    color: #004a99;
-  }
 </style>
-
 </head>
+
 <body>
 
-<h1>Hebrews</h1>
-<h5>These were handouts for sermons, but they are very useful to studying the book of Hebrews</h5>
+<h1>Jonathan's Workshop</h1>
 
-<!-- 01 -->
+<!-- YouTube Video -->
 <div class="unit-box">
-
-  <div class="doc-link-box">
-    <a href="01.pdf">
-Hebrews: Hold on to Faith in Jesus
-    </a>
-  </div>
-
+  <iframe 
+    src="https://www.youtube.com/embed/Fer2suu_Goc?"
+    allowfullscreen>
+  </iframe>
 </div>
 
-<!-- 02 -->
+<section class="intro-block">
+    <h2>Bible Study Mission</h2>
+    <p>
+        Jonathan’s Workshop strives to provide Scripture‑based Bible Study resources designed to support personal growth,
+        Christian teaching, and practical discipleship. My desire is to give careful attention to the biblical text
+        and offer structured guidance for understanding and applying God’s Word.
+    </p>
+</section>
+
+
+<!-- Bible Study Section -->
+<h2>Bible Study</h2>
+
+<a class="bible-link" href="Rooted/index.html">Stay Rooted in Jesus</a>
+<a class="bible-link" href="Friday/index.html">Formerly Friday Bible Studies</a>
+<a class="bible-link" href="Questions/index.html">Questions with Answers</a>
+<a class="bible-link" href="Unfolding/index.html">Sermons: Unfolding Redemption's Plan</a>
+
+<!-- Woodworking Section -->
+<h2>Woodworking</h2>
+
+<a class="wood-link" href="Woodworking/index.html">Woodworking Videos</a>
+
+
+<!-- YouTube Video -->
 <div class="unit-box">
+  <iframe 
+    src="https://www.youtube.com/embed/tU-U53fZVNM"
+    allowfullscreen>
+  </iframe>
 
-   <div class="doc-link-box">
-    <a href="02.pdf">
-Everything Pointed to Jesus
-    </a>
+  <div class="video-description" style="margin-top: 15px; text-align: center; font-size: 18px;">
+    <strong>How to Use This Website</strong><br>
   </div>
-  </div>
-<!-- 03 -->
-<div class="unit-box">
-
-   <div class="doc-link-box">
-    <a href="03.pdf">
-Twice the Son of God
-    </a>
-  </div>
-  </div>
-<!-- 04 -->
-<div class="unit-box">
-
-   <div class="doc-link-box">
-    <a href="04.pdf">
-Who and What Is Jesus?
-    </a>
-  </div>
-  </div>
-<!-- 05 -->
-<div class="unit-box">
-
-   <div class="doc-link-box">
-    <a href="05.pdf">
-The Point Is: Jesus Is God
-    </a>
-  </div>
-  </div>
-
-<!-- 06 -->
-<div class="unit-box">
-   <div class="doc-link-box">
-    <a href="06.pdf">
-Spiritual Drift
-    </a>
-  </div>
-  </div>
-
-
-<!-- 07 -->
-<div class="unit-box">
-   <div class="doc-link-box">
-    <a href="07.pdf">
-The Ultimate Man
-    </a>
-  </div>
-  </div>
-
-<!-- 08 -->
-<div class="unit-box">
-   <div class="doc-link-box">
-    <a href="08.pdf">
-Jesus Is Greater than Moses
-    </a>
-  </div>
-  </div>
-
-<!-- 09 -->
-<div class="unit-box">
-   <div class="doc-link-box">
-    <a href="09.pdf">
-God Offers His Rest (part 1)
-    </a>
-  </div>
-  </div>
-
-<!-- 10 -->
-<div class="unit-box">
-   <div class="doc-link-box">
-    <a href="10.pdf">
-Strive to Enter God’s Rest (part 2)
-    </a>
-  </div>
-  </div>
-
-<!-- 11 -->
-<div class="unit-box">
-   <div class="doc-link-box">
-    <a href="11.pdf">
-Why Is Jesus the Best High Priest of All Time?
-    </a>
-  </div>
-  </div>
-
-<!-- 12 -->
-<div class="unit-box">
-   <div class="doc-link-box">
-    <a href="12.pdf">
-When Is Hope Gone?
-    </a>
-  </div>
-  </div>
-
-<!-- 13 -->
-<div class="unit-box">
-   <div class="doc-link-box">
-    <a href="13.pdf">
-Who Can Be Certain?
-    </a>
-  </div>
-  </div>
-
-<!-- 14 -->
-<div class="unit-box">
-   <div class="doc-link-box">
-    <a href="14.pdf">
-A Better Hope in Jesus
-    </a>
-  </div>
-  </div>
-
-<!-- 15 -->
-<div class="unit-box">
-   <div class="doc-link-box">
-    <a href="15.pdf">
-Jesus' High Priestly Prayer
-    </a>
-  </div>
-  </div>
-
-<!-- 16 -->
-<div class="unit-box">
-   <div class="doc-link-box">
-    <a href="16.pdf">
-God’s Revelation Has Come
-    </a>
-  </div>
-  </div>
-
-<!-- 17 -->
-<div class="unit-box">
-   <div class="doc-link-box">
-    <a href="17.pdf">
-The Truest Temple
-    </a>
-  </div>
-  </div>
-
-
-<!-- 18 -->
-<div class="unit-box">
-   <div class="doc-link-box">
-    <a href="18.pdf">
-Christ's Redeeming Blood
-    </a>
-  </div>
-  </div>
-
-<!-- 19 -->
-<div class="unit-box">
-   <div class="doc-link-box">
-    <a href="19.pdf">
-God Is Content with Jesus’ Sacrifice
-    </a>
-  </div>
-  </div>
-
-<!-- 20 -->
-<div class="unit-box">
-   <div class="doc-link-box">
-    <a href="20.pdf">
-Assurance above Anything Here Below
-    </a>
-  </div>
-  </div>
-
-
-<!-- Scripture Index of This Section -->
-<div class="unit-box">
-<h2>Future Scripture Index Will Go Here</h2>
-<a class="bible-link" href="scripture index father.html">Scripture Passages Used in This Section</a>
 </div>
 
+<!-- Indexes of Site -->
+<div class="unit-box">
+<h2>Indexed Listings of Resources</h2>
+<a class="bible-link" href="alphabetical-index.html">Alphabetical Index of Titles</a>
+<a class="bible-link" href="scripture-index.html">Scripture Passages Used in Studies and Sermons</a>
 </div>
 
-<br><br>
 
-<div class="unit-box" style="margin-top: 40px;">
+<!-- Seeds of Hope Contact Box -->
+<div class="contact-box">
+  <p>
+    For spiritual questions or guidance, please contact Seeds of Hope Ministries at:
+    <a href="mailto:info@seedsofhopeministries.org">info@seedsofhopeministries.org</a>
+To see the full website for Seeds of Hope,     <a href="https://seedsofhopeministries.org"> click here.</a>
+  </p>
+</div>
 
-  <div class="return-box">
-    <a href="../index.html">
-      Return to Previous Page
-    </a>
-  </div>
 
+
+
+
+
+<!-- QR Code Section -->
+<div class="qr-section">
+  <h2>Scan to Share Jonathan’s Workshop</h2>
+  <img src="qr.jpeg" alt="QR code for Jonathan's Workshop" class="qr-image">
 </div>
 
 </body>
