@@ -29,7 +29,6 @@
         color: #5a4a3a;
     }
 
-    /* Jump-to-book buttons */
     .book-buttons {
         text-align: center;
         margin: 25px 0;
@@ -51,7 +50,6 @@
         background: #c7dbff;
     }
 
-    /* Book section header */
     .book-section {
         margin-top: 40px;
         margin-bottom: 10px;
@@ -61,7 +59,6 @@
         font-weight: bold;
     }
 
-    /* Verse list */
     .verse-list {
         width: 80%;
         margin: 0 auto;
@@ -125,12 +122,21 @@ const bibleOrder = [
 ];
 
 // ------------------------------------------------------------
-// VALID WEBSITE FOLDERS
+// VALID WEBSITE FOLDERS (EXACT MATCH ONLY)
 // ------------------------------------------------------------
 const validFolders = [
-"Rooted","Rooted/Remedies","Rooted/contentment","Rooted/contentment/Jesus",
-"Friday","Friday/Bible","Friday/Father","Friday/Holiness","Friday/Hebrews",
-"Unfolding","Questions","Woodworking"
+"Rooted",
+"Rooted/Remedies",
+"Rooted/contentment",
+"Rooted/contentment/Jesus",
+"Friday",
+"Friday/Bible",
+"Friday/Father",
+"Friday/Holiness",
+"Friday/Hebrews",
+"Unfolding",   // ✔ Only this Unfolding folder is allowed
+"Questions",
+"Woodworking"
 ];
 
 // ------------------------------------------------------------
@@ -160,16 +166,27 @@ function buildIndex(entries) {
         const parts = rawPath.split("/");
         const filename = parts.pop();
 
-        // DEEPEST FOLDER DETECTION
+        // ------------------------------------------------------------
+        // EXACT FOLDER MATCHING (NO PARTIAL MATCHES)
+        // ------------------------------------------------------------
         let detectedFolder = "";
         let longestMatch = 0;
 
         for (const folder of validFolders) {
-            if (rawPath.includes(folder) && folder.length > longestMatch) {
-                longestMatch = folder.length;
-                detectedFolder = folder;
+            const folderNormalized = folder.replace(/\\/g, "/");
+
+            if (rawPath.includes(folderNormalized + "/") ||
+                rawPath.endsWith(folderNormalized)) {
+
+                if (folderNormalized.length > longestMatch) {
+                    longestMatch = folderNormalized.length;
+                    detectedFolder = folderNormalized;
+                }
             }
         }
+
+        // Skip entries from folders not in validFolders
+        if (!detectedFolder) return;
 
         const pdfUrl = "https://jonathansworkshop.online/" + detectedFolder + "/" + filename;
 
@@ -208,7 +225,6 @@ function renderIndex(index) {
     const container = document.getElementById("index");
     const buttonContainer = document.getElementById("bookButtons");
 
-    // Build Jump-to-Book buttons
     bibleOrder.forEach(book => {
         if (!index[book]) return;
 
@@ -221,7 +237,6 @@ function renderIndex(index) {
         buttonContainer.appendChild(btn);
     });
 
-    // Build book sections
     bibleOrder.forEach(book => {
         if (!index[book]) return;
 
@@ -267,4 +282,3 @@ function renderIndex(index) {
 
 </body>
 </html>
-
