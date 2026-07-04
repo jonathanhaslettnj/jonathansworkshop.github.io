@@ -134,7 +134,8 @@ const validFolders = [
 "Friday/Father",
 "Friday/Holiness",
 "Friday/Hebrews",
-"Unfolding",   // ✔ Only this Unfolding folder is allowed
+"Friday/Ezra",
+"Unfolding",
 "Questions",
 "Woodworking"
 ];
@@ -167,7 +168,7 @@ function buildIndex(entries) {
         const filename = parts.pop();
 
         // ------------------------------------------------------------
-        // EXACT FOLDER MATCHING (NO PARTIAL MATCHES)
+        // EXACT FOLDER MATCHING
         // ------------------------------------------------------------
         let detectedFolder = "";
         let longestMatch = 0;
@@ -185,10 +186,13 @@ function buildIndex(entries) {
             }
         }
 
-        // Skip entries from folders not in validFolders
         if (!detectedFolder) return;
 
         const pdfUrl = "https://jonathansworkshop.online/" + detectedFolder + "/" + filename;
+
+        // ⭐ NEW TITLE SYSTEM: FolderName – FileName.pdf
+        const folderName = detectedFolder.split("/").pop();
+        const displayTitle = `${folderName} – ${filename}`;
 
         item.references.forEach(ref => {
 
@@ -210,7 +214,7 @@ function buildIndex(entries) {
                 verseStart: verseStart,
                 verseEnd: verseEnd,
                 url: pdfUrl,
-                title: item.title || filename
+                displayTitle: displayTitle
             });
         });
     });
@@ -231,54 +235,4 @@ function renderIndex(index) {
         const count = index[book].length;
 
         const btn = document.createElement("a");
-        btn.href = "#" + book.replace(/\s+/g, "_");
-        btn.textContent = `${book} (${count})`;
-
-        buttonContainer.appendChild(btn);
-    });
-
-    bibleOrder.forEach(book => {
-        if (!index[book]) return;
-
-        const count = index[book].length;
-
-        // ⭐ SORT BY CHAPTER, THEN VERSE START, THEN VERSE END
-        index[book].sort((a, b) => {
-            if (a.chapter !== b.chapter) return a.chapter - b.chapter;
-            if (a.verseStart !== b.verseStart) return a.verseStart - b.verseStart;
-
-            const aEnd = a.verseEnd || a.verseStart;
-            const bEnd = b.verseEnd || b.verseStart;
-            return aEnd - bEnd;
-        });
-
-        const header = document.createElement("div");
-        header.className = "book-section";
-        header.id = book.replace(/\s+/g, "_");
-        header.textContent = `${book} (${count} references)`;
-
-        const verseList = document.createElement("div");
-        verseList.className = "verse-list";
-
-        index[book].forEach(entry => {
-            const refText = entry.verseEnd
-                ? `${entry.book} ${entry.chapter}:${entry.verseStart}–${entry.verseEnd}`
-                : `${entry.book} ${entry.chapter}:${entry.verseStart}`;
-
-            const p = document.createElement("p");
-            p.innerHTML = `
-                <strong>${refText}</strong> — 
-                <a href="${entry.url}" target="_blank">${entry.title}</a>
-                <span class="note">(Opens PDF — scroll to verse)</span>
-            `;
-            verseList.appendChild(p);
-        });
-
-        container.appendChild(header);
-        container.appendChild(verseList);
-    });
-}
-</script>
-
-</body>
-</html>
+        btn.href = "#" + book
