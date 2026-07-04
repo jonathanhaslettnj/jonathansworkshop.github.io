@@ -235,4 +235,53 @@ function renderIndex(index) {
         const count = index[book].length;
 
         const btn = document.createElement("a");
-        btn.href = "#" + book
+        btn.href = "#" + book.replace(/\s+/g, "_");
+        btn.textContent = `${book} (${count})`;
+
+        buttonContainer.appendChild(btn);
+    });
+
+    bibleOrder.forEach(book => {
+        if (!index[book]) return;
+
+        const count = index[book].length;
+
+        index[book].sort((a, b) => {
+            if (a.chapter !== b.chapter) return a.chapter - b.chapter;
+            if (a.verseStart !== b.verseStart) return a.verseStart - b.verseStart;
+
+            const aEnd = a.verseEnd || a.verseStart;
+            const bEnd = b.verseEnd || b.verseStart;
+            return aEnd - bEnd;
+        });
+
+        const header = document.createElement("div");
+        header.className = "book-section";
+        header.id = book.replace(/\s+/g, "_");
+        header.textContent = `${book} (${count} references)`;
+
+        const verseList = document.createElement("div");
+        verseList.className = "verse-list";
+
+        index[book].forEach(entry => {
+            const refText = entry.verseEnd
+                ? `${entry.book} ${entry.chapter}:${entry.verseStart}–${entry.verseEnd}`
+                : `${entry.book} ${entry.chapter}:${entry.verseStart}`;
+
+            const p = document.createElement("p");
+            p.innerHTML = `
+                <strong>${refText}</strong> — 
+                <a href="${entry.url}" target="_blank">${entry.displayTitle}</a>
+                <span class="note">(Opens PDF — scroll to verse)</span>
+            `;
+            verseList.appendChild(p);
+        });
+
+        container.appendChild(header);
+        container.appendChild(verseList);
+    });
+}
+</script>
+
+</body>
+</html>
