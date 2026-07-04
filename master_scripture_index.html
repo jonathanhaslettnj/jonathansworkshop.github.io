@@ -75,7 +75,7 @@ const bibleOrder = [
 ];
 
 // ------------------------------------------------------------
-// VALID WEBSITE FOLDERS (from your confirmation)
+// VALID WEBSITE FOLDERS (your confirmed list)
 // ------------------------------------------------------------
 const validFolders = [
 "Rooted","Rooted/Remedies","Rooted/contentment","Rooted/contentment/Jesus",
@@ -116,12 +116,16 @@ function buildIndex(entries) {
         const parts = rawPath.split("/");
         const filename = parts.pop();
 
-        // Detect correct folder
+        // ------------------------------------------------------------
+        // DEEPEST FOLDER DETECTION
+        // ------------------------------------------------------------
         let detectedFolder = "";
+        let longestMatch = 0;
+
         for (const folder of validFolders) {
-            if (rawPath.includes(folder)) {
+            if (rawPath.includes(folder) && folder.length > longestMatch) {
+                longestMatch = folder.length;
                 detectedFolder = folder;
-                break;
             }
         }
 
@@ -218,5 +222,6 @@ function renderIndex(index) {
 
 </body>
 </html>
+
 
 
