@@ -1,50 +1,96 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Master Scripture Index</title>
+
 <style>
     body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-        background: #f7f7f7;
+        font-family: Georgia, serif;
+        background: #faf9f7;
+        margin: 0;
+        padding: 20px;
+        color: #333;
     }
+
     h1 {
         text-align: center;
-        margin-bottom: 30px;
+        font-size: 36px;
+        margin-bottom: 40px;
+        color: #4a3f2f;
+        letter-spacing: 1px;
     }
+
+    /* BOOK HEADER */
     .book {
-        background: #e2e2e2;
-        padding: 10px;
-        margin-top: 10px;
+        background: #e8e2d9;
+        padding: 12px 18px;
+        margin: 12px auto;
+        width: 90%;
+        border-radius: 8px;
+        font-size: 22px;
+        font-weight: bold;
+        text-align: center;
         cursor: pointer;
-        border-radius: 5px;
-        font-size: 20px;
+        border: 1px solid #d2c7b8;
+        transition: background 0.2s;
     }
+    .book:hover {
+        background: #ded6cb;
+    }
+
+    /* CHAPTER HEADER */
     .chapter {
-        background: #f0f0f0;
-        padding: 8px;
-        margin-left: 20px;
+        background: #f3eee7;
+        padding: 10px 16px;
+        margin: 10px auto;
+        width: 85%;
+        border-radius: 6px;
+        font-size: 18px;
         cursor: pointer;
-        border-radius: 5px;
-        font-size: 17px;
+        border: 1px solid #dcd4c8;
+        transition: background 0.2s;
     }
+    .chapter:hover {
+        background: #e9e3db;
+    }
+
+    /* VERSE LIST */
     .verses {
-        margin-left: 40px;
-        padding: 5px 10px;
-        display: none;
         background: #ffffff;
-        border-left: 3px solid #999;
+        margin: 8px auto;
+        width: 80%;
+        padding: 12px 18px;
+        border-left: 4px solid #b8a894;
+        border-radius: 4px;
+        display: none;
+        box-shadow: 0px 1px 3px rgba(0,0,0,0.1);
     }
+
+    .verses p {
+        margin: 8px 0;
+        font-size: 17px;
+        line-height: 1.5;
+    }
+
     a {
+        color: #2a5db0;
         text-decoration: none;
-        color: #0066cc;
+        font-weight: bold;
     }
     a:hover {
         text-decoration: underline;
     }
+
+    .note {
+        color: #777;
+        font-size: 14px;
+        margin-left: 4px;
+    }
 </style>
 </head>
+
 <body>
 
 <h1>Master Scripture Index</h1>
@@ -104,21 +150,13 @@ function buildIndex(entries) {
 
     entries.forEach(item => {
 
-        // ------------------------------------------------------------
-        // CLEAN PATH
-        // ------------------------------------------------------------
         let rawPath = item.path.replace(/\\\\/g, "/").replace(/\\/g, "/");
-
-        // Remove backup folder prefix
         rawPath = rawPath.replace(/^.*Backup.*Site\//i, "");
 
-        // Extract filename
         const parts = rawPath.split("/");
         const filename = parts.pop();
 
-        // ------------------------------------------------------------
         // DEEPEST FOLDER DETECTION
-        // ------------------------------------------------------------
         let detectedFolder = "";
         let longestMatch = 0;
 
@@ -129,17 +167,11 @@ function buildIndex(entries) {
             }
         }
 
-        // Build final URL
         const pdfUrl = "https://jonathansworkshop.online/" + detectedFolder + "/" + filename;
 
-        // ------------------------------------------------------------
-        // PROCESS REFERENCES
-        // ------------------------------------------------------------
         item.references.forEach(ref => {
 
             const cleaned = ref.replace(/\s+/g, " ").trim();
-
-            // Match book, chapter, verse or verse-range
             const match = cleaned.match(/^([1-3]?\s?[A-Za-z]+)\s+(\d+):(\d+)(?:-(\d+))?/);
 
             if (!match) return;
@@ -208,7 +240,7 @@ function renderIndex(index) {
                 p.innerHTML = `
                     <strong>${refText}</strong> — 
                     <a href="${entry.url}" target="_blank">${entry.title}</a>
-                    <span style="color:#666; font-size: 14px;"> (Opens PDF — scroll to verse)</span>
+                    <span class="note">(Opens PDF — scroll to verse)</span>
                 `;
                 verseContainer.appendChild(p);
             });
@@ -225,4 +257,3 @@ function renderIndex(index) {
 
 </body>
 </html>
-
