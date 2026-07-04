@@ -75,7 +75,7 @@ const bibleOrder = [
 ];
 
 // ------------------------------------------------------------
-// VALID WEBSITE FOLDERS (your confirmed list)
+// VALID WEBSITE FOLDERS
 // ------------------------------------------------------------
 const validFolders = [
 "Rooted","Rooted/Remedies","Rooted/contentment","Rooted/contentment/Jesus",
@@ -140,88 +140,7 @@ function buildIndex(entries) {
             const cleaned = ref.replace(/\s+/g, " ").trim();
 
             // Match book, chapter, verse or verse-range
-            const match = cleaned.match(/^([1-3]?\s?[A-Za-z]+)\s+(\d+):(\d+)(?:-(\d+))?/);
 
-            if (!match) return;
-
-            const book = match[1];
-            const chapter = match[2];
-            const verseStart = match[3];
-            const verseEnd = match[4] || null;
-
-            if (!index[book]) index[book] = {};
-            if (!index[book][chapter]) index[book][chapter] = [];
-
-            index[book][chapter].push({
-                verseStart: verseStart,
-                verseEnd: verseEnd,
-                url: pdfUrl,
-                title: item.title || filename
-            });
-        });
-    });
-
-    renderIndex(index);
-}
-
-// ------------------------------------------------------------
-// RENDER INDEX
-// ------------------------------------------------------------
-function renderIndex(index) {
-    const container = document.getElementById("index");
-
-    bibleOrder.forEach(book => {
-        if (!index[book]) return;
-
-        const bookDiv = document.createElement("div");
-        bookDiv.className = "book";
-        bookDiv.textContent = book;
-
-        const chapterContainer = document.createElement("div");
-        chapterContainer.style.display = "none";
-
-        bookDiv.addEventListener("click", () => {
-            chapterContainer.style.display =
-                chapterContainer.style.display === "none" ? "block" : "none";
-        });
-
-        Object.keys(index[book]).sort((a,b)=>a-b).forEach(chapter => {
-
-            const chapterDiv = document.createElement("div");
-            chapterDiv.className = "chapter";
-            chapterDiv.textContent = "Chapter " + chapter;
-
-            const verseContainer = document.createElement("div");
-            verseContainer.className = "verses";
-
-            chapterDiv.addEventListener("click", () => {
-                verseContainer.style.display =
-                    verseContainer.style.display === "none" ? "block" : "none";
-            });
-
-            index[book][chapter].forEach(entry => {
-                const refText = entry.verseEnd
-                    ? `${book} ${chapter}:${entry.verseStart}–${entry.verseEnd}`
-                    : `${book} ${chapter}:${entry.verseStart}`;
-
-                const p = document.createElement("p");
-                p.innerHTML = `<strong>${refText}</strong> — 
-                               <a href="${entry.url}" target="_blank">${entry.title}</a>`;
-                verseContainer.appendChild(p);
-            });
-
-            chapterContainer.appendChild(chapterDiv);
-            chapterContainer.appendChild(verseContainer);
-        });
-
-        container.appendChild(bookDiv);
-        container.appendChild(chapterContainer);
-    });
-}
-</script>
-
-</body>
-</html>
 
 
 
