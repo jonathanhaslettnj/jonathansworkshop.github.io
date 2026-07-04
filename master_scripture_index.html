@@ -22,7 +22,6 @@
         letter-spacing: 1px;
     }
 
-    /* BOOK HEADER */
     .book {
         background: #e8e2d9;
         padding: 12px 18px;
@@ -40,7 +39,6 @@
         background: #ded6cb;
     }
 
-    /* CHAPTER HEADER */
     .chapter {
         background: #f3eee7;
         padding: 10px 16px;
@@ -56,7 +54,6 @@
         background: #e9e3db;
     }
 
-    /* VERSE LIST */
     .verses {
         background: #ffffff;
         margin: 8px auto;
@@ -156,7 +153,6 @@ function buildIndex(entries) {
         const parts = rawPath.split("/");
         const filename = parts.pop();
 
-        // DEEPEST FOLDER DETECTION
         let detectedFolder = "";
         let longestMatch = 0;
 
@@ -226,6 +222,7 @@ function renderIndex(index) {
             const verseContainer = document.createElement("div");
             verseContainer.className = "verses";
 
+            // ⭐ SINGLE CLICK TO EXPAND VERSES
             chapterDiv.addEventListener("click", () => {
                 verseContainer.style.display =
                     verseContainer.style.display === "none" ? "block" : "none";
@@ -257,3 +254,4 @@ function renderIndex(index) {
 
 </body>
 </html>
+
