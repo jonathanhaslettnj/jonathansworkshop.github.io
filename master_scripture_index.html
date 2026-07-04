@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Master Scripture Index</title>
+<title>Scripture Index</title>
 
 <style>
     body {
@@ -17,57 +16,61 @@
     h1 {
         text-align: center;
         font-size: 36px;
-        margin-bottom: 40px;
+        margin-bottom: 10px;
         color: #4a3f2f;
         letter-spacing: 1px;
     }
 
-    .book {
-        background: #e8e2d9;
-        padding: 12px 18px;
-        margin: 12px auto;
-        width: 90%;
-        border-radius: 8px;
-        font-size: 22px;
-        font-weight: bold;
+    h2 {
         text-align: center;
-        cursor: pointer;
-        border: 1px solid #d2c7b8;
-        transition: background 0.2s;
-    }
-    .book:hover {
-        background: #ded6cb;
-    }
-
-    .chapter {
-        background: #f3eee7;
-        padding: 10px 16px;
-        margin: 10px auto;
-        width: 85%;
-        border-radius: 6px;
         font-size: 18px;
-        cursor: pointer;
-        border: 1px solid #dcd4c8;
-        transition: background 0.2s;
-    }
-    .chapter:hover {
-        background: #e9e3db;
+        font-weight: normal;
+        margin-top: 0;
+        color: #5a4a3a;
     }
 
-    .verses {
-        background: #ffffff;
-        margin: 8px auto;
+    /* Jump-to-book buttons */
+    .book-buttons {
+        text-align: center;
+        margin: 25px 0;
+    }
+
+    .book-buttons a {
+        display: inline-block;
+        background: #d9e7ff;
+        color: #003c7a;
+        padding: 8px 14px;
+        margin: 6px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: 15px;
+        border: 1px solid #bcd0f2;
+    }
+
+    .book-buttons a:hover {
+        background: #c7dbff;
+    }
+
+    /* Book section header */
+    .book-section {
+        margin-top: 40px;
+        margin-bottom: 10px;
+        text-align: center;
+        font-size: 24px;
+        color: #2f5e2f;
+        font-weight: bold;
+    }
+
+    /* Verse list */
+    .verse-list {
         width: 80%;
-        padding: 12px 18px;
-        border-left: 4px solid #b8a894;
-        border-radius: 4px;
-        display: none;
-        box-shadow: 0px 1px 3px rgba(0,0,0,0.1);
+        margin: 0 auto;
+        margin-bottom: 30px;
     }
 
-    .verses p {
-        margin: 8px 0;
+    .verse-list p {
         font-size: 17px;
+        margin: 8px 0;
         line-height: 1.5;
     }
 
@@ -76,6 +79,7 @@
         text-decoration: none;
         font-weight: bold;
     }
+
     a:hover {
         text-decoration: underline;
     }
@@ -90,7 +94,10 @@
 
 <body>
 
-<h1>Master Scripture Index</h1>
+<h1>Scripture Index</h1>
+<h2>Every Scripture reference used across all Bible studies and sermons on Jonathan’s Workshop</h2>
+
+<div id="bookButtons" class="book-buttons"></div>
 
 <div id="index"></div>
 
@@ -139,7 +146,7 @@ fetch("https://jonathansworkshop.online/assetts/json/master_scripture_index.json
     });
 
 // ------------------------------------------------------------
-// BUILD INDEX
+// BUILD INDEX (FLAT LIST VERSION)
 // ------------------------------------------------------------
 function buildIndex(entries) {
 
@@ -153,6 +160,7 @@ function buildIndex(entries) {
         const parts = rawPath.split("/");
         const filename = parts.pop();
 
+        // DEEPEST FOLDER DETECTION
         let detectedFolder = "";
         let longestMatch = 0;
 
@@ -177,10 +185,11 @@ function buildIndex(entries) {
             const verseStart = match[3];
             const verseEnd = match[4] || null;
 
-            if (!index[book]) index[book] = {};
-            if (!index[book][chapter]) index[book][chapter] = [];
+            if (!index[book]) index[book] = [];
 
-            index[book][chapter].push({
+            index[book].push({
+                book: book,
+                chapter: chapter,
                 verseStart: verseStart,
                 verseEnd: verseEnd,
                 url: pdfUrl,
@@ -193,61 +202,55 @@ function buildIndex(entries) {
 }
 
 // ------------------------------------------------------------
-// RENDER INDEX
+// RENDER INDEX (FLAT LIST VERSION)
 // ------------------------------------------------------------
 function renderIndex(index) {
     const container = document.getElementById("index");
+    const buttonContainer = document.getElementById("bookButtons");
 
+    // Build Jump-to-Book buttons
     bibleOrder.forEach(book => {
         if (!index[book]) return;
 
-        const bookDiv = document.createElement("div");
-        bookDiv.className = "book";
-        bookDiv.textContent = book;
+        const count = index[book].length;
 
-        const chapterContainer = document.createElement("div");
-        chapterContainer.style.display = "none";
+        const btn = document.createElement("a");
+        btn.href = "#" + book.replace(/\s+/g, "_");
+        btn.textContent = `${book} (${count})`;
 
-        bookDiv.addEventListener("click", () => {
-            chapterContainer.style.display =
-                chapterContainer.style.display === "none" ? "block" : "none";
+        buttonContainer.appendChild(btn);
+    });
+
+    // Build book sections
+    bibleOrder.forEach(book => {
+        if (!index[book]) return;
+
+        const count = index[book].length;
+
+        const header = document.createElement("div");
+        header.className = "book-section";
+        header.id = book.replace(/\s+/g, "_");
+        header.textContent = `${book} (${count} references)`;
+
+        const verseList = document.createElement("div");
+        verseList.className = "verse-list";
+
+        index[book].forEach(entry => {
+            const refText = entry.verseEnd
+                ? `${entry.book} ${entry.chapter}:${entry.verseStart}–${entry.verseEnd}`
+                : `${entry.book} ${entry.chapter}:${entry.verseStart}`;
+
+            const p = document.createElement("p");
+            p.innerHTML = `
+                <strong>${refText}</strong> — 
+                <a href="${entry.url}" target="_blank">${entry.title}</a>
+                <span class="note">(Opens PDF — scroll to verse)</span>
+            `;
+            verseList.appendChild(p);
         });
 
-        Object.keys(index[book]).sort((a,b)=>a-b).forEach(chapter => {
-
-            const chapterDiv = document.createElement("div");
-            chapterDiv.className = "chapter";
-            chapterDiv.textContent = "Chapter " + chapter;
-
-            const verseContainer = document.createElement("div");
-            verseContainer.className = "verses";
-
-            // ⭐ SINGLE CLICK TO EXPAND VERSES
-            chapterDiv.addEventListener("click", () => {
-                verseContainer.style.display =
-                    verseContainer.style.display === "none" ? "block" : "none";
-            });
-
-            index[book][chapter].forEach(entry => {
-                const refText = entry.verseEnd
-                    ? `${book} ${chapter}:${entry.verseStart}–${entry.verseEnd}`
-                    : `${book} ${chapter}:${entry.verseStart}`;
-
-                const p = document.createElement("p");
-                p.innerHTML = `
-                    <strong>${refText}</strong> — 
-                    <a href="${entry.url}" target="_blank">${entry.title}</a>
-                    <span class="note">(Opens PDF — scroll to verse)</span>
-                `;
-                verseContainer.appendChild(p);
-            });
-
-            chapterContainer.appendChild(chapterDiv);
-            chapterContainer.appendChild(verseContainer);
-        });
-
-        container.appendChild(bookDiv);
-        container.appendChild(chapterContainer);
+        container.appendChild(header);
+        container.appendChild(verseList);
     });
 }
 </script>
