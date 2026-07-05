@@ -29,6 +29,31 @@
         color: #5a4a3a;
     }
 
+    /* DIRECTORY BAR */
+    #folderBar {
+        text-align: center;
+        margin: 20px 0;
+        padding: 10px;
+        background: #eee;
+        border-radius: 10px;
+    }
+
+    #folderBar a {
+        display: inline-block;
+        margin: 5px 10px;
+        padding: 6px 12px;
+        background: #e0f0ff;
+        border-radius: 12px;
+        text-decoration: none;
+        color: #003c7a;
+        font-weight: bold;
+        border: 1px solid #bcd0f2;
+    }
+
+    #folderBar a:hover {
+        background: #c7dbff;
+    }
+
     .book-buttons {
         text-align: center;
         margin: 25px 0;
@@ -94,8 +119,13 @@
 <h1>Scripture Index</h1>
 <h2>Every Scripture reference used across all Bible studies and sermons on Jonathan’s Workshop</h2>
 
+<!-- DIRECTORY BAR -->
+<div id="folderBar"></div>
+
+<!-- BOOK BUTTONS -->
 <div id="bookButtons" class="book-buttons"></div>
 
+<!-- MAIN INDEX -->
 <div id="index"></div>
 
 <script>
@@ -177,7 +207,7 @@ function buildIndex(entries) {
             const folderNormalized = folder.replace(/\\/g, "/");
 
             if (rawPath.includes(folderNormalized + "/") ||
-                rawPath.endsWith(folderNormalized)) {
+                rawPath.endsendsWith(folderNormalized)) {
 
                 if (folderNormalized.length > longestMatch) {
                     longestMatch = folderNormalized.length;
@@ -214,12 +244,29 @@ function buildIndex(entries) {
                 verseStart: verseStart,
                 verseEnd: verseEnd,
                 url: pdfUrl,
-                displayTitle: displayTitle
+                displayTitle: displayTitle,
+                folder: folderName
             });
         });
     });
 
     renderIndex(index);
+    renderFolderBar();
+}
+
+// ------------------------------------------------------------
+// DIRECTORY BAR (FOLDER BAR)
+// ------------------------------------------------------------
+function renderFolderBar() {
+    const bar = document.getElementById("folderBar");
+
+    validFolders.forEach(folder => {
+        const name = folder.split("/").pop();
+        const link = document.createElement("a");
+        link.href = "#folder_" + name;
+        link.textContent = name;
+        bar.appendChild(link);
+    });
 }
 
 // ------------------------------------------------------------
