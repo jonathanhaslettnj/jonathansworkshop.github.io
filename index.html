@@ -17,24 +17,24 @@ body {
   margin: 0;
   padding: 20px;
   font-size: 18px;
-  background-color: #ffffff;   /* ⭐ restored white background */
+  background-color: #ffffff;
 }
 
 h1 {
-  color: #003399;     /* deep blue */
+  color: #003399;
   font-size: 32px;
   margin-bottom: 20px;
 }
 
 h2 {
-  color: #003399;     /* deep blue */
+  color: #003399;
   font-size: 24px;
   margin-top: 30px;
 }
 
 /* ⭐ DIRECTORY BAR */
 #folderBar {
-  margin: 20px auto;
+  margin: 40px auto;
   padding: 10px;
   max-width: 900px;
   background: #eef5ff;
@@ -99,24 +99,6 @@ a {
 /* Woodworking link color */
 .wood-link {
   color: #990000;
-}
-
-/* ⭐ Reusable return box (NOT used on this page) */
-.return-box {
-  background: #e6f2ff;
-  border: 2px solid #7aaee6;
-  padding: 12px;
-  margin: 40px auto 0 auto;
-  width: 70%;
-  max-width: 350px;
-  border-radius: 8px;
-  font-size: 20px;
-  text-align: center;
-}
-
-.return-box a {
-  text-decoration: none;
-  color: #004a99;
 }
 
 /* qr-image */
@@ -187,7 +169,6 @@ a {
   padding: 0;
 }
 
-/* Tighten mission block spacing */
 .unit-box .intro-block {
   padding-top: 0;
   padding-bottom: 0;
@@ -200,124 +181,3 @@ a {
 }
 
 .intro-block p {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-</style>
-</head>
-
-<body>
-
-<h1>Jonathan's Workshop</h1>
-
-<!-- ⭐ DIRECTORY BAR INSERTED HERE -->
-<div id="folderBar"></div>
-
-<section class="intro-block">
-    <h2>Bible Study Mission</h2>
-    <p>
-        Jonathan’s Workshop strives to provide Scripture‑based Bible Study resources designed to support personal growth,
-        Christian teaching, and practical discipleship. 
-    </p>
-</section>
-
-
-<!-- YouTube Video -->
-<div class="unit-box">
-  <iframe 
-    src="https://www.youtube.com/embed/Fer2suu_Goc?"
-    allowfullscreen>
-  </iframe>
-</div>
-
-
-<!-- Bible Study Section -->
-<a class="bible-link" href="Rooted/index.html">Stay Rooted in Jesus</a>
-<a class="bible-link" href="Friday/index.html">Bible Study</a>
-<a class="bible-link" href="Questions/index.html">Questions with Answers</a>
-
-
-<!-- Woodworking Section -->
-<h2>Woodworking</h2>
-
-<a class="wood-link" href="Woodworking/index.html">Woodworking Videos</a>
-
-
-<!-- YouTube Video -->
-<div class="unit-box">
-  <iframe 
-    src="https://www.youtube.com/embed/tU-U53fZVNM"
-    allowfullscreen>
-  </iframe>
-
-  <div class="video-description" style="margin-top: 15px; text-align: center; font-size: 18px;">
-    <strong>How to Use This Website</strong><br>
-  </div>
-</div>
-
-<!-- Indexes of Site -->
-<div class="unit-box">
-<h2>Indexed Listings of Resources</h2>
-<a class="bible-link" href="alphabetical-index.html">Alphabetical Index of Titles</a>
-<a class="bible-link" href="scripture-index.html">Scripture Passages Used in Studies and Sermons</a>
-</div>
-<p style="text-align:center; margin-top:20px;">
-    <a href="/master_scripture_index.html" 
-       style="padding:10px 20px; background:#0066cc; color:white; border-radius:5px;">
-       Master Scripture Index
-    </a>
-</p>
-
-
-
-<!-- Seeds of Hope Contact Box -->
-<div class="contact-box">
-  <p>
-    For spiritual questions or guidance, please contact Seeds of Hope Ministries at:
-    <a href="mailto:info@seedsofhopeministries.org">info@seedsofhopeministries.org</a>
-To see the full website for Seeds of Hope,     <a href="https://seedsofhopeministries.org"> click here.</a>
-  </p>
-</div>
-
-<!-- QR Code Section -->
-<div class="qr-section">
-  <h2>Scan to Share Jonathan’s Workshop</h2>
-  <img src="qr.jpeg" alt="QR code for Jonathan's Workshop" class="qr-image">
-</div>
-
-<!-- ⭐ DIRECTORY BAR SCRIPT -->
-<script>
-const validFolders = [
-  "Rooted",
-  "Rooted/Remedies",
-  "Rooted/contentment",
-  "Rooted/contentment/Jesus",
-  "Friday",
-  "Friday/Bible",
-  "Friday/Father",
-  "Friday/Holiness",
-  "Friday/Hebrews",
-  "Friday/Ezra",
-  "Unfolding",
-  "Questions",
-  "Woodworking"
-];
-
-function renderFolderBar() {
-  const bar = document.getElementById("folderBar");
-
-  validFolders.forEach(folder => {
-    const name = folder.split("/").pop();
-    const link = document.createElement("a");
-    link.href = folder + "/index.html";
-    link.textContent = name;
-    bar.appendChild(link);
-  });
-}
-
-renderFolderBar();
-</script>
-
-</body>
-</html>
