@@ -32,6 +32,32 @@ h2 {
   margin-top: 30px;
 }
 
+/* ⭐ DIRECTORY BAR */
+#folderBar {
+  margin: 20px auto;
+  padding: 10px;
+  max-width: 900px;
+  background: #eef5ff;
+  border: 2px solid #aac6ff;
+  border-radius: 10px;
+}
+
+#folderBar a {
+  display: inline-block;
+  margin: 6px 10px;
+  padding: 6px 12px;
+  background: #d9e7ff;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #003c7a;
+  font-weight: bold;
+  border: 1px solid #bcd0f2;
+}
+
+#folderBar a:hover {
+  background: #c7dbff;
+}
+
 /* YouTube viewer */
 iframe {
   width: 560px;
@@ -106,8 +132,6 @@ a {
   margin: 0 auto;
 }
 
-
-
 .contact-box p {
   margin-bottom: 400px;
   font-size: 18px;
@@ -126,6 +150,7 @@ a {
   text-decoration: none;
   word-break: break-all;
 }
+
 /* -----------------------------------------
    PHONE‑ONLY ADJUSTMENTS — 25% LARGER
    ----------------------------------------- */
@@ -179,14 +204,15 @@ a {
   margin-bottom: 5px;
 }
 
-
-
 </style>
 </head>
 
 <body>
 
 <h1>Jonathan's Workshop</h1>
+
+<!-- ⭐ DIRECTORY BAR INSERTED HERE -->
+<div id="folderBar"></div>
 
 <section class="intro-block">
     <h2>Bible Study Mission</h2>
@@ -254,16 +280,44 @@ To see the full website for Seeds of Hope,     <a href="https://seedsofhopeminis
   </p>
 </div>
 
-
-
-
-
-
 <!-- QR Code Section -->
 <div class="qr-section">
   <h2>Scan to Share Jonathan’s Workshop</h2>
   <img src="qr.jpeg" alt="QR code for Jonathan's Workshop" class="qr-image">
 </div>
+
+<!-- ⭐ DIRECTORY BAR SCRIPT -->
+<script>
+const validFolders = [
+  "Rooted",
+  "Rooted/Remedies",
+  "Rooted/contentment",
+  "Rooted/contentment/Jesus",
+  "Friday",
+  "Friday/Bible",
+  "Friday/Father",
+  "Friday/Holiness",
+  "Friday/Hebrews",
+  "Friday/Ezra",
+  "Unfolding",
+  "Questions",
+  "Woodworking"
+];
+
+function renderFolderBar() {
+  const bar = document.getElementById("folderBar");
+
+  validFolders.forEach(folder => {
+    const name = folder.split("/").pop();
+    const link = document.createElement("a");
+    link.href = folder + "/index.html";
+    link.textContent = name;
+    bar.appendChild(link);
+  });
+}
+
+renderFolderBar();
+</script>
 
 </body>
 </html>
