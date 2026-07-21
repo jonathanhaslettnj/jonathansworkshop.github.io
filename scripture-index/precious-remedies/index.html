@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Scripture Index – Precious Remedies Against Satan’s Devices</title>
+
+<!-- Optional: GA4 tracking (you can include this if you want analytics on this page) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DP2GCK9YCT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DP2GCK9YCT');
+</script>
+
+<style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    h1 { margin-bottom: 10px; }
+    h2 { margin-top: 30px; }
+    .verse-entry { margin-left: 20px; }
+    .page-link { color: #0066cc; text-decoration: none; }
+</style>
+</head>
+
+<body>
+
+<h1>Scripture Index</h1>
+<h2>Precious Remedies Against Satan’s Devices</h2>
+
+<p>This index lists every Scripture reference found in the book, sorted in Bible order. Click a page number to open the PDF directly to that page.</p>
+
+<div id="index"></div>
+
+<script>
+// ⭐ External PDF URL ⭐
+const PDF_URL = "https://www.monergism.com/thethreshold/sdg/brooks/Precious%20Remedies%20Against%20Satan%20-%20Thomas%20Brooks%20(1).pdf";
+
+// Load the index JSON
+fetch("Precious Remedies Against Satan - Thomas Brooks_index.json")
+    .then(response => response.json())
+    .then(data => {
+        const container = document.getElementById("index");
+
+        for (const book in data) {
+            const bookHeader = document.createElement("h2");
+            bookHeader.textContent = book;
+            container.appendChild(bookHeader);
+
+            const chapters = data[book];
+            for (const chapter in chapters) {
+                const chapterHeader = document.createElement("h3");
+                chapterHeader.textContent = `Chapter ${chapter}`;
+                container.appendChild(chapterHeader);
+
+                const verses = chapters[chapter];
+                for (const verse in verses) {
+                    const div = document.createElement("div");
+                    div.className = "verse-entry";
+
+                    const pages = verses[verse]
+                        .map(p => `<a class="page-link" href="${PDF_URL}#page=${p}">p. ${p}</a>`)
+                        .join(", ");
+
+                    div.innerHTML = `<strong>${book} ${chapter}:${verse}</strong> — ${pages}`;
+                    container.appendChild(div);
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
