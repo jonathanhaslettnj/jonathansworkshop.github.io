@@ -23,23 +23,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function showTooltip(event) {
     const anchorId = event.target.id;
+    console.log("Hovered ID:", anchorId);
 
-    // Convert ref_John_6_29 → "John 6:29"
     const parts = anchorId.split("_");
     const book = parts[1];
     const chapter = parts[2];
     const verseNum = parts[3];
     const jsonKey = `${book} ${chapter}:${verseNum}`;
 
+    console.log("JSON key:", jsonKey);
+
     const verse = kjvData[jsonKey];
+
     if (!verse) {
-        tooltipColumn.innerHTML = "";
+        console.log("Verse not found in JSON.");
+        tooltipColumn.innerHTML = `<strong>${jsonKey}</strong><br><em>Not found in JSON</em>`;
         return;
     }
 
+    console.log("Verse object:", verse);
+
+    if (!verse.text) {
+        console.log("Verse object has no 'text' field.");
+        tooltipColumn.innerHTML = `<strong>${jsonKey}</strong><br><em>No text field</em>`;
+        return;
+    }
+
+    console.log("Verse text:", verse.text);
+
     tooltipColumn.innerHTML =
-        `<strong>${verse.book} ${verse.chapter}:${verse.verse}</strong><br>${verse.text}`;
+        `<strong>${jsonKey}</strong><br>${verse.text}`;
 }
+
 
 function clearTooltip() {
     tooltipColumn.innerHTML = "";
