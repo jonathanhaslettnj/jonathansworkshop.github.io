@@ -12,3 +12,18 @@
     display: none;
     z-index: 9999;
 }
+#tooltip-column {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 320px;
+    height: 100%;
+    padding: 15px;
+    background: #f7f7f7;
+    border-left: 1px solid #ccc;
+    overflow-y: auto;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
