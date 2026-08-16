@@ -28,12 +28,19 @@ document.addEventListener("DOMContentLoaded", () => {
 function showBubble(event) {
     const anchorId = event.target.id;
 
-    if (!kjvData[anchorId]) {
+    // Convert ref_John_6_29 → "John 6:29"
+    const parts = anchorId.split("_");
+    const book = parts[1];
+    const chapter = parts[2];
+    const verseNum = parts[3];
+    const jsonKey = `${book} ${chapter}:${verseNum}`;
+
+    if (!kjvData[jsonKey]) {
         bubble.style.display = "none";
         return;
     }
 
-    const verse = kjvData[anchorId];
+    const verse = kjvData[jsonKey];
     bubble.innerHTML = `<strong>${verse.book} ${verse.chapter}:${verse.verse}</strong><br>${verse.text}`;
     bubble.style.display = "block";
 }
