@@ -4,7 +4,7 @@ let kjvData = {};
 let tooltipColumn = null;
 
 // Load the KJV JSON
-fetch("kjv_converted.json")
+fetch("kjv_converted_fixed.json")
     .then(response => response.json())
     .then(data => {
         kjvData = data;
@@ -44,3 +44,4 @@ function showTooltip(event) {
 function clearTooltip() {
     tooltipColumn.innerHTML = "";
 }
+
