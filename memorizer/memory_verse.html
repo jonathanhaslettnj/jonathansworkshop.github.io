@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Bible Memory Verse Module</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        #mv_reference_input, #mv_input {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        #mv_instruction {
+            font-size: 12px;
+            color: #555;
+            margin-top: 4px;
+            margin-bottom: 10px;
+        }
+        #mv_restart {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Bible Memory Verse Module</h2>
+
+    <input id="mv_reference_input" type="text" placeholder="Type verse (e.g. Genesis 1:1)">
+    <div id="mv_instruction">Type the full name, chapter, and verse, then hit Enter.</div>
+
+    <div id="mv_reference" style="margin-top:10px; font-weight:bold;"></div>
+
+    <div id="mv_progress"></div>
+    <div id="mv_next"></div>
+    <div id="mv_reveal"></div>
+    <div id="mv_status"></div>
+
+    <input id="mv_input" type="text" placeholder="Type next word">
+
+    <button id="mv_restart" onclick="restartModule()">Start Over</button>
+
+    <script src="memory_verse.js"></script>
+
+</body>
+</html>
+
+
