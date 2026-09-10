@@ -47,9 +47,14 @@ document.getElementById("mv_next_verse").addEventListener("click", () => {
 
     if (text) {
         loadVerse(text, nextRef);
+
+        // Put the new reference into the input box
+        document.getElementById("mv_reference_input").value = nextRef;
+
         document.getElementById("mv_input").focus();
     }
 });
+
 
 
     mvInput.addEventListener("keydown", function (event) {
