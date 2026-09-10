@@ -38,6 +38,20 @@ window.addEventListener("load", () => {
         }
     });
 
+document.getElementById("mv_next_verse").addEventListener("click", () => {
+    const currentRef = document.getElementById("mv_reference").innerText.trim();
+    if (!currentRef) return;
+
+    const nextRef = getNextReference(currentRef);
+    const text = lookupVerse(nextRef);
+
+    if (text) {
+        loadVerse(text, nextRef);
+        document.getElementById("mv_input").focus();
+    }
+});
+
+
     mvInput.addEventListener("keydown", function (event) {
         if (event.code === "Space" || event.key === " ") {
             const raw = mvInput.value.trim();
@@ -182,6 +196,38 @@ function restartModule() {
 }
 
 
+function getNextReference(ref) {
+    // ref like "John 3:16"
+    let [bookAndChapter, verseStr] = ref.split(":");
+    let verse = parseInt(verseStr, 10);
 
+    // bookAndChapter = "John 3"
+    let parts = bookAndChapter.split(" ");
+    let book = parts.slice(0, -1).join(" ");
+    let chapter = parseInt(parts[parts.length - 1], 10);
+
+    // Next verse exists?
+    if (kjv[`${book} ${chapter}:${verse + 1}`]) {
+        return `${book} ${chapter}:${verse + 1}`;
+    }
+
+    // Next chapter exists?
+    if (kjv[`${book} ${chapter + 1}:1`]) {
+        return `${book} ${chapter + 1}:1`;
+    }
+
+    // Next book
+    let allRefs = Object.keys(kjv);
+    let books = [...new Set(allRefs.map(r => r.split(" ").slice(0, -1).join(" ")))];
+    let idx = books.indexOf(book);
+
+    if (idx >= 0 && idx < books.length - 1) {
+        let nextBook = books[idx + 1];
+        return `${nextBook} 1:1`;
+    }
+
+    // End of Bible → wrap
+    return "Genesis 1:1";
+}
 
 

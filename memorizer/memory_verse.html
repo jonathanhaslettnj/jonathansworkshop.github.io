@@ -23,8 +23,14 @@
             margin-top: 4px;
             margin-bottom: 10px;
         }
-        #mv_restart {
-            margin-top: 15px;
+
+        /* Center buttons and add spacing */
+        .button-line {
+            margin-top: 20px;      /* space above each button */
+            text-align: center;    /* center the button */
+        }
+
+        #mv_next_verse, #mv_restart {
             padding: 10px 20px;
             font-size: 16px;
         }
@@ -47,7 +53,15 @@
 
     <input id="mv_input" type="text" placeholder="Type next word, then spacebar">
 
-    <button id="mv_restart" onclick="restartModule()">Start Over</button>
+    <!-- NEXT VERSE BUTTON (centered, spaced) -->
+    <div class="button-line">
+        <button id="mv_next_verse">Next Verse ▶</button>
+    </div>
+
+    <!-- START OVER BUTTON (centered, spaced) -->
+    <div class="button-line">
+        <button id="mv_restart" onclick="restartModule()">Start Over</button>
+    </div>
 
     <script src="memory_verse.js"></script>
 
