@@ -239,16 +239,11 @@ a {
   </div>
 </div>
 
-<!-- Indexes of Site -->
-<div class="unit-box">
-<h2>Indexed Listings of Resources</h2>
-<a class="bible-link" href="alphabetical-index.html">Alphabetical Index of Titles</a>
-<p style="text-align:center; margin-top:20px;">
-    <a href="/master_scripture_index.html" 
-       style="padding:10px 20px; background:#0066cc; color:white; border-radius:5px;">
-       Master Scripture Index
-    </a>
-</p>
+<!-- Index of Site -->
+
+<a class="bible-link" href="Where and What.html">Index to this site</a>
+
+
 </div>
 <!-- Seeds of Hope Contact Box -->
 <div class="contact-box">
@@ -264,42 +259,6 @@ a {
   <h2>Scan to Share Jonathan’s Workshop</h2>
   <img src="qr.jpeg" alt="QR code for Jonathan's Workshop" class="qr-image">
 </div>
-
-<!-- ⭐ DIRECTORY BAR AT THE VERY BOTTOM -->
-<div id="folderBar"></div>
-
-<!-- ⭐ DIRECTORY BAR SCRIPT -->
-<script>
-const validFolders = [
-  "Rooted",
-  "Rooted/Remedies",
-  "Rooted/contentment",
-  "Rooted/contentment/Jesus",
-  "Friday",
-  "Friday/Bible",
-  "Friday/Father",
-  "Friday/Holiness",
-  "Friday/Hebrews",
-  "Friday/Ezra",
-  "Unfolding",
-  "Questions",
-  "Woodworking"
-];
-
-function renderFolderBar() {
-  const bar = document.getElementById("folderBar");
-
-  validFolders.forEach(folder => {
-    const name = folder.split("/").pop();
-    const link = document.createElement("a");
-    link.href = folder + "/index.html";
-    link.textContent = name;
-    bar.appendChild(link);
-  });
-}
-
-renderFolderBar();
-</script>
 
 </body>
 </html>
