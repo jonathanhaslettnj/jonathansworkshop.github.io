@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Verse Memorizer</title>
+  <style>
+    body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 1rem; }
+    h1, h2 { color: darkblue; }
+    label { display: block; margin-top: 0.75rem; }
+    input[type="text"] { width: 100%; padding: 0.4rem; }
+    button { margin-top: 0.5rem; margin-right: 0.5rem; }
+    #user-verses { margin-top: 0.5rem; font-size: 0.9rem; white-space: pre-wrap; }
+    hr { margin: 1.5rem 0; }
+  </style>
+</head>
+<body>
+  <h1>User Verse Memorizer</h1>
+
+  <!-- Top: Memorizer -->
+  <label for="refInput">Reference:</label>
+  <input id="refInput" type="text" placeholder="John 1:1">
+
+  <p id="verseDisplay"></p>
+  <p id="statusDisplay"></p>
+
+  <label for="wordInput">Type next word, then press space:</label>
+  <input id="wordInput" type="text">
+
+  <div>
+    <button id="nextBtn">Next Verse ▶</button>
+    <button id="repeatBtn">Repeat Verse ↻</button>
+    <button id="resetBtn">Start Over</button>
+  </div>
+
+  <hr>
+
+  <!-- Bottom: User verse list -->
+  <h2>Add Your Own Verse</h2>
+
+  <label for="userRefInput">Reference:</label>
+  <input id="userRefInput" type="text" placeholder="John 1:1">
+
+  <label for="userTextInput">Verse text:</label>
+  <input id="userTextInput" type="text" placeholder="In the beginning was the Word...">
+
+  <button id="addUserVerseBtn">Add to My List</button>
+
+  <h2>Your Verses</h2>
+  <div id="user-verses"></div>
+
+  <script src="memorizer_user.js"></script>
+</body>
+</html>
+
