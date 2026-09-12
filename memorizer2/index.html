@@ -1,137 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-
-    <!-- CRITICAL FOR MOBILE: prevents zooming and overflow -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Bible Memory Verse Module</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 15px;
-            line-height: 1.6;
-        }
-.mv_button_row {
-    margin-top: 20px;
-    display: flex;
-    gap: 10px;
-}
-
-.mv_button_row button {
-    flex: 1;
-    padding: 10px 0;
-    font-size: 16px;
-}
-
-        /* Inputs scale properly on phones */
-        #mv_reference_input, #mv_input {
-            width: 100%;
-            padding: 10px;
-            font-size: 18px;
-            margin-top: 10px;
-            box-sizing: border-box; /* prevents overflow */
-        }
-
-        #mv_instruction {
-            font-size: 12px;
-            color: #555;
-            margin-top: 4px;
-            margin-bottom: 10px;
-        }
-
-        h1 {
-            color: #003399;
-            font-size: 28px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        /* Center buttons and add spacing */
-
-        #mv_next_verse, #mv_restart {
-            padding: 10px 20px;
-            font-size: 16px;
-        }
-
-        /* MOBILE ADJUSTMENTS */
-        @media (max-width: 480px) {
-            body {
-                margin: 10px;
-                padding: 10px;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            #mv_reference_input, #mv_input {
-                font-size: 16px;
-                padding: 8px;
-            }
-
-            #mv_next_verse, #mv_restart {
-                font-size: 15px;
-                padding: 10px 16px;
-            }
-
-            .button-line {
-                margin-top: 15px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Bible Memory Verse Module</title>
+  <style>
+    body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 1rem; }
+    h1 { text-align: center; }
+    label { display: block; margin-top: 0.75rem; }
+    input[type="text"] { width: 100%; padding: 0.4rem; }
+    select { padding: 0.3rem; }
+    button { margin-top: 0.5rem; margin-right: 0.5rem; }
+    #user-verses { margin-top: 0.5rem; font-size: 0.9rem; }
+    hr { margin: 1.5rem 0; }
+  </style>
 </head>
-
 <body>
+  <h1>Bible Memory Verse Module</h1>
 
-    <h1>Bible Memory Verse Module</h1>
+  <!-- Top: Memorizer -->
+  <label for="refInput">Reference:</label>
+  <input id="refInput" type="text" placeholder="Genesis 1:1">
 
-    <input id="mv_reference_input" type="text" placeholder="Type reference for the verse (e.g. Genesis 1:1)">
-    <div id="mv_instruction">Type the full name, chapter, and verse, then hit Enter.</div>
+  <p id="verseDisplay"></p>
+  <p id="statusDisplay"></p>
 
-    <div id="mv_reference" style="margin-top:10px; font-weight:bold;"></div>
+  <label for="wordInput">Type next word, then press space:</label>
+  <input id="wordInput" type="text">
 
-    <div id="mv_progress"></div>
-    <div id="mv_next"></div>
-    <div id="mv_reveal"></div>
-    <div id="mv_status"></div>
+  <div>
+    <button id="nextBtn">Next Verse ▶</button>
+    <button id="repeatBtn">Repeat Verse ↻</button>
+    <button id="resetBtn">Start Over</button>
+  </div>
 
-    <input id="mv_input" type="text" placeholder="Type next word, then spacebar">
+  <!-- Middle: Mode selector -->
+  <hr>
+  <label for="modeSelect">Select Bible Source:</label>
+  <select id="modeSelect">
+    <option value="kjv" selected>KJV</option>
+    <option value="user">User List</option>
+  </select>
 
-    <hr style="margin-top:20px; margin-bottom:20px;">
+  <!-- Bottom: User verse list -->
+  <hr>
+  <h2>Add Your Own Verse</h2>
 
-    <h3>My Verse List</h3>
+  <label for="userRefInput">Reference:</label>
+  <input id="userRefInput" type="text" placeholder="John 1:1">
 
-<input id="mv_custom_verse" type="text" placeholder="Type a verse reference to add (e.g. John 3:16)">
-<button onclick="addCustomVerse()">Add to My List</button>
+  <label for="userTextInput">Verse text:</label>
+  <input id="userTextInput" type="text" placeholder="In the beginning was the Word...">
 
-<div id="mv_custom_list_display" style="margin-top:10px; font-size:14px; color:#555;"></div>
+  <button id="addUserVerseBtn">Add to My List</button>
 
-<button onclick="useCustomList()" style="margin-top:10px;">Use My Verse List</button>
+  <h3>My Verse List</h3>
+  <div id="user-verses"></div>
 
-
-
-<!-- NEXT VERSE BUTTON (centered, spaced) -->
-<div class="mv_button_row">
-    <button id="mv_next_verse">Next Verse ▶</button>
-    <button id="mv_repeat_verse">Repeat Verse ↺</button>
-</div>
-
-
-
-    <!-- START OVER BUTTON (centered, spaced) -->
-    <div class="button-line">
-        <button id="mv_restart" onclick="restartModule()">Start Over</button>
-    </div>
-
-    <script src="memory_verse.js"></script>
-
+  <script src="memory_verse.js"></script>
 </body>
 </html>
-
-
-
