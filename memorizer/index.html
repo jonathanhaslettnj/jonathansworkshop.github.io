@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <!-- CRITICAL FOR MOBILE: prevents zooming and overflow -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bible Memory Verse Module</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 15px;
+            line-height: 1.6;
+        }
+
+        /* Inputs scale properly on phones */
+        #mv_reference_input, #mv_input {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            margin-top: 10px;
+            box-sizing: border-box; /* prevents overflow */
+        }
+
+        #mv_instruction {
+            font-size: 12px;
+            color: #555;
+            margin-top: 4px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #003399;
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Center buttons and add spacing */
+        .button-line {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #mv_next_verse, #mv_restart {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        /* MOBILE ADJUSTMENTS */
+        @media (max-width: 480px) {
+            body {
+                margin: 10px;
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            #mv_reference_input, #mv_input {
+                font-size: 16px;
+                padding: 8px;
+            }
+
+            #mv_next_verse, #mv_restart {
+                font-size: 15px;
+                padding: 10px 16px;
+            }
+
+            .button-line {
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Bible Memory Verse Module</h1>
+
+    <input id="mv_reference_input" type="text" placeholder="Type verse (e.g. Genesis 1:1)">
+    <div id="mv_instruction">Type the full name, chapter, and verse, then hit Enter.</div>
+
+    <div id="mv_reference" style="margin-top:10px; font-weight:bold;"></div>
+
+    <div id="mv_progress"></div>
+    <div id="mv_next"></div>
+    <div id="mv_reveal"></div>
+    <div id="mv_status"></div>
+
+    <input id="mv_input" type="text" placeholder="Type next word, then spacebar">
+
+    <!-- NEXT VERSE BUTTON (centered, spaced) -->
+    <div class="button-line">
+        <button id="mv_next_verse">Next Verse ▶</button>
+    </div>
+
+    <!-- START OVER BUTTON (centered, spaced) -->
+    <div class="button-line">
+        <button id="mv_restart" onclick="restartModule()">Start Over</button>
+    </div>
+
+    <script src="memory_verse.js"></script>
+
+</body>
+</html>
+
+
+
