@@ -84,7 +84,9 @@ function loadVerseFromRef(ref) {
   currentWords = currentText.split(/\s+/);
   currentIndex = 0;
 
-  verseDisplay.textContent = currentText;
+  // ⭐ Hide the verse until typed
+  verseDisplay.textContent = "";
+
   statusDisplay.textContent = "Start typing the verse, word by word.";
   wordInput.value = "";
   wordInput.focus();
@@ -104,7 +106,10 @@ function loadNextVerse() {
   currentIndex = 0;
 
   refInput.value = currentRef;
-  verseDisplay.textContent = currentText;
+
+  // ⭐ Hide verse until typed
+  verseDisplay.textContent = "";
+
   statusDisplay.textContent = "Next verse from your list.";
   wordInput.value = "";
   wordInput.focus();
@@ -117,7 +122,10 @@ function repeatCurrentVerse() {
   }
   currentWords = currentText.split(/\s+/);
   currentIndex = 0;
-  verseDisplay.textContent = currentText;
+
+  // ⭐ Hide verse until typed
+  verseDisplay.textContent = "";
+
   statusDisplay.textContent = "Repeating current verse.";
   wordInput.value = "";
   wordInput.focus();
@@ -141,6 +149,10 @@ wordInput.addEventListener("keydown", e => {
     if (typed.toLowerCase() === expected.toLowerCase()) {
       currentIndex++;
       statusDisplay.textContent = `Correct: "${typed}"`;
+
+      // ⭐ Reveal typed words progressively
+      verseDisplay.textContent = currentWords.slice(0, currentIndex).join(" ");
+
       if (currentIndex >= currentWords.length) {
         statusDisplay.textContent = "Verse complete!";
       }
