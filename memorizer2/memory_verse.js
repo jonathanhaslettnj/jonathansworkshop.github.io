@@ -80,13 +80,14 @@ window.addEventListener("load", () => {
     refInput.focus();
 
     // ENTER loads typed reference
-    refInput.addEventListener("keydown", function (event) {
-        if (event.code === "Enter") {
-            event.preventDefault();
-            loadTypedReference();
-            mvInput.focus();
-        }
-    });
+refInput.addEventListener("keydown", e => {
+  // Support both modern and older browsers
+  if (e.key === "Enter" || e.keyCode === 13) {
+    e.preventDefault();
+    loadVerseFromRef(refInput.value);
+  }
+});
+
 
     // TAB loads typed reference
     refInput.addEventListener("keydown", function (event) {
