@@ -34,13 +34,33 @@ function clearMemorizer() {
 }
 
 function renderUserList() {
+  userVersesDiv.innerHTML = "";
+
   if (!customList.length) {
     userVersesDiv.textContent = "No verses in your list yet.";
     return;
   }
-  userVersesDiv.textContent = customList
-    .map(v => `${v.ref} — ${v.text}`)
-    .join("\n");
+
+  customList.forEach((v, index) => {
+    const div = document.createElement("div");
+    div.className = "verse-item";
+
+    div.textContent = `${v.ref} — ${v.text}`;
+
+    const delBtn = document.createElement("button");
+    delBtn.textContent = "Delete";
+    delBtn.className = "delete-btn";
+
+    delBtn.addEventListener("click", () => {
+      customList.splice(index, 1);
+      localStorage.setItem("mv_custom_list", JSON.stringify(customList));
+      renderUserList();
+      statusDisplay.textContent = "Verse deleted.";
+    });
+
+    div.appendChild(delBtn);
+    userVersesDiv.appendChild(div);
+  });
 }
 
 function findUserVerse(ref) {
@@ -153,3 +173,4 @@ addUserVerseBtn.addEventListener("click", () => {
 // --- Init ---
 renderUserList();
 clearMemorizer();
+
