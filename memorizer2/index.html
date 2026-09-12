@@ -5,12 +5,12 @@
   <title>Bible Memory Verse Module</title>
   <style>
     body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 1rem; }
-    h1 { text-align: center; }
+    h1, h2, h3 { color: darkblue; }
     label { display: block; margin-top: 0.75rem; }
     input[type="text"] { width: 100%; padding: 0.4rem; }
     select { padding: 0.3rem; }
     button { margin-top: 0.5rem; margin-right: 0.5rem; }
-    #user-verses { margin-top: 0.5rem; font-size: 0.9rem; }
+    #user-verses { margin-top: 0.5rem; font-size: 0.9rem; white-space: pre-wrap; }
     hr { margin: 1.5rem 0; }
   </style>
 </head>
@@ -53,9 +53,10 @@
 
   <button id="addUserVerseBtn">Add to My List</button>
 
-  <h3>My Verse List</h3>
+  <h3>Your Verses</h3>
   <div id="user-verses"></div>
 
   <script src="memory_verse.js"></script>
 </body>
 </html>
+
