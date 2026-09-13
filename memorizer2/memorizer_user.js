@@ -21,6 +21,15 @@ const userTextInput   = document.getElementById("userTextInput");
 const addUserVerseBtn = document.getElementById("addUserVerseBtn");
 const userVersesDiv   = document.getElementById("user-verses");
 
+// --- Normalize words (ignore punctuation) ---
+function normalize(word) {
+  return word.replace(/[.,;:!?'"()
+
+\[\]
+
+-]/g, "").toLowerCase();
+}
+
 // --- Helpers ---
 function clearMemorizer() {
   currentRef = "";
@@ -81,10 +90,13 @@ function loadVerseFromRef(ref) {
 
   currentRef = ref;
   currentText = v.text;
-  currentWords = currentText.split(/\s+/);
+
+  // Split into words AND normalize punctuation
+  currentWords = v.text.split(/\s+/).map(w => normalize(w));
+
   currentIndex = 0;
 
-  // ⭐ Hide the verse until typed
+  // Hide verse until typed
   verseDisplay.textContent = "";
 
   statusDisplay.textContent = "Start typing the verse, word by word.";
@@ -102,14 +114,12 @@ function loadNextVerse() {
 
   currentRef = v.ref;
   currentText = v.text;
-  currentWords = currentText.split(/\s+/);
+  currentWords = v.text.split(/\s+/).map(w => normalize(w));
   currentIndex = 0;
 
   refInput.value = currentRef;
 
-  // ⭐ Hide verse until typed
   verseDisplay.textContent = "";
-
   statusDisplay.textContent = "Next verse from your list.";
   wordInput.value = "";
   wordInput.focus();
@@ -120,12 +130,11 @@ function repeatCurrentVerse() {
     statusDisplay.textContent = "No verse loaded.";
     return;
   }
-  currentWords = currentText.split(/\s+/);
+
+  currentWords = currentText.split(/\s+/).map(w => normalize(w));
   currentIndex = 0;
 
-  // ⭐ Hide verse until typed
   verseDisplay.textContent = "";
-
   statusDisplay.textContent = "Repeating current verse.";
   wordInput.value = "";
   wordInput.focus();
@@ -133,7 +142,7 @@ function repeatCurrentVerse() {
 
 // --- Events ---
 refInput.addEventListener("keydown", e => {
-  if (e.key === "Enter" || e.keyCode === 13) {
+  if (e.key === "Enter") {
     e.preventDefault();
     loadVerseFromRef(refInput.value);
   }
@@ -142,16 +151,18 @@ refInput.addEventListener("keydown", e => {
 wordInput.addEventListener("keydown", e => {
   if (e.key === " ") {
     e.preventDefault();
-    const typed = wordInput.value.trim();
+    const typed = normalize(wordInput.value.trim());
     const expected = currentWords[currentIndex] || "";
+
     if (!typed) return;
 
-    if (typed.toLowerCase() === expected.toLowerCase()) {
+    if (typed === expected) {
       currentIndex++;
       statusDisplay.textContent = `Correct: "${typed}"`;
 
-      // ⭐ Reveal typed words progressively
-      verseDisplay.textContent = currentWords.slice(0, currentIndex).join(" ");
+      // Reveal typed words progressively (original text, not normalized)
+      const originalWords = currentText.split(/\s+/);
+      verseDisplay.textContent = originalWords.slice(0, currentIndex).join(" ");
 
       if (currentIndex >= currentWords.length) {
         statusDisplay.textContent = "Verse complete!";
@@ -159,6 +170,7 @@ wordInput.addEventListener("keydown", e => {
     } else {
       statusDisplay.textContent = `Expected "${expected}", but you typed "${typed}".`;
     }
+
     wordInput.value = "";
   }
 });
