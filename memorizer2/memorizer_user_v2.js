@@ -162,7 +162,7 @@ resetBtn.addEventListener("click", clearMemorizer);
 
 addUserVerseBtn.addEventListener("click", () => {
   const ref = userRefInput.value.trim();
-  const text = userTextInput.value.trim();
+const text = userTextInput.value.replace(/^\s+/, "");
   if (!ref || !text) {
     statusDisplay.textContent = "Please enter both reference and verse text.";
     return;
