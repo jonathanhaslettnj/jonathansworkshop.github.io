@@ -30,6 +30,7 @@ function normalize(word) {
 -]/g, "").toLowerCase();
 }
 
+
 // --- Helpers ---
 function clearMemorizer() {
   currentRef = "";
