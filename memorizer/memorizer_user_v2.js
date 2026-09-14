@@ -140,6 +140,13 @@ refInput.addEventListener("keydown", e => {
   if (e.key === "Enter") {
     e.preventDefault();
     loadVerseFromRef(refInput.value);
+    wordInput.focus();
+  }
+
+  if (e.key === "Tab") {
+    e.preventDefault();
+    loadVerseFromRef(refInput.value);
+    wordInput.focus();
   }
 });
 
