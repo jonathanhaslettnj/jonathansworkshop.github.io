@@ -23,16 +23,13 @@ const userVersesDiv   = document.getElementById("user-verses");
 
 // --- Helpers ---
 
-// SAFE punctuation remover — no quotes inside regex
+// SAFE punctuation remover — NO REGEX
 function normalizeWord(w) {
   return w
     .toLowerCase()
-    .replace(/[.,;:!?()
-
-\[\]
-
-{}]/g, "")   // SAFE
-    .trim();
+    .split("")
+    .filter(ch => "abcdefghijklmnopqrstuvwxyz0123456789".includes(ch))
+    .join("");
 }
 
 function clearMemorizer() {
