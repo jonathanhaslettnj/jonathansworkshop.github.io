@@ -23,15 +23,15 @@ const userVersesDiv   = document.getElementById("user-verses");
 
 // --- Helpers ---
 
-// Bulletproof punctuation remover — SAFE in all browsers
+// SAFE punctuation remover — no quotes inside regex
 function normalizeWord(w) {
   return w
     .toLowerCase()
-    .replace(/[.,;:!?'"()
+    .replace(/[.,;:!?()
 
 \[\]
 
-{}]/g, "")   // remove punctuation safely
+{}]/g, "")   // SAFE
     .trim();
 }
 
@@ -192,3 +192,4 @@ addUserVerseBtn.addEventListener("click", () => {
 // --- Init ---
 renderUserList();
 clearMemorizer();
+
