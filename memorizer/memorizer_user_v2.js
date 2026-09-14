@@ -22,6 +22,17 @@ const addUserVerseBtn = document.getElementById("addUserVerseBtn");
 const userVersesDiv   = document.getElementById("user-verses");
 
 // --- Helpers ---
+function normalizeWord(w) {
+  return w
+    .toLowerCase()
+    .replace(/[.,;:!?'"()
+
+\[\]
+
+{}]/g, "")
+    .trim();
+}
+
 function clearMemorizer() {
   currentRef = "";
   currentText = "";
@@ -140,7 +151,7 @@ wordInput.addEventListener("keydown", e => {
     const expected = currentWords[currentIndex] || "";
     if (!typed) return;
 
-    if (typed.toLowerCase() === expected.toLowerCase()) {
+    if (normalizeWord(typed) === normalizeWord(expected)) {
       currentIndex++;
       statusDisplay.textContent = `Correct: "${typed}"`;
 
@@ -150,7 +161,12 @@ wordInput.addEventListener("keydown", e => {
         statusDisplay.textContent = "Verse complete!";
       }
     } else {
-      statusDisplay.textContent = `Expected "${expected}", but you typed "${typed}".`;
+      statusDisplay.textContent =
+        `Expected "${expected.replace(/[.,;:!?'"()
+
+\[\]
+
+{}]/g, "")}", but you typed "${typed}".`;
     }
     wordInput.value = "";
   }
@@ -161,8 +177,8 @@ repeatBtn.addEventListener("click", repeatCurrentVerse);
 resetBtn.addEventListener("click", clearMemorizer);
 
 addUserVerseBtn.addEventListener("click", () => {
-  const ref = userRefInput.value.trim();
-const text = userTextInput.value.replace(/^\s+/, "");
+  const ref = userRefInput.value.replace(/^\s+/, "");
+  const text = userTextInput.value.replace(/^\s+/, "");
   if (!ref || !text) {
     statusDisplay.textContent = "Please enter both reference and verse text.";
     return;
