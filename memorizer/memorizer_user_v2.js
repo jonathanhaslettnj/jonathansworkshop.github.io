@@ -22,6 +22,8 @@ const addUserVerseBtn = document.getElementById("addUserVerseBtn");
 const userVersesDiv   = document.getElementById("user-verses");
 
 // --- Helpers ---
+
+// Bulletproof punctuation remover — SAFE in all browsers
 function normalizeWord(w) {
   return w
     .toLowerCase()
@@ -29,7 +31,7 @@ function normalizeWord(w) {
 
 \[\]
 
-{}]/g, "")
+{}]/g, "")   // remove punctuation safely
     .trim();
 }
 
@@ -162,11 +164,7 @@ wordInput.addEventListener("keydown", e => {
       }
     } else {
       statusDisplay.textContent =
-        `Expected "${expected.replace(/[.,;:!?'"()
-
-\[\]
-
-{}]/g, "")}", but you typed "${typed}".`;
+        `Expected "${normalizeWord(expected)}", but you typed "${typed}".`;
     }
     wordInput.value = "";
   }
