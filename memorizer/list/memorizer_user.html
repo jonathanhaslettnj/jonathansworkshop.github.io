@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Verse Memorizer</title>
+
+  <!-- Mobile scaling -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 1rem;
+      background: #f7f7f7;
+      font-size: 1.2rem; /* Larger base font */
+      line-height: 1.5;
+    }
+
+    h1, h2 {
+      color: darkblue;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 0.8rem;              /* Bigger tap area */
+      font-size: 1.2rem;            /* Larger text */
+      border-radius: 8px;
+      border: 1px solid #999;
+      margin-top: 0.3rem;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;                  /* Full-width buttons */
+      padding: 0.9rem;
+      font-size: 1.2rem;
+      margin-top: 0.8rem;
+      border-radius: 10px;
+      border: none;
+      background: #005bbb;
+      color: white;
+    }
+
+    button:active {
+      background: #004999;
+    }
+
+    #verseDisplay {
+      font-size: 1.3rem;
+      margin-top: 1rem;
+      min-height: 2rem;
+    }
+
+    #statusDisplay {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      color: #444;
+    }
+
+    #user-verses {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .verse-item {
+      background: white;
+      padding: 0.8rem;
+      border-radius: 8px;
+      margin-bottom: 0.8rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+
+    .delete-btn {
+      background: #bb0000;
+      margin-top: 0.6rem;
+    }
+
+    hr {
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>User Verse Memorizer</h1>
+
+  <!-- Top: Memorizer -->
+  <label for="refInput">Reference:</label>
+  <input id="refInput" type="text" placeholder="John 1:1">
+
+  <p id="verseDisplay"></p>
+  <p id="statusDisplay"></p>
+
+  <label for="wordInput">Type next word, then press space:</label>
+  <input id="wordInput" type="text">
+
+  <!-- Buttons stacked for mobile -->
+  <button id="nextBtn">Next Verse ▶</button>
+  <button id="repeatBtn">Repeat Verse ↻</button>
+  <button id="resetBtn">Start Over</button>
+
+  <hr>
+
+  <!-- Bottom: User verse list -->
+  <h2>Add Your Own Verse</h2>
+
+  <label for="userRefInput">Reference:</label>
+  <input id="userRefInput" type="text" placeholder="John 1:1">
+
+  <label for="userTextInput">Verse text:</label>
+  <input id="userTextInput" type="text" placeholder="In the beginning was the Word...">
+
+  <button id="addUserVerseBtn">Add to My List</button>
+
+  <h2>Your Verses</h2>
+  <div id="user-verses"></div>
+
+
+<script src="memorizer_user_v2.js?v=1"></script>
+
+
+
+
+</body>
+</html>
+
