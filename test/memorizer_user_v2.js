@@ -23,6 +23,7 @@ const userVersesDiv = document.getElementById("user-verses");
 // Drill state
 let currentWords = [];
 let index = 0;
+let mistakes = 0;   // mistake counter
 
 // ===============================
 // Load Verse from Reference
@@ -44,13 +45,16 @@ function loadVerse(reference) {
     verseDisplay.textContent = "Verse not found in your list.";
     currentWords = [];
     index = 0;
+    mistakes = 0;
     return;
   }
 
-  verseDisplay.textContent = match.text;
+  // Store full verse as words, but do NOT show it all at once
   currentWords = match.text.split(/\s+/);
   index = 0;
+  mistakes = 0;
 
+  verseDisplay.textContent = ""; // start with nothing revealed
   statusDisplay.textContent = "Begin typing the first word.";
   wordInput.value = "";
   wordInput.focus();
@@ -59,18 +63,28 @@ function loadVerse(reference) {
 // ===============================
 // Word Checking Logic
 // ===============================
+function updateVerseDisplay() {
+  // Show only the words that have been correctly typed so far
+  const revealed = currentWords.slice(0, index).join(" ");
+  verseDisplay.textContent = revealed;
+}
+
 function checkWord(typed) {
   let expected = currentWords[index] || "";
 
   if (typed.toLowerCase() === expected.toLowerCase()) {
     index++;
 
+    updateVerseDisplay();
+
     if (index >= currentWords.length) {
-      statusDisplay.textContent = "✔ Verse complete!";
+      statusDisplay.textContent =
+        `✔ Verse complete! Mistakes made: ${mistakes === 0 ? "0 (Perfect!)" : mistakes}`;
     } else {
       statusDisplay.textContent = `Correct. Next word: (${index + 1}/${currentWords.length})`;
     }
   } else {
+    mistakes++;
     statusDisplay.textContent = `❌ Expected "${expected}", but you typed "${typed}".`;
   }
 }
@@ -102,6 +116,8 @@ wordInput.addEventListener("focus", () => {
 // ===============================
 nextBtn.addEventListener("click", () => {
   index = 0;
+  mistakes = 0;
+  updateVerseDisplay();
   statusDisplay.textContent = "Next verse loaded. Type the first word.";
   wordInput.value = "";
   wordInput.focus();
@@ -109,6 +125,8 @@ nextBtn.addEventListener("click", () => {
 
 repeatBtn.addEventListener("click", () => {
   index = 0;
+  mistakes = 0;
+  updateVerseDisplay();
   statusDisplay.textContent = "Repeat verse. Type the first word.";
   wordInput.value = "";
   wordInput.focus();
@@ -121,6 +139,7 @@ resetBtn.addEventListener("click", () => {
   wordInput.value = "";
   currentWords = [];
   index = 0;
+  mistakes = 0;
 });
 
 // ===============================
@@ -173,3 +192,5 @@ function renderUserVerses() {
 
 // Initial render
 renderUserVerses();
+
+
