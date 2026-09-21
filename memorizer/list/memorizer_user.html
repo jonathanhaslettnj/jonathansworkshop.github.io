@@ -22,7 +22,15 @@
       text-align: center;
       margin-bottom: 1rem;
     }
+.qr-section {
+  text-align: center;      /* Centers inline elements like images */
+  margin-top: 40px;
+}
 
+.qr-section img {
+  max-width: 200px;        /* Optional: keeps the QR code a good size */
+  display: inline-block;   /* Ensures proper centering */
+}
     label {
       display: block;
       margin-top: 1rem;
@@ -146,6 +154,15 @@
 <div class="return-box">
   <a href="../index.html">Bible Memorizer Information</a>
 </div>
+
+
+
+<!-- QR Code Section -->
+<div class="qr-section">
+  <h2>Scan to Share the Bible Memorizer</h2>
+  <img src="QR Code.jpg" alt="QR Code">
+</div>
+
 
 </body>
 </html>
