@@ -26,6 +26,18 @@ let index = 0;
 let mistakes = 0;   // mistake counter
 
 // ===============================
+// Helpers: punctuation filter
+// ===============================
+function normalizeWord(w) {
+  // Remove punctuation and make lowercase
+  return w.replace(/[.,;:!?'"()
+
+\[\]
+
+-]/g, "").toLowerCase();
+}
+
+// ===============================
 // Load Verse from Reference
 // ===============================
 refInput.addEventListener("keydown", e => {
@@ -49,7 +61,7 @@ function loadVerse(reference) {
     return;
   }
 
-  // Store full verse as words, but do NOT show it all at once
+  // Split verse into words, keep original words (with punctuation) for display
   currentWords = match.text.split(/\s+/);
   index = 0;
   mistakes = 0;
@@ -61,7 +73,7 @@ function loadVerse(reference) {
 }
 
 // ===============================
-// Word Checking Logic
+// Word Checking + Progressive Reveal
 // ===============================
 function updateVerseDisplay() {
   // Show only the words that have been correctly typed so far
@@ -70,9 +82,11 @@ function updateVerseDisplay() {
 }
 
 function checkWord(typed) {
-  let expected = currentWords[index] || "";
+  let expectedRaw = currentWords[index] || "";
+  let expected = normalizeWord(expectedRaw);
+  let typedNorm = normalizeWord(typed);
 
-  if (typed.toLowerCase() === expected.toLowerCase()) {
+  if (typedNorm === expected && expected !== "") {
     index++;
 
     updateVerseDisplay();
@@ -85,7 +99,7 @@ function checkWord(typed) {
     }
   } else {
     mistakes++;
-    statusDisplay.textContent = `❌ Expected "${expected}", but you typed "${typed}".`;
+    statusDisplay.textContent = `❌ Expected "${expectedRaw}", but you typed "${typed}".`;
   }
 }
 
@@ -192,5 +206,6 @@ function renderUserVerses() {
 
 // Initial render
 renderUserVerses();
+
 
 
