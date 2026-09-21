@@ -80,11 +80,11 @@ window.addEventListener("load", () => {
     refInput.focus();
 
     // ENTER loads typed reference
-refInput.addEventListener("keydown", e => {
-  // Support both modern and older browsers
-  if (e.key === "Enter" || e.keyCode === 13) {
-    e.preventDefault();
-    loadVerseFromRef(refInput.value);
+refInput.addEventListener("keydown", function (event) {
+  if (event.code === "Tab") {
+    event.preventDefault();
+    loadTypedReference();
+    mvInput.focus();
   }
 });
 
@@ -324,6 +324,7 @@ function getNextReference(ref) {
     let verse = parseInt(verseStr, 10);
 
     let parts = bookAndChapter.split(" ");
+
     let book = parts.slice(0, -1).join(" ");
     let chapter = parseInt(parts[parts.length - 1], 10);
 
