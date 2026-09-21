@@ -26,15 +26,10 @@ let index = 0;
 let mistakes = 0;   // mistake counter
 
 // ===============================
-// Helpers: punctuation filter
+// Helpers: punctuation filter (Option B)
 // ===============================
 function normalizeWord(w) {
-return w.replace(/[.,;:!?'"()
-
-\[\]
-
--]/g, "").toLowerCase();
-
+  return w.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
 }
 
 // ===============================
@@ -50,7 +45,6 @@ refInput.addEventListener("keydown", e => {
 function loadVerse(reference) {
   if (!reference) return;
 
-  // Look for verse in user list first
   let match = userVerses.find(v => v.ref.toLowerCase() === reference.toLowerCase());
 
   if (!match) {
@@ -61,12 +55,11 @@ function loadVerse(reference) {
     return;
   }
 
-  // Split verse into words, keep original words (with punctuation) for display
   currentWords = match.text.split(/\s+/);
   index = 0;
   mistakes = 0;
 
-  verseDisplay.textContent = ""; // start with nothing revealed
+  verseDisplay.textContent = "";
   statusDisplay.textContent = "Begin typing the first word.";
   wordInput.value = "";
   wordInput.focus();
@@ -76,7 +69,6 @@ function loadVerse(reference) {
 // Word Checking + Progressive Reveal
 // ===============================
 function updateVerseDisplay() {
-  // Show only the words that have been correctly typed so far
   const revealed = currentWords.slice(0, index).join(" ");
   verseDisplay.textContent = revealed;
 }
@@ -88,8 +80,7 @@ function checkWord(typed) {
 
   if (typedNorm === expectedNorm && expectedNorm !== "") {
     index++;
-
-    updateVerseDisplay();  // reveal correct words
+    updateVerseDisplay();
 
     if (index >= currentWords.length) {
       statusDisplay.textContent =
@@ -106,21 +97,15 @@ function checkWord(typed) {
 // ===============================
 // iPhone-Safe Input Handling
 // ===============================
-
-// Prevent Safari phantom submissions
 wordInput.addEventListener("keydown", e => {
   if (e.key === " ") {
     let typedWord = wordInput.value.trim();
-
-    // Prevent empty-word submissions (Safari quirk)
     if (!typedWord) return;
-
     checkWord(typedWord);
     wordInput.value = "";
   }
 });
 
-// Prevent Safari from submitting an empty word when tapping the box
 wordInput.addEventListener("focus", () => {
   wordInput.value = "";
 });
@@ -193,7 +178,6 @@ function renderUserVerses() {
     userVersesDiv.appendChild(div);
   });
 
-  // Attach delete handlers
   document.querySelectorAll(".delete-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       let idx = btn.getAttribute("data-index");
@@ -204,5 +188,5 @@ function renderUserVerses() {
   });
 }
 
-// Initial render
 renderUserVerses();
+
