@@ -79,15 +79,14 @@ window.addEventListener("load", () => {
 
     refInput.focus();
 
-    // ENTER loads typed reference
-refInput.addEventListener("keydown", function (event) {
-  if (event.code === "Tab") {
-    event.preventDefault();
-    loadTypedReference();
-    mvInput.focus();
-  }
-});
-
+    // ENTER loads typed reference (FIXED)
+    refInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.keyCode === 13) {
+            event.preventDefault();
+            loadTypedReference();
+            mvInput.focus();
+        }
+    });
 
     // TAB loads typed reference
     refInput.addEventListener("keydown", function (event) {
@@ -192,7 +191,6 @@ function loadTypedReference() {
 
     console.log("loadTypedReference called. kjvReady =", kjvReady);
 
-    // Prevent lookup before JSON is ready
     if (!kjvReady) {
         alert("Bible is still loading. Please wait.");
         return;
@@ -253,98 +251,4 @@ function updateDisplay() {
     const correctWords = mv.words.slice(0, mv.index).join(" ");
     document.getElementById("mv_progress").innerText = correctWords;
 
-    if (mv.index >= mv.words.length) {
-        document.getElementById("mv_status").innerText =
-            "Verse complete! Mistakes: " + mv.mistakes;
-        document.getElementById("mv_next").innerText = "";
-        return;
-    }
-
-    document.getElementById("mv_next").innerText = "";
-}
-
-
-// ------------------------------------------------------------
-// Reveal expected word
-// ------------------------------------------------------------
-function revealNextWord(expected) {
-    document.getElementById("mv_reveal").innerText =
-        "Expected: " + expected;
-}
-
-
-// ------------------------------------------------------------
-// Check typed word
-// ------------------------------------------------------------
-function checkWord() {
-    const raw = document.getElementById("mv_input").value.trim();
-    if (raw.length === 0) return;
-
-    const expected = mv.words[mv.index];
-
-    if (normalize(raw) === normalize(expected)) {
-        mv.index++;
-        document.getElementById("mv_input").value = "";
-        document.getElementById("mv_reveal").innerText = "";
-        updateDisplay();
-    } else {
-        mv.mistakes++;
-        revealNextWord(expected);
-        document.getElementById("mv_input").value = "";
-    }
-}
-
-
-// ------------------------------------------------------------
-// Restart module
-// ------------------------------------------------------------
-function restartModule() {
-    mv.words = [];
-    mv.index = 0;
-    mv.mistakes = 0;
-
-    document.getElementById("mv_reference").innerText = "";
-    document.getElementById("mv_progress").innerText = "";
-    document.getElementById("mv_next").innerText = "";
-    document.getElementById("mv_reveal").innerText = "";
-    document.getElementById("mv_status").innerText = "";
-
-    document.getElementById("mv_reference_input").value = "";
-    document.getElementById("mv_input").value = "";
-
-    document.getElementById("mv_reference_input").focus();
-}
-
-
-// ------------------------------------------------------------
-// Get next reference (normal KJV sequence)
-// ------------------------------------------------------------
-function getNextReference(ref) {
-    let [bookAndChapter, verseStr] = ref.split(":");
-    let verse = parseInt(verseStr, 10);
-
-    let parts = bookAndChapter.split(" ");
-
-    let book = parts.slice(0, -1).join(" ");
-    let chapter = parseInt(parts[parts.length - 1], 10);
-
-    if (kjv[`${book} ${chapter}:${verse + 1}`]) {
-        return `${book} ${chapter}:${verse + 1}`;
-    }
-
-    if (kjv[`${book} ${chapter + 1}:1`]) {
-        return `${book} ${chapter + 1}:1`;
-    }
-
-    let allRefs = Object.keys(kjv);
-    let books = [...new Set(allRefs.map(r => r.split(" ").slice(0, -1).join(" ")))];
-    let idx = books.indexOf(book);
-
-    if (idx >= 0 && idx < books.length - 1) {
-        let nextBook = books[idx + 1];
-        return `${nextBook} 1:1`;
-    }
-
-    return "Genesis 1:1";
-}
-
+    if (mv.index >= mv.words
