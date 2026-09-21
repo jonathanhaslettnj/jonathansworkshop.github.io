@@ -111,4 +111,66 @@
       border: 2px solid #7aaee6;
       padding: 12px;
       margin: 40px auto 0 auto;
-      width: 70
+      width: 70%;
+      max-width: 350px;
+      border-radius: 8px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>User Verse Memorizer</h1>
+
+  <!-- Top: Memorizer -->
+  <label for="refInput">Reference: (Type then press Enter)</label>
+  <input id="refInput" type="text" placeholder="John 1:1">
+
+  <p id="verseDisplay"></p>
+  <p id="statusDisplay"></p>
+
+  <label for="wordInput">Type next word, then press space:</label>
+  <input id="wordInput" type="text">
+
+  <!-- Compact inline buttons -->
+  <div class="button-row">
+    <button id="nextBtn">Next Verse ▶</button>
+    <button id="repeatBtn">Repeat Verse ↻</button>
+    <button id="resetBtn">Start Over</button>
+  </div>
+
+  <hr>
+
+  <!-- Bottom: User verse list -->
+  <h2>Add Your Own Verse</h2>
+
+  <label for="userRefInput">Reference:</label>
+  <input id="userRefInput" type="text" placeholder="John 1:1">
+
+  <label for="userTextInput">Verse text:</label>
+  <input id="userTextInput" type="text" placeholder="In the beginning was the Word...">
+
+  <div class="button-row">
+    <button id="addUserVerseBtn">Add to My List</button>
+  </div>
+
+  <h2>Your Verses</h2>
+  <div id="user-verses"></div>
+
+  <script src="memorizer_user_v2.js?v=1"></script>
+
+  <!-- Return Box -->
+  <div class="return-box">
+    <a href="../index.html">Bible Memorizer Information</a>
+  </div>
+
+  <!-- QR Code Section -->
+  <div class="qr-section">
+    <h2>Scan to Share the Bible Memorizer</h2>
+    <img src="QR Code.jpg" alt="QR Code">
+  </div>
+
+</body>
+</html>
+
