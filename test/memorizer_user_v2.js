@@ -29,12 +29,12 @@ let mistakes = 0;   // mistake counter
 // Helpers: punctuation filter
 // ===============================
 function normalizeWord(w) {
-  // Remove punctuation and make lowercase
-  return w.replace(/[.,;:!?'"()
+return w.replace(/[.,;:!?'"()
 
 \[\]
 
 -]/g, "").toLowerCase();
+
 }
 
 // ===============================
@@ -83,13 +83,13 @@ function updateVerseDisplay() {
 
 function checkWord(typed) {
   let expectedRaw = currentWords[index] || "";
-  let expected = normalizeWord(expectedRaw);
+  let expectedNorm = normalizeWord(expectedRaw);
   let typedNorm = normalizeWord(typed);
 
-  if (typedNorm === expected && expected !== "") {
+  if (typedNorm === expectedNorm && expectedNorm !== "") {
     index++;
 
-    updateVerseDisplay();
+    updateVerseDisplay();  // reveal correct words
 
     if (index >= currentWords.length) {
       statusDisplay.textContent =
@@ -206,6 +206,3 @@ function renderUserVerses() {
 
 // Initial render
 renderUserVerses();
-
-
-
