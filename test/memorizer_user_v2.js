@@ -1,199 +1,175 @@
-// --- State ---
-let currentRef = "";
-let currentText = "";
-let currentWords = [];
-let currentIndex = 0;
+// ===============================
+// User Verse Memorizer (v2)
+// ===============================
 
-// user list: [{ ref, text }]
-let customList = JSON.parse(localStorage.getItem("mv_custom_list") || "[]");
-let customIndex = 0;
+// Load user verses from localStorage
+let userVerses = JSON.parse(localStorage.getItem("userVerses") || "[]");
 
-// --- DOM ---
-const refInput        = document.getElementById("refInput");
-const verseDisplay    = document.getElementById("verseDisplay");
-const statusDisplay   = document.getElementById("statusDisplay");
-const wordInput       = document.getElementById("wordInput");
-const nextBtn         = document.getElementById("nextBtn");
-const repeatBtn       = document.getElementById("repeatBtn");
-const resetBtn        = document.getElementById("resetBtn");
-const userRefInput    = document.getElementById("userRefInput");
-const userTextInput   = document.getElementById("userTextInput");
+// DOM elements
+const refInput = document.getElementById("refInput");
+const verseDisplay = document.getElementById("verseDisplay");
+const statusDisplay = document.getElementById("statusDisplay");
+const wordInput = document.getElementById("wordInput");
+
+const nextBtn = document.getElementById("nextBtn");
+const repeatBtn = document.getElementById("repeatBtn");
+const resetBtn = document.getElementById("resetBtn");
+
+const userRefInput = document.getElementById("userRefInput");
+const userTextInput = document.getElementById("userTextInput");
 const addUserVerseBtn = document.getElementById("addUserVerseBtn");
-const userVersesDiv   = document.getElementById("user-verses");
+const userVersesDiv = document.getElementById("user-verses");
 
-// --- Helpers ---
+// Drill state
+let currentWords = [];
+let index = 0;
 
-// SAFE punctuation remover — NO REGEX
-function normalizeWord(w) {
-  return w
-    .toLowerCase()
-    .split("")
-    .filter(ch => "abcdefghijklmnopqrstuvwxyz0123456789".includes(ch))
-    .join("");
-}
-
-function clearMemorizer() {
-  currentRef = "";
-  currentText = "";
-  currentWords = [];
-  currentIndex = 0;
-  refInput.value = "";
-  wordInput.value = "";
-  verseDisplay.textContent = "";
-  statusDisplay.textContent = "";
-}
-
-function renderUserList() {
-  userVersesDiv.innerHTML = "";
-
-  if (!customList.length) {
-    userVersesDiv.textContent = "No verses in your list yet.";
-    return;
-  }
-
-  customList.forEach((v, index) => {
-    const div = document.createElement("div");
-    div.className = "verse-item";
-
-    div.textContent = `${v.ref} — ${v.text}`;
-
-    const delBtn = document.createElement("button");
-    delBtn.textContent = "Delete";
-    delBtn.className = "delete-btn";
-
-    delBtn.addEventListener("click", () => {
-      customList.splice(index, 1);
-      localStorage.setItem("mv_custom_list", JSON.stringify(customList));
-      renderUserList();
-      statusDisplay.textContent = "Verse deleted.";
-    });
-
-    div.appendChild(delBtn);
-    userVersesDiv.appendChild(div);
-  });
-}
-
-function findUserVerse(ref) {
-  return customList.find(v => v.ref.trim().toLowerCase() === ref.trim().toLowerCase()) || null;
-}
-
-function loadVerseFromRef(ref) {
-  if (!ref.trim()) {
-    statusDisplay.textContent = "Please type a reference.";
-    return;
-  }
-
-  const v = findUserVerse(ref);
-  if (!v) {
-    statusDisplay.textContent = "Verse not found in your list.";
-    return;
-  }
-
-  currentRef = ref;
-  currentText = v.text;
-  currentWords = currentText.split(/\s+/);
-  currentIndex = 0;
-
-  verseDisplay.textContent = "";
-  statusDisplay.textContent = "Start typing the verse, word by word.";
-  wordInput.value = "";
-  wordInput.focus();
-}
-
-function loadNextVerse() {
-  if (!customList.length) {
-    statusDisplay.textContent = "Your list is empty.";
-    return;
-  }
-  customIndex = (customIndex + 1) % customList.length;
-  const v = customList[customIndex];
-
-  currentRef = v.ref;
-  currentText = v.text;
-  currentWords = v.text.split(/\s+/);
-  currentIndex = 0;
-
-  refInput.value = currentRef;
-
-  verseDisplay.textContent = "";
-  statusDisplay.textContent = "Next verse from your list.";
-  wordInput.value = "";
-  wordInput.focus();
-}
-
-function repeatCurrentVerse() {
-  if (!currentText) {
-    statusDisplay.textContent = "No verse loaded.";
-    return;
-  }
-  currentWords = currentText.split(/\s+/);
-  currentIndex = 0;
-
-  verseDisplay.textContent = "";
-  statusDisplay.textContent = "Repeating current verse.";
-  wordInput.value = "";
-  wordInput.focus();
-}
-
-// --- Events ---
+// ===============================
+// Load Verse from Reference
+// ===============================
 refInput.addEventListener("keydown", e => {
-  if (e.key === "Enter") {
+  if (e.key === "Enter" || e.key === "Tab") {
     e.preventDefault();
-    loadVerseFromRef(refInput.value);
-    wordInput.focus();
-  }
-
-  if (e.key === "Tab") {
-    e.preventDefault();
-    loadVerseFromRef(refInput.value);
-    wordInput.focus();
+    loadVerse(refInput.value.trim());
   }
 });
 
+function loadVerse(reference) {
+  if (!reference) return;
+
+  // Look for verse in user list first
+  let match = userVerses.find(v => v.ref.toLowerCase() === reference.toLowerCase());
+
+  if (!match) {
+    verseDisplay.textContent = "Verse not found in your list.";
+    currentWords = [];
+    index = 0;
+    return;
+  }
+
+  verseDisplay.textContent = match.text;
+  currentWords = match.text.split(/\s+/);
+  index = 0;
+
+  statusDisplay.textContent = "Begin typing the first word.";
+  wordInput.value = "";
+  wordInput.focus();
+}
+
+// ===============================
+// Word Checking Logic
+// ===============================
+function checkWord(typed) {
+  let expected = currentWords[index] || "";
+
+  if (typed.toLowerCase() === expected.toLowerCase()) {
+    index++;
+
+    if (index >= currentWords.length) {
+      statusDisplay.textContent = "✔ Verse complete!";
+    } else {
+      statusDisplay.textContent = `Correct. Next word: (${index + 1}/${currentWords.length})`;
+    }
+  } else {
+    statusDisplay.textContent = `❌ Expected "${expected}", but you typed "${typed}".`;
+  }
+}
+
+// ===============================
+// iPhone-Safe Input Handling
+// ===============================
+
+// Prevent Safari phantom submissions
 wordInput.addEventListener("keydown", e => {
   if (e.key === " ") {
-    e.preventDefault();
-    const typed = wordInput.value.trim();
-    const expected = currentWords[currentIndex] || "";
-    if (!typed) return;
+    let typedWord = wordInput.value.trim();
 
-    if (normalizeWord(typed) === normalizeWord(expected)) {
-      currentIndex++;
-      statusDisplay.textContent = `Correct: "${typed}"`;
+    // Prevent empty-word submissions (Safari quirk)
+    if (!typedWord) return;
 
-      verseDisplay.textContent = currentWords.slice(0, currentIndex).join(" ");
-
-      if (currentIndex >= currentWords.length) {
-        statusDisplay.textContent = "Verse complete!";
-      }
-    } else {
-      statusDisplay.textContent =
-        `Expected "${normalizeWord(expected)}", but you typed "${typed}".`;
-    }
+    checkWord(typedWord);
     wordInput.value = "";
   }
 });
 
-nextBtn.addEventListener("click", loadNextVerse);
-repeatBtn.addEventListener("click", repeatCurrentVerse);
-resetBtn.addEventListener("click", clearMemorizer);
-
-addUserVerseBtn.addEventListener("click", () => {
-  const ref = userRefInput.value.replace(/^\s+/, "");
-  const text = userTextInput.value.replace(/^\s+/, "");
-  if (!ref || !text) {
-    statusDisplay.textContent = "Please enter both reference and verse text.";
-    return;
-  }
-  customList.push({ ref, text });
-  localStorage.setItem("mv_custom_list", JSON.stringify(customList));
-  userRefInput.value = "";
-  userTextInput.value = "";
-  renderUserList();
-  statusDisplay.textContent = "Verse added to your list.";
+// Prevent Safari from submitting an empty word when tapping the box
+wordInput.addEventListener("focus", () => {
+  wordInput.value = "";
 });
 
-// --- Init ---
-renderUserList();
-clearMemorizer();
+// ===============================
+// Buttons
+// ===============================
+nextBtn.addEventListener("click", () => {
+  index = 0;
+  statusDisplay.textContent = "Next verse loaded. Type the first word.";
+  wordInput.value = "";
+  wordInput.focus();
+});
 
+repeatBtn.addEventListener("click", () => {
+  index = 0;
+  statusDisplay.textContent = "Repeat verse. Type the first word.";
+  wordInput.value = "";
+  wordInput.focus();
+});
+
+resetBtn.addEventListener("click", () => {
+  refInput.value = "";
+  verseDisplay.textContent = "";
+  statusDisplay.textContent = "";
+  wordInput.value = "";
+  currentWords = [];
+  index = 0;
+});
+
+// ===============================
+// Add User Verse
+// ===============================
+addUserVerseBtn.addEventListener("click", () => {
+  let ref = userRefInput.value.trim();
+  let text = userTextInput.value.trim();
+
+  if (!ref || !text) return;
+
+  userVerses.push({ ref, text });
+  localStorage.setItem("userVerses", JSON.stringify(userVerses));
+
+  userRefInput.value = "";
+  userTextInput.value = "";
+
+  renderUserVerses();
+});
+
+// ===============================
+// Render User Verse List
+// ===============================
+function renderUserVerses() {
+  userVersesDiv.innerHTML = "";
+
+  userVerses.forEach((v, i) => {
+    let div = document.createElement("div");
+    div.className = "verse-item";
+
+    div.innerHTML = `
+      <strong>${v.ref}</strong><br>
+      ${v.text}<br>
+      <button class="delete-btn" data-index="${i}">Delete</button>
+    `;
+
+    userVersesDiv.appendChild(div);
+  });
+
+  // Attach delete handlers
+  document.querySelectorAll(".delete-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      let idx = btn.getAttribute("data-index");
+      userVerses.splice(idx, 1);
+      localStorage.setItem("userVerses", JSON.stringify(userVerses));
+      renderUserVerses();
+    });
+  });
+}
+
+// Initial render
+renderUserVerses();
