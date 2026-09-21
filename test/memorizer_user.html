@@ -1,71 +1,114 @@
-// ===============================
-// User Verse Memorizer (v2)
-// ===============================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Verse Memorizer</title>
 
-// Load user verses from localStorage
-let userVerses = JSON.parse(localStorage.getItem("userVerses") || "[]");
+  <!-- Mobile scaling -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-// DOM elements
-const refInput = document.getElementById("refInput");
-const verseDisplay = document.getElementById("verseDisplay");
-const statusDisplay = document.getElementById("statusDisplay");
-const wordInput = document.getElementById("wordInput");
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 1rem;
+      background: #f7f7f7;
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
 
-const nextBtn = document.getElementById("nextBtn");
-const repeatBtn = document.getElementById("repeatBtn");
-const resetBtn = document.getElementById("resetBtn");
+    h1, h2 {
+      color: darkblue;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
 
-const userRefInput = document.getElementById("userRefInput");
-const userTextInput = document.getElementById("userTextInput");
-const addUserVerseBtn = document.getElementById("addUserVerseBtn");
-const userVersesDiv = document.getElementById("user-verses");
+    .qr-section {
+      text-align: center;
+      margin-top: 40px;
+    }
 
-// Drill state
-let currentWords = [];
-let index = 0;
-let mistakes = 0;   // NEW: mistake counter
+    .qr-section img {
+      max-width: 200px;
+      display: inline-block;
+    }
 
-// ===============================
-// Load Verse from Reference
-// ===============================
-refInput.addEventListener("keydown", e => {
-  if (e.key === "Enter" || e.key === "Tab") {
-    e.preventDefault();
-    loadVerse(refInput.value.trim());
-  }
-});
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
 
-function loadVerse(reference) {
-  if (!reference) return;
+    input[type="text"] {
+      width: 100%;
+      padding: 0.8rem;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      border: 1px solid #999;
+      margin-top: 0.3rem;
+      box-sizing: border-box;
+    }
 
-  // Look for verse in user list first
-  let match = userVerses.find(v => v.ref.toLowerCase() === reference.toLowerCase());
+    /* Compact inline buttons */
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 1rem;
+    }
 
-  if (!match) {
-    verseDisplay.textContent = "Verse not found in your list.";
-    currentWords = [];
-    index = 0;
-    mistakes = 0;
-    return;
-  }
+    button {
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+      background: #005bbb;
+      color: white;
+      flex: 0 0 auto;
+    }
 
-  verseDisplay.textContent = match.text;
-  currentWords = match.text.split(/\s+/);
-  index = 0;
-  mistakes = 0;   // Reset mistakes on new verse
+    button:active {
+      background: #004999;
+    }
 
-  statusDisplay.textContent = "Begin typing the first word.";
-  wordInput.value = "";
-  wordInput.focus();
-}
+    .delete-btn {
+      background: #bb0000;
+    }
 
-// ===============================
-// Word Checking Logic
-// ===============================
-function checkWord(typed) {
-  let expected = currentWords[index] || "";
+    #verseDisplay {
+      font-size: 1.3rem;
+      margin-top: 1rem;
+      min-height: 2rem;
+    }
 
-  if (typed.toLowerCase() === expected.toLowerCase()) {
-    index++;
+    #statusDisplay {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      color: #444;
+      min-height: 1.5rem; /* Keeps layout stable when messages change */
+    }
 
-    if (index >= currentWords.length) {
+    #user-verses {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .verse-item {
+      background: white;
+      padding: 0.8rem;
+      border-radius: 8px;
+      margin-bottom: 0.8rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+
+    hr {
+      margin: 2rem 0;
+    }
+
+    /* Return box */
+    .return-box {
+      background: #e6f2ff;
+      border: 2px solid #7aaee6;
+      padding: 12px;
+      margin: 40px auto 0 auto;
+      width: 70
