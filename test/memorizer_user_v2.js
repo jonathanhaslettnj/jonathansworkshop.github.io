@@ -40,9 +40,21 @@ function speak(text) {
 // EVENT HOOKS (Audio-ready)
 // ===============================
 function onLoadVerse(text, reference) {
-    speak("Now memorizing " + reference);
+    // Convert "John 3:16" → Book = John, Chapter = 3, Verse = 16
+    let [bookAndChapter, verseStr] = reference.split(":");
+    let parts = bookAndChapter.trim().split(" ");
+
+    let verse = verseStr;
+    let chapter = parts.pop();        // last part is chapter number
+    let book = parts.join(" ");       // remaining parts form the book name
+
+    // Speak the reference in natural language
+    speak("Now memorizing " + book + " chapter " + chapter + ", verse " + verse);
+
+    // Speak the verse text
     speak(text);
 }
+
 
 function onCorrectWord(expected) {
     speak("Correct");
