@@ -25,6 +25,9 @@ let currentWords = [];
 let index = 0;
 let mistakes = 0;
 
+// Track which verse in the list is currently loaded
+let currentVerseIndex = -1;
+
 // ===============================
 // SIMPLE TEXT-TO-SPEECH
 // ===============================
@@ -40,21 +43,16 @@ function speak(text) {
 // EVENT HOOKS (Audio-ready)
 // ===============================
 function onLoadVerse(text, reference) {
-    // Convert "John 3:16" → Book = John, Chapter = 3, Verse = 16
     let [bookAndChapter, verseStr] = reference.split(":");
     let parts = bookAndChapter.trim().split(" ");
 
     let verse = verseStr;
-    let chapter = parts.pop();        // last part is chapter number
-    let book = parts.join(" ");       // remaining parts form the book name
+    let chapter = parts.pop();
+    let book = parts.join(" ");
 
-    // Speak the reference in natural language
     speak("Now memorizing " + book + " chapter " + chapter + ", verse " + verse);
-
-    // Speak the verse text
     speak(text);
 }
-
 
 function onCorrectWord(expected) {
     speak("Correct");
@@ -99,8 +97,12 @@ function loadVerse(reference) {
     currentWords = [];
     index = 0;
     mistakes = 0;
+    currentVerseIndex = -1;
     return;
   }
+
+  // Track which verse is loaded
+  currentVerseIndex = userVerses.findIndex(v => v.ref.toLowerCase() === reference.toLowerCase());
 
   currentWords = match.text.split(/\s+/);
   index = 0;
@@ -111,7 +113,6 @@ function loadVerse(reference) {
   wordInput.value = "";
   wordInput.focus();
 
-  // 🔊 EVENT: Verse loaded
   onLoadVerse(match.text, match.ref);
 }
 
@@ -130,7 +131,6 @@ function checkWord(typed) {
   let expectedNorm = normalizeWord(expectedRaw);
   let typedNorm = normalizeWord(typed);
 
-  // Skip punctuation-only words
   if (expectedNorm === "") {
     index++;
     updateVerseDisplay();
@@ -140,25 +140,18 @@ function checkWord(typed) {
   if (typedNorm === expectedNorm) {
     index++;
     updateVerseDisplay();
-
-    // 🔊 EVENT: Correct word
     onCorrectWord(expectedRaw);
 
     if (index >= currentWords.length) {
       statusDisplay.textContent =
         `✔ Verse complete! Mistakes made: ${mistakes === 0 ? "0 (Perfect!)" : mistakes}`;
-
-      // 🔊 EVENT: Verse complete
       onVerseComplete(mistakes);
-
     } else {
       statusDisplay.textContent = `Correct. Next word: (${index + 1}/${currentWords.length})`;
     }
   } else {
     mistakes++;
     statusDisplay.textContent = `❌ Expected "${expectedRaw}", but you typed "${typed}".`;
-
-    // 🔊 EVENT: Incorrect word
     onIncorrectWord(expectedRaw, typed);
   }
 }
@@ -180,15 +173,28 @@ wordInput.addEventListener("focus", () => {
 });
 
 // ===============================
+// Next Verse in Your List
+// ===============================
+function loadNextVerseInList() {
+    if (currentVerseIndex < 0) return;
+
+    let nextIndex = currentVerseIndex + 1;
+
+    if (nextIndex >= userVerses.length) {
+        speak("You have reached the end of your list.");
+        statusDisplay.textContent = "End of your list.";
+        return;
+    }
+
+    let nextVerse = userVerses[nextIndex];
+    loadVerse(nextVerse.ref);
+}
+
+// ===============================
 // Buttons
 // ===============================
 nextBtn.addEventListener("click", () => {
-  index = 0;
-  mistakes = 0;
-  updateVerseDisplay();
-  statusDisplay.textContent = "Next verse loaded. Type the first word.";
-  wordInput.value = "";
-  wordInput.focus();
+  loadNextVerseInList();
 });
 
 repeatBtn.addEventListener("click", () => {
@@ -208,6 +214,7 @@ resetBtn.addEventListener("click", () => {
   currentWords = [];
   index = 0;
   mistakes = 0;
+  currentVerseIndex = -1;
 });
 
 // ===============================
@@ -247,16 +254,4 @@ function renderUserVerses() {
     userVersesDiv.appendChild(div);
   });
 
-  document.querySelectorAll(".delete-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      let idx = btn.getAttribute("data-index");
-      userVerses.splice(idx, 1);
-      localStorage.setItem("userVerses", JSON.stringify(userVerses));
-      renderUserVerses();
-    });
-  });
-}
-
-renderUserVerses();
-
-
+  document.query
