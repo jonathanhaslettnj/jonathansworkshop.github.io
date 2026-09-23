@@ -2,16 +2,13 @@
 // User Verse Memorizer (v2) — Event-Ready Version
 // ===============================
 
-// Load user verses from localStorage
 let userVerses = JSON.parse(localStorage.getItem("userVerses") || "[]");
 
-// DOM elements
 const refInput = document.getElementById("refInput");
 const verseDisplay = document.getElementById("verseDisplay");
 const statusDisplay = document.getElementById("statusDisplay");
 const wordInput = document.getElementById("wordInput");
 
-const nextBtn = document.getElementById("nextBtn");
 const repeatBtn = document.getElementById("repeatBtn");
 const resetBtn = document.getElementById("resetBtn");
 
@@ -20,13 +17,9 @@ const userTextInput = document.getElementById("userTextInput");
 const addUserVerseBtn = document.getElementById("addUserVerseBtn");
 const userVersesDiv = document.getElementById("user-verses");
 
-// Drill state
 let currentWords = [];
 let index = 0;
 let mistakes = 0;
-
-// Track which verse in the list is currently loaded
-let currentVerseIndex = -1;
 
 // ===============================
 // SIMPLE TEXT-TO-SPEECH
@@ -40,7 +33,7 @@ function speak(text) {
 }
 
 // ===============================
-// EVENT HOOKS (Audio-ready)
+// EVENT HOOKS
 // ===============================
 function onLoadVerse(text, reference) {
     let [bookAndChapter, verseStr] = reference.split(":");
@@ -71,7 +64,7 @@ function onVerseComplete(mistakes) {
 }
 
 // ===============================
-// Helpers: Safe punctuation filter
+// Helpers
 // ===============================
 function normalizeWord(w) {
   return w.replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "").toLowerCase();
@@ -97,12 +90,8 @@ function loadVerse(reference) {
     currentWords = [];
     index = 0;
     mistakes = 0;
-    currentVerseIndex = -1;
     return;
   }
-
-  // Track which verse is loaded
-  currentVerseIndex = userVerses.findIndex(v => v.ref.toLowerCase() === reference.toLowerCase());
 
   currentWords = match.text.split(/\s+/);
   index = 0;
@@ -173,30 +162,8 @@ wordInput.addEventListener("focus", () => {
 });
 
 // ===============================
-// Next Verse in Your List
-// ===============================
-function loadNextVerseInList() {
-    if (currentVerseIndex < 0) return;
-
-    let nextIndex = currentVerseIndex + 1;
-
-    if (nextIndex >= userVerses.length) {
-        speak("You have reached the end of your list.");
-        statusDisplay.textContent = "End of your list.";
-        return;
-    }
-
-    let nextVerse = userVerses[nextIndex];
-    loadVerse(nextVerse.ref);
-}
-
-// ===============================
 // Buttons
 // ===============================
-nextBtn.addEventListener("click", () => {
-  loadNextVerseInList();
-});
-
 repeatBtn.addEventListener("click", () => {
   index = 0;
   mistakes = 0;
@@ -214,7 +181,6 @@ resetBtn.addEventListener("click", () => {
   currentWords = [];
   index = 0;
   mistakes = 0;
-  currentVerseIndex = -1;
 });
 
 // ===============================
@@ -254,4 +220,15 @@ function renderUserVerses() {
     userVersesDiv.appendChild(div);
   });
 
-  document.query
+  document.querySelectorAll(".delete-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      let idx = btn.getAttribute("data-index");
+      userVerses.splice(idx, 1);
+      localStorage.setItem("userVerses", JSON.stringify(userVerses));
+      renderUserVerses();
+    });
+  });
+}
+
+renderUserVerses();
+
