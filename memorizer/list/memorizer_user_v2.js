@@ -248,5 +248,3 @@ loadListBtn.addEventListener("click", loadSelectedList);
 
 // Load unified list by default
 renderUserVerses();
-
-
