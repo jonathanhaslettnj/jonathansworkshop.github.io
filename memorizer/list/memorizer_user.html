@@ -13,7 +13,7 @@
       margin: 0;
       padding: 1rem;
       background: #f7f7f7;
-      font-size: 1.2rem; /* Larger base font */
+      font-size: 1.2rem;
       line-height: 1.5;
     }
 
@@ -22,15 +22,17 @@
       text-align: center;
       margin-bottom: 1rem;
     }
-.qr-section {
-  text-align: center;      /* Centers inline elements like images */
-  margin-top: 40px;
-}
 
-.qr-section img {
-  max-width: 200px;        /* Optional: keeps the QR code a good size */
-  display: inline-block;   /* Ensures proper centering */
-}
+    .qr-section {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .qr-section img {
+      max-width: 200px;
+      display: inline-block;
+    }
+
     label {
       display: block;
       margin-top: 1rem;
@@ -39,27 +41,38 @@
 
     input[type="text"] {
       width: 100%;
-      padding: 0.8rem;              /* Bigger tap area */
-      font-size: 1.2rem;            /* Larger text */
+      padding: 0.8rem;
+      font-size: 1.2rem;
       border-radius: 8px;
       border: 1px solid #999;
       margin-top: 0.3rem;
       box-sizing: border-box;
     }
 
+    /* Compact inline buttons */
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+
     button {
-      width: 100%;                  /* Full-width buttons */
-      padding: 0.9rem;
-      font-size: 1.2rem;
-      margin-top: 0.8rem;
-      border-radius: 10px;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
       border: none;
       background: #005bbb;
       color: white;
+      flex: 0 0 auto;
     }
 
     button:active {
       background: #004999;
+    }
+
+    .delete-btn {
+      background: #bb0000;
     }
 
     #verseDisplay {
@@ -72,6 +85,7 @@
       font-size: 1.1rem;
       margin-top: 0.5rem;
       color: #444;
+      min-height: 1.5rem; /* Keeps layout stable when messages change */
     }
 
     #user-verses {
@@ -87,27 +101,21 @@
       box-shadow: 0 1px 3px rgba(0,0,0,0.15);
     }
 
-    .delete-btn {
-      background: #bb0000;
-      margin-top: 0.6rem;
-    }
-
     hr {
       margin: 2rem 0;
     }
 
-
-/* Return box */
-.return-box {
-  background: #e6f2ff;
-  border: 2px solid #7aaee6;
-  padding: 12px;
-  margin: 40px auto 0 auto;
-  width: 70%;
-  max-width: 350px;
-  border-radius: 8px;
-  font-size: 20px;
-}
+    /* Return box */
+    .return-box {
+      background: #e6f2ff;
+      border: 2px solid #7aaee6;
+      padding: 12px;
+      margin: 40px auto 0 auto;
+      width: 70%;
+      max-width: 350px;
+      border-radius: 8px;
+      font-size: 20px;
+    }
   </style>
 </head>
 
@@ -125,10 +133,12 @@
   <label for="wordInput">Type next word, then press space:</label>
   <input id="wordInput" type="text">
 
-  <!-- Buttons stacked for mobile -->
-  <button id="nextBtn">Next Verse ▶</button>
-  <button id="repeatBtn">Repeat Verse ↻</button>
-  <button id="resetBtn">Start Over</button>
+  <!-- Compact inline buttons -->
+  <div class="button-row">
+    <button id="nextBtn">Next Verse ▶</button>
+    <button id="repeatBtn">Repeat Verse ↻</button>
+    <button id="resetBtn">Start Over</button>
+  </div>
 
   <hr>
 
@@ -141,28 +151,25 @@
   <label for="userTextInput">Verse text:</label>
   <input id="userTextInput" type="text" placeholder="In the beginning was the Word...">
 
-  <button id="addUserVerseBtn">Add to My List</button>
+  <div class="button-row">
+    <button id="addUserVerseBtn">Add to My List</button>
+  </div>
 
   <h2>Your Verses</h2>
   <div id="user-verses"></div>
 
+  <script src="memorizer_user_v2.js?v=1"></script>
 
-<script src="memorizer_user_v2.js?v=1"></script>
+  <!-- Return Box -->
+  <div class="return-box">
+    <a href="../index.html">Bible Memorizer Information</a>
+  </div>
 
-
-<!-- Return Box -->
-<div class="return-box">
-  <a href="../index.html">Bible Memorizer Information</a>
-</div>
-
-
-
-<!-- QR Code Section -->
-<div class="qr-section">
-  <h2>Scan to Share the Bible Memorizer</h2>
-  <img src="QR Code.jpg" alt="QR Code">
-</div>
-
+  <!-- QR Code Section -->
+  <div class="qr-section">
+    <h2>Scan to Share the Bible Memorizer</h2>
+    <img src="QR Code.jpg" alt="QR Code">
+  </div>
 
 </body>
 </html>
