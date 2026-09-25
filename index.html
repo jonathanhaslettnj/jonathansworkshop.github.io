@@ -2,68 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jonathan's Workshop</title>
+<title>What's Newest?</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 
 /* ------------------------------
-   BASE PAGE STYLING (DESKTOP)
+   BASE PAGE STYLING
    ------------------------------ */
 
 body {
-  font-family: Arial, sans-serif;
   text-align: center;
-  margin: 0;
+  font-family: Arial, sans-serif;
   padding: 20px;
+  background: #ffffff;
   font-size: 18px;
-  background-color: #ffffff;
 }
 
 h1 {
-  color: #003399;
-  font-size: 32px;
-  margin-bottom: 20px;
-}
-
-h2 {
-  color: #003399;
-  font-size: 24px;
-  margin-top: 30px;
-}
-
-/* ⭐ DIRECTORY BAR */
-#folderBar {
-  margin: 40px auto;
-  padding: 10px;
-  max-width: 900px;
-  background: #eef5ff;
-  border: 2px solid #aac6ff;
-  border-radius: 10px;
-}
-
-#folderBar a {
-  display: inline-block;
-  margin: 6px 10px;
-  padding: 6px 12px;
-  background: #d9e7ff;
-  border-radius: 12px;
-  text-decoration: none;
-  color: #003c7a;
-  font-weight: bold;
-  border: 1px solid #bcd0f2;
-}
-
-#folderBar a:hover {
-  background: #c7dbff;
-}
-
-/* YouTube viewer */
-iframe {
-  width: 560px;
-  height: 315px;
-  max-width: 100%;
-  border: none;
+  font-size: 48px;
+  color: #003399;   /* deep blue */
+  margin-bottom: 10px;
 }
 
 /* Centered bordered video box */
@@ -77,64 +37,49 @@ iframe {
   background: #ffffff;
 }
 
-/* Link blocks */
-a {
-  display: block;
-  margin: 10px auto;
-  padding: 10px 0;
-  width: 90%;
-  max-width: 400px;
-  border: 2px solid #003399;
-  border-radius: 8px;
+/* PDF link boxes */
+.doc-link-box {
+  border: 2px solid #888;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 6px;
+  background: #f9f9f9;
+}
+
+.doc-link-box a {
+  font-size: 20px;
   text-decoration: none;
-  font-size: 18px;
-  background: #ffffff;
-}
-
-/* Bible Study link colors */
-.bible-link {
-  color: #006600;
-}
-
-/* Woodworking link color */
-.wood-link {
-  color: #990000;
-}
-
-/* qr-image */
-.qr-image {
-  max-width: 90%;
-  width: 200px;
-  height: auto;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  padding: 5px;
-  background: white;
-  display: block;
-  margin: 0 auto;
-}
-
-.contact-box p {
-  margin-bottom: 400px;
-  font-size: 18px;
-}
-
-.contact-box a {
-  display: inline;
-  margin: 0;
-  padding: 0;
-  width: auto;
-  border: none;
-  background: none;
-  font-size: 18px;
-  font-weight: bold;
   color: #003399;
+  word-break: break-word;
+}
+
+/* Responsive video */
+iframe {
+  width: 100%;
+  height: 260px;
+  border: none;
+  border-radius: 6px;
+}
+
+/* Return box */
+.return-box {
+  background: #e6f2ff;
+  border: 2px solid #7aaee6;
+  padding: 12px;
+  margin: 40px auto 0 auto;
+  width: 70%;
+  max-width: 350px;
+  border-radius: 8px;
+  font-size: 20px;
+}
+
+.return-box a {
   text-decoration: none;
-  word-break: break-all;
+  color: #004a99;
 }
 
 /* -----------------------------------------
-   PHONE‑ONLY ADJUSTMENTS — 25% LARGER
+   MOBILE ENLARGEMENT — 25% LARGER
    ----------------------------------------- */
 
 @media (max-width: 480px) {
@@ -144,48 +89,29 @@ a {
   }
 
   h1 {
-    font-size: 40px;
+    font-size: 60px;
   }
 
-  h2 {
-    font-size: 30px;
+  .unit-box {
+    padding: 25px;
   }
 
-  a {
-    font-size: 22px;
-    padding: 14px 0;
+  .doc-link-box a {
+    font-size: 25px;
+  }
+
+  .return-box {
+    font-size: 25px;
+    padding: 15px;
   }
 
   iframe {
-    width: 100% !important;
-    height: auto !important;
+    height: 325px;
   }
 }
 
-.intro-block {
-  font-size: 14px;
-  line-height: 1.3;
-  margin: 0;
-  padding: 0;
-}
-
-.unit-box .intro-block {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.intro-block h2 {
-  font-size: 16px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.intro-block p {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
 </style>
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DP2GCK9YCT"></script>
 <script>
@@ -199,67 +125,182 @@ a {
 
 <body>
 
-<h1>Jonathan's Workshop</h1>
+<h1>What is a good work in God's eyes?</h1>
 
-<section class="intro-block">
-    <h2>Bible Study Mission</h2>
-    <p>
-        Jonathan’s Workshop strives to provide Scripture‑based Bible Study resources designed to support personal growth,
-        Christian teaching, and practical discipleship. 
-    </p>
-</section>
 
-<!-- YouTube Video -->
+
+<!-- What Is a Good Work in God's Eyes? -->
 <div class="unit-box">
+
   <iframe 
-    src="https://www.youtube.com/embed/Fer2suu_Goc?"
-    allowfullscreen>
-  </iframe>
-</div>
-
-<!-- Bible Study Section -->
-<a class="bible-link" href="Rooted/index.html">Stay Rooted in Jesus</a>
-<a class="bible-link" href="Friday/index.html">Bible Study</a>
-<a class="bible-link" href="Questions/index.html">Questions with Answers</a>
-<a class="bible-link" href="memorizer/index.html">Bible Verse "Memorizer"</a>
-
-<!-- Woodworking Section -->
-<h2>Woodworking</h2>
-
-<a class="wood-link" href="Woodworking/index.html">Woodworking Videos</a>
-
-<!-- YouTube Video -->
-<div class="unit-box">
-  <iframe 
-    src="https://www.youtube.com/embed/tU-U53fZVNM"
+    src="https://www.youtube.com/embed/27y-n36YIRA?"
     allowfullscreen>
   </iframe>
 
-  <div class="video-description" style="margin-top: 15px; text-align: center; font-size: 18px;">
-    <strong>How to Use This Website</strong><br>
+  <div class="doc-link-box">
+    <a href="01 When Are Good Works Good.pdf">
+      What is a Good Work in God's Eyes?
+    </a>
   </div>
 </div>
 
-<!-- Index of Site -->
+<!-- Good Works Sizzle and Identify -->
+<div class="unit-box">
 
-<a class="bible-link" href="Where and What.html">Index to this site</a>
+  <iframe 
+    src="https://www.youtube.com/embed/FJfUGhlvMw0?"
+    allowfullscreen>
+  </iframe>
+
+  <div class="doc-link-box">
+    <a href="02 Good Works Sizzle and Identify.pdf
+">
+      Good works identify who is a believer and bring glory to God. But they must be founded on faith in Christ.
+    </a>
+  </div>
+</div>
+
+<!-- Luther's Treatise on Good Works, part 1 -->
+<div class="unit-box">
+
+  <iframe 
+    src="https://www.youtube.com/embed/TgHqvBOTwaU?"
+    allowfullscreen>
+  </iframe>
+
+  <div class="doc-link-box">
+    <a href="03 Intro to Luthers Treatise on Good Works.pdf">
+    Introduction to Martin Luther's Treatise on Good Works
+  </a>
+
+  </div>
+</div>
+
+<!-- Luther's Treatise on Good Works, The First Commandment -->
+<div class="unit-box">
+
+  <iframe 
+    src="https://www.youtube.com/embed/mhH6ivgLj1w?"
+    allowfullscreen>
+  </iframe>
+
+  <div class="doc-link-box">
+    <a href="04 Luthers Treatise on Good Works and the First Commandment.pdf">
+    Luthers Treatise on Good Works and the First Commandment
+  </a>
+
+  </div>
+</div>
+
+<!-- Luther's Treatise on Good Works, The Second Commandment -->
+<div class="unit-box">
+
+  <iframe 
+    src="https://www.youtube.com/embed/KXa5FBhE2IA?"
+    allowfullscreen>
+  </iframe>
+
+  <div class="doc-link-box">
+    <a href="05 Treatise on Good Works - the Second Commandment.pdf">
+    Luthers Treatise on Good Works and the Second Commandment
+  </a>
+
+  </div>
+</div>
+
+<div class="unit-box">
+
+<!-- Luther's Treatise on Good Works, The Third Commandment -->
+<div class="unit-box">
+
+  <iframe 
+    src="https://www.youtube.com/embed/hnUgzkPqwRw?"
+    allowfullscreen>
+  </iframe>
+
+  <div class="doc-link-box">
+    <a href="06 Treatise on Good Works - third commandment.pdf">
+    Luthers Treatise on Good Works and the Third Commandment
+  </a>
+  </div>
+</div>
+</div>
+
+<!-- Luther's Treatise on Good Works, The Fourth Commandment -->
+<div class="unit-box">
+
+  <iframe 
+    src="https://www.youtube.com/embed/r_nqcsOah7o?"
+    allowfullscreen>
+  </iframe>
+
+  <div class="doc-link-box">
+    <a href="07 Treatise on Good Works - fourth commandment.pdf">
+    Luthers Treatise on Good Works and the Fourth Commandment
+  </a>
+</div>
+</div>
+
+<!-- Luther's Treatise on Good Works, The Fourth Commandment -->
+<div class="unit-box">
+
+  <iframe 
+    src="https://www.youtube.com/embed/uSnQWqSGu0A?"
+    allowfullscreen>
+  </iframe>
+
+  <div class="doc-link-box">
+    <a href="08 Treatise on Good Works - fifth commandment.pdf">
+    Luthers Treatise on Good Works and the Fifth and Sixth Commandments
+  </a>
+
+  </div>
+</div>
+
+
+<div class="unit-box">
+
+<!-- Tools -->
+<div class="unit-box">
+
+ <div class="simple-box">
+  <a href="TreatiseOnGoodWorks.html">
+    Full Text of The Treatise on Good Works by Martin Luther
+  </a>
+</div>
+</div>
+
+<div class="unit-box">
+<div class="simple-box">
+  <a href="New Bubble/TreatiseOnGoodWorks_scripture_index.html">
+    An index of all scripture references in Treatise on Good Works.
+  </a>
+</div>
+</div>
+
+<div class="unit-box">
+<div class="simple-box">
+  <a href="TreatiseOnGoodWorks_frequency_index.html">
+    Words listed by how frequently they are used.
+  </a>
+</div>
+</div>
+
+<div class="unit-box">
+<div class="simple-box">
+  <a href="TreatiseOnGoodWorks_kwic.html">
+    Words are listed with the context of the text itself
+  </a>
+</div>
+</div>
+
 
 
 </div>
-<!-- Seeds of Hope Contact Box -->
-<div class="contact-box">
-  <p>
-    For spiritual questions or guidance, please contact Seeds of Hope Ministries at:
-    <a href="mailto:info@seedsofhopeministries.org">info@seedsofhopeministries.org</a>
-    To see the full website for Seeds of Hope, <a href="https://seedsofhopeministries.org">click here.</a>
-  </p>
-</div>
 
-<!-- QR Code Section -->
-<div class="qr-section">
-  <h2>Scan to Share Jonathan’s Workshop</h2>
-  <img src="qr.jpeg" alt="QR code for Jonathan's Workshop" class="qr-image">
+<!-- Return Box -->
+<div class="return-box">
+  <a href="../index.html">Return to Home Page</a>
 </div>
 
 </body>
-</html>
