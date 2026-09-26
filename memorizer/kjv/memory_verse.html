@@ -2,10 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-
-    <!-- CRITICAL FOR MOBILE -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Bible Memory Verse Module</title>
 
     <style>
@@ -17,7 +14,7 @@
             line-height: 1.6;
         }
 
-        #mv_reference_input, #mv_input, #translationSelector {
+        #mv_reference_input, #mv_input {
             width: 100%;
             padding: 10px;
             font-size: 18px;
@@ -59,7 +56,7 @@
                 font-size: 24px;
             }
 
-            #mv_reference_input, #mv_input, #translationSelector {
+            #mv_reference_input, #mv_input {
                 font-size: 16px;
                 padding: 8px;
             }
@@ -80,19 +77,9 @@
 
     <h1>Bible Memory Verse Module</h1>
 
-    <!-- TRANSLATION SELECTOR -->
-    <label for="translationSelector"><strong>Choose translation:</strong></label>
-    <select id="translationSelector">
-        <option value="KJV">KJV</option>
-        <option value="ASV">ASV</option>
-        <option value="BBE">BBE</option>
-    </select>
-
-    <!-- REFERENCE INPUT -->
     <input id="mv_reference_input" type="text" placeholder="Type verse (e.g. Genesis 1:1)">
     <div id="mv_instruction">Type the full name, chapter, and verse, then hit Enter.</div>
 
-    <!-- VERSE DISPLAY AREAS -->
     <div id="mv_reference" style="margin-top:10px; font-weight:bold;"></div>
 
     <div id="mv_progress"></div>
@@ -100,20 +87,16 @@
     <div id="mv_reveal"></div>
     <div id="mv_status"></div>
 
-    <!-- WORD INPUT -->
     <input id="mv_input" type="text" placeholder="Type next word, then spacebar">
 
-    <!-- NEXT VERSE BUTTON -->
     <div class="button-line">
         <button id="mv_next_verse">Next Verse ▶</button>
     </div>
 
-    <!-- START OVER BUTTON -->
     <div class="button-line">
         <button id="mv_restart" onclick="restartModule()">Start Over</button>
     </div>
 
-    <!-- YOUR JS FILE -->
     <script src="memory_verse.js"></script>
 
 </body>
