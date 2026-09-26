@@ -272,4 +272,52 @@ function renderUserVerses() {
             <button class="delete-btn" data-index="${i}">Delete</button>
         `;
 
-        userVersesDiv.append
+        userVersesDiv.appendChild(div);
+    });
+
+    document.querySelectorAll(".delete-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            let idx = btn.getAttribute("data-index");
+
+            if (currentListName === "A") {
+                listA.splice(idx, 1);
+                localStorage.setItem("mv_custom_list", JSON.stringify(listA));
+            } else if (currentListName === "B") {
+                listB.splice(idx, 1);
+                localStorage.setItem("userVerses", JSON.stringify(listB));
+            } else {
+                listC.splice(idx, 1);
+                localStorage.setItem("mv_custom_list_unified", JSON.stringify(listC));
+            }
+
+            loadSelectedList();
+        });
+    });
+}
+
+// =====================================
+// LIST SELECTOR
+// =====================================
+
+function loadSelectedList() {
+    const sel = listSelector.value;
+
+    if (sel === "A") {
+        currentList = listA;
+        currentListName = "A";
+    } else if (sel === "B") {
+        currentList = listB;
+        currentListName = "B";
+    } else {
+        currentList = listC;
+        currentListName = "C";
+    }
+
+    currentVerseIndex = 0; // reset verse index when switching lists
+    renderUserVerses();
+}
+
+loadListBtn.addEventListener("click", loadSelectedList);
+
+// Load unified list by default
+renderUserVerses();
