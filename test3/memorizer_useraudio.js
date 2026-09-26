@@ -1,176 +1,275 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>The Talking Bible Verse Memorizer</title>
+// =====================================
+// THREE MEMORY LISTS
+// =====================================
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+// List A = original non-audio list
+let listA = JSON.parse(localStorage.getItem("mv_custom_list") || "[]");
 
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 1rem;
-      background: #f7f7f7;
-      font-size: 1.2rem;
-      line-height: 1.5;
+// List B = audio version list (correct key)
+let listB = JSON.parse(localStorage.getItem("userVerses") || "[]");
+
+// List C = unified list
+let listC = JSON.parse(localStorage.getItem("mv_custom_list_unified") || "[]");
+
+// Default list = List C
+let currentList = listC;
+let currentListName = "C";
+
+// Verse index for Next Verse
+let currentVerseIndex = 0;
+
+// =====================================
+// DOM ELEMENTS
+// =====================================
+
+const refInput = document.getElementById("refInput");
+const verseDisplay = document.getElementById("verseDisplay");
+const statusDisplay = document.getElementById("statusDisplay");
+const wordInput = document.getElementById("wordInput");
+
+const nextBtn = document.getElementById("nextBtn");
+const repeatBtn = document.getElementById("repeatBtn");
+const resetBtn = document.getElementById("resetBtn");
+
+const userRefInput = document.getElementById("userRefInput");
+const userTextInput = document.getElementById("userTextInput");
+const addUserVerseBtn = document.getElementById("addUserVerseBtn");
+const userVersesDiv = document.getElementById("user-verses");
+
+const listSelector = document.getElementById("mv_list_selector");
+const loadListBtn = document.getElementById("mv_load_list_btn");
+
+let currentWords = [];
+let index = 0;
+let mistakes = 0;
+
+// =====================================
+// TEXT-TO-SPEECH
+// =====================================
+
+function speak(text) {
+    if (!text) return;
+    const u = new SpeechSynthesisUtterance(text);
+    u.rate = 1.0;
+    u.pitch = 1.0;
+    speechSynthesis.speak(u);
+}
+
+// =====================================
+// EVENT HOOKS
+// =====================================
+
+function onLoadVerse(text, reference) {
+    let [bookAndChapter, verseStr] = reference.split(":");
+    let parts = bookAndChapter.trim().split(" ");
+
+    let verse = verseStr;
+    let chapter = parts.pop();
+    let book = parts.join(" ");
+
+    speak("Now memorizing " + book + " chapter " + chapter + ", verse " + verse);
+    speak(text);
+}
+
+function onCorrectWord(expected) {
+    speak("Correct");
+}
+
+function onIncorrectWord(expected, typed) {
+    speak("Incorrect. Expected " + expected);
+}
+
+function onVerseComplete(mistakes) {
+    if (mistakes === 0) {
+        speak("Perfect recitation. No mistakes.");
+    } else {
+        speak("Verse complete. You made " + mistakes + " mistakes.");
+    }
+}
+
+// =====================================
+// NORMALIZE WORDS
+// =====================================
+
+function normalizeWord(w) {
+    return w.replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "").toLowerCase();
+}
+
+// =====================================
+// LOAD VERSE BY REFERENCE
+// =====================================
+
+refInput.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === "Tab") {
+        e.preventDefault();
+        loadVerse(refInput.value.trim());
+    }
+});
+
+function loadVerse(reference) {
+    if (!reference) return;
+
+    let match = currentList.find(v => v.ref.toLowerCase() === reference.toLowerCase());
+
+    if (!match) {
+        verseDisplay.textContent = "Verse not found in selected list.";
+        currentWords = [];
+        index = 0;
+        mistakes = 0;
+        return;
     }
 
-    h1, h2 {
-      color: darkblue;
-      text-align: center;
-      margin-bottom: 1rem;
+    currentWords = match.text.split(/\s+/);
+    index = 0;
+    mistakes = 0;
+
+    verseDisplay.textContent = "";
+    statusDisplay.textContent = "Begin typing the first word.";
+    wordInput.value = "";
+    wordInput.focus();
+
+    onLoadVerse(match.text, match.ref);
+}
+
+// =====================================
+// LOAD NEXT VERSE (Option 1: sequential order)
+// =====================================
+
+function loadNextVerse() {
+    if (currentList.length === 0) {
+        statusDisplay.textContent = "No verses in this list.";
+        return;
     }
 
-    label {
-      display: block;
-      margin-top: 1rem;
-      font-weight: bold;
+    currentVerseIndex++;
+
+    if (currentVerseIndex >= currentList.length) {
+        currentVerseIndex = 0; // wrap around
     }
 
-    input[type="text"], select {
-      width: 100%;
-      padding: 0.8rem;
-      font-size: 1.2rem;
-      border-radius: 8px;
-      border: 1px solid #999;
-      margin-top: 0.3rem;
-      box-sizing: border-box;
+    let nextRef = currentList[currentVerseIndex].ref;
+    refInput.value = nextRef;
+    loadVerse(nextRef);
+}
+
+nextBtn.addEventListener("click", loadNextVerse);
+
+// =====================================
+// DISPLAY
+// =====================================
+
+function updateVerseDisplay() {
+    verseDisplay.textContent = currentWords.slice(0, index).join(" ");
+}
+
+// =====================================
+// CHECK WORD
+// =====================================
+
+function checkWord(typed) {
+    let expectedRaw = currentWords[index] || "";
+    let expectedNorm = normalizeWord(expectedRaw);
+    let typedNorm = normalizeWord(typed);
+
+    if (expectedNorm === "") {
+        index++;
+        updateVerseDisplay();
+        return;
     }
 
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 1rem;
+    if (typedNorm === expectedNorm) {
+        index++;
+        updateVerseDisplay();
+        onCorrectWord(expectedRaw);
+
+        if (index >= currentWords.length) {
+            statusDisplay.textContent =
+                `✔ Verse complete! Mistakes made: ${mistakes === 0 ? "0 (Perfect!)" : mistakes}`;
+            onVerseComplete(mistakes);
+        } else {
+            statusDisplay.textContent = `Correct. Next word: (${index + 1}/${currentWords.length})`;
+        }
+    } else {
+        mistakes++;
+        statusDisplay.textContent = `❌ Expected "${expectedRaw}", but you typed "${typed}".`;
+        onIncorrectWord(expectedRaw, typed);
     }
+}
 
-    button {
-      padding: 0.6rem 1rem;
-      font-size: 1rem;
-      border-radius: 8px;
-      border: none;
-      background: #005bbb;
-      color: white;
-      flex: 0 0 auto;
+// =====================================
+// iPhone Input Fix
+// =====================================
+
+wordInput.addEventListener("keydown", e => {
+    if (e.key === " ") {
+        let typedWord = wordInput.value.trim();
+        if (!typedWord) return;
+        checkWord(typedWord);
+        wordInput.value = "";
     }
+});
 
-    button:active {
-      background: #004999;
-    }
+wordInput.addEventListener("focus", () => {
+    wordInput.value = "";
+});
 
-    .delete-btn {
-      background: #bb0000;
-    }
+// =====================================
+// BUTTONS
+// =====================================
 
-    #verseDisplay {
-      font-size: 1.3rem;
-      margin-top: 1rem;
-      min-height: 2rem;
-    }
+repeatBtn.addEventListener("click", () => {
+    index = 0;
+    mistakes = 0;
+    updateVerseDisplay();
+    statusDisplay.textContent = "Repeat verse. Type the first word.";
+    wordInput.value = "";
+    wordInput.focus();
+});
 
-    #statusDisplay {
-      font-size: 1.1rem;
-      margin-top: 0.5rem;
-      color: #444;
-      min-height: 1.5rem;
-    }
+resetBtn.addEventListener("click", () => {
+    refInput.value = "";
+    verseDisplay.textContent = "";
+    statusDisplay.textContent = "";
+    wordInput.value = "";
+    currentWords = [];
+    index = 0;
+    mistakes = 0;
+});
 
-    #user-verses {
-      margin-top: 1rem;
-      font-size: 1.1rem;
-    }
+// =====================================
+// ADD VERSE (ONLY TO LIST C)
+// =====================================
 
-    .verse-item {
-      background: white;
-      padding: 0.8rem;
-      border-radius: 8px;
-      margin-bottom: 0.8rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-    }
+addUserVerseBtn.addEventListener("click", () => {
+    let ref = userRefInput.value.trim();
+    let text = userTextInput.value.trim();
 
-    hr {
-      margin: 2rem 0;
-    }
+    if (!ref || !text) return;
 
-    .return-box {
-      background: #e6f2ff;
-      border: 2px solid #7aaee6;
-      padding: 12px;
-      margin: 40px auto 0 auto;
-      width: 70%;
-      max-width: 350px;
-      border-radius: 8px;
-      font-size: 20px;
-      text-align: center;
-    }
+    listC.push({ ref, text });
+    localStorage.setItem("mv_custom_list_unified", JSON.stringify(listC));
 
-    .qr-section {
-      text-align: center;
-      margin-top: 40px;
-    }
+    userRefInput.value = "";
+    userTextInput.value = "";
 
-    .qr-section img {
-      max-width: 200px;
-      display: inline-block;
-    }
-  </style>
-</head>
+    if (currentListName === "C") renderUserVerses();
+});
 
-<body>
+// =====================================
+// RENDER LIST
+// =====================================
 
-  <h1>The Talking Bible Verse Memorizer</h1>
+function renderUserVerses() {
+    userVersesDiv.innerHTML = "";
 
-  <!-- LIST SELECTOR -->
-  <label for="mv_list_selector"><strong>Choose verse list:</strong></label>
-  <select id="mv_list_selector">
-    <option value="A">List A (Original Non‑Audio)</option>
-    <option value="B">List B (Audio Version)</option>
-    <option value="C">List C (Unified List)</option>
-  </select>
-  <button id="mv_load_list_btn">Load Selected List</button>
+    currentList.forEach((v, i) => {
+        let div = document.createElement("div");
+        div.className = "verse-item";
 
-  <label for="refInput">Reference: (Type then press Enter)</label>
-  <input id="refInput" type="text" placeholder="John 1:1">
+        div.innerHTML = `
+            <strong>${v.ref}</strong><br>
+            ${v.text}<br>
+            <button class="delete-btn" data-index="${i}">Delete</button>
+        `;
 
-  <p id="verseDisplay"></p>
-  <p id="statusDisplay"></p>
-
-  <label for="wordInput">Type next word, then press space:</label>
-  <input id="wordInput" type="text">
-
-  <div class="button-row">
-    <button id="repeatBtn">Repeat Verse ↻</button>
-    <button id="resetBtn">Start Over</button>
-  </div>
-
-  <hr>
-
-  <h2>Add to Unified List (List C)</h2>
-
-  <label for="userRefInput">Reference:</label>
-  <input id="userRefInput" type="text" placeholder="John 1:1">
-
-  <label for="userTextInput">Verse text:</label>
-  <input id="userTextInput" type="text" placeholder="In the beginning was the Word...">
-
-  <div class="button-row">
-    <button id="addUserVerseBtn">Add to My Unified List</button>
-  </div>
-
-  <h2>Your Verses</h2>
-  <div id="user-verses"></div>
-
-  <script src="memorizer_useraudio.js?v=2"></script>
-
-  <div class="return-box">
-    <a href="https://jonathansworkshop.online/memorizer/index.html">Bible Memorizer Information</a>
-  </div>
-
-  <div class="qr-section">
-    <h2>Scan to Share the Bible Memorizer</h2>
-    <img src="QR Code.jpg" alt="QR Code">
-  </div>
-
-</body>
-</html>
+        userVersesDiv.append

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -124,12 +125,13 @@
   <!-- LIST SELECTOR -->
   <label for="mv_list_selector"><strong>Choose verse list:</strong></label>
   <select id="mv_list_selector">
-    <option value="A">List A (Original Non‑Audio)</option>
-    <option value="B">List B (Audio Version)</option>
-    <option value="C">List C (Unified List)</option>
+    <option value="A">List A</option>
+    <option value="B">List B</option>
+    <option value="C">List C</option>
   </select>
   <button id="mv_load_list_btn">Load Selected List</button>
 
+  <!-- Memorizer -->
   <label for="refInput">Reference: (Type then press Enter)</label>
   <input id="refInput" type="text" placeholder="John 1:1">
 
@@ -140,6 +142,7 @@
   <input id="wordInput" type="text">
 
   <div class="button-row">
+    <button id="nextBtn">Next Verse ▶</button>
     <button id="repeatBtn">Repeat Verse ↻</button>
     <button id="resetBtn">Start Over</button>
   </div>
@@ -161,7 +164,7 @@
   <h2>Your Verses</h2>
   <div id="user-verses"></div>
 
-  <script src="memorizer_useraudio.js?v=2"></script>
+  <script src="memorizer_useraudio.js?v=3"></script>
 
   <div class="return-box">
     <a href="https://jonathansworkshop.online/memorizer/index.html">Bible Memorizer Information</a>
