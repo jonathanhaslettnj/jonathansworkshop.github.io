@@ -2,12 +2,21 @@
 // THREE MEMORY LISTS
 // =====================================
 
+// List A = original non-audio list
 let listA = JSON.parse(localStorage.getItem("mv_custom_list") || "[]");
-let listB = JSON.parse(localStorage.getItem("mv_custom_list_audio") || "[]");
+
+// List B = audio version list (correct key)
+let listB = JSON.parse(localStorage.getItem("userVerses") || "[]");
+
+// List C = unified list
 let listC = JSON.parse(localStorage.getItem("mv_custom_list_unified") || "[]");
 
-let currentList = listC;  // default
+// Default list = List C
+let currentList = listC;
 let currentListName = "C";
+
+// Verse index for Next Verse
+let currentVerseIndex = 0;
 
 // =====================================
 // DOM ELEMENTS
@@ -43,7 +52,7 @@ function normalizeWord(w) {
 }
 
 // =====================================
-// LOAD VERSE
+// LOAD VERSE BY REFERENCE
 // =====================================
 
 refInput.addEventListener("keydown", e => {
@@ -75,6 +84,29 @@ function loadVerse(reference) {
     wordInput.value = "";
     wordInput.focus();
 }
+
+// =====================================
+// LOAD NEXT VERSE (Option 1: sequential order)
+// =====================================
+
+function loadNextVerse() {
+    if (currentList.length === 0) {
+        statusDisplay.textContent = "No verses in this list.";
+        return;
+    }
+
+    currentVerseIndex++;
+
+    if (currentVerseIndex >= currentList.length) {
+        currentVerseIndex = 0; // wrap around
+    }
+
+    let nextRef = currentList[currentVerseIndex].ref;
+    refInput.value = nextRef;
+    loadVerse(nextRef);
+}
+
+nextBtn.addEventListener("click", loadNextVerse);
 
 // =====================================
 // DISPLAY
@@ -135,15 +167,6 @@ wordInput.addEventListener("focus", () => {
 // =====================================
 // BUTTONS
 // =====================================
-
-nextBtn.addEventListener("click", () => {
-    index = 0;
-    mistakes = 0;
-    updateVerseDisplay();
-    statusDisplay.textContent = "Next verse loaded. Type the first word.";
-    wordInput.value = "";
-    wordInput.focus();
-});
 
 repeatBtn.addEventListener("click", () => {
     index = 0;
@@ -212,7 +235,7 @@ function renderUserVerses() {
                 localStorage.setItem("mv_custom_list", JSON.stringify(listA));
             } else if (currentListName === "B") {
                 listB.splice(idx, 1);
-                localStorage.setItem("mv_custom_list_audio", JSON.stringify(listB));
+                localStorage.setItem("userVerses", JSON.stringify(listB));
             } else {
                 listC.splice(idx, 1);
                 localStorage.setItem("mv_custom_list_unified", JSON.stringify(listC));
@@ -241,6 +264,7 @@ function loadSelectedList() {
         currentListName = "C";
     }
 
+    currentVerseIndex = 0; // reset verse index when switching lists
     renderUserVerses();
 }
 
@@ -248,3 +272,4 @@ loadListBtn.addEventListener("click", loadSelectedList);
 
 // Load unified list by default
 renderUserVerses();
+
