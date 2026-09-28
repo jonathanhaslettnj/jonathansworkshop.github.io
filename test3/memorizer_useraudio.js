@@ -72,7 +72,7 @@ function onLoadVerse(text, reference) {
 }
 
 function onCorrectWord(expected) {
-    speak("Correct");
+    speak();
 }
 
 function onIncorrectWord(expected, typed) {
