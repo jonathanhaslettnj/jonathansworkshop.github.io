@@ -14,12 +14,20 @@
             line-height: 1.6;
         }
 
+        /* Apply spacing and styling to ALL input-like elements */
         #mv_reference_input, #mv_input, #mv_translation {
             width: 100%;
             padding: 10px;
             font-size: 18px;
             margin-top: 10px;
+            margin-bottom: 10px;   /* <-- FIX: adds spacing below dropdown */
             box-sizing: border-box;
+        }
+
+        /* Optional polish: make dropdown visually match inputs */
+        #mv_translation {
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
 
         #mv_instruction {
@@ -92,4 +100,19 @@
     <div id="mv_progress"></div>
     <div id="mv_next"></div>
     <div id="mv_reveal"></div>
-    <div id="mv_status">
+    <div id="mv_status"></div>
+
+    <input id="mv_input" type="text" placeholder="Type next word, then spacebar">
+
+    <div class="button-line">
+        <button id="mv_next_verse">Next Verse ▶</button>
+    </div>
+
+    <div class="button-line">
+        <button id="mv_restart" onclick="restartModule()">Start Over</button>
+    </div>
+
+    <script src="memory_verse.js"></script>
+
+</body>
+</html>
