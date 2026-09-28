@@ -14,7 +14,7 @@
             line-height: 1.6;
         }
 
-        #mv_reference_input, #mv_input {
+        #mv_reference_input, #mv_input, #mv_translation {
             width: 100%;
             padding: 10px;
             font-size: 18px;
@@ -56,7 +56,7 @@
                 font-size: 24px;
             }
 
-            #mv_reference_input, #mv_input {
+            #mv_reference_input, #mv_input, #mv_translation {
                 font-size: 16px;
                 padding: 8px;
             }
@@ -77,6 +77,13 @@
 
     <h1>Bible Memory Verse Module</h1>
 
+    <!-- Translation Selector -->
+    <select id="mv_translation">
+        <option value="kjv">King James Version (KJV)</option>
+        <option value="asv">American Standard Version (ASV)</option>
+        <option value="web">World English Bible (WEB)</option>
+    </select>
+
     <input id="mv_reference_input" type="text" placeholder="Type verse (e.g. Genesis 1:1)">
     <div id="mv_instruction">Type the full name, chapter, and verse, then hit Enter.</div>
 
@@ -85,19 +92,4 @@
     <div id="mv_progress"></div>
     <div id="mv_next"></div>
     <div id="mv_reveal"></div>
-    <div id="mv_status"></div>
-
-    <input id="mv_input" type="text" placeholder="Type next word, then spacebar">
-
-    <div class="button-line">
-        <button id="mv_next_verse">Next Verse ▶</button>
-    </div>
-
-    <div class="button-line">
-        <button id="mv_restart" onclick="restartModule()">Start Over</button>
-    </div>
-
-    <script src="memory_verse.js"></script>
-
-</body>
-</html>
+    <div id="mv_status">
