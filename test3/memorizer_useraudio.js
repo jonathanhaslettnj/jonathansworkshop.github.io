@@ -67,7 +67,7 @@ function onLoadVerse(text, reference) {
     let chapter = parts.pop();
     let book = parts.join(" ");
 
-    speak("Now memorizing " + book + " chapter " + chapter + ", verse " + verse);
+    speak(book + " chapter " + chapter + ", verse " + verse);
     speak(text);
 }
 
