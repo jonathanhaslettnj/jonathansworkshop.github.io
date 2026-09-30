@@ -4,7 +4,9 @@
 let translations = {
     kjv: { data: {}, ready: false, file: "kjv.json" },
     asv: { data: {}, ready: false, file: "asv.json" },
-    web: { data: {}, ready: false, file: "web.json" }
+    bbe: { data: {}, ready: false, file: "bbe.json" }
+};
+
 };
 
 // Load all translation files
