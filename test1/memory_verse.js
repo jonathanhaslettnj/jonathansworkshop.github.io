@@ -7,7 +7,6 @@ let translations = {
     bbe: { data: {}, ready: false, file: "bbe.json" }
 };
 
-};
 
 // Load all translation files
 Object.keys(translations).forEach(key => {
