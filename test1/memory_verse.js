@@ -2,10 +2,11 @@
 // Load multiple translations
 // ------------------------------------------------------------
 let translations = {
-    kjv: { data: {}, ready: false, file: "kjv.json" },
-    asv: { data: {}, ready: false, file: "asv.json" },
-    bbe: { data: {}, ready: false, file: "bbe.json" }
+    kjv: { data: {}, ready: false, file: "test1/kjv.json" },
+    asv: { data: {}, ready: false, file: "test1/asv.json" },
+    bbe: { data: {}, ready: false, file: "test1/bbe.json" }
 };
+
 
 
 // Load all translation files
