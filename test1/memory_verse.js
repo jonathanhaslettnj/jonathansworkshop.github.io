@@ -17,11 +17,7 @@ let translations = {
         ready: false,
         file: "https://jonathansworkshop.online/test1/bbe.json"
     }
-};  // <-- THIS WAS MISSING
-
-
-
-
+};
 
 // Load all translation files
 Object.keys(translations).forEach(key => {
@@ -100,13 +96,10 @@ function lookupVerse(reference) {
         return "";
     }
 
-    // data is an array: [{ref, text}, ...]
     const verses = translations[t].data;
-
     const found = verses.find(v => v.ref === reference);
     return found ? found.text : "";
 }
-
 
 // ------------------------------------------------------------
 // Module state
@@ -146,7 +139,6 @@ function loadVerse(text, reference = "") {
     mv.index = 0;
     mv.mistakes = 0;
 
-    // Display reference
     document.getElementById("mv_reference").innerText = reference;
 
     // Clear UI
@@ -155,13 +147,7 @@ function loadVerse(text, reference = "") {
     document.getElementById("mv_reveal").innerText = "";
     document.getElementById("mv_status").innerText = "";
 
-    // Show first expected word
-    if (mv.words.length > 0) {
-        document.getElementById("mv_next").innerText =
-            "Next word: " + mv.words[0];
-    }
-
-    // Clear input
+    // Do NOT show the first word yet — only show hints on mistakes
     document.getElementById("mv_input").value = "";
 }
 
@@ -182,16 +168,11 @@ function checkWord() {
 
         document.getElementById("mv_progress").innerText += typed + " ";
 
+        // Completed verse
         if (mv.index >= mv.words.length) {
-            // Verse complete
-            document.getElementById("mv_status").innerText =
-                "✔ Verse complete!";
+            document.getElementById("mv_status").innerText = "✔ Verse complete!";
             document.getElementById("mv_next").innerText = "";
             document.getElementById("mv_reveal").innerText = "";
-        } else {
-            // Show next expected word
-            document.getElementById("mv_next").innerText =
-                "Next word: " + mv.words[mv.index];
         }
     } else {
         // Mistake
@@ -203,17 +184,19 @@ function checkWord() {
         // Reveal correct word
         document.getElementById("mv_reveal").innerText =
             "Correct word: " + expected;
+
+        // Show hint ONLY on mistake
+        document.getElementById("mv_next").innerText =
+            "Next word: " + expected;
     }
 
-    // Clear input for next word
     mvInput.value = "";
 }
 
 // ------------------------------------------------------------
-// Next verse helper (simple increment)
+// Next verse helper
 // ------------------------------------------------------------
 function getNextReference(ref) {
-    // Example: "John 3:16" → book="John", chapter=3, verse=16
     const match = ref.match(/^(.+?)\s+(\d+):(\d+)$/);
     if (!match) return ref;
 
@@ -223,8 +206,7 @@ function getNextReference(ref) {
 
     verse++;
 
-    const nextRef = `${book} ${chapter}:${verse}`;
-    return nextRef;
+    return `${book} ${chapter}:${verse}`;
 }
 
 // ------------------------------------------------------------
