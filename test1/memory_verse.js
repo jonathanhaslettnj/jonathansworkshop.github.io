@@ -2,10 +2,24 @@
 // Load multiple translations
 // ------------------------------------------------------------
 let translations = {
-    kjv: { data: {}, ready: false, file: "test1/kjv.json" },
-    asv: { data: {}, ready: false, file: "test1/asv.json" },
-    bbe: { data: {}, ready: false, file: "test1/bbe.json" }
-};
+    kjv: {
+        data: [],
+        ready: false,
+        file: "https://jonathansworkshop.online/test1/kjv.json"
+    },
+    asv: {
+        data: [],
+        ready: false,
+        file: "https://jonathansworkshop.online/test1/asv.json"
+    },
+    bbe: {
+        data: [],
+        ready: false,
+        file: "https://jonathansworkshop.online/test1/bbe.json"
+    }
+};  // <-- THIS WAS MISSING
+
+
 
 
 
@@ -86,8 +100,13 @@ function lookupVerse(reference) {
         return "";
     }
 
-    return translations[t].data[reference] || "";
+    // data is an array: [{ref, text}, ...]
+    const verses = translations[t].data;
+
+    const found = verses.find(v => v.ref === reference);
+    return found ? found.text : "";
 }
+
 
 // ------------------------------------------------------------
 // Module state
