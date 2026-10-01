@@ -105,7 +105,8 @@ function lookupVerse(reference) {
 // Module state
 // ------------------------------------------------------------
 const mv = {
-    words: [],
+    words: [],          // normalized words for checking
+    originalWords: [],  // original words for display
     index: 0,
     mistakes: 0
 };
@@ -135,7 +136,8 @@ function loadTypedReference() {
 // Load verse text
 // ------------------------------------------------------------
 function loadVerse(text, reference = "") {
-    mv.words = text.split(/\s+/).map(w => normalize(w));
+    mv.words = text.split(/\s+/).map(w => normalize(w));   // normalized for checking
+    mv.originalWords = text.split(/\s+/);                  // original for display
     mv.index = 0;
     mv.mistakes = 0;
 
@@ -147,7 +149,6 @@ function loadVerse(text, reference = "") {
     document.getElementById("mv_reveal").innerText = "";
     document.getElementById("mv_status").innerText = "";
 
-    // Do NOT show the first word yet — only show hints on mistakes
     document.getElementById("mv_input").value = "";
 }
 
@@ -166,7 +167,9 @@ function checkWord() {
         // Correct word
         mv.index++;
 
-        document.getElementById("mv_progress").innerText += typed + " ";
+        // Display ORIGINAL word (with punctuation + capitalization)
+        document.getElementById("mv_progress").innerText +=
+            mv.originalWords[mv.index - 1] + " ";
 
         // Completed verse
         if (mv.index >= mv.words.length) {
@@ -181,7 +184,7 @@ function checkWord() {
             "❌ Incorrect (" + mv.mistakes + " mistake" +
             (mv.mistakes === 1 ? "" : "s") + ")";
 
-        // Reveal correct word
+        // Reveal correct word (normalized)
         document.getElementById("mv_reveal").innerText =
             "Correct word: " + expected;
 
@@ -214,6 +217,7 @@ function getNextReference(ref) {
 // ------------------------------------------------------------
 function restartModule() {
     mv.words = [];
+    mv.originalWords = [];
     mv.index = 0;
     mv.mistakes = 0;
 
