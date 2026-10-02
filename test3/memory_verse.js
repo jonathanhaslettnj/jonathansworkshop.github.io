@@ -1,8 +1,9 @@
+
 // =====================================
 // MULTI-TRANSLATION TALKING MEMORIZER
 // =====================================
 
-// Translation files (dictionary JSON)
+// Translation files (ARRAY JSON: [{ref:"Genesis 1:1", text:"..."}])
 const translations = {
     kjv: "https://jonathansworkshop.online/memorizer/kjv/kjv.json",
     asv: "https://jonathansworkshop.online/memorizer/asv/asv.json",
@@ -11,7 +12,7 @@ const translations = {
 
 // Active translation
 let currentTranslation = "kjv";
-let bibleData = {}; // dictionary object
+let bibleData = []; // ARRAY of {ref, text}
 
 // Verse state
 let currentWords = [];
@@ -29,11 +30,8 @@ const translationSelector = document.getElementById("mv_translation");
 const refInput = document.getElementById("mv_reference_input");
 const referenceDisplay = document.getElementById("mv_reference");
 const progressDisplay = document.getElementById("mv_progress");
-const nextDisplay = document.getElementById("mv_next");
-const revealDisplay = document.getElementById("mv_reveal");
 const statusDisplay = document.getElementById("mv_status");
 const wordInput = document.getElementById("mv_input");
-
 const nextBtn = document.getElementById("mv_next_verse");
 
 // =====================================
@@ -101,7 +99,11 @@ function loadTranslation(name) {
     fetch(translations[name])
         .then(r => r.json())
         .then(data => {
-            bibleData = data; // dictionary object
+            bibleData = data; // ARRAY of {ref, text}
+
+            // FIX: Build verse list from JSON
+            verseList = bibleData.map(v => v.ref);
+
             statusDisplay.textContent = `${name.toUpperCase()} loaded.`;
         });
 }
@@ -128,7 +130,7 @@ function parseReference(ref) {
 }
 
 // =====================================
-// LOAD VERSE (dictionary lookup)
+// LOAD VERSE (ARRAY lookup)
 // =====================================
 
 function loadVerse(ref) {
@@ -137,7 +139,9 @@ function loadVerse(ref) {
     let cleanRef = ref.replace(/\s+/g, " ").trim();
     currentRef = cleanRef;
 
-    let text = bibleData[cleanRef];
+    // FIX: JSON is an ARRAY, not a dictionary
+    let entry = bibleData.find(v => v.ref === cleanRef);
+    let text = entry ? entry.text : null;
 
     if (!text) {
         progressDisplay.textContent = "";
