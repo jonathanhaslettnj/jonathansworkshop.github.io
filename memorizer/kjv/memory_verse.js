@@ -5,17 +5,17 @@ let translations = {
     kjv: {
         data: [],
         ready: false,
-        file: "https://jonathansworkshop.online/test1/kjv.json"
+        file: "https://jonathansworkshop.online/emorizer/kjv/kjv.json"
     },
     asv: {
         data: [],
         ready: false,
-        file: "https://jonathansworkshop.online/test1/asv.json"
+        file: "https://jonathansworkshop.online/emorizer/kjv/asv.json"
     },
     bbe: {
         data: [],
         ready: false,
-        file: "https://jonathansworkshop.online/test1/bbe.json"
+        file: "https://jonathansworkshop.online/emorizer/kjv/bbe.json"
     }
 };
 
