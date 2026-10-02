@@ -2,16 +2,16 @@
 // MULTI-TRANSLATION TALKING MEMORIZER
 // =====================================
 
-// Translation files
+// Translation files (dictionary JSON)
 const translations = {
-    kjv: "kjv.json",
-    asv: "asv.json",
-    bbe: "bbe.json"
+    kjv: "https://jonathansworkshop.online/memorizer/kjv/kjv.json",
+    asv: "https://jonathansworkshop.online/memorizer/asv/asv.json",
+    bbe: "https://jonathansworkshop.online/memorizer/bbe/bbe.json"
 };
 
 // Active translation
 let currentTranslation = "kjv";
-let bibleData = []; // loaded JSON array
+let bibleData = {}; // dictionary object
 
 // Verse state
 let currentWords = [];
@@ -101,7 +101,7 @@ function loadTranslation(name) {
     fetch(translations[name])
         .then(r => r.json())
         .then(data => {
-            bibleData = data; // flat array
+            bibleData = data; // dictionary object
             statusDisplay.textContent = `${name.toUpperCase()} loaded.`;
         });
 }
@@ -128,17 +128,18 @@ function parseReference(ref) {
 }
 
 // =====================================
-// LOAD VERSE (flat JSON lookup)
+// LOAD VERSE (dictionary lookup)
 // =====================================
 
 function loadVerse(ref) {
     if (!ref) return;
 
-    currentRef = ref;
+    let cleanRef = ref.replace(/\s+/g, " ").trim();
+    currentRef = cleanRef;
 
-    let match = bibleData.find(v => v.ref.toLowerCase() === ref.toLowerCase());
+    let text = bibleData[cleanRef];
 
-    if (!match) {
+    if (!text) {
         progressDisplay.textContent = "";
         statusDisplay.textContent = "Verse not found in this translation.";
         currentWords = [];
@@ -147,19 +148,17 @@ function loadVerse(ref) {
         return;
     }
 
-    let text = match.text;
-
     currentWords = text.split(/\s+/);
     index = 0;
     mistakes = 0;
 
-    referenceDisplay.textContent = ref;
+    referenceDisplay.textContent = cleanRef;
     progressDisplay.textContent = "";
     statusDisplay.textContent = "Begin typing the first word.";
     wordInput.value = "";
     wordInput.focus();
 
-    let { book, chapter, verse } = parseReference(ref);
+    let { book, chapter, verse } = parseReference(cleanRef);
 
     speak(`${book} chapter ${chapter}, verse ${verse}`);
     speak(text);
@@ -189,7 +188,7 @@ function checkWord(typed) {
     let expectedNorm = normalizeWord(expectedRaw);
     let typedNorm = normalizeWord(typed);
 
-    if (typedNorm === expectedNorm) {
+    if (typedNorm === expectedNorm || isAccepted(typed, expectedRaw)) {
         index++;
         updateProgress();
 
@@ -210,39 +209,27 @@ function checkWord(typed) {
 }
 
 // =====================================
-// INPUT HANDLING
+// INPUT HANDLING — SPACE / ENTER FIX
 // =====================================
 
-wordInput.addEventListener("input", () => {
-    let typed = wordInput.value.trim();
-    if (!typed) return;
+wordInput.addEventListener("keydown", e => {
+    if (e.key === " " || e.key === "Enter") {
+        e.preventDefault();
 
-    let expectedRaw = currentWords[index] || "";
-    if (!expectedRaw) return;
+        let typed = wordInput.value.trim();
+        if (!typed) return;
 
-    let expectedNorm = normalizeWord(expectedRaw);
-    let typedNorm = normalizeWord(typed);
+        let expectedRaw = currentWords[index] || "";
+        if (!expectedRaw) return;
 
-    if (expectedNorm.length < 3) {
-        if (typedNorm.length >= expectedNorm.length) {
-            if (typedNorm === expectedNorm) {
-                beep();
-                checkWord(expectedRaw);
-            } else {
-                checkWord(typed);
-            }
-            wordInput.value = "";
+        if (normalizeWord(typed) === normalizeWord(expectedRaw) || isAccepted(typed, expectedRaw)) {
+            beep();
+            checkWord(expectedRaw);
+        } else {
+            checkWord(typed);
         }
-    } else {
-        if (typedNorm.length >= 3) {
-            if (expectedNorm.startsWith(typedNorm.substring(0, 3))) {
-                beep();
-                checkWord(expectedRaw);
-            } else {
-                checkWord(typed);
-            }
-            wordInput.value = "";
-        }
+
+        wordInput.value = "";
     }
 });
 
