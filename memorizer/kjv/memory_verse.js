@@ -1,21 +1,46 @@
-let kjv = {};
-let kjvReady = false;
+// ------------------------------------------------------------
+// Load multiple translations
+// ------------------------------------------------------------
+let translations = {
+    kjv: {
+        data: [],
+        ready: false,
+        file: "https://jonathansworkshop.online/test1/kjv.json"
+    },
+    asv: {
+        data: [],
+        ready: false,
+        file: "https://jonathansworkshop.online/test1/asv.json"
+    },
+    bbe: {
+        data: [],
+        ready: false,
+        file: "https://jonathansworkshop.online/test1/bbe.json"
+    }
+};
 
-fetch("kjv.json")
-    .then(r => r.json())
-    .then(data => {
-        kjv = data;
-        kjvReady = true;
-        console.log("KJV JSON loaded.");
-    })
-    .catch(err => console.error("JSON load error:", err));
+// Load all translation files
+Object.keys(translations).forEach(key => {
+    fetch(translations[key].file)
+        .then(r => r.json())
+        .then(data => {
+            translations[key].data = data;
+            translations[key].ready = true;
+            console.log(key.toUpperCase() + " JSON loaded.");
+        })
+        .catch(err => console.error(key + " JSON load error:", err));
+});
 
+// ------------------------------------------------------------
+// Setup after DOM is ready
+// ------------------------------------------------------------
 window.addEventListener("load", () => {
     const refInput = document.getElementById("mv_reference_input");
     const mvInput = document.getElementById("mv_input");
 
     refInput.focus();
 
+    // Load verse when pressing Enter or Tab
     refInput.addEventListener("keydown", function (event) {
         if (event.code === "Enter" || event.code === "Tab") {
             event.preventDefault();
@@ -24,6 +49,7 @@ window.addEventListener("load", () => {
         }
     });
 
+    // Next Verse button
     document.getElementById("mv_next_verse").addEventListener("click", () => {
         const currentRef = document.getElementById("mv_reference").innerText.trim();
         if (!currentRef) return;
@@ -38,6 +64,7 @@ window.addEventListener("load", () => {
         }
     });
 
+    // Spacebar checks typed word
     mvInput.addEventListener("keydown", function (event) {
         if (event.code === "Space" || event.key === " ") {
             const raw = mvInput.value.trim();
@@ -51,24 +78,42 @@ window.addEventListener("load", () => {
     });
 });
 
+// ------------------------------------------------------------
+// Normalize words
+// ------------------------------------------------------------
 function normalize(word) {
     return word.replace(/[.,;:!?]/g, "").toLowerCase();
 }
 
+// ------------------------------------------------------------
+// Lookup verse text based on selected translation
+// ------------------------------------------------------------
 function lookupVerse(reference) {
-    if (!kjvReady) {
-        alert("Bible is still loading. Please wait.");
+    const t = document.getElementById("mv_translation").value;
+
+    if (!translations[t].ready) {
+        alert("Bible translation is still loading. Please wait.");
         return "";
     }
-    return kjv[reference] || "";
+
+    const verses = translations[t].data;
+    const found = verses.find(v => v.ref === reference);
+    return found ? found.text : "";
 }
 
+// ------------------------------------------------------------
+// Module state
+// ------------------------------------------------------------
 const mv = {
-    words: [],
+    words: [],          // normalized words for checking
+    originalWords: [],  // original words for display
     index: 0,
     mistakes: 0
 };
 
+// ------------------------------------------------------------
+// Load typed reference
+// ------------------------------------------------------------
 function loadTypedReference() {
     const ref = document.getElementById("mv_reference_input").value.trim();
 
@@ -87,97 +132,102 @@ function loadTypedReference() {
     loadVerse(text, ref);
 }
 
+// ------------------------------------------------------------
+// Load verse text
+// ------------------------------------------------------------
 function loadVerse(text, reference = "") {
-    mv.words = text.trim().split(/\s+/);
+    mv.words = text.split(/\s+/).map(w => normalize(w));   // normalized for checking
+    mv.originalWords = text.split(/\s+/);                  // original for display
     mv.index = 0;
     mv.mistakes = 0;
 
-    document.getElementById("mv_progress").innerText = "";
-    document.getElementById("mv_reveal").innerText = "";
-    document.getElementById("mv_status").innerText = "";
     document.getElementById("mv_reference").innerText = reference;
 
-    updateDisplay();
-}
-
-function updateDisplay() {
-    const correctWords = mv.words.slice(0, mv.index).join(" ");
-    document.getElementById("mv_progress").innerText = correctWords;
-
-    if (mv.index >= mv.words.length) {
-        document.getElementById("mv_status").innerText =
-            "Verse complete! Mistakes: " + mv.mistakes;
-        document.getElementById("mv_next").innerText = "";
-        return;
-    }
-
+    // Clear UI
+    document.getElementById("mv_progress").innerText = "";
     document.getElementById("mv_next").innerText = "";
+    document.getElementById("mv_reveal").innerText = "";
+    document.getElementById("mv_status").innerText = "";
+
+    document.getElementById("mv_input").value = "";
 }
 
-function revealNextWord(expected) {
-    document.getElementById("mv_reveal").innerText =
-        "Expected: " + expected;
-}
-
+// ------------------------------------------------------------
+// Check typed word
+// ------------------------------------------------------------
 function checkWord() {
-    const raw = document.getElementById("mv_input").value.trim();
-    if (raw.length === 0) return;
+    const mvInput = document.getElementById("mv_input");
+    const typed = normalize(mvInput.value.trim());
+
+    if (!typed) return;
 
     const expected = mv.words[mv.index];
 
-    if (normalize(raw) === normalize(expected)) {
+    if (typed === expected) {
+        // Correct word
         mv.index++;
-        document.getElementById("mv_input").value = "";
-        document.getElementById("mv_reveal").innerText = "";
-        updateDisplay();
+
+        // Display ORIGINAL word (with punctuation + capitalization)
+        document.getElementById("mv_progress").innerText +=
+            mv.originalWords[mv.index - 1] + " ";
+
+        // Completed verse
+        if (mv.index >= mv.words.length) {
+            document.getElementById("mv_status").innerText = "✔ Verse complete!";
+            document.getElementById("mv_next").innerText = "";
+            document.getElementById("mv_reveal").innerText = "";
+        }
     } else {
+        // Mistake
         mv.mistakes++;
-        revealNextWord(expected);
-        document.getElementById("mv_input").value = "";
+        document.getElementById("mv_status").innerText =
+            "❌ Incorrect (" + mv.mistakes + " mistake" +
+            (mv.mistakes === 1 ? "" : "s") + ")";
+
+        // Reveal correct word (normalized)
+        document.getElementById("mv_reveal").innerText =
+            "Correct word: " + expected;
+
+        // Show hint ONLY on mistake
+        document.getElementById("mv_next").innerText =
+            "Next word: " + expected;
     }
+
+    mvInput.value = "";
 }
 
+// ------------------------------------------------------------
+// Next verse helper
+// ------------------------------------------------------------
+function getNextReference(ref) {
+    const match = ref.match(/^(.+?)\s+(\d+):(\d+)$/);
+    if (!match) return ref;
+
+    const book = match[1];
+    let chapter = parseInt(match[2], 10);
+    let verse = parseInt(match[3], 10);
+
+    verse++;
+
+    return `${book} ${chapter}:${verse}`;
+}
+
+// ------------------------------------------------------------
+// Restart module
+// ------------------------------------------------------------
 function restartModule() {
     mv.words = [];
+    mv.originalWords = [];
     mv.index = 0;
     mv.mistakes = 0;
 
+    document.getElementById("mv_reference_input").value = "";
     document.getElementById("mv_reference").innerText = "";
     document.getElementById("mv_progress").innerText = "";
     document.getElementById("mv_next").innerText = "";
     document.getElementById("mv_reveal").innerText = "";
     document.getElementById("mv_status").innerText = "";
-
-    document.getElementById("mv_reference_input").value = "";
     document.getElementById("mv_input").value = "";
 
     document.getElementById("mv_reference_input").focus();
-}
-
-function getNextReference(ref) {
-    let [bookAndChapter, verseStr] = ref.split(":");
-    let verse = parseInt(verseStr, 10);
-
-    let parts = bookAndChapter.split(" ");
-    let book = parts.slice(0, -1).join(" ");
-    let chapter = parseInt(parts[parts.length - 1], 10);
-
-    if (kjv[`${book} ${chapter}:${verse + 1}`]) {
-        return `${book} ${chapter}:${verse + 1}`;
-    }
-
-    if (kjv[`${book} ${chapter + 1}:1`]) {
-        return `${book} ${chapter + 1}:1`;
-    }
-
-    let allRefs = Object.keys(kjv);
-    let books = [...new Set(allRefs.map(r => r.split(" ").slice(0, -1).join(" ")))];
-    let idx = books.indexOf(book);
-
-    if (idx >= 0 && idx < books.length - 1) {
-        let nextBook = books[idx + 1];
-        return `${nextBook} 1:1`;
-    }
-
-    return "Genesis 1:1";
 }
