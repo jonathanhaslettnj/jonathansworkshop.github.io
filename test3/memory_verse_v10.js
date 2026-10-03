@@ -4,9 +4,9 @@
 
 // Translation files (ARRAY JSON: [{ref:"Genesis 1:1", text:"..."}])
 const translations = {
-    kjv: "https://jonathansworkshop.online/memorizer/kjv/kjv.json",
-    asv: "https://jonathansworkshop.online/memorizer/asv/asv.json",
-    bbe: "https://jonathansworkshop.online/memorizer/bbe/bbe.json"
+    kjv: "https://jonathansworkshop.online/test3/kjv.json",
+    asv: "https://jonathansworkshop.online/test3/asv.json",
+    bbe: "https://jonathansworkshop.online/test3/bbe.json"
 };
 
 // Active translation
