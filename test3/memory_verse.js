@@ -1,4 +1,3 @@
-
 // =====================================
 // MULTI-TRANSLATION TALKING MEMORIZER
 // =====================================
@@ -101,7 +100,7 @@ function loadTranslation(name) {
         .then(data => {
             bibleData = data; // ARRAY of {ref, text}
 
-            // FIX: Build verse list from JSON
+            // Build verse list from JSON
             verseList = bibleData.map(v => v.ref);
 
             statusDisplay.textContent = `${name.toUpperCase()} loaded.`;
@@ -139,7 +138,7 @@ function loadVerse(ref) {
     let cleanRef = ref.replace(/\s+/g, " ").trim();
     currentRef = cleanRef;
 
-    // FIX: JSON is an ARRAY, not a dictionary
+    // JSON is an ARRAY, not a dictionary
     let entry = bibleData.find(v => v.ref === cleanRef);
     let text = entry ? entry.text : null;
 
@@ -151,6 +150,9 @@ function loadVerse(ref) {
         mistakes = 0;
         return;
     }
+
+    // FIX: Set currentVerseIndex based on verseList
+    currentVerseIndex = verseList.indexOf(cleanRef);
 
     currentWords = text.split(/\s+/);
     index = 0;
