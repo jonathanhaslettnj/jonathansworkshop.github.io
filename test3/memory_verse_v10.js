@@ -1,3 +1,4 @@
+alert("memory_verse_v10.js LOADED");
 // =====================================
 // MULTI-TRANSLATION TALKING MEMORIZER
 // =====================================
@@ -8,6 +9,8 @@ const translations = {
     asv: "https://jonathansworkshop.online/test3/asv.json",
     bbe: "https://jonathansworkshop.online/test3/bbe.json"
 };
+
+
 
 // Active translation
 let currentTranslation = "kjv";
