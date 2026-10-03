@@ -1,4 +1,5 @@
 alert("memory_verse_v10.js LOADED");
+
 // =====================================
 // MULTI-TRANSLATION TALKING MEMORIZER
 // =====================================
@@ -9,8 +10,6 @@ const translations = {
     asv: "https://jonathansworkshop.online/test3/asv.json",
     bbe: "https://jonathansworkshop.online/test3/bbe.json"
 };
-
-
 
 // Active translation
 let currentTranslation = "kjv";
@@ -96,26 +95,28 @@ function isAccepted(typed, expectedRaw) {
 // =====================================
 
 function loadTranslation(name) {
-    currentTranslation = name;
+    console.log("Fetching:", translations[name]);
 
     fetch(translations[name])
-        .then(r => r.json())
+        .then(r => {
+            console.log("Fetch response:", r.status, r.statusText);
+            return r.json();
+        })
         .then(data => {
-            bibleData = data; // ARRAY of {ref, text}
-
-            // Build verse list from JSON
+            console.log("Data loaded:", data.length);
+            bibleData = data;
             verseList = bibleData.map(v => v.ref);
-
             statusDisplay.textContent = `${name.toUpperCase()} loaded.`;
+        })
+        .catch(err => {
+            console.error("Fetch error:", err);
+            statusDisplay.textContent = "Error loading translation.";
         });
 }
 
 translationSelector.addEventListener("change", () => {
     loadTranslation(translationSelector.value);
 });
-
-// Load default translation
-//loadTranslation("kjv");
 
 // =====================================
 // PARSE REFERENCE (for speaking only)
@@ -141,7 +142,6 @@ function loadVerse(ref) {
     let cleanRef = ref.replace(/\s+/g, " ").trim();
     currentRef = cleanRef;
 
-    // JSON is an ARRAY, not a dictionary
     let entry = bibleData.find(v => v.ref === cleanRef);
     let text = entry ? entry.text : null;
 
@@ -154,7 +154,6 @@ function loadVerse(ref) {
         return;
     }
 
-    // FIX: Set currentVerseIndex based on verseList
     currentVerseIndex = verseList.indexOf(cleanRef);
 
     currentWords = text.split(/\s+/);
