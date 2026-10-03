@@ -1,4 +1,4 @@
-alert("memory_verse_v10.js LOADED");
+
 
 // =====================================
 // MULTI-TRANSLATION TALKING MEMORIZER
@@ -117,6 +117,10 @@ function loadTranslation(name) {
 translationSelector.addEventListener("change", () => {
     loadTranslation(translationSelector.value);
 });
+
+
+// Load default translation on startup
+loadTranslation(translationSelector.value);
 
 // =====================================
 // PARSE REFERENCE (for speaking only)
