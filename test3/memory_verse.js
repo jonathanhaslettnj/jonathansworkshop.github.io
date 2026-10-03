@@ -112,7 +112,7 @@ translationSelector.addEventListener("change", () => {
 });
 
 // Load default translation
-loadTranslation("kjv");
+//loadTranslation("kjv");
 
 // =====================================
 // PARSE REFERENCE (for speaking only)
