@@ -2,20 +2,12 @@
 // THREE MEMORY LISTS
 // =====================================
 
-// List A = original non-audio list
 let listA = JSON.parse(localStorage.getItem("mv_custom_list") || "[]");
-
-// List B = audio version list (correct key)
 let listB = JSON.parse(localStorage.getItem("userVerses") || "[]");
-
-// List C = unified list
 let listC = JSON.parse(localStorage.getItem("mv_custom_list_unified") || "[]");
 
-// Default list = List C
 let currentList = listC;
 let currentListName = "C";
-
-// Verse index for Next Verse
 let currentVerseIndex = 0;
 
 // =====================================
@@ -56,6 +48,20 @@ function speak(text) {
 }
 
 // =====================================
+// BEEP SOUND
+// =====================================
+
+function beep() {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    osc.type = "square";
+    osc.frequency.value = 800;
+    osc.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.05);
+}
+
+// =====================================
 // EVENT HOOKS
 // =====================================
 
@@ -71,20 +77,15 @@ function onLoadVerse(text, reference) {
     speak(text);
 }
 
-function onCorrectWord(expected) {
-    speak();
-}
+function onCorrectWord(expected) {}
 
 function onIncorrectWord(expected, typed) {
     speak("Incorrect. Expected " + expected);
 }
 
 function onVerseComplete(mistakes) {
-    if (mistakes === 0) {
-        speak("Perfect recitation. No mistakes.");
-    } else {
-        speak("Verse complete. You made " + mistakes + " mistakes.");
-    }
+    if (mistakes === 0) speak("Perfect recitation. No mistakes.");
+    else speak("Verse complete. You made " + mistakes + " mistakes.");
 }
 
 // =====================================
@@ -96,7 +97,24 @@ function normalizeWord(w) {
 }
 
 // =====================================
-// LOAD VERSE BY REFERENCE
+// SMART ACCEPTANCE (4-letter threshold)
+// =====================================
+
+function isAccepted(typed, expectedRaw) {
+    let t = normalizeWord(typed);
+    let e = normalizeWord(expectedRaw);
+
+    if (!e) return false;
+
+    if (e.length < 4) return t.length >= e.length && t === e;
+
+    if (t.length >= 4) return e.startsWith(t.substring(0, 4));
+
+    return false;
+}
+
+// =====================================
+// LOAD VERSE
 // =====================================
 
 refInput.addEventListener("keydown", e => {
@@ -132,7 +150,7 @@ function loadVerse(reference) {
 }
 
 // =====================================
-// LOAD NEXT VERSE (Option 1: sequential order)
+// NEXT VERSE
 // =====================================
 
 function loadNextVerse() {
@@ -141,21 +159,16 @@ function loadNextVerse() {
         return;
     }
 
-    if (!refInput.value.trim()) {
-        currentVerseIndex = 0;
-    } else {
+    if (!refInput.value.trim()) currentVerseIndex = 0;
+    else {
         currentVerseIndex++;
-        if (currentVerseIndex >= currentList.length) {
-            currentVerseIndex = 0;
-        }
+        if (currentVerseIndex >= currentList.length) currentVerseIndex = 0;
     }
 
     let nextRef = currentList[currentVerseIndex].ref;
     refInput.value = nextRef;
     loadVerse(nextRef);
 }
-
-
 
 nextBtn.addEventListener("click", loadNextVerse);
 
@@ -202,15 +215,35 @@ function checkWord(typed) {
 }
 
 // =====================================
-// iPhone Input Fix
+// INPUT HANDLING (4-letter threshold)
 // =====================================
 
-wordInput.addEventListener("keydown", e => {
-    if (e.key === " ") {
-        let typedWord = wordInput.value.trim();
-        if (!typedWord) return;
-        checkWord(typedWord);
-        wordInput.value = "";
+wordInput.addEventListener("input", () => {
+    let typed = wordInput.value.trim();
+    if (!typed) return;
+
+    let expectedRaw = currentWords[index] || "";
+    if (!expectedRaw) return;
+
+    let expectedNorm = normalizeWord(expectedRaw);
+    let typedNorm = normalizeWord(typed);
+
+    if (expectedNorm.length < 4) {
+        if (typedNorm.length >= expectedNorm.length) {
+            if (typedNorm === expectedNorm) {
+                beep();
+                checkWord(expectedRaw);
+            } else checkWord(typed);
+            wordInput.value = "";
+        }
+    } else {
+        if (typedNorm.length >= 4) {
+            if (expectedNorm.startsWith(typedNorm.substring(0, 4))) {
+                beep();
+                checkWord(expectedRaw);
+            } else checkWord(typed);
+            wordInput.value = "";
+        }
     }
 });
 
@@ -229,6 +262,12 @@ repeatBtn.addEventListener("click", () => {
     statusDisplay.textContent = "Repeat verse. Type the first word.";
     wordInput.value = "";
     wordInput.focus();
+
+    let reference = refInput.value.trim();
+    if (!reference) return;
+
+    let match = currentList.find(v => v.ref.toLowerCase() === reference.toLowerCase());
+    if (match) onLoadVerse(match.text, match.ref);
 });
 
 resetBtn.addEventListener("click", () => {
@@ -251,20 +290,16 @@ addUserVerseBtn.addEventListener("click", () => {
 
     if (!ref || !text) return;
 
-    // Always add to unified list C
     listC.push({ ref, text });
     localStorage.setItem("mv_custom_list_unified", JSON.stringify(listC));
 
-    // Update active list if user is on List C
     currentList = listC;
     currentListName = "C";
     currentVerseIndex = 0;
 
-    // Clear inputs
     userRefInput.value = "";
     userTextInput.value = "";
 
-    // Refresh display
     renderUserVerses();
 });
 
@@ -309,10 +344,14 @@ function renderUserVerses() {
 }
 
 // =====================================
-// LIST SELECTOR
+// LIST SELECTOR (FIXED)
 // =====================================
 
 function loadSelectedList() {
+    listA = JSON.parse(localStorage.getItem("mv_custom_list") || "[]");
+    listB = JSON.parse(localStorage.getItem("userVerses") || "[]");
+    listC = JSON.parse(localStorage.getItem("mv_custom_list_unified") || "[]");
+
     const sel = listSelector.value;
 
     if (sel === "A") {
@@ -326,7 +365,7 @@ function loadSelectedList() {
         currentListName = "C";
     }
 
-    currentVerseIndex = 0; // reset verse index when switching lists
+    currentVerseIndex = 0;
     renderUserVerses();
 }
 

@@ -116,22 +116,21 @@
     }
 
     /* Short input boxes — about 20 characters wide */
-	#refInput,
-	#wordInput,
-	#userRefInput {
-  	  width: 20ch;   /* ch = width of the “0” character */
-     }
-     #wordInput {
-     display: inline-block;
-     }
-/* Shorten the verse list selector */
-#mv_list_selector {
-    width: 10ch;
-    display: inline-block;
-}
+    #refInput,
+    #wordInput,
+    #userRefInput {
+      width: 20ch;
+    }
 
+    #wordInput {
+      display: inline-block;
+    }
 
-
+    /* Shorten the verse list selector */
+    #mv_list_selector {
+      width: 10ch;
+      display: inline-block;
+    }
   </style>
 </head>
 
@@ -155,7 +154,7 @@
   <p id="verseDisplay"></p>
   <p id="statusDisplay"></p>
 
-  <label for="wordInput">Type next word, then press space:</label>
+  <label for="wordInput">Type next word:</label>
   <input id="wordInput" type="text">
 
   <div class="button-row">
@@ -181,7 +180,7 @@
   <h2>Your Verses</h2>
   <div id="user-verses"></div>
 
-  <script src="memorizer_useraudio.js?v=3"></script>
+  <script src="memorizer_useraudio.js?v=4"></script>
 
   <div class="return-box">
     <a href="https://jonathansworkshop.online/memorizer/index.html">Bible Memorizer Information</a>
