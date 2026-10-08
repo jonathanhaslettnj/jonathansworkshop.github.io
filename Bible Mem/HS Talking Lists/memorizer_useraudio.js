@@ -228,7 +228,7 @@ wordInput.addEventListener("input", () => {
     let expectedNorm = normalizeWord(expectedRaw);
     let typedNorm = normalizeWord(typed);
 
-    if (expectedNorm.length < 4) {
+    if (expectedNorm.length < 30) {
         if (typedNorm.length >= expectedNorm.length) {
             if (typedNorm === expectedNorm) {
                 beep();
@@ -237,8 +237,8 @@ wordInput.addEventListener("input", () => {
             wordInput.value = "";
         }
     } else {
-        if (typedNorm.length >= 4) {
-            if (expectedNorm.startsWith(typedNorm.substring(0, 4))) {
+        if (typedNorm.length >= 30) {
+            if (expectedNorm.startsWith(typedNorm.substring(0, 30))) {
                 beep();
                 checkWord(expectedRaw);
             } else checkWord(typed);
