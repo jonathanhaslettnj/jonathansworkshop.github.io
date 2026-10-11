@@ -2,7 +2,7 @@
 // voiceRouter.js — Unified Voice Command Router (Steps 6–9)
 // ============================================================
 
-import commands from "./voice-commands.json";
+import commands from "./voice-commands.js";
 
 // ------------------------------------------------------------
 // Helper: check if phrase contains any keyword for a command
