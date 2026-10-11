@@ -8,11 +8,12 @@ window.currentChapter = null;
 window.currentVerse = null;
 window.currentTranslation = "kjv";
 window.translationData = null;
+window.currentText = "";
 
 // ------------------------------------------------------------
 // Load translation JSON (KJV, ASV, BBE)
 // ------------------------------------------------------------
-export async function loadTranslation(name) {
+window.loadTranslation = async function(name) {
     window.currentTranslation = name;
 
     const url = `https://jonathansworkshop.online/test3/${name}.json`;
@@ -25,12 +26,12 @@ export async function loadTranslation(name) {
     window.translationData = data;
 
     console.log("Data loaded:", data.length, "verses");
-}
+};
 
 // ------------------------------------------------------------
 // Parse reference (e.g., "John 11:35")
 // ------------------------------------------------------------
-export function parseReference(ref) {
+window.parseReference = function(ref) {
     const m = ref.match(/^([\w\s]+)\s+(\d+):(\d+)$/);
     if (!m) return null;
 
@@ -39,12 +40,12 @@ export function parseReference(ref) {
         chapter: parseInt(m[2], 10),
         verse: parseInt(m[3], 10)
     };
-}
+};
 
 // ------------------------------------------------------------
 // Load a verse into the memorizer
 // ------------------------------------------------------------
-export function loadVerse(book, chapter, verse) {
+window.loadVerse = function(book, chapter, verse) {
     if (!window.translationData) return;
 
     window.currentBook = book;
@@ -66,62 +67,43 @@ export function loadVerse(book, chapter, verse) {
     document.getElementById("mv_status").textContent = "";
 
     window.currentText = entry.text;
-}
+};
 
 // ------------------------------------------------------------
 // Navigation Functions (Step 9)
 // ------------------------------------------------------------
 
-// Move to the next verse
-export function loadNextVerse() {
+window.loadNextVerse = function() {
     if (!window.currentBook || !window.currentChapter || !window.currentVerse) return;
-
     const next = window.currentVerse + 1;
     loadVerse(window.currentBook, window.currentChapter, next);
-}
+};
 
-// Move to the previous verse
-export function loadPreviousVerse() {
+window.loadPreviousVerse = function() {
     if (!window.currentBook || !window.currentChapter || !window.currentVerse) return;
-
     const prev = window.currentVerse - 1;
     if (prev < 1) return;
-
     loadVerse(window.currentBook, window.currentChapter, prev);
-}
+};
 
-// Restart the current verse
-export function restartCurrentVerse() {
+window.restartCurrentVerse = function() {
     if (!window.currentBook || !window.currentChapter || !window.currentVerse) return;
-
     loadVerse(window.currentBook, window.currentChapter, window.currentVerse);
-}
+};
 
-// Start the chapter at verse 1
-export function startChapter() {
+window.startChapter = function() {
     if (!window.currentBook || !window.currentChapter) return;
-
     loadVerse(window.currentBook, window.currentChapter, 1);
-}
+};
 
-// Jump to a specific verse number
-export function jumpToVerse(targetVerse) {
+window.jumpToVerse = function(targetVerse) {
     if (!window.currentBook || !window.currentChapter) return;
     if (!targetVerse || targetVerse < 1) return;
-
     loadVerse(window.currentBook, window.currentChapter, targetVerse);
-}
-
-// ------------------------------------------------------------
-// Expose navigation globally for voiceRouter.js
-// ------------------------------------------------------------
-window.loadNextVerse = loadNextVerse;
-window.loadPreviousVerse = loadPreviousVerse;
-window.restartCurrentVerse = restartCurrentVerse;
-window.startChapter = startChapter;
-window.jumpToVerse = jumpToVerse;
+};
 
 // ------------------------------------------------------------
 // Initialize default translation
 // ------------------------------------------------------------
 loadTranslation("kjv");
+
