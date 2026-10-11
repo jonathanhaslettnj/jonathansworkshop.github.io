@@ -1,12 +1,10 @@
 // ============================================================
-// Developer Mode v12 — Diagnostic Panel (Step 3)
+// devModeDiagnostics.js — Diagnostic Engine (v12)
 // ============================================================
 
 import { loadVoiceConfig } from "./voiceConfigLoader.js";
 
-// ------------------------------------------------------------
 // Main diagnostic function
-// ------------------------------------------------------------
 export async function runDiagnostics() {
     const result = await loadVoiceConfig();
     const { config, source, errorState } = result;
@@ -24,45 +22,28 @@ export async function runDiagnostics() {
         voiceSettingTests: []
     };
 
-    // ------------------------------------------------------------
-    // JSON validity check
-    // ------------------------------------------------------------
     if (config) {
         diagnostics.jsonValid = true;
         diagnostics.version = config.version;
         diagnostics.lastUpdated = config.lastUpdated;
 
-        // Count commands
         diagnostics.commandCount = Object.keys(config.commands).length;
 
-        // Count keywords
         diagnostics.keywordCount = Object.values(config.commands)
             .reduce((sum, cmd) => sum + cmd.keywords.length, 0);
 
-        // Count voice-input settings
         diagnostics.voiceSettingCount = Object.keys(config.voiceInputSettings).length;
 
-        // Run router tests
         diagnostics.routerTests = runRouterTests(config);
-
-        // Run voice-input settings tests
         diagnostics.voiceSettingTests = runVoiceInputSettingTests(config.voiceInputSettings);
     }
-
-    // ------------------------------------------------------------
-    // Print diagnostic summary to console
-    // ------------------------------------------------------------
-    printDiagnosticsToConsole(diagnostics);
 
     return diagnostics;
 }
 
-// ------------------------------------------------------------
 // Router simulation tests
-// ------------------------------------------------------------
 function runRouterTests(config) {
     const tests = [];
-
     const samples = [
         "next",
         "go on",
@@ -73,19 +54,13 @@ function runRouterTests(config) {
 
     for (const input of samples) {
         const match = findMatchingCommand(input, config.commands);
-
-        tests.push({
-            input,
-            matchedCommand: match || "NONE"
-        });
+        tests.push({ input, matchedCommand: match || "NONE" });
     }
 
     return tests;
 }
 
-// ------------------------------------------------------------
 // Find matching command based on keywords
-// ------------------------------------------------------------
 function findMatchingCommand(input, commands) {
     const lower = input.toLowerCase();
 
@@ -100,9 +75,7 @@ function findMatchingCommand(input, commands) {
     return null;
 }
 
-// ------------------------------------------------------------
 // Voice-input settings tests
-// ------------------------------------------------------------
 function runVoiceInputSettingTests(settings) {
     const tests = [];
 
@@ -110,8 +83,7 @@ function runVoiceInputSettingTests(settings) {
         setting: "confidenceThreshold",
         value: settings.confidenceThreshold,
         status: settings.confidenceThreshold >= 0 && settings.confidenceThreshold <= 1
-            ? "OK"
-            : "INVALID"
+            ? "OK" : "INVALID"
     });
 
     tests.push({
@@ -151,37 +123,4 @@ function runVoiceInputSettingTests(settings) {
     });
 
     return tests;
-}
-
-// ------------------------------------------------------------
-// Console output
-// ------------------------------------------------------------
-function printDiagnosticsToConsole(diag) {
-    console.log("==============================================");
-    console.log("Voice Config Diagnostic");
-    console.log("==============================================");
-
-    console.log("Version:", diag.version);
-    console.log("Last Updated:", diag.lastUpdated);
-    console.log("Source:", diag.source);
-    console.log("Error State:", diag.errorState);
-    console.log("JSON Valid:", diag.jsonValid);
-
-    console.log("Commands:", diag.commandCount);
-    console.log("Total Keywords:", diag.keywordCount);
-    console.log("Voice Input Settings:", diag.voiceSettingCount);
-
-    console.log("----------------------------------------------");
-    console.log("Router Tests:");
-    diag.routerTests.forEach(t => {
-        console.log(`Input: "${t.input}" → ${t.matchedCommand}`);
-    });
-
-    console.log("----------------------------------------------");
-    console.log("Voice Input Settings Tests:");
-    diag.voiceSettingTests.forEach(t => {
-        console.log(`${t.setting}: ${t.value} → ${t.status}`);
-    });
-
-    console.log("==============================================");
 }
