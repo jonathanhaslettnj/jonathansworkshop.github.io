@@ -1,75 +1,59 @@
 // ============================================================
-// Step 6 + Step 7 — Speech Recognition Module (with Spoken Recitation)
+// voiceRecognition.js — Speech Recognition Engine (v12)
 // ============================================================
 
+import { updateListening, updateTranscript } from "./voiceDashboard.js";
 import { routeVoiceCommand, executeVoiceCommand } from "./voiceRouter.js";
-import { processSpokenText } from "./spokenRecitation.js";
 
-let recognizer = null;
+let recognition = null;
 let listening = false;
 
-// ------------------------------------------------------------
 // Initialize speech recognition
-// ------------------------------------------------------------
 export function initSpeechRecognition() {
     const SpeechRecognition =
         window.SpeechRecognition || window.webkitSpeechRecognition;
 
     if (!SpeechRecognition) {
-        console.error("Speech Recognition not supported in this browser.");
+        console.warn("Speech Recognition not supported.");
         return;
     }
 
-    recognizer = new SpeechRecognition();
-    recognizer.lang = "en-US";
-    recognizer.continuous = true;
-    recognizer.interimResults = false;
+    recognition = new SpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = false;
+    recognition.lang = "en-US";
 
-    recognizer.onresult = (event) => {
-        const transcript = event.results[event.results.length - 1][0].transcript;
-        console.log("Heard:", transcript);
-
-        // 1. Try routing as a voice command
-        const command = routeVoiceCommand(transcript);
-
-        if (command) {
-            executeVoiceCommand(command);
-        } else {
-            // 2. Otherwise treat as spoken verse input
-            processSpokenText(transcript);
-        }
-    };
-
-    recognizer.onerror = (err) => {
-        console.error("Speech recognition error:", err);
-    };
-
-    console.log("Speech recognition initialized.");
-}
-
-// ------------------------------------------------------------
-// Start listening
-// ------------------------------------------------------------
-export function startListening() {
-    if (!recognizer) {
-        console.warn("Recognizer not initialized.");
-        return;
-    }
-
-    if (!listening) {
-        recognizer.start();
+    recognition.onstart = () => {
         listening = true;
-        console.log("Voice recognition: STARTED");
-    }
+        updateListening(true);
+    };
+
+    recognition.onend = () => {
+        listening = false;
+        updateListening(false);
+    };
+
+    recognition.onerror = (e) => {
+        console.error("Speech recognition error:", e);
+    };
+
+    recognition.onresult = (event) => {
+        const transcript = event.results[event.results.length - 1][0].transcript;
+        updateTranscript(transcript);
+
+        const cmd = routeVoiceCommand(transcript);
+        executeVoiceCommand(cmd);
+    };
 }
 
-// ------------------------------------------------------------
+// Start listening
+export function startListening() {
+    if (!recognition) return;
+    recognition.start();
+}
+
 // Stop listening
-// ------------------------------------------------------------
 export function stopListening() {
-    if (recognizer && listening) {
-        recognizer.stop();
-        listening = false;
-        console.log("Voice recognition: STOPPED");
-    }
+    if (!recognition) return;
+    recognition.stop();
 }

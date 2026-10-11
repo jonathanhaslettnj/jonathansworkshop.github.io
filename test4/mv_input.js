@@ -1,116 +1,69 @@
-// =====================================
-// mv_input.js
-// Version 12 — Developer Mode — lbyl — Multi-Version Input
-// Last updated: 2026-10-08
-// =====================================
+// ============================================================
+// mv_input.js — Multi-Version Input Handler (v12)
+// Option C — Strict Letter-by-Letter
+// ============================================================
 
-console.log("Loaded mv_input.js — v12 Multi-Version Input (Option C Strict)");
+// Input element
+const inputEl = document.getElementById("mv_input");
 
-// =====================================
-// NORMALIZE WORDS
-// =====================================
+// Progress display
+const progressEl = document.getElementById("mv_progress");
+const statusEl = document.getElementById("mv_status");
 
-function normalizeWord(w) {
-    return w.replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "").toLowerCase();
+// Current word index
+window.mv_wordIndex = 0;
+
+// Split current verse text into words
+function getWords() {
+    if (!window.currentText) return [];
+    return window.currentText.split(/\s+/);
 }
 
-// =====================================
-// CHECK WORD (Option C strict)
-// =====================================
+// Reset input state when verse loads
+window.addEventListener("loadVerseLoaded", () => {
+    window.mv_wordIndex = 0;
+    inputEl.value = "";
+    progressEl.textContent = "";
+    statusEl.textContent = "";
+});
 
-function checkWord(typed) {
-    let expectedRaw = currentWords[index] || "";
-    let expectedNorm = normalizeWord(expectedRaw);
-    let typedNorm = normalizeWord(typed);
+// Handle typing
+inputEl.addEventListener("input", () => {
+    const words = getWords();
+    if (words.length === 0) return;
 
-    if (DEV_MODE) {
-        console.log("checkWord(): typed =", typedNorm, "expected =", expectedNorm);
+    const expected = words[window.mv_wordIndex];
+    const typed = inputEl.value.trim();
+
+    // Strict letter-by-letter checking
+    if (expected.startsWith(typed)) {
+        statusEl.textContent = "Correct so far…";
+    } else {
+        statusEl.textContent = "Mistake — try again";
     }
+});
 
-    if (typedNorm === expectedNorm) {
-        index++;
-        updateProgress();
-        onCorrectWord(expectedRaw);
+// Handle Enter key to submit word
+inputEl.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter") return;
 
-        if (index >= currentWords.length) {
-            statusDisplay.textContent =
-                `✔ Verse complete! Mistakes made: ${mistakes === 0 ? "0 (Perfect!)" : mistakes}`;
-            onVerseComplete(mistakes);
-        } else {
-            statusDisplay.textContent =
-                `Correct. Next word: (${index + 1}/${currentWords.length})`;
+    const words = getWords();
+    if (words.length === 0) return;
+
+    const expected = words[window.mv_wordIndex];
+    const typed = inputEl.value.trim();
+
+    if (typed === expected) {
+        // Correct word
+        progressEl.textContent += expected + " ";
+        window.mv_wordIndex++;
+        inputEl.value = "";
+        statusEl.textContent = "";
+
+        if (window.mv_wordIndex >= words.length) {
+            statusEl.textContent = "Verse complete!";
         }
     } else {
-        mistakes++;
-        statusDisplay.textContent =
-            `❌ Expected "${expectedRaw}", but you typed "${typed}".`;
-        onIncorrectWord(expectedRaw, typed);
-    }
-}
-
-// =====================================
-// INPUT HANDLING — OPTION C STRICT LETTER-BY-LETTER
-// =====================================
-
-wordInput.addEventListener("input", () => {
-    let typed = wordInput.value;
-    if (!typed) return;
-
-    let expectedRaw = currentWords[index] || "";
-    let expectedNorm = normalizeWord(expectedRaw);
-    let typedNorm = normalizeWord(typed);
-
-    if (DEV_MODE) {
-        console.log("input(): typed =", typedNorm, "expected =", expectedNorm);
-    }
-
-    // Too many letters → mistake
-    if (typedNorm.length > expectedNorm.length) {
-        mistakes++;
-        statusDisplay.textContent =
-            `❌ Incorrect letter. Expected "${expectedRaw}".`;
-        onIncorrectWord(expectedRaw, typed);
-        wordInput.value = "";
-        return;
-    }
-
-    // Compare each typed letter
-    for (let i = 0; i < typedNorm.length; i++) {
-        if (typedNorm[i] !== expectedNorm[i]) {
-            mistakes++;
-            statusDisplay.textContent =
-                `❌ Incorrect letter. Expected "${expectedRaw}".`;
-            onIncorrectWord(expectedRaw, typed);
-            wordInput.value = "";
-            return;
-        }
-    }
-
-    // Full word typed correctly
-    if (typedNorm.length === expectedNorm.length) {
-        beep();
-        checkWord(expectedRaw);
-        wordInput.value = "";
+        statusEl.textContent = "Incorrect — try again";
     }
 });
-
-// =====================================
-// CLEAR INPUT ON FOCUS
-// =====================================
-
-wordInput.addEventListener("focus", () => {
-    wordInput.value = "";
-});
-
-// =====================================
-// INTEGRITY CHECK
-// =====================================
-
-if (typeof normalizeWord !== "function" ||
-    typeof checkWord !== "function") {
-    console.error("ERROR: mv_input.js is corrupted or incomplete.");
-}
-
-// =====================================
-// END OF FILE — NOTHING SHOULD BE BELOW THIS LINE
-// =====================================
