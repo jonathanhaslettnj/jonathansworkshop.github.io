@@ -163,21 +163,7 @@
         </div>
     </div>
 
-    <!-- Voice Recognition -->
-<script type="module">
-    import { routeVoiceCommand, executeVoiceCommand } from "./voiceRouter.js?v=2";
 
-
-        initSpeechRecognition();
-
-        document.getElementById("startVoice").addEventListener("click", () => {
-            startListening();
-        });
-
-        document.getElementById("stopVoice").addEventListener("click", () => {
-            stopListening();
-        });
-    </script>
 
     <!-- Developer Mode UI -->
     <script type="module">
@@ -207,6 +193,17 @@
     <!-- Memorizer Core -->
     <script src="mv_core.js?v=12"></script>
     <script src="mv_input.js?v=12"></script>
+
+<!-- Voice Recognition Engine -->
+<script type="module">
+  import { initSpeechRecognition, startListening, stopListening }
+    from "./voiceRecognition.js";
+
+  // Expose functions globally for buttons
+  window.initSpeechRecognition = initSpeechRecognition;
+  window.startListening = startListening;
+  window.stopListening = stopListening;
+</script>
 
     <div id="mv_version_banner"
          style="
