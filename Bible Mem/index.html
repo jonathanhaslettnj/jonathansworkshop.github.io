@@ -1,226 +1,239 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Bible Memory Verse Module</title>
+<meta charset="UTF-8">
+<title>Memorizer</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 15px;
-            line-height: 1.6;
-        }
+<style>
 
-        h1 {
-            color: #003399;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+/* ------------------------------
+   BASE PAGE STYLING
+   ------------------------------ */
 
-        h2 {
-            text-align: center;
-            margin-top: -10px;
-            color: #444;
-        }
+body {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #ffffff;
+  font-size: 18px;
+}
 
-        select,
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            font-size: 18px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
+h1 {
+  font-size: 48px;
+  color: #003399;   /* deep blue */
+  margin-bottom: 10px;
+}
 
-        /* Shorten translation dropdown, reference input, and word input */
-        #mv_translation,
-        #mv_reference_input,
-        #mv_input {
-            width: 20ch;
-            display: inline-block;
-        }
+/* Centered bordered video box */
+.unit-box {
+  border: 2px solid #444;
+  padding: 20px;
+  margin: 30px auto;
+  width: 90%;
+  max-width: 560px;
+  border-radius: 10px;
+  background: #ffffff;
+}
 
-        #mv_instruction {
-            font-size: 12px;
-            color: #555;
-            margin-bottom: 10px;
-        }
+/* PDF link boxes */
+.doc-link-box {
+  border: 2px solid #888;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 6px;
+  background: #f9f9f9;
+}
 
-        #mv_progress {
-            white-space: pre-wrap;
-            margin-top: 5px;
-            min-height: 1.2rem;
-        }
+.doc-link-box a {
+  font-size: 20px;
+  text-decoration: none;
+  color: #003399;
+  word-break: break-word;
+}
 
-        #mv_status {
-            margin-top: 5px;
-            min-height: 1.2rem;
-        }
+/* Responsive video */
+iframe {
+  width: 100%;
+  height: 260px;
+  border: none;
+  border-radius: 6px;
+}
 
-        .button-line {
-            margin-top: 20px;
-            text-align: center;
-        }
+/* Return box */
+.return-box {
+  background: #e6f2ff;
+  border: 2px solid #7aaee6;
+  padding: 12px;
+  margin: 40px auto 0 auto;
+  width: 70%;
+  max-width: 350px;
+  border-radius: 8px;
+  font-size: 20px;
+}
 
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-        }
+.return-box a {
+  text-decoration: none;
+  color: #004a99;
+}
 
-        @media (max-width: 480px) {
-            body {
-                margin: 10px;
-                padding: 10px;
-            }
+/* -----------------------------------------
+   MOBILE ENLARGEMENT — 25% LARGER
+   ----------------------------------------- */
 
-            h1 {
-                font-size: 24px;
-            }
+@media (max-width: 600px) {
 
-            select,
-            input[type="text"] {
-                font-size: 16px;
-                padding: 8px;
-            }
+  body {
+    font-size: 22px;
+  }
 
-            button {
-                font-size: 15px;
-                padding: 10px 16px;
-            }
-        }
-    </style>
+  h1 {
+    font-size: 60px;
+  }
+
+  .doc-link-box a {
+    font-size: 24px;
+  }
+
+  .return-box {
+    font-size: 25px;
+    padding: 15px;
+  }
+
+  iframe {
+    height: 325px;
+  }
+}
+
+</style>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DP2GCK9YCT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DP2GCK9YCT');
+</script>
+
+
 </head>
 
 <body>
 
-    <h1>Bible Verse Memorizer</h1>
-    <h2>Translations in the Public Domain</h2>
+<h1>Bible Memorizer</h1>
 
-    <!-- Translation Selector -->
-    <select id="mv_translation">
-        <option value="kjv">King James Version (KJV)</option>
-        <option value="asv">American Standard Version (ASV)</option>
-        <option value="bbe">Bible in Basic English (BBE)</option>
-    </select>
-
-    <!-- Reference Input -->
-    <input id="mv_reference_input" type="text" placeholder="Type verse (e.g. Genesis 1:1)">
-    <div id="mv_instruction">Type the full name, chapter, and verse, then hit Enter.</div>
-
-    <!-- Verse Reference Display -->
-    <div id="mv_reference" style="margin-top:10px; font-weight:bold;"></div>
-
-    <!-- Memorizer Output -->
-    <div id="mv_progress"></div>
-    <div id="mv_next"></div>
-    <div id="mv_reveal"></div>
-    <div id="mv_status"></div>
-
-    <!-- Word Input -->
-    <input id="mv_input" type="text" placeholder="Type next word">
-
-    <!-- Buttons -->
-    <div class="button-line">
-        <button id="mv_next_verse">Next Verse ▶</button>
-    </div>
-
-    <div class="button-line">
-        <button id="mv_restart" onclick="restartModule()">Start Over</button>
-    </div>
-
-    <!-- Voice Controls -->
-    <button id="startVoice">🎤 Start Voice</button>
-    <button id="stopVoice">🛑 Stop Voice</button>
-
-    <!-- Developer Mode -->
-    <button id="testVoiceConfigBtn">Test Voice Config</button>
-
-    <div id="devModePanel"
-         style="
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            background: #f9f9f9;
-         ">
-
-        <!-- Step 8 Voice Dashboard -->
-        <div id="voiceDashboard" style="margin-top:20px;">
-            <h3>Voice Dashboard</h3>
-
-            <div><strong>Listening:</strong> <span id="vd_listening">OFF</span></div>
-            <div><strong>Last Transcript:</strong> <span id="vd_transcript"></span></div>
-            <div><strong>Last Command:</strong> <span id="vd_command"></span></div>
-            <div><strong>Last Spoken Word:</strong> <span id="vd_spoken"></span></div>
-            <div><strong>Mistakes:</strong> <span id="vd_mistakes">0</span></div>
-
-            <button id="vd_clear">Clear Dashboard</button>
-        </div>
-    </div>
+<!-- Memorizer -->
+<div class="unit-box">
+  <iframe 
+    <iframe
+  src="https://www.youtube.com/embed/aYuJHe-2Hjc"
+  allowfullscreen>
+</iframe>
 
 
-
-    <!-- Developer Mode UI -->
-    <script type="module">
-        import { initDeveloperModeUI } from "./devModeUI.js";
-        initDeveloperModeUI();
-    </script>
-
-    <!-- Router Test Function -->
-    <script type="module">
-        import { routeVoiceCommand, executeVoiceCommand } from "./voiceRouter.js";
-
-        window.testVoice = function (phrase) {
-            const cmd = routeVoiceCommand(phrase);
-            executeVoiceCommand(cmd);
-        };
-    </script>
-
-    <!-- Dashboard Clear Button -->
-    <script type="module">
-        import { clearDashboard } from "./voiceDashboard.js";
-
-        document.getElementById("vd_clear").addEventListener("click", () => {
-            clearDashboard();
-        });
-    </script>
-
-    <!-- Memorizer Core -->
-    <script src="mv_core.js?v=12"></script>
-    <script src="mv_input.js?v=12"></script>
-
-<!-- Voice Recognition Engine -->
-<script type="module">
-  import { initSpeechRecognition, startListening, stopListening }
-    from "./voiceRecognition.js";
-
-  window.initSpeechRecognition = initSpeechRecognition;
-  window.startListening = startListening;
-  window.stopListening = stopListening;
-
-  // ⭐ REQUIRED: initialize the engine
-  initSpeechRecognition();
-</script>
+  <div class="doc-link-box">
+    <a href="Talking Multi/index.html">
+      Talking - Drill on verses from three translations in the Public Domain
+    </a>
+  </div>
+</div>
 
 
-    <div id="mv_version_banner"
-         style="
-            background:#003399;
-            color:white;
-            padding:8px 12px;
-            font-size:14px;
-            font-weight:bold;
-            text-align:center;
-            border-radius:6px;
-            margin-bottom:15px;
-         ">
-        v12 – Developer Mode – lbyl – Multi‑Version
-    </div>
+<!-- Memorizer -->
+<div class="unit-box">
+  <iframe 
+    src="https://www.youtube.com/embed/HxcS--bdx9M?"
+    allowfullscreen>
+  </iframe>
+
+  <div class="doc-link-box">
+    <a href="Multi/index.html">
+      Not Talking - Drill on verses from three translations in the Public Domain
+    </a>
+  </div>
+</div>
+
+
+<!-- Memorizer -->
+<div class="unit-box">
+  <iframe 
+    src="https://www.youtube.com/embed/6tLgFEJRTVM?"
+    allowfullscreen>
+  </iframe>
+
+  <div class="doc-link-box">
+    <a href="Talking Lists/index.html">
+      Talking - Create your own list for review
+    </a>
+  </div>
+</div>
+
+<!-- Memorizer -->
+<div class="unit-box">
+  <iframe 
+    src="https://www.youtube.com/embed/xxx?"
+    allowfullscreen>
+  </iframe>
+
+  <div class="doc-link-box">
+    <a href="xxx">
+      Coming next: how to add words to your lists using copy and paste.
+    </a>
+  </div>
+</div>
+</div>
+
+<!-- Memorizer -->
+<div class="unit-box">
+  <iframe 
+    src="https://www.youtube.com/embed/sfoKM3UbePI?"
+    allowfullscreen>
+  </iframe>
+
+  <div class="doc-link-box">
+    <a href="https://jonathansworkshop.online/test2/index.html">
+      Talking - High Speed Review of your list
+    </a>
+  </div>
+</div>
+</div>
+
+<!-- Return Box -->
+<div class="return-box">
+  <a href="../index.html">Return to Home Page</a>
+</div>
+
+
+<!-- QR Code Section -->
+<div class="qr-section">
+  <h2>Scan to Share the Bible Memorizer</h2>
+  <img src="QR Code.jpg">
+</div>
+  <div class="doc-link-box">
+    <a href="https://jonathansworkshop.online/test1/talking-memorizer.html">
+     Test 1
+    </a>
+  </div>
+
+  <div class="doc-link-box">
+    <a href="https://jonathansworkshop.online/test2/talking-memorizer.html">
+     Test 2
+    </a>
+  </div>
+
+  <div class="doc-link-box">
+    <a href="https://jonathansworkshop.online/test3/memorizer_verse.html">
+      Test 3
+    </a>
+  </div>
+
+  <div class="doc-link-box">
+    <a href="https://jonathansworkshop.online/test4/index.html">
+      Test 4
+    </a>
+  </div>
 
 </body>
 </html>
