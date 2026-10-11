@@ -164,8 +164,9 @@
     </div>
 
     <!-- Voice Recognition -->
-    <script type="module">
-        import { initSpeechRecognition, startListening, stopListening } from "./voiceRecognition.js";
+<script type="module">
+    import { routeVoiceCommand, executeVoiceCommand } from "./voiceRouter.js?v=2";
+
 
         initSpeechRecognition();
 
