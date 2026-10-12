@@ -1,25 +1,63 @@
 // ============================================================
 // mv_input.js — Multi-Version Input Handler (v12)
-// Option C — Strict Letter-by-Letter
+// Strict Letter-by-Letter Mode + Reference Loader
 // ============================================================
 
-// Input element
+// ------------------------------------------------------------
+// Elements
+// ------------------------------------------------------------
+const refInput = document.getElementById("mv_reference_input");
 const inputEl = document.getElementById("mv_input");
 
-// Progress display
 const progressEl = document.getElementById("mv_progress");
 const statusEl = document.getElementById("mv_status");
 
-// Current word index
+// ------------------------------------------------------------
+// State
+// ------------------------------------------------------------
 window.mv_wordIndex = 0;
 
-// Split current verse text into words
+// ------------------------------------------------------------
+// Utility: split current verse text into words
+// ------------------------------------------------------------
 function getWords() {
     if (!window.currentText) return [];
     return window.currentText.split(/\s+/);
 }
 
-// Reset input state when verse loads
+// ------------------------------------------------------------
+// Reference Input Handler (this was missing)
+// ------------------------------------------------------------
+refInput.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter") return;
+
+    const ref = refInput.value.trim();
+    const parsed = window.parseReference(ref);
+
+    if (!parsed) {
+        document.getElementById("mv_reference").textContent = "Invalid reference.";
+        return;
+    }
+
+    // Load the verse
+    window.loadVerse(parsed.book, parsed.chapter, parsed.verse);
+
+    // Reset memorizer state
+    window.mv_wordIndex = 0;
+    inputEl.value = "";
+    progressEl.textContent = "";
+    statusEl.textContent = "";
+
+    // Focus the next-word input
+    inputEl.focus();
+
+    // Notify other modules (Developer Mode, Voice Router, etc.)
+    window.dispatchEvent(new Event("loadVerseLoaded"));
+});
+
+// ------------------------------------------------------------
+// Reset input state when verse loads (optional event)
+// ------------------------------------------------------------
 window.addEventListener("loadVerseLoaded", () => {
     window.mv_wordIndex = 0;
     inputEl.value = "";
@@ -27,7 +65,9 @@ window.addEventListener("loadVerseLoaded", () => {
     statusEl.textContent = "";
 });
 
-// Handle typing
+// ------------------------------------------------------------
+// Handle typing (strict letter-by-letter)
+// ------------------------------------------------------------
 inputEl.addEventListener("input", () => {
     const words = getWords();
     if (words.length === 0) return;
@@ -35,7 +75,6 @@ inputEl.addEventListener("input", () => {
     const expected = words[window.mv_wordIndex];
     const typed = inputEl.value.trim();
 
-    // Strict letter-by-letter checking
     if (expected.startsWith(typed)) {
         statusEl.textContent = "Correct so far…";
     } else {
@@ -43,7 +82,9 @@ inputEl.addEventListener("input", () => {
     }
 });
 
-// Handle Enter key to submit word
+// ------------------------------------------------------------
+// Handle Enter key to submit a word
+// ------------------------------------------------------------
 inputEl.addEventListener("keydown", (e) => {
     if (e.key !== "Enter") return;
 
