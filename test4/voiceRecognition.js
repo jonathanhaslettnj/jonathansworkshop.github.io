@@ -8,7 +8,19 @@ import { routeVoiceCommand, executeVoiceCommand } from "./voiceRouter.js";
 let recognition = null;
 let listening = false;
 
+// ------------------------------------------------------------
+// Speech Synthesis (reading the verse out loud)
+// ------------------------------------------------------------
+export function speakVerse(text) {
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = "en-US";
+    speechSynthesis.speak(utter);
+}
+window.speakVerse = speakVerse;
+
+// ------------------------------------------------------------
 // Initialize speech recognition
+// ------------------------------------------------------------
 export function initSpeechRecognition() {
     const SpeechRecognition =
         window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -26,11 +38,13 @@ export function initSpeechRecognition() {
     recognition.onstart = () => {
         listening = true;
         updateListening(true);
+        console.log("Voice: recognition started");
     };
 
     recognition.onend = () => {
         listening = false;
         updateListening(false);
+        console.log("Voice: recognition stopped");
     };
 
     recognition.onerror = (e) => {
@@ -44,16 +58,27 @@ export function initSpeechRecognition() {
         const cmd = routeVoiceCommand(transcript);
         executeVoiceCommand(cmd);
     };
+
+    console.log("Voice: recognizer initialized");
 }
 
+// ------------------------------------------------------------
 // Start listening
+// ------------------------------------------------------------
 export function startListening() {
     if (!recognition) return;
+    console.log("Voice: startListening() called");
     recognition.start();
 }
+window.startListening = startListening;
 
+// ------------------------------------------------------------
 // Stop listening
+// ------------------------------------------------------------
 export function stopListening() {
     if (!recognition) return;
+    console.log("Voice: stopListening() called");
     recognition.stop();
 }
+window.stopListening = stopListening;
+
