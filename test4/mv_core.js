@@ -42,9 +42,7 @@ window.parseReference = function(ref) {
     };
 };
 
-// ------------------------------------------------------------
 // Load a verse into the memorizer
-// ------------------------------------------------------------
 window.loadVerse = function(book, chapter, verse) {
     if (!window.translationData) return;
 
@@ -53,7 +51,9 @@ window.loadVerse = function(book, chapter, verse) {
     window.currentVerse = verse;
 
     const ref = `${book} ${chapter}:${verse}`;
-    const entry = window.translationData.find(v => v.reference === ref);
+
+    // FIXED: JSON uses "ref", not "reference"
+    const entry = window.translationData.find(v => v.ref === ref);
 
     if (!entry) {
         document.getElementById("mv_reference").textContent = "Verse not found.";
