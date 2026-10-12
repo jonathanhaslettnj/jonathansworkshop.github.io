@@ -31,6 +31,9 @@ export function routeVoiceCommand(phrase) {
 
     // Step 6 / Step 7 commands
     if (match(phrase, "nextVerse")) return { action: "nextVerse" };
+    if (phrase.includes("repeat verse")) return { action: "repeatVerse" };
+   
+
     if (match(phrase, "repeatVerse")) return { action: "repeatVerse" };
     if (match(phrase, "startOver")) return { action: "startOver" };
 
@@ -52,6 +55,9 @@ export function routeVoiceCommand(phrase) {
 // ------------------------------------------------------------
 export function executeVoiceCommand(cmd) {
     if (!cmd) return;
+
+    // Update dashboard
+    document.getElementById("vd_command").textContent = cmd.action;
 
     switch (cmd.action) {
 
