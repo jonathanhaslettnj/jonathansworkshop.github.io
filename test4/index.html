@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -163,7 +162,9 @@
         </div>
     </div>
 
-
+    <!-- Memorizer Core (must load first) -->
+    <script src="mv_core.js?v=12"></script>
+    <script src="mv_input.js?v=12"></script>
 
     <!-- Developer Mode UI -->
     <script type="module">
@@ -190,23 +191,17 @@
         });
     </script>
 
-    <!-- Memorizer Core -->
-    <script src="mv_core.js?v=12"></script>
-    <script src="mv_input.js?v=12"></script>
+    <!-- Voice Recognition Engine -->
+    <script type="module">
+        import { initSpeechRecognition, startListening, stopListening }
+            from "./voiceRecognition.js";
 
-<!-- Voice Recognition Engine -->
-<script type="module">
-  import { initSpeechRecognition, startListening, stopListening }
-    from "./voiceRecognition.js";
+        window.initSpeechRecognition = initSpeechRecognition;
+        window.startListening = startListening;
+        window.stopListening = stopListening;
 
-  // Expose functions globally for buttons
-  window.initSpeechRecognition = initSpeechRecognition;
-  window.startListening = startListening;
-  window.stopListening = stopListening;
-
-  // ⭐ Initialize speech engine
-  initSpeechRecognition();
-</script>
+        initSpeechRecognition();
+    </script>
 
     <div id="mv_version_banner"
          style="
