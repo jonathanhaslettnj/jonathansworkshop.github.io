@@ -38,8 +38,8 @@ export function routeVoiceCommand(phrase) {
     if (match(phrase, "previousVerse")) return { action: "previousVerse" };
     if (match(phrase, "startChapter")) return { action: "startChapter" };
 
-    // Jump to verse X
-    if (match(phrase, "jumpToVerse") || phrase.includes("verse")) {
+    // Jump to verse X — ONLY when actual keywords match
+    if (match(phrase, "jumpToVerse")) {
         const num = extractNumber(phrase);
         if (num) return { action: "jumpToVerse", value: num };
     }
