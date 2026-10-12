@@ -26,7 +26,14 @@ function getWords() {
 }
 
 // ------------------------------------------------------------
-// Reference Input Handler (this was missing)
+// Utility: normalize punctuation for strict mode
+// ------------------------------------------------------------
+function normalize(word) {
+    return word.replace(/[.,;:!?]/g, "");
+}
+
+// ------------------------------------------------------------
+// Reference Input Handler
 // ------------------------------------------------------------
 refInput.addEventListener("keydown", (e) => {
     if (e.key !== "Enter") return;
@@ -56,7 +63,7 @@ refInput.addEventListener("keydown", (e) => {
 });
 
 // ------------------------------------------------------------
-// Reset input state when verse loads (optional event)
+// Reset input state when verse loads
 // ------------------------------------------------------------
 window.addEventListener("loadVerseLoaded", () => {
     window.mv_wordIndex = 0;
@@ -75,7 +82,10 @@ inputEl.addEventListener("input", () => {
     const expected = words[window.mv_wordIndex];
     const typed = inputEl.value.trim();
 
-    if (expected.startsWith(typed)) {
+    const expectedNorm = normalize(expected);
+    const typedNorm = normalize(typed);
+
+    if (expectedNorm.startsWith(typedNorm)) {
         statusEl.textContent = "Correct so far…";
     } else {
         statusEl.textContent = "Mistake — try again";
@@ -94,9 +104,12 @@ inputEl.addEventListener("keydown", (e) => {
     const expected = words[window.mv_wordIndex];
     const typed = inputEl.value.trim();
 
-    if (typed === expected) {
+    const expectedNorm = normalize(expected);
+    const typedNorm = normalize(typed);
+
+    if (typedNorm === expectedNorm) {
         // Correct word
-        progressEl.textContent += expected + " ";
+        progressEl.textContent += expectedNorm + " ";
         window.mv_wordIndex++;
         inputEl.value = "";
         statusEl.textContent = "";
@@ -108,3 +121,4 @@ inputEl.addEventListener("keydown", (e) => {
         statusEl.textContent = "Incorrect — try again";
     }
 });
+
