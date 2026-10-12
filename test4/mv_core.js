@@ -67,6 +67,7 @@ window.loadVerse = function(book, chapter, verse) {
     document.getElementById("mv_status").textContent = "";
 
     window.currentText = entry.text;
+    window.speakVerse(entry.text);
 
     // ⭐ REQUIRED: notify mv_input.js that the verse is ready
     window.dispatchEvent(new Event("loadVerseLoaded"));

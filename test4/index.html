@@ -129,13 +129,15 @@
         <button id="mv_next_verse">Next Verse ▶</button>
     </div>
 
-    <div class="button-line">
-        <button id="mv_restart" onclick="restartModule()">Start Over</button>
-    </div>
 
-    <!-- Voice Controls -->
-    <button id="startVoice">🎤 Start Voice</button>
-    <button id="stopVoice">🛑 Stop Voice</button>
+<div class="button-line">
+    <button id="mv_restart" onclick="window.location.reload()">Start Over</button>
+</div>
+
+<!-- Voice Controls -->
+<button onclick="startListening()">🎤 Start Voice</button>
+<button onclick="stopListening()">🛑 Stop Voice</button>
+
 
     <!-- Developer Mode -->
     <button id="testVoiceConfigBtn">Test Voice Config</button>
