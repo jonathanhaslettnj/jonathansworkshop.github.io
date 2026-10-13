@@ -95,9 +95,7 @@ inputEl.addEventListener("input", () => {
 // ------------------------------------------------------------
 // Handle Enter key to submit a word
 // ------------------------------------------------------------
-inputEl.addEventListener("keydown", (e) => {
-    if (e.key !== "Enter") return;
-
+inputEl.addEventListener("input", () => {
     const words = getWords();
     if (words.length === 0) return;
 
@@ -107,9 +105,17 @@ inputEl.addEventListener("keydown", (e) => {
     const expectedNorm = normalize(expected);
     const typedNorm = normalize(typed);
 
+    // Letter-by-letter correctness
+    if (expectedNorm.startsWith(typedNorm)) {
+        statusEl.textContent = "Correct so far…";
+    } else {
+        statusEl.textContent = "Mistake — try again";
+        return;
+    }
+
+    // ⭐ AUTO-SUBMIT WHEN FULL WORD IS TYPED
     if (typedNorm === expectedNorm) {
-        // Correct word
-        progressEl.textContent += expectedNorm + " ";
+        progressEl.textContent += expected + " ";
         window.mv_wordIndex++;
         inputEl.value = "";
         statusEl.textContent = "";
@@ -117,8 +123,7 @@ inputEl.addEventListener("keydown", (e) => {
         if (window.mv_wordIndex >= words.length) {
             statusEl.textContent = "Verse complete!";
         }
-    } else {
-        statusEl.textContent = "Incorrect — try again";
     }
 });
+
 
