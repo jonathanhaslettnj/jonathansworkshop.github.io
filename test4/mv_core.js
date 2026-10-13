@@ -16,7 +16,7 @@ window.currentText = "";
 window.loadTranslation = async function(name) {
     window.currentTranslation = name;
 
-    const url = `https://jonathansworkshop.online/test3/${name}.json`;
+    const url = `${name}.json`;
     console.log("Fetching translation:", url);
 
     const response = await fetch(url);
