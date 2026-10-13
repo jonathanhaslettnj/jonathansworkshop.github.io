@@ -42,7 +42,9 @@ window.parseReference = function(ref) {
     };
 };
 
+// ------------------------------------------------------------
 // Load a verse into the memorizer
+// ------------------------------------------------------------
 window.loadVerse = function(book, chapter, verse) {
     if (!window.translationData) return;
 
@@ -52,7 +54,7 @@ window.loadVerse = function(book, chapter, verse) {
 
     const ref = `${book} ${chapter}:${verse}`;
 
-    // FIXED: JSON uses "ref", not "reference"
+    // JSON uses "ref", not "reference"
     const entry = window.translationData.find(v => v.ref === ref);
 
     if (!entry) {
@@ -69,14 +71,13 @@ window.loadVerse = function(book, chapter, verse) {
     window.currentText = entry.text;
     window.speakVerse(entry.text);
 
-    // ⭐ REQUIRED: notify mv_input.js that the verse is ready
+    // Notify mv_input.js that the verse is ready
     window.dispatchEvent(new Event("loadVerseLoaded"));
 };
 
 // ------------------------------------------------------------
 // Navigation Functions (Step 9)
 // ------------------------------------------------------------
-
 window.loadNextVerse = function() {
     if (!window.currentBook || !window.currentChapter || !window.currentVerse) return;
     const next = window.currentVerse + 1;
@@ -90,9 +91,28 @@ window.loadPreviousVerse = function() {
     loadVerse(window.currentBook, window.currentChapter, prev);
 };
 
-window.restartCurrentVerse = function() {
-    if (!window.currentBook || !window.currentChapter || !window.currentVerse) return;
+window.restartCurrentVerse = function () {
+    if (!window.currentBook || !window.currentChapter || !window.currentVerse) {
+        console.warn("No verse loaded yet.");
+        return;
+    }
+
+    // Reload the verse (this resets mv_input.js automatically)
     loadVerse(window.currentBook, window.currentChapter, window.currentVerse);
+
+    // Reset input
+    const input = document.getElementById("mv_input");
+    input.value = "";
+    input.focus();
+
+    // Reset voice dashboard
+    const vd = id => document.getElementById(id);
+    vd("vd_spoken").textContent = "";
+    vd("vd_command").textContent = "";
+    vd("vd_transcript").textContent = "";
+    vd("vd_mistakes").textContent = "0";
+
+    console.log("Verse restarted.");
 };
 
 window.startChapter = function() {
