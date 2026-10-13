@@ -28,22 +28,21 @@
             color: #444;
         }
 
+        /* Input boxes set to 30ch */
+        #mv_translation,
+        #mv_reference_input,
+        #mv_input {
+            width: 30ch;
+            display: inline-block;
+        }
+
         select,
         input[type="text"] {
-            width: 100%;
             padding: 10px;
             font-size: 18px;
             margin-top: 10px;
             margin-bottom: 10px;
             box-sizing: border-box;
-        }
-
-        /* Shorten translation dropdown, reference input, and word input */
-        #mv_translation,
-        #mv_reference_input,
-        #mv_input {
-            width: 20ch;
-            display: inline-block;
         }
 
         #mv_instruction {
@@ -102,7 +101,7 @@
     <h1>Bible Verse Memorizer</h1>
     <h2>Translations in the Public Domain</h2>
 
-    <!-- ⭐ Translation Banner (Option A) -->
+    <!-- ⭐ Translation Banner -->
     <div id="mv_translation_banner"
          style="
             background:#eee;
@@ -166,7 +165,6 @@
             background: #f9f9f9;
          ">
 
-        <!-- Step 8 Voice Dashboard -->
         <div id="voiceDashboard" style="margin-top:20px;">
             <h3>Voice Dashboard</h3>
 
@@ -188,17 +186,14 @@
     });
 </script>
 
-    <!-- Memorizer Core -->
     <script src="mv_core.js?v=12"></script>
     <script src="mv_input.js?v=14"></script>
 
-    <!-- Developer Mode UI -->
     <script type="module">
         import { initDeveloperModeUI } from "./devModeUI.js";
         initDeveloperModeUI();
     </script>
 
-    <!-- Router Test Function -->
     <script type="module">
         import { routeVoiceCommand, executeVoiceCommand } from "./voiceRouter.js";
 
@@ -208,7 +203,6 @@
         };
     </script>
 
-    <!-- Dashboard Clear Button -->
     <script type="module">
         import { clearDashboard } from "./voiceDashboard.js";
 
@@ -217,7 +211,6 @@
         });
     </script>
 
-    <!-- Voice Recognition Engine -->
     <script type="module">
         import { initSpeechRecognition, startListening, stopListening }
             from "./voiceRecognition.js";
