@@ -1,3 +1,4 @@
+console.log("mv_input.js — AUTO-SUBMIT VERSION LOADED");
 // ============================================================
 // mv_input.js — Multi-Version Input Handler (v12)
 // Strict Letter-by-Letter Mode + Reference Loader
@@ -85,26 +86,6 @@ inputEl.addEventListener("input", () => {
     const expectedNorm = normalize(expected);
     const typedNorm = normalize(typed);
 
-    if (expectedNorm.startsWith(typedNorm)) {
-        statusEl.textContent = "Correct so far…";
-    } else {
-        statusEl.textContent = "Mistake — try again";
-    }
-});
-
-// ------------------------------------------------------------
-// Handle Enter key to submit a word
-// ------------------------------------------------------------
-inputEl.addEventListener("input", () => {
-    const words = getWords();
-    if (words.length === 0) return;
-
-    const expected = words[window.mv_wordIndex];
-    const typed = inputEl.value.trim();
-
-    const expectedNorm = normalize(expected);
-    const typedNorm = normalize(typed);
-
     // Letter-by-letter correctness
     if (expectedNorm.startsWith(typedNorm)) {
         statusEl.textContent = "Correct so far…";
@@ -113,7 +94,7 @@ inputEl.addEventListener("input", () => {
         return;
     }
 
-    // ⭐ AUTO-SUBMIT WHEN FULL WORD IS TYPED
+    // ⭐ Auto-submit when full word is typed
     if (typedNorm === expectedNorm) {
         progressEl.textContent += expected + " ";
         window.mv_wordIndex++;
