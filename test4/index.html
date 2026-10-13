@@ -26,6 +26,18 @@
             margin-top: -10px;
             color: #444;
         }
+<div id="mv_translation_banner"
+     style="
+        background:#eee;
+        padding:6px 10px;
+        margin:10px 0;
+        border-radius:6px;
+        font-size:14px;
+        font-weight:bold;
+        color:#003399;
+     ">
+    KJV loaded
+</div>
 
         select,
         input[type="text"] {
@@ -169,6 +181,15 @@
             <button id="vd_clear">Clear Dashboard</button>
         </div>
     </div>
+
+<script>
+    const translationSelector = document.getElementById("mv_translation");
+
+    translationSelector.addEventListener("change", () => {
+        loadTranslation(translationSelector.value);
+    });
+</script>
+
 
     <!-- Memorizer Core (must load first) -->
     <script src="mv_core.js?v=12"></script>

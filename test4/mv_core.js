@@ -25,7 +25,16 @@ window.loadTranslation = async function(name) {
     const data = await response.json();
     window.translationData = data;
 
-    console.log("Data loaded:", data.length, "verses");
+    // Show which translation is loaded
+    document.getElementById("mv_status").textContent =
+        `${name.toUpperCase()} loaded`;
+
+    // Reload current verse using the new translation
+    if (window.currentBook && window.currentChapter && window.currentVerse) {
+        loadVerse(window.currentBook, window.currentChapter, window.currentVerse);
+    }
+
+    console.log("Translation loaded:", name);
 };
 
 // ------------------------------------------------------------
