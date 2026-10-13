@@ -25,10 +25,9 @@ window.loadTranslation = async function(name) {
     const data = await response.json();
     window.translationData = data;
 
-    // Show which translation is loaded
+    // ⭐ Update translation banner
     document.getElementById("mv_translation_banner").textContent =
-         `${name.toUpperCase()} loaded`;
-
+        `${name.toUpperCase()} loaded`;
 
     // Reload current verse using the new translation
     if (window.currentBook && window.currentChapter && window.currentVerse) {
@@ -64,7 +63,6 @@ window.loadVerse = function(book, chapter, verse) {
 
     const ref = `${book} ${chapter}:${verse}`;
 
-    // JSON uses "ref", not "reference"
     const entry = window.translationData.find(v => v.ref === ref);
 
     if (!entry) {
@@ -81,12 +79,11 @@ window.loadVerse = function(book, chapter, verse) {
     window.currentText = entry.text;
     window.speakVerse(entry.text);
 
-    // Notify mv_input.js that the verse is ready
     window.dispatchEvent(new Event("loadVerseLoaded"));
 };
 
 // ------------------------------------------------------------
-// Navigation Functions (Step 9)
+// Navigation Functions
 // ------------------------------------------------------------
 window.loadNextVerse = function() {
     if (!window.currentBook || !window.currentChapter || !window.currentVerse) return;
@@ -107,15 +104,12 @@ window.restartCurrentVerse = function () {
         return;
     }
 
-    // Reload the verse (this resets mv_input.js automatically)
     loadVerse(window.currentBook, window.currentChapter, window.currentVerse);
 
-    // Reset input
     const input = document.getElementById("mv_input");
     input.value = "";
     input.focus();
 
-    // Reset voice dashboard
     const vd = id => document.getElementById(id);
     vd("vd_spoken").textContent = "";
     vd("vd_command").textContent = "";
@@ -140,4 +134,3 @@ window.jumpToVerse = function(targetVerse) {
 // Initialize default translation
 // ------------------------------------------------------------
 loadTranslation("kjv");
-

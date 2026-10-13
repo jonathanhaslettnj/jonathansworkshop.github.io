@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,18 +27,6 @@
             margin-top: -10px;
             color: #444;
         }
-<div id="mv_translation_banner"
-     style="
-        background:#eee;
-        padding:6px 10px;
-        margin:10px 0;
-        border-radius:6px;
-        font-size:14px;
-        font-weight:bold;
-        color:#003399;
-     ">
-    KJV loaded
-</div>
 
         select,
         input[type="text"] {
@@ -113,6 +102,20 @@
     <h1>Bible Verse Memorizer</h1>
     <h2>Translations in the Public Domain</h2>
 
+    <!-- ⭐ Translation Banner (Option A) -->
+    <div id="mv_translation_banner"
+         style="
+            background:#eee;
+            padding:6px 10px;
+            margin:10px 0;
+            border-radius:6px;
+            font-size:14px;
+            font-weight:bold;
+            color:#003399;
+         ">
+        KJV loaded
+    </div>
+
     <!-- Translation Selector -->
     <select id="mv_translation">
         <option value="kjv">King James Version (KJV)</option>
@@ -136,26 +139,21 @@
     <!-- Word Input -->
     <input id="mv_input" type="text" placeholder="Type next word">
 
-<div class="button-line">
-    <button id="mv_next_verse" onclick="window.loadNextVerse()">Next Verse ▶</button>
-</div>
+    <div class="button-line">
+        <button id="mv_next_verse" onclick="window.loadNextVerse()">Next Verse ▶</button>
+    </div>
 
-<div class="button-line">
-    <button onclick="window.restartCurrentVerse()">Repeat Verse 🔁</button>
-</div>
+    <div class="button-line">
+        <button onclick="window.restartCurrentVerse()">Repeat Verse 🔁</button>
+    </div>
 
+    <div class="button-line">
+        <button id="mv_restart" onclick="window.location.reload()">Start Over</button>
+    </div>
 
-<div class="button-line">
-    <button id="mv_restart" onclick="window.location.reload()">Start Over</button>
-</div>
-
-<!-- Voice Controls -->
-
-<button onclick="startListening(); speechSynthesis.resume()">🎤 Start Voice</button>
-
-
-<button onclick="stopListening()">🛑 Stop Voice</button>
-
+    <!-- Voice Controls -->
+    <button onclick="startListening(); speechSynthesis.resume()">🎤 Start Voice</button>
+    <button onclick="stopListening()">🛑 Stop Voice</button>
 
     <!-- Developer Mode -->
     <button id="testVoiceConfigBtn">Test Voice Config</button>
@@ -190,8 +188,7 @@
     });
 </script>
 
-
-    <!-- Memorizer Core (must load first) -->
+    <!-- Memorizer Core -->
     <script src="mv_core.js?v=12"></script>
     <script src="mv_input.js?v=14"></script>
 
