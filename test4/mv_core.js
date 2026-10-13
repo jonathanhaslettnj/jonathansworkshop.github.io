@@ -26,8 +26,9 @@ window.loadTranslation = async function(name) {
     window.translationData = data;
 
     // Show which translation is loaded
-    document.getElementById("mv_status").textContent =
-        `${name.toUpperCase()} loaded`;
+    document.getElementById("mv_translation_banner").textContent =
+         `${name.toUpperCase()} loaded`;
+
 
     // Reload current verse using the new translation
     if (window.currentBook && window.currentChapter && window.currentVerse) {
