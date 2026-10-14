@@ -1,3 +1,5 @@
+window.mvInputLoaded = "mv_input.js finished loading";
+
 // ============================================================
 // mv_input.js — Multi-Version Input Handler (v12)
 // Strict Letter-by-Letter Mode + Reference Loader
