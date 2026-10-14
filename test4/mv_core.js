@@ -77,7 +77,7 @@ window.loadVerse = function(book, chapter, verse) {
     document.getElementById("mv_status").textContent = "";
 
     window.currentText = entry.text;
-    window.speakVerse(entry.text);
+//    window.speakVerse(entry.text);
 
     window.dispatchEvent(new Event("loadVerseLoaded"));
 };
