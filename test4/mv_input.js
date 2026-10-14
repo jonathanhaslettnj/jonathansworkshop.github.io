@@ -16,7 +16,7 @@ const statusEl = document.getElementById("mv_status");
 // State
 // ------------------------------------------------------------
 window.mv_wordIndex = 0;
-window.mv_lockedOnMistake = false;   // user must fix mistaken word
+window.mv_lockedOnMistake = false;
 
 // ------------------------------------------------------------
 // Utility: split current verse text into words
@@ -27,10 +27,10 @@ function getWords() {
 }
 
 // ------------------------------------------------------------
-// Utility: normalize punctuation for strict mode
+// Utility: normalize punctuation + lowercase
 // ------------------------------------------------------------
 function normalize(word) {
-    return word.replace(/[.,;:!?]/g, "");
+    return word.replace(/[.,;:!?]/g, "").toLowerCase();
 }
 
 // ------------------------------------------------------------
@@ -47,62 +47,15 @@ function beep() {
 }
 
 // ------------------------------------------------------------
-// Speak "Expected ..." then speak next word
+// Speak only the mistaken word
 // ------------------------------------------------------------
-function speakExpectedAndNext(expectedWord, nextWord) {
-    const msg1 = new SpeechSynthesisUtterance("Expected: " + expectedWord);
-    const msg2 = new SpeechSynthesisUtterance(nextWord);
-
-    speechSynthesis.speak(msg1);
-    msg1.onend = () => {
-        if (nextWord) speechSynthesis.speak(msg2);
-    };
+function speakExpected(expectedWord) {
+    const msg = new SpeechSynthesisUtterance("Expected: " + expectedWord);
+    speechSynthesis.speak(msg);
 }
 
 // ------------------------------------------------------------
-// Reference Input Handler
-// ------------------------------------------------------------
-refInput.addEventListener("keydown", (e) => {
-    if (e.key !== "Enter") return;
-
-    const ref = refInput.value.trim();
-    const parsed = window.parseReference(ref);
-
-    if (!parsed) {
-        document.getElementById("mv_reference").textContent = "Invalid reference.";
-        return;
-    }
-
-    // Load the verse
-    window.loadVerse(parsed.book, parsed.chapter, parsed.verse);
-
-    // Reset memorizer state
-    window.mv_wordIndex = 0;
-    window.mv_lockedOnMistake = false;
-    inputEl.value = "";
-    progressEl.textContent = "";
-    statusEl.textContent = "";
-
-    // Focus the next-word input
-    inputEl.focus();
-
-    // Notify other modules (Developer Mode, Voice Router, etc.)
-    window.dispatchEvent(new Event("loadVerseLoaded"));
-});
-
-// ------------------------------------------------------------
-// Reset input state when verse loads
-// ------------------------------------------------------------
-window.addEventListener("loadVerseLoaded", () => {
-    window.mv_wordIndex = 0;
-    window.mv_lockedOnMistake = false;
-    inputEl.value = "";
-    progressEl.textContent = "";
-    statusEl.textContent = "";
-});
-
-// ------------------------------------------------------------
-// Core: advance to next word when fully correct
+// Accept current word
 // ------------------------------------------------------------
 function acceptCurrentWord(expectedNorm, words) {
     beep();
@@ -118,7 +71,7 @@ function acceptCurrentWord(expectedNorm, words) {
 }
 
 // ------------------------------------------------------------
-// Handle typing (strict letter-by-letter, auto-accept)
+// Handle typing (auto-accept, strict letter-by-letter)
 // ------------------------------------------------------------
 inputEl.addEventListener("input", () => {
     const words = getWords();
@@ -130,12 +83,11 @@ inputEl.addEventListener("input", () => {
     const expectedNorm = normalize(expected);
     const typedNorm = normalize(typed);
 
-    // If user is correcting a mistake, they MUST type the mistaken word
+    // If correcting a mistake
     if (window.mv_lockedOnMistake) {
         if (expectedNorm.startsWith(typedNorm)) {
             statusEl.textContent = "Correct so far…";
 
-            // If fully correct, auto-accept
             if (typedNorm === expectedNorm) {
                 acceptCurrentWord(expectedNorm, words);
             }
@@ -145,59 +97,17 @@ inputEl.addEventListener("input", () => {
         return;
     }
 
-    // Normal strict letter-by-letter mode
+    // Normal strict mode
     if (expectedNorm.startsWith(typedNorm)) {
         statusEl.textContent = "Correct so far…";
 
-        // If fully correct, auto-accept
         if (typedNorm === expectedNorm) {
             acceptCurrentWord(expectedNorm, words);
         }
     } else {
-        // Immediate mistake detection
         statusEl.textContent = "Mistake — fix the word";
 
-        const nextWord = words[window.mv_wordIndex + 1] || "";
-        speakExpectedAndNext(expected, nextWord);
-
-        // Lock user on this word until corrected
-        window.mv_lockedOnMistake = true;
-    }
-});
-
-// ------------------------------------------------------------
-// Optional: Enter key still works, but is not required
-// ------------------------------------------------------------
-inputEl.addEventListener("keydown", (e) => {
-    if (e.key !== "Enter") return;
-
-    const words = getWords();
-    if (words.length === 0) return;
-
-    const expected = words[window.mv_wordIndex];
-    const typed = inputEl.value.trim();
-
-    const expectedNorm = normalize(expected);
-    const typedNorm = normalize(typed);
-
-    // User must fix mistaken word first
-    if (window.mv_lockedOnMistake) {
-        if (typedNorm === expectedNorm) {
-            acceptCurrentWord(expectedNorm, words);
-        } else {
-            statusEl.textContent = "Incorrect — fix the word";
-        }
-        return;
-    }
-
-    // Normal correct word via Enter (optional)
-    if (typedNorm === expectedNorm) {
-        acceptCurrentWord(expectedNorm, words);
-    } else {
-        statusEl.textContent = "Incorrect — fix the word";
-
-        const nextWord = words[window.mv_wordIndex + 1] || "";
-        speakExpectedAndNext(expected, nextWord);
+        speakExpected(expected);
 
         window.mv_lockedOnMistake = true;
     }
