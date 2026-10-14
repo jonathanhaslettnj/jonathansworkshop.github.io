@@ -16,7 +16,7 @@ const statusEl = document.getElementById("mv_status");
 // State
 // ------------------------------------------------------------
 window.mv_wordIndex = 0;
-window.mv_lockedOnMistake = false;   // NEW: user must fix mistaken word
+window.mv_lockedOnMistake = false;   // user must fix mistaken word
 
 // ------------------------------------------------------------
 // Utility: split current verse text into words
@@ -102,7 +102,23 @@ window.addEventListener("loadVerseLoaded", () => {
 });
 
 // ------------------------------------------------------------
-// Handle typing (strict letter-by-letter)
+// Core: advance to next word when fully correct
+// ------------------------------------------------------------
+function acceptCurrentWord(expectedNorm, words) {
+    beep();
+    progressEl.textContent += expectedNorm + " ";
+    window.mv_wordIndex++;
+    window.mv_lockedOnMistake = false;
+    inputEl.value = "";
+    statusEl.textContent = "";
+
+    if (window.mv_wordIndex >= words.length) {
+        statusEl.textContent = "Verse complete!";
+    }
+}
+
+// ------------------------------------------------------------
+// Handle typing (strict letter-by-letter, auto-accept)
 // ------------------------------------------------------------
 inputEl.addEventListener("input", () => {
     const words = getWords();
@@ -118,6 +134,11 @@ inputEl.addEventListener("input", () => {
     if (window.mv_lockedOnMistake) {
         if (expectedNorm.startsWith(typedNorm)) {
             statusEl.textContent = "Correct so far…";
+
+            // If fully correct, auto-accept
+            if (typedNorm === expectedNorm) {
+                acceptCurrentWord(expectedNorm, words);
+            }
         } else {
             statusEl.textContent = "Mistake — fix the word";
         }
@@ -127,6 +148,11 @@ inputEl.addEventListener("input", () => {
     // Normal strict letter-by-letter mode
     if (expectedNorm.startsWith(typedNorm)) {
         statusEl.textContent = "Correct so far…";
+
+        // If fully correct, auto-accept
+        if (typedNorm === expectedNorm) {
+            acceptCurrentWord(expectedNorm, words);
+        }
     } else {
         // Immediate mistake detection
         statusEl.textContent = "Mistake — fix the word";
@@ -140,7 +166,7 @@ inputEl.addEventListener("input", () => {
 });
 
 // ------------------------------------------------------------
-// Handle Enter key to submit a word
+// Optional: Enter key still works, but is not required
 // ------------------------------------------------------------
 inputEl.addEventListener("keydown", (e) => {
     if (e.key !== "Enter") return;
@@ -157,36 +183,17 @@ inputEl.addEventListener("keydown", (e) => {
     // User must fix mistaken word first
     if (window.mv_lockedOnMistake) {
         if (typedNorm === expectedNorm) {
-            // Mistaken word corrected
-            beep();
-            progressEl.textContent += expectedNorm + " ";
-            window.mv_wordIndex++;
-            window.mv_lockedOnMistake = false;
-            inputEl.value = "";
-            statusEl.textContent = "";
-
-            if (window.mv_wordIndex >= words.length) {
-                statusEl.textContent = "Verse complete!";
-            }
+            acceptCurrentWord(expectedNorm, words);
         } else {
             statusEl.textContent = "Incorrect — fix the word";
         }
         return;
     }
 
-    // Normal correct word
+    // Normal correct word via Enter (optional)
     if (typedNorm === expectedNorm) {
-        beep();
-        progressEl.textContent += expectedNorm + " ";
-        window.mv_wordIndex++;
-        inputEl.value = "";
-        statusEl.textContent = "";
-
-        if (window.mv_wordIndex >= words.length) {
-            statusEl.textContent = "Verse complete!";
-        }
+        acceptCurrentWord(expectedNorm, words);
     } else {
-        // Mistake detected on Enter
         statusEl.textContent = "Incorrect — fix the word";
 
         const nextWord = words[window.mv_wordIndex + 1] || "";
