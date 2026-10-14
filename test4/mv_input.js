@@ -1,3 +1,7 @@
+document.addEventListener("keydown", (e) => {
+    console.log("GLOBAL KEYDOWN:", e.key);
+});
+
 window.mvInputLoaded = "mv_input.js finished loading";
 
 // ============================================================
