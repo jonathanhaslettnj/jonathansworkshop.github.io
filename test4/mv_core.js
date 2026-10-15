@@ -56,8 +56,13 @@ window.parseReference = function(ref) {
 // ------------------------------------------------------------
 window.loadVerse = function(book, chapter, verse) {
     if (!window.translationData) return;
-document.getElementById("mv_reference_input").value = "";
-document.getElementById("mv_reference_input").focus();
+
+    // Clear and refocus the reference input
+    const refInput = document.getElementById("mv_reference_input");
+    if (refInput) {
+        refInput.value = "";
+        refInput.focus();
+    }
 
     window.currentBook = book;
     window.currentChapter = chapter;
@@ -79,7 +84,7 @@ document.getElementById("mv_reference_input").focus();
     document.getElementById("mv_status").textContent = "";
 
     window.currentText = entry.text;
-//    window.speakVerse(entry.text);
+    // window.speakVerse(entry.text);
 
     window.dispatchEvent(new Event("loadVerseLoaded"));
 };
@@ -109,8 +114,10 @@ window.restartCurrentVerse = function () {
     loadVerse(window.currentBook, window.currentChapter, window.currentVerse);
 
     const input = document.getElementById("mv_input");
-    input.value = "";
-    input.focus();
+    if (input) {
+        input.value = "";
+        input.focus();
+    }
 
     const vd = id => document.getElementById(id);
     vd("vd_spoken").textContent = "";
