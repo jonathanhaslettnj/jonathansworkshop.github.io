@@ -1,5 +1,5 @@
 // ============================================================
-// mv_core.js — Multi-Version Memorizer Core (v12)
+// mv_core.js — Multi-Version Memorizer Core (v13)
 // ============================================================
 
 // Global state
@@ -9,6 +9,18 @@ window.currentVerse = null;
 window.currentTranslation = "kjv";
 window.translationData = null;
 window.currentText = "";
+
+// ------------------------------------------------------------
+// Speak a full verse aloud
+// ------------------------------------------------------------
+window.speakVerse = function(text) {
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.rate = 0.95;
+    msg.pitch = 1.0;
+    msg.volume = 1.0;
+    speechSynthesis.cancel();
+    speechSynthesis.speak(msg);
+};
 
 // ------------------------------------------------------------
 // Load translation JSON (KJV, ASV, BBE)
@@ -25,11 +37,9 @@ window.loadTranslation = async function(name) {
     const data = await response.json();
     window.translationData = data;
 
-    // ⭐ Update translation banner
     document.getElementById("mv_translation_banner").textContent =
         `${name.toUpperCase()} loaded`;
 
-    // Reload current verse using the new translation
     if (window.currentBook && window.currentChapter && window.currentVerse) {
         loadVerse(window.currentBook, window.currentChapter, window.currentVerse);
     }
@@ -57,19 +67,15 @@ window.parseReference = function(ref) {
 window.loadVerse = function(book, chapter, verse) {
     if (!window.translationData) return;
 
-    // Clear and refocus the reference input
     const refInput = document.getElementById("mv_reference_input");
-    if (refInput) {
-        refInput.value = "";
-        refInput.focus();
-    }
+    refInput.value = "";
+    refInput.focus();
 
     window.currentBook = book;
     window.currentChapter = chapter;
     window.currentVerse = verse;
 
     const ref = `${book} ${chapter}:${verse}`;
-
     const entry = window.translationData.find(v => v.ref === ref);
 
     if (!entry) {
@@ -84,7 +90,8 @@ window.loadVerse = function(book, chapter, verse) {
     document.getElementById("mv_status").textContent = "";
 
     window.currentText = entry.text;
-    // window.speakVerse(entry.text);
+
+    window.speakVerse(entry.text);
 
     window.dispatchEvent(new Event("loadVerseLoaded"));
 };
@@ -114,10 +121,8 @@ window.restartCurrentVerse = function () {
     loadVerse(window.currentBook, window.currentChapter, window.currentVerse);
 
     const input = document.getElementById("mv_input");
-    if (input) {
-        input.value = "";
-        input.focus();
-    }
+    input.value = "";
+    input.focus();
 
     const vd = id => document.getElementById(id);
     vd("vd_spoken").textContent = "";

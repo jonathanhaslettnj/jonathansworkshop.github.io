@@ -5,7 +5,7 @@ document.addEventListener("keydown", (e) => {
 window.mvInputLoaded = "mv_input.js finished loading";
 
 // ============================================================
-// mv_input.js — Multi-Version Input Handler (v12)
+// mv_input.js — Multi-Version Input Handler (v13)
 // Strict Letter-by-Letter Mode + Reference Loader
 // ============================================================
 
@@ -36,7 +36,6 @@ refInput.addEventListener("keydown", (e) => {
 
     window.loadVerse(parsed.book, parsed.chapter, parsed.verse);
 
-    // Reset typing state
     window.mv_wordIndex = 0;
     window.mv_lockedOnMistake = false;
 
@@ -95,15 +94,19 @@ function beep() {
 // ------------------------------------------------------------
 function speakExpected(expectedWord) {
     const msg = new SpeechSynthesisUtterance("Expected: " + expectedWord);
+    msg.rate = 0.9;
+    msg.pitch = 1.0;
+    msg.volume = 1.0;
+    speechSynthesis.cancel();
     speechSynthesis.speak(msg);
 }
 
 // ------------------------------------------------------------
-// Accept current word
+// Accept current word (preserve capitalization + punctuation)
 // ------------------------------------------------------------
-function acceptCurrentWord(expectedNorm, words) {
+function acceptCurrentWord(expectedWord, words) {
     beep();
-    progressEl.textContent += expectedNorm + " ";
+    progressEl.textContent += expectedWord + " ";
     window.mv_wordIndex++;
     window.mv_lockedOnMistake = false;
     inputEl.value = "";
@@ -127,13 +130,12 @@ inputEl.addEventListener("input", () => {
     const expectedNorm = normalize(expected);
     const typedNorm = normalize(typed);
 
-    // If correcting a mistake
     if (window.mv_lockedOnMistake) {
         if (expectedNorm.startsWith(typedNorm)) {
             statusEl.textContent = "Correct so far…";
 
             if (typedNorm === expectedNorm) {
-                acceptCurrentWord(expectedNorm, words);
+                acceptCurrentWord(expected, words);
             }
         } else {
             statusEl.textContent = "Mistake — fix the word";
@@ -141,18 +143,15 @@ inputEl.addEventListener("input", () => {
         return;
     }
 
-    // Normal strict mode
     if (expectedNorm.startsWith(typedNorm)) {
         statusEl.textContent = "Correct so far…";
 
         if (typedNorm === expectedNorm) {
-            acceptCurrentWord(expectedNorm, words);
+            acceptCurrentWord(expected, words);
         }
     } else {
         statusEl.textContent = "Mistake — fix the word";
-
         speakExpected(expected);
-
         window.mv_lockedOnMistake = true;
     }
 });
