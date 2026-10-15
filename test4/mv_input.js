@@ -18,6 +18,11 @@ const inputEl = document.getElementById("mv_input");
 // Now it is safe to call focus()
 refInput.focus();
 
+// ------------------------------------------------------------
+// Elements for status
+// ------------------------------------------------------------
+const progressEl = document.getElementById("mv_progress");
+const statusEl = document.getElementById("mv_status");
 
 // ------------------------------------------------------------
 // Elements
