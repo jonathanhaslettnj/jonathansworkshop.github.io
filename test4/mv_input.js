@@ -1,7 +1,3 @@
-inputEl.addEventListener("focus", () => {
-    refInput.focus();
-});
-
 document.addEventListener("keydown", (e) => {
     console.log("GLOBAL KEYDOWN:", e.key);
 });
@@ -21,13 +17,11 @@ const inputEl = document.getElementById("mv_input");
 const progressEl = document.getElementById("mv_progress");
 const statusEl = document.getElementById("mv_status");
 
-// Make sure the reference box has focus initially
-if (refInput) {
-    refInput.focus();
-}
+// Keep reference box focused initially
+refInput.focus();
 
 // ------------------------------------------------------------
-// Reference Enter Handler  ⭐ THIS WAS MISSING ⭐
+// Reference Enter Handler
 // ------------------------------------------------------------
 refInput.addEventListener("keydown", (e) => {
     if (e.key !== "Enter") return;
@@ -51,6 +45,15 @@ refInput.addEventListener("keydown", (e) => {
     statusEl.textContent = "";
 
     inputEl.focus();
+});
+
+// ------------------------------------------------------------
+// Prevent mv_input from stealing focus BEFORE a verse loads
+// ------------------------------------------------------------
+inputEl.addEventListener("focus", () => {
+    if (!window.currentText) {
+        refInput.focus();
+    }
 });
 
 // ------------------------------------------------------------
