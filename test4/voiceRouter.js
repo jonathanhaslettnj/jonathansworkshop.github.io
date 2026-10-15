@@ -59,33 +59,35 @@ export function executeVoiceCommand(cmd) {
     // Update dashboard
     document.getElementById("vd_command").textContent = cmd.action;
 
-    switch (cmd.action) {
+switch (cmd.action) {
 
-        case "nextVerse":
-            window.loadNextVerse();
-            break;
+    case "nextVerse":
+        window.loadNextVerse();
+        break;
 
-        case "previousVerse":
-            window.loadPreviousVerse();
-            break;
+    case "previousVerse":
+        window.loadPreviousVerse();
+        break;
 
-        case "repeatVerse":
-            window.restartCurrentVerse();
-            break;
+    case "repeatVerse":
+        // Speak the verse again WITHOUT restarting
+        window.speakVerse(window.currentText);
+        break;
 
-        case "startOver":
-            window.restartCurrentVerse();
-            break;
+    case "startOver":
+        // Restart the verse AND reset progress
+        window.restartCurrentVerse();
+        break;
 
-        case "startChapter":
-            window.startChapter();
-            break;
+    case "startChapter":
+        window.startChapter();
+        break;
 
-        case "jumpToVerse":
-            window.jumpToVerse(cmd.value);
-            break;
+    case "jumpToVerse":
+        window.jumpToVerse(cmd.value);
+        break;
 
-        default:
-            console.warn("Unknown voice command:", cmd.action);
+    default:
+        console.warn("Unknown voice command:", cmd.action);
     }
 }
