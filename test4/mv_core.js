@@ -83,7 +83,10 @@ window.loadVerse = function(book, chapter, verse) {
         return;
     }
 
-    document.getElementById("mv_reference").textContent = ref;
+// Display reference inside the input box
+    refInput.value = ref;
+
+// Clear progress and status
     document.getElementById("mv_progress").textContent = "";
     document.getElementById("mv_next").textContent = "";
     document.getElementById("mv_reveal").textContent = "";
