@@ -1,3 +1,7 @@
+inputEl.addEventListener("focus", () => {
+    refInput.focus();
+});
+
 document.addEventListener("keydown", (e) => {
     console.log("GLOBAL KEYDOWN:", e.key);
 });
