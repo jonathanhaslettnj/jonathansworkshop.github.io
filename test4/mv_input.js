@@ -23,6 +23,33 @@ if (refInput) {
 }
 
 // ------------------------------------------------------------
+// Reference Enter Handler  ⭐ THIS WAS MISSING ⭐
+// ------------------------------------------------------------
+refInput.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter") return;
+
+    const ref = refInput.value.trim();
+    const parsed = window.parseReference(ref);
+
+    if (!parsed) {
+        statusEl.textContent = "Invalid reference.";
+        return;
+    }
+
+    window.loadVerse(parsed.book, parsed.chapter, parsed.verse);
+
+    // Reset typing state
+    window.mv_wordIndex = 0;
+    window.mv_lockedOnMistake = false;
+
+    inputEl.value = "";
+    progressEl.textContent = "";
+    statusEl.textContent = "";
+
+    inputEl.focus();
+});
+
+// ------------------------------------------------------------
 // State
 // ------------------------------------------------------------
 window.mv_wordIndex = 0;
