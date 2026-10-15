@@ -56,6 +56,8 @@ window.parseReference = function(ref) {
 // ------------------------------------------------------------
 window.loadVerse = function(book, chapter, verse) {
     if (!window.translationData) return;
+document.getElementById("mv_reference_input").value = "";
+document.getElementById("mv_reference_input").focus();
 
     window.currentBook = book;
     window.currentChapter = chapter;

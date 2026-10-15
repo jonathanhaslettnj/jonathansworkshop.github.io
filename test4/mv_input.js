@@ -15,6 +15,16 @@ window.mvInputLoaded = "mv_input.js finished loading";
 const refInput = document.getElementById("mv_reference_input");
 const inputEl = document.getElementById("mv_input");
 
+// Now it is safe to call focus()
+refInput.focus();
+
+
+// ------------------------------------------------------------
+// Elements
+// ------------------------------------------------------------
+const refInput = document.getElementById("mv_reference_input");
+const inputEl = document.getElementById("mv_input");
+
 const progressEl = document.getElementById("mv_progress");
 const statusEl = document.getElementById("mv_status");
 
