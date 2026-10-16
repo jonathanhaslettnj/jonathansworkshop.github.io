@@ -31,11 +31,13 @@ export function routeVoiceCommand(phrase) {
 
     // Step 6 / Step 7 commands
     if (match(phrase, "nextVerse")) return { action: "nextVerse" };
+
+    if (match(phrase, "startOver")) return { action: "startOver" };
+
     if (phrase.includes("repeat verse")) return { action: "repeatVerse" };
    
-
     if (match(phrase, "repeatVerse")) return { action: "repeatVerse" };
-    if (match(phrase, "startOver")) return { action: "startOver" };
+   
 
     // Step 9 navigation commands
     if (match(phrase, "previousVerse")) return { action: "previousVerse" };
@@ -69,15 +71,14 @@ switch (cmd.action) {
         window.loadPreviousVerse();
         break;
 
-    case "repeatVerse":
+   case "startOver":
+         window.location.reload();
+         break;
+
+   case "repeatVerse":
         // Speak the verse again WITHOUT restarting
         window.speakVerse(window.currentText);
         break;
-
-    case "startOver":
-         case "startOver":
-               window.location.reload();
-               break;
 
 
     case "startChapter":
