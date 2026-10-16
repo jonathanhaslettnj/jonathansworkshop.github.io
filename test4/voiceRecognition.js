@@ -53,6 +53,8 @@ export function initSpeechRecognition() {
 
     recognition.onresult = (event) => {
         const transcript = event.results[event.results.length - 1][0].transcript;
+        console.log("TRANSCRIPT:", transcript);
+
         updateTranscript(transcript);
 
         const cmd = routeVoiceCommand(transcript);
