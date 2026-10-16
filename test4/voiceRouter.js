@@ -75,9 +75,10 @@ switch (cmd.action) {
         break;
 
     case "startOver":
-        // Restart the verse AND reset progress
-        window.restartCurrentVerse();
-        break;
+         case "startOver":
+               window.location.reload();
+               break;
+
 
     case "startChapter":
         window.startChapter();
