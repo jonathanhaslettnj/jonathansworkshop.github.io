@@ -30,7 +30,7 @@ function startReading() {
 
 function stopReading() {
     isReading = false;
-    speechSynthesis.cancel();
+    speechSynthesis.cancel();   // Only cancel here — NOT per word
 }
 
 function readNext() {
@@ -61,17 +61,22 @@ function displayWords(words) {
 }
 
 function speakWordByWord(words, index, doneCallback) {
+    if (!isReading) return;
+
     if (index >= words.length) {
         doneCallback();
         return;
     }
 
+    // Remove previous highlight
     const prev = document.querySelector(".highlight");
     if (prev) prev.classList.remove("highlight");
 
+    // Highlight current word
     const current = document.getElementById(`w${index}`);
-    current.classList.add("highlight");
+    if (current) current.classList.add("highlight");
 
+    // Speak the word
     speak(words[index], () => {
         if (!isReading) return;
         speakWordByWord(words, index + 1, doneCallback);
@@ -90,12 +95,9 @@ function parseReference(text) {
 }
 
 function speak(text, callback) {
-    speechSynthesis.cancel();
-
-    setTimeout(() => {
-        const utter = new SpeechSynthesisUtterance(text);
-        utter.rate = 1.0;
-        utter.onend = callback;
-        speechSynthesis.speak(utter);
-    }, 250);
+    // DO NOT cancel here — this was the bug
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.rate = 1.0;
+    utter.onend = callback;
+    speechSynthesis.speak(utter);
 }
