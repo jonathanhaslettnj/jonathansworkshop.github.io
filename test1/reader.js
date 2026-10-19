@@ -113,11 +113,18 @@ function saveCurrentVerse() {
     const [refPart] = display.textContent.split(" — ");
     const verseRef = refPart.trim(); // e.g., "John 3:16"
 
-    saveToList("mv_list_1", verseRef);
-    saveToList("mv_list_2", verseRef);
-    saveToList("mv_list_3", verseRef);
+    const choice = document.getElementById("listSelect").value;
 
-    alert(`Saved: ${verseRef}`);
+    if (choice === "1") saveToList("mem_list_1", verseRef);
+    else if (choice === "2") saveToList("mem_list_2", verseRef);
+    else if (choice === "3") saveToList("mem_list_3", verseRef);
+    else if (choice === "all") {
+        saveToList("mem_list_1", verseRef);
+        saveToList("mem_list_2", verseRef);
+        saveToList("mem_list_3", verseRef);
+    }
+
+    alert(`Saved to list ${choice}: ${verseRef}`);
 }
 
 function saveToList(key, verseRef) {
@@ -128,3 +135,4 @@ function saveToList(key, verseRef) {
         localStorage.setItem(key, JSON.stringify(list));
     }
 }
+

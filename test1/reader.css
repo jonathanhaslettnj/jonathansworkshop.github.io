@@ -63,3 +63,15 @@ button:hover {
     line-height: 1.5;
     box-shadow: 0 0 4px rgba(0,0,0,0.1);
 }
+#listSelect {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+}
+#saveBtn {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+

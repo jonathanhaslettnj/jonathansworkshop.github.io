@@ -26,13 +26,25 @@
             <option value="asv">ASV</option>
         </select>
 
-        <div id="controls">
+
+
+ <div id="controls">
     <button id="startBtn">Start Reading</button>
     <button id="pauseBtn">Pause</button>
     <button id="stopBtn">Stop Reading</button>
-    <button id="saveBtn">Save Verse</button>
+</div>
 
-        </div>
+<!-- Move list selector HERE -->
+<select id="listSelect">
+    <option value="1">List 1</option>
+    <option value="2">List 2</option>
+    <option value="3">List 3</option>
+    <option value="all">All Lists</option>
+</select>
+
+<!-- Save button stays directly under the selector -->
+<button id="saveBtn">Save Verse</button>
+
 
         <!-- This will now contain span‑wrapped words -->
         <div id="currentVerseDisplay"></div>
