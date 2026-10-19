@@ -1,19 +1,19 @@
 // =====================================
 // memorizer_core.js
-// Version 8 — Core Logic (Safe Developer Mode)
-// Last updated: 2026-10-08
+// Version 9 — Core Logic with Voice + Universal Lists
+// Last updated: 2026-10-19
 // =====================================
 
 const DEV_MODE = true;
-console.log("Loaded memorizer_core.js — Version 8 (Core Logic)");
+console.log("Loaded memorizer_core.js — Version 9 (Core Logic + Voice)");
 
 // =====================================
-// THREE MEMORY LISTS
+// THREE MEMORY LISTS (UNIVERSAL)
 // =====================================
 
-let listA = JSON.parse(localStorage.getItem("mv_custom_list") || "[]");
-let listB = JSON.parse(localStorage.getItem("userVerses") || "[]");
-let listC = JSON.parse(localStorage.getItem("mv_custom_list_unified") || "[]");
+let listA = JSON.parse(localStorage.getItem("mem_list_1") || "[]");
+let listB = JSON.parse(localStorage.getItem("mem_list_2") || "[]");
+let listC = JSON.parse(localStorage.getItem("mem_list_3") || "[]");
 
 let currentList = listC;
 let currentListName = "C";
@@ -39,6 +39,9 @@ const userVersesDiv = document.getElementById("user-verses");
 
 const listSelector = document.getElementById("mv_list_selector");
 const loadListBtn = document.getElementById("mv_load_list_btn");
+
+const voiceStartBtn = document.getElementById("voiceStartBtn");
+const voiceStopBtn = document.getElementById("voiceStopBtn");
 
 let currentWords = [];
 let index = 0;
@@ -203,7 +206,7 @@ resetBtn.addEventListener("click", () => {
 });
 
 // =====================================
-// ADD VERSE (ONLY TO LIST C)
+// ADD VERSE (TO CURRENT LIST)
 // =====================================
 
 addUserVerseBtn.addEventListener("click", () => {
@@ -212,11 +215,20 @@ addUserVerseBtn.addEventListener("click", () => {
 
     if (!ref || !text) return;
 
-    listC.push({ ref, text });
-    localStorage.setItem("mv_custom_list_unified", JSON.stringify(listC));
+    if (currentListName === "A") {
+        listA.push({ ref, text });
+        localStorage.setItem("mem_list_1", JSON.stringify(listA));
+        currentList = listA;
+    } else if (currentListName === "B") {
+        listB.push({ ref, text });
+        localStorage.setItem("mem_list_2", JSON.stringify(listB));
+        currentList = listB;
+    } else {
+        listC.push({ ref, text });
+        localStorage.setItem("mem_list_3", JSON.stringify(listC));
+        currentList = listC;
+    }
 
-    currentList = listC;
-    currentListName = "C";
     currentVerseIndex = 0;
 
     userRefInput.value = "";
@@ -224,7 +236,7 @@ addUserVerseBtn.addEventListener("click", () => {
 
     renderUserVerses();
 
-    if (DEV_MODE) console.log("Added verse:", ref);
+    if (DEV_MODE) console.log("Added verse:", ref, "to list", currentListName);
 });
 
 // =====================================
@@ -253,18 +265,21 @@ function renderUserVerses() {
 
             if (currentListName === "A") {
                 listA.splice(idx, 1);
-                localStorage.setItem("mv_custom_list", JSON.stringify(listA));
+                localStorage.setItem("mem_list_1", JSON.stringify(listA));
+                currentList = listA;
             } else if (currentListName === "B") {
                 listB.splice(idx, 1);
-                localStorage.setItem("userVerses", JSON.stringify(listB));
+                localStorage.setItem("mem_list_2", JSON.stringify(listB));
+                currentList = listB;
             } else {
                 listC.splice(idx, 1);
-                localStorage.setItem("mv_custom_list_unified", JSON.stringify(listC));
+                localStorage.setItem("mem_list_3", JSON.stringify(listC));
+                currentList = listC;
             }
 
             loadSelectedList();
 
-            if (DEV_MODE) console.log("Deleted verse at index:", idx);
+            if (DEV_MODE) console.log("Deleted verse at index:", idx, "from list", currentListName);
         });
     });
 }
@@ -274,9 +289,9 @@ function renderUserVerses() {
 // =====================================
 
 function loadSelectedList() {
-    listA = JSON.parse(localStorage.getItem("mv_custom_list") || "[]");
-    listB = JSON.parse(localStorage.getItem("userVerses") || "[]");
-    listC = JSON.parse(localStorage.getItem("mv_custom_list_unified") || "[]");
+    listA = JSON.parse(localStorage.getItem("mem_list_1") || "[]");
+    listB = JSON.parse(localStorage.getItem("mem_list_2") || "[]");
+    listC = JSON.parse(localStorage.getItem("mem_list_3") || "[]");
 
     const sel = listSelector.value;
 
@@ -299,8 +314,77 @@ function loadSelectedList() {
 
 loadListBtn.addEventListener("click", loadSelectedList);
 
-// Load unified list by default
-renderUserVerses();
+// Load list C by default
+loadSelectedList();
+
+// =====================================
+// VOICE COMMANDS
+// =====================================
+
+window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+let recognizer = null;
+
+if (window.SpeechRecognition) {
+    recognizer = new SpeechRecognition();
+    recognizer.continuous = true;
+    recognizer.interimResults = false;
+    recognizer.lang = "en-US";
+
+    recognizer.onresult = (event) => {
+        let transcript = event.results[event.results.length - 1][0].transcript.trim().toLowerCase();
+
+        if (DEV_MODE) console.log("Voice command:", transcript);
+
+        if (transcript.includes("next")) loadNextVerse();
+        else if (transcript.includes("repeat")) repeatBtn.click();
+        else if (transcript.includes("start over")) resetBtn.click();
+        else if (transcript.includes("load list a")) {
+            listSelector.value = "A";
+            loadSelectedList();
+        }
+        else if (transcript.includes("load list b")) {
+            listSelector.value = "B";
+            loadSelectedList();
+        }
+        else if (transcript.includes("load list c")) {
+            listSelector.value = "C";
+            loadSelectedList();
+        }
+        else if (transcript.includes("read verse")) {
+            loadVerse(refInput.value.trim());
+        }
+        else if (transcript.includes("stop")) {
+            speechSynthesis.cancel();
+        }
+    };
+
+    recognizer.onerror = (event) => {
+        if (DEV_MODE) console.log("Voice error:", event.error);
+    };
+} else {
+    console.warn("SpeechRecognition not supported in this browser.");
+}
+
+function startVoiceControl() {
+    if (!recognizer) {
+        statusDisplay.textContent = "Voice control not supported in this browser.";
+        return;
+    }
+    recognizer.start();
+    statusDisplay.textContent = "Voice control started. Say: 'next', 'repeat', 'start over', 'load list A/B/C', 'read verse', 'stop'.";
+    if (DEV_MODE) console.log("Voice control started.");
+}
+
+function stopVoiceControl() {
+    if (!recognizer) return;
+    recognizer.stop();
+    statusDisplay.textContent = "Voice control stopped.";
+    if (DEV_MODE) console.log("Voice control stopped.");
+}
+
+voiceStartBtn.addEventListener("click", startVoiceControl);
+voiceStopBtn.addEventListener("click", stopVoiceControl);
 
 // =====================================
 // INTEGRITY CHECK
