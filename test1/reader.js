@@ -1,4 +1,8 @@
+// reader.js — Reader v2 Clean + Pause + Save Verse
+
 let isReading = false;
+let isPaused = false;
+
 let currentBook = "";
 let currentChapter = 0;
 let currentVerse = 0;
@@ -7,9 +11,23 @@ const display = document.getElementById("currentVerseDisplay");
 const input = document.getElementById("referenceInput");
 
 document.getElementById("startBtn").onclick = startReading;
+document.getElementById("pauseBtn").onclick = pauseReading;
 document.getElementById("stopBtn").onclick = stopReading;
+document.getElementById("saveBtn").onclick = saveCurrentVerse;
 
 function startReading() {
+    if (isPaused) {
+        // Resume reading the same verse
+        isPaused = false;
+        isReading = true;
+        speak(display.textContent.split(" — ")[1], () => {
+            if (!isReading) return;
+            currentVerse++;
+            readNext();
+        });
+        return;
+    }
+
     const versionName = document.getElementById("versionSelect").value;
     loadBible(versionName);
 
@@ -27,7 +45,14 @@ function startReading() {
     readNext();
 }
 
+function pauseReading() {
+    isPaused = true;
+    isReading = false;
+    speechSynthesis.cancel();
+}
+
 function stopReading() {
+    isPaused = false;
     isReading = false;
     speechSynthesis.cancel();
 }
@@ -43,39 +68,12 @@ function readNext() {
         return;
     }
 
-    const words = verseText.split(" ");
-    displayWords(words);
+    display.textContent = `${currentBook} ${currentChapter}:${currentVerse} — ${verseText}`;
 
-    speakWordByWord(words, 0, () => {
+    speak(verseText, () => {
         if (!isReading) return;
         currentVerse++;
         readNext();
-    });
-}
-
-function displayWords(words) {
-    display.innerHTML = words
-        .map((w, i) => `<span class="word" id="w${i}">${w}</span>`)
-        .join(" ");
-}
-
-function speakWordByWord(words, index, doneCallback) {
-    if (!isReading) return;
-
-    if (index >= words.length) {
-        doneCallback();
-        return;
-    }
-
-    const prev = document.querySelector(".highlight");
-    if (prev) prev.classList.remove("highlight");
-
-    const current = document.getElementById(`w${index}`);
-    if (current) current.classList.add("highlight");
-
-    speak(words[index], () => {
-        if (!isReading) return;
-        speakWordByWord(words, index + 1, doneCallback);
     });
 }
 
@@ -91,8 +89,42 @@ function parseReference(text) {
 }
 
 function speak(text, callback) {
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.rate = 1.0;
-    utter.onend = callback;
-    speechSynthesis.speak(utter);
+    speechSynthesis.cancel();
+
+    setTimeout(() => {
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.rate = 1.0;
+
+        utter.onend = () => {
+            callback();
+        };
+
+        speechSynthesis.speak(utter);
+    }, 250);
+}
+
+// ------------------------------------------------------------
+// Save current verse to memorizer lists
+// ------------------------------------------------------------
+
+function saveCurrentVerse() {
+    if (!display.textContent.includes("—")) return;
+
+    const [refPart] = display.textContent.split(" — ");
+    const verseRef = refPart.trim(); // e.g., "John 3:16"
+
+    saveToList("mv_list_1", verseRef);
+    saveToList("mv_list_2", verseRef);
+    saveToList("mv_list_3", verseRef);
+
+    alert(`Saved: ${verseRef}`);
+}
+
+function saveToList(key, verseRef) {
+    let list = JSON.parse(localStorage.getItem(key) || "[]");
+
+    if (!list.includes(verseRef)) {
+        list.push(verseRef);
+        localStorage.setItem(key, JSON.stringify(list));
+    }
 }

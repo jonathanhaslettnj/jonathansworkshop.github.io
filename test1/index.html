@@ -3,40 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Bible Reader</title>
+    <link rel="stylesheet" href="reader.css">
 
-    <!-- Correct CSS filename -->
-    <link rel="stylesheet" href="style2.css">
+    <!-- Highlight style for spoken word -->
+    <style>
+        .highlight {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 
-<div id="app">
-    <h1>Bible Reader</h1>
+    <div id="app">
+        <h1>Bible Reader</h1>
 
-    <input id="referenceInput" type="text" placeholder="Enter verse (e.g., John 3:16)">
+        <input id="referenceInput" type="text" placeholder="Enter verse (e.g., John 3:16)">
 
-    <select id="versionSelect">
-        <option value="kjv">KJV</option>
-        <option value="bbe">BBE</option>
-        <option value="asv">ASV</option>
-    </select>
+        <select id="versionSelect">
+            <option value="kjv">KJV</option>
+            <option value="bbe">BBE</option>
+            <option value="asv">ASV</option>
+        </select>
 
-    <div id="controls">
-        <button id="startBtn">Start Reading</button>
-        <button id="stopBtn">Stop Reading</button>
+        <div id="controls">
+    <button id="startBtn">Start Reading</button>
+    <button id="pauseBtn">Pause</button>
+    <button id="stopBtn">Stop Reading</button>
+    <button id="saveBtn">Save Verse</button>
+
+        </div>
+
+        <!-- This will now contain span‑wrapped words -->
+        <div id="currentVerseDisplay"></div>
     </div>
 
-    <div id="currentVerseDisplay"></div>
-</div>
+    <!-- Load ONLY the versions you actually have -->
+    <script>
+        let kjv = {};
+        let bbe = {};
+        let asv = {};
 
-<!-- Load Bible versions -->
-<script src="kjv.js"></script>
-<script src="bbe.js"></script>
-<script src="asv.js"></script>
+        async function loadJsonBibleFiles() {
+            kjv = await fetch("kjv.json").then(r => r.json());
+            bbe = await fetch("bbe.json").then(r => r.json());
+            asv = await fetch("asv.json").then(r => r.json());
+        }
 
-<!-- Load logic -->
-<script src="bibleData.js"></script>
-<script src="reader.js"></script>
+        loadJsonBibleFiles();
+    </script>
 
+    <script src="bibleData.js"></script>
+    <script src="reader.js"></script>
 </body>
 </html>
-
