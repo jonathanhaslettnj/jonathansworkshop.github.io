@@ -1,4 +1,5 @@
-// reader.js — Reader v2 Clean + Pause + Save Verse
+
+// Reader v3 — Slow Word-by-Word Reader with Adjustable Speed (Nested JSON Version)
 
 let isReading = false;
 let isPaused = false;
@@ -6,6 +7,11 @@ let isPaused = false;
 let currentBook = "";
 let currentChapter = 0;
 let currentVerse = 0;
+
+let words = [];
+let wordIndex = 0;
+
+let Bible = {};   // Active version (kjv, bbe, asv)
 
 const display = document.getElementById("currentVerseDisplay");
 const input = document.getElementById("referenceInput");
@@ -15,6 +21,42 @@ document.getElementById("pauseBtn").onclick = pauseReading;
 document.getElementById("stopBtn").onclick = stopReading;
 document.getElementById("saveBtn").onclick = saveCurrentVerse;
 
+// ------------------------------------------------------------
+// Load nested JSON Bible
+// ------------------------------------------------------------
+function loadBible(versionName) {
+    versionName = versionName.toLowerCase();
+
+    if (versionName === "kjv") Bible = kjv;
+    if (versionName === "bbe") Bible = bbe;
+    if (versionName === "asv") Bible = asv;
+}
+
+// ------------------------------------------------------------
+// Normalize book names
+// ------------------------------------------------------------
+function normalizeBookName(name) {
+    return name
+        .replace(/\s+/g, " ")
+        .trim()
+        .toLowerCase();
+}
+
+// ------------------------------------------------------------
+// Get verse from nested JSON
+// ------------------------------------------------------------
+function getVerse(book, chapter, verse) {
+    const key = normalizeBookName(book);
+
+    if (!Bible[key]) return null;
+    if (!Bible[key][chapter]) return null;
+
+    return Bible[key][chapter][verse] || null;
+}
+
+// ------------------------------------------------------------
+// Start Reading
+// ------------------------------------------------------------
 function startReading() {
     if (!bibleLoaded) {
         display.textContent = "Bible files are still loading...";
@@ -45,7 +87,9 @@ function startReading() {
     readNextVerse();
 }
 
-
+// ------------------------------------------------------------
+// Pause / Stop
+// ------------------------------------------------------------
 function pauseReading() {
     isPaused = true;
     isReading = false;
@@ -58,7 +102,10 @@ function stopReading() {
     speechSynthesis.cancel();
 }
 
-function readNext() {
+// ------------------------------------------------------------
+// Read next verse
+// ------------------------------------------------------------
+function readNextVerse() {
     if (!isReading) return;
 
     const verseText = getVerse(currentBook, currentChapter, currentVerse);
@@ -69,15 +116,59 @@ function readNext() {
         return;
     }
 
-    display.textContent = `${currentBook} ${currentChapter}:${currentVerse} — ${verseText}`;
+    words = verseText.split(" ");
+    wordIndex = 0;
 
-    speak(verseText, () => {
+    readWord();
+}
+
+// ------------------------------------------------------------
+// Read one word at a time
+// ------------------------------------------------------------
+function readWord() {
+    if (!isReading || wordIndex >= words.length) {
+        if (isReading) {
+            currentVerse++;
+            readNextVerse();
+        }
+        return;
+    }
+
+    const currentWord = words[wordIndex];
+
+    display.textContent = currentWord;
+
+    speakWord(currentWord, () => {
         if (!isReading) return;
-        currentVerse++;
-        readNext();
+
+        const speed = parseInt(document.getElementById("speedSlider").value);
+
+        setTimeout(() => {
+            wordIndex++;
+            readWord();
+        }, speed);
     });
 }
 
+// ------------------------------------------------------------
+// Speak a single word
+// ------------------------------------------------------------
+function speakWord(word, callback) {
+    speechSynthesis.cancel();
+
+    setTimeout(() => {
+        const utter = new SpeechSynthesisUtterance(word);
+        utter.rate = 0.8;
+
+        utter.onend = () => callback();
+
+        speechSynthesis.speak(utter);
+    }, 200);
+}
+
+// ------------------------------------------------------------
+// Parse reference (John 3:16)
+// ------------------------------------------------------------
 function parseReference(text) {
     const match = text.match(/([1-3]?\s?[A-Za-z]+)\s+(\d+):(\d+)/);
     if (!match) return null;
@@ -89,25 +180,9 @@ function parseReference(text) {
     };
 }
 
-function speak(text, callback) {
-    speechSynthesis.cancel();
-
-    setTimeout(() => {
-        const utter = new SpeechSynthesisUtterance(text);
-        utter.rate = 1.0;
-
-        utter.onend = () => {
-            callback();
-        };
-
-        speechSynthesis.speak(utter);
-    }, 250);
-}
-
 // ------------------------------------------------------------
-// Save current verse to memorizer lists
+// Save current verse (nested JSON)
 // ------------------------------------------------------------
-
 function saveCurrentVerse() {
     const verseText = getVerse(currentBook, currentChapter, currentVerse);
     if (!verseText) return;
@@ -115,10 +190,7 @@ function saveCurrentVerse() {
     const verseRef = `${currentBook} ${currentChapter}:${currentVerse}`;
     const choice = document.getElementById("listSelect").value;
 
-    const verseObj = {
-        ref: verseRef,
-        text: verseText
-    };
+    const verseObj = { ref: verseRef, text: verseText };
 
     if (choice === "1") saveToList("mem_list_1", verseObj);
     else if (choice === "2") saveToList("mem_list_2", verseObj);
@@ -135,7 +207,6 @@ function saveCurrentVerse() {
 function saveToList(key, verseObj) {
     let list = JSON.parse(localStorage.getItem(key) || "[]");
 
-    // Avoid duplicates
     if (!list.some(v => v.ref === verseObj.ref)) {
         list.push(verseObj);
         localStorage.setItem(key, JSON.stringify(list));
