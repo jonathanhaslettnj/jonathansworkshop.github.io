@@ -1,79 +1,138 @@
-// Normalize book names (trim, lowercase, remove weird spaces)
-function normalizeBookName(name) {
-    return name
-        .replace(/\s+/g, " ")       // collapse multiple spaces
-        .trim()
-        .toLowerCase();
+// reader.js — Reader v2 Clean + Pause + Save Verse
+
+let isReading = false;
+let isPaused = false;
+
+let currentBook = "";
+let currentChapter = 0;
+let currentVerse = 0;
+
+const display = document.getElementById("currentVerseDisplay");
+const input = document.getElementById("referenceInput");
+
+document.getElementById("startBtn").onclick = startReading;
+document.getElementById("pauseBtn").onclick = pauseReading;
+document.getElementById("stopBtn").onclick = stopReading;
+document.getElementById("saveBtn").onclick = saveCurrentVerse;
+
+function startReading() {
+    if (isPaused) {
+        // Resume reading the same verse
+        isPaused = false;
+        isReading = true;
+        speak(display.textContent.split(" — ")[1], () => {
+            if (!isReading) return;
+            currentVerse++;
+            readNext();
+        });
+        return;
+    }
+
+    const versionName = document.getElementById("versionSelect").value;
+    loadBible(versionName);
+
+    const ref = parseReference(input.value);
+    if (!ref) {
+        display.textContent = "Invalid reference.";
+        return;
+    }
+
+    currentBook = ref.book;
+    currentChapter = ref.chapter;
+    currentVerse = ref.verse;
+
+    isReading = true;
+    readNext();
 }
 
-function loadBible(versionName) {
-    // FIX: Normalize version name so "KJV" becomes "kjv"
-    versionName = versionName.toLowerCase();
-
-    if (versionName === "kjv") BibleArray = kjv;
-    if (versionName === "bbe") BibleArray = bbe;
-    if (versionName === "asv") BibleArray = asv;
-
-    Bible = buildBibleLookup(BibleArray);
+function pauseReading() {
+    isPaused = true;
+    isReading = false;
+    speechSynthesis.cancel();
 }
 
-function buildBibleLookup(dataArray) {
-    const lookup = {};
+function stopReading() {
+    isPaused = false;
+    isReading = false;
+    speechSynthesis.cancel();
+}
 
-    dataArray.forEach(entry => {
-        // Split ref into book name + chapter:verse
-        const lastSpace = entry.ref.lastIndexOf(" ");
-        const rawBook = entry.ref.substring(0, lastSpace);
-        const chapterVerse = entry.ref.substring(lastSpace + 1);
+function readNext() {
+    if (!isReading) return;
 
-        const book = normalizeBookName(rawBook);
-        const [chapter, verse] = chapterVerse.split(":").map(Number);
+    const verseText = getVerse(currentBook, currentChapter, currentVerse);
 
-        if (!lookup[book]) lookup[book] = {};
-        if (!lookup[book][chapter]) lookup[book][chapter] = {};
+    if (!verseText) {
+        display.textContent = "End of chapter or book.";
+        isReading = false;
+        return;
+    }
 
-        lookup[book][chapter][verse] = entry.text;
+    display.textContent = `${currentBook} ${currentChapter}:${currentVerse} — ${verseText}`;
+
+    speak(verseText, () => {
+        if (!isReading) return;
+        currentVerse++;
+        readNext();
     });
-
-    return lookup;
 }
 
-function getVerse(book, chapter, verse) {
-    const key = normalizeBookName(book);
+function parseReference(text) {
+    const match = text.match(/([1-3]?\s?[A-Za-z]+)\s+(\d+):(\d+)/);
+    if (!match) return null;
 
-    if (!Bible[key]) return null;
-    if (!Bible[key][chapter]) return null;
-
-    return Bible[key][chapter][verse] || null;
+    return {
+        book: match[1],
+        chapter: parseInt(match[2]),
+        verse: parseInt(match[3])
+    };
 }
+
+function speak(text, callback) {
+    speechSynthesis.cancel();
+
+    setTimeout(() => {
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.rate = 1.0;
+
+        utter.onend = () => {
+            callback();
+        };
+
+        speechSynthesis.speak(utter);
+    }, 250);
+}
+
+// ------------------------------------------------------------
+// Save current verse to memorizer lists
+// ------------------------------------------------------------
 
 function saveCurrentVerse() {
-    const verseText = getVerse(currentBook, currentChapter, currentVerse);
-    if (!verseText) return;
+    if (!display.textContent.includes("—")) return;
 
-    const verseRef = `${currentBook} ${currentChapter}:${currentVerse}`;
+    const [refPart] = display.textContent.split(" — ");
+    const verseRef = refPart.trim(); // e.g., "John 3:16"
+
     const choice = document.getElementById("listSelect").value;
 
-    const verseObj = { ref: verseRef, text: verseText };
-
-    if (choice === "1") saveToList("mem_list_1", verseObj);
-    else if (choice === "2") saveToList("mem_list_2", verseObj);
-    else if (choice === "3") saveToList("mem_list_3", verseObj);
-    else {
-        saveToList("mem_list_1", verseObj);
-        saveToList("mem_list_2", verseObj);
-        saveToList("mem_list_3", verseObj);
+    if (choice === "1") saveToList("mem_list_1", verseRef);
+    else if (choice === "2") saveToList("mem_list_2", verseRef);
+    else if (choice === "3") saveToList("mem_list_3", verseRef);
+    else if (choice === "all") {
+        saveToList("mem_list_1", verseRef);
+        saveToList("mem_list_2", verseRef);
+        saveToList("mem_list_3", verseRef);
     }
 
     alert(`Saved to list ${choice}: ${verseRef}`);
 }
 
-function saveToList(key, verseObj) {
+function saveToList(key, verseRef) {
     let list = JSON.parse(localStorage.getItem(key) || "[]");
 
-    // Avoid duplicates
-    if (!list.some(v => v.ref === verseObj.ref)) {
-        list.push(verseObj);
+    if (!list.includes(verseRef)) {
+        list.push(verseRef);
         localStorage.setItem(key, JSON.stringify(list));
     }
 }
+
