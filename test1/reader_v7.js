@@ -1,3 +1,5 @@
+console.log("Loaded reader_v7.js");
+
 // Reader v3 — unified version (no duplicate lookup logic)
 
 let isReading = false;
