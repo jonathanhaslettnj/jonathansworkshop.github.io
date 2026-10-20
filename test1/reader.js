@@ -104,12 +104,8 @@ function readWord() {
     speakWord(currentWord, () => {
         if (!isReading) return;
 
-        const speed = parseInt(document.getElementById("speedSlider").value);
-
-        setTimeout(() => {
-            wordIndex++;
-            readWord();
-        }, speed);
+        wordIndex++;
+        readWord();   // continuous reader — no delay
     });
 }
 
