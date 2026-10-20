@@ -1,6 +1,6 @@
 // bibleData.js — final version for nested JSON Bible structure
 
-let Bible = {};   // holds the selected version
+
 
 function normalizeBookName(name) {
     return name
