@@ -1,5 +1,3 @@
-
-
 // Normalize book names (trim, lowercase, remove weird spaces)
 function normalizeBookName(name) {
     return name
@@ -9,6 +7,9 @@ function normalizeBookName(name) {
 }
 
 function loadBible(versionName) {
+    // FIX: Normalize version name so "KJV" becomes "kjv"
+    versionName = versionName.toLowerCase();
+
     if (versionName === "kjv") BibleArray = kjv;
     if (versionName === "bbe") BibleArray = bbe;
     if (versionName === "asv") BibleArray = asv;
@@ -45,6 +46,7 @@ function getVerse(book, chapter, verse) {
 
     return Bible[key][chapter][verse] || null;
 }
+
 function saveCurrentVerse() {
     const verseText = getVerse(currentBook, currentChapter, currentVerse);
     if (!verseText) return;
@@ -75,4 +77,3 @@ function saveToList(key, verseObj) {
         localStorage.setItem(key, JSON.stringify(list));
     }
 }
-
