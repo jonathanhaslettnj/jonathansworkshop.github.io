@@ -109,31 +109,35 @@ function speak(text, callback) {
 // ------------------------------------------------------------
 
 function saveCurrentVerse() {
-    if (!display.textContent.includes("—")) return;
+    const verseText = getVerse(currentBook, currentChapter, currentVerse);
+    if (!verseText) return;
 
-    const [refPart] = display.textContent.split(" — ");
-    const verseRef = refPart.trim(); // e.g., "John 3:16"
-
+    const verseRef = `${currentBook} ${currentChapter}:${currentVerse}`;
     const choice = document.getElementById("listSelect").value;
 
-    if (choice === "1") saveToList("mem_list_1", verseRef);
-    else if (choice === "2") saveToList("mem_list_2", verseRef);
-    else if (choice === "3") saveToList("mem_list_3", verseRef);
-    else if (choice === "all") {
-        saveToList("mem_list_1", verseRef);
-        saveToList("mem_list_2", verseRef);
-        saveToList("mem_list_3", verseRef);
+    const verseObj = {
+        ref: verseRef,
+        text: verseText
+    };
+
+    if (choice === "1") saveToList("mem_list_1", verseObj);
+    else if (choice === "2") saveToList("mem_list_2", verseObj);
+    else if (choice === "3") saveToList("mem_list_3", verseObj);
+    else {
+        saveToList("mem_list_1", verseObj);
+        saveToList("mem_list_2", verseObj);
+        saveToList("mem_list_3", verseObj);
     }
 
     alert(`Saved to list ${choice}: ${verseRef}`);
 }
 
-function saveToList(key, verseRef) {
+function saveToList(key, verseObj) {
     let list = JSON.parse(localStorage.getItem(key) || "[]");
 
-    if (!list.includes(verseRef)) {
-        list.push(verseRef);
+    // Avoid duplicates
+    if (!list.some(v => v.ref === verseObj.ref)) {
+        list.push(verseObj);
         localStorage.setItem(key, JSON.stringify(list));
     }
 }
-
