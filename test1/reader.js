@@ -1,4 +1,4 @@
-// Reader v3 — Slow Word-by-Word Reader with Adjustable Speed (Nested JSON Version)
+// Reader v3 — unified version (no duplicate lookup logic)
 
 let isReading = false;
 let isPaused = false;
@@ -10,8 +10,6 @@ let currentVerse = 0;
 let words = [];
 let wordIndex = 0;
 
-let Bible = {};   // Active version (kjv, bbe, asv)
-
 const display = document.getElementById("currentVerseDisplay");
 const input = document.getElementById("referenceInput");
 
@@ -19,39 +17,6 @@ document.getElementById("startBtn").onclick = startReading;
 document.getElementById("pauseBtn").onclick = pauseReading;
 document.getElementById("stopBtn").onclick = stopReading;
 document.getElementById("saveBtn").onclick = saveCurrentVerse;
-
-// ------------------------------------------------------------
-// Load nested JSON Bible
-// ------------------------------------------------------------
-function loadBible(versionName) {
-    versionName = versionName.toLowerCase();
-
-    if (versionName === "kjv") Bible = kjv;
-    if (versionName === "bbe") Bible = bbe;
-    if (versionName === "asv") Bible = asv;
-}
-
-// ------------------------------------------------------------
-// Normalize book names
-// ------------------------------------------------------------
-function normalizeBookName(name) {
-    return name
-        .replace(/\s+/g, " ")
-        .trim()
-        .toLowerCase();
-}
-
-// ------------------------------------------------------------
-// Get verse from nested JSON
-// ------------------------------------------------------------
-function getVerse(book, chapter, verse) {
-    const key = normalizeBookName(book);
-
-    if (!Bible[key]) return null;
-    if (!Bible[key][chapter]) return null;
-
-    return Bible[key][chapter][verse] || null;
-}
 
 // ------------------------------------------------------------
 // Start Reading
@@ -134,7 +99,6 @@ function readWord() {
     }
 
     const currentWord = words[wordIndex];
-
     display.textContent = currentWord;
 
     speakWord(currentWord, () => {
@@ -180,7 +144,7 @@ function parseReference(text) {
 }
 
 // ------------------------------------------------------------
-// Save current verse (nested JSON)
+// Save current verse
 // ------------------------------------------------------------
 function saveCurrentVerse() {
     const verseText = getVerse(currentBook, currentChapter, currentVerse);
