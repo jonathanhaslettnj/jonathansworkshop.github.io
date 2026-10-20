@@ -1,4 +1,3 @@
-
 // Reader v3 — Slow Word-by-Word Reader with Adjustable Speed (Nested JSON Version)
 
 let isReading = false;
