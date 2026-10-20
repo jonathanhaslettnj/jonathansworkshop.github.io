@@ -51,19 +51,24 @@
     </div>
 
     <!-- Load ONLY the versions you actually have -->
-    <script>
-        let kjv = {};
-        let bbe = {};
-        let asv = {};
+<script>
+    let kjv = {};
+    let bbe = {};
+    let asv = {};
 
-        async function loadJsonBibleFiles() {
-            kjv = await fetch("kjv.json").then(r => r.json());
-            bbe = await fetch("bbe.json").then(r => r.json());
-            asv = await fetch("asv.json").then(r => r.json());
-        }
+    let bibleLoaded = false;
 
-        loadJsonBibleFiles();
-    </script>
+    async function loadJsonBibleFiles() {
+        kjv = await fetch("kjv.json").then(r => r.json());
+        bbe = await fetch("bbe.json").then(r => r.json());
+        asv = await fetch("asv.json").then(r => r.json());
+
+        bibleLoaded = true;
+    }
+
+    loadJsonBibleFiles();
+</script>
+
 
     <script src="bibleData.js"></script>
     <script src="reader.js"></script>

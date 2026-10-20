@@ -16,15 +16,15 @@ document.getElementById("stopBtn").onclick = stopReading;
 document.getElementById("saveBtn").onclick = saveCurrentVerse;
 
 function startReading() {
+    if (!bibleLoaded) {
+        display.textContent = "Bible files are still loading...";
+        return;
+    }
+
     if (isPaused) {
-        // Resume reading the same verse
         isPaused = false;
         isReading = true;
-        speak(display.textContent.split(" — ")[1], () => {
-            if (!isReading) return;
-            currentVerse++;
-            readNext();
-        });
+        readWord();
         return;
     }
 
@@ -42,8 +42,9 @@ function startReading() {
     currentVerse = ref.verse;
 
     isReading = true;
-    readNext();
+    readNextVerse();
 }
+
 
 function pauseReading() {
     isPaused = true;
