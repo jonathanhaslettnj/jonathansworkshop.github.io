@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bible Reader</title>
+    <link rel="stylesheet" href="reader.css">
+
+    <style>
+        .highlight {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <h1>Bible Reader</h1>
+
+        <input id="referenceInput" type="text" placeholder="Enter verse (e.g., John 3:16)">
+
+        <select id="versionSelect">
+            <option value="kjv">KJV</option>
+            <option value="bbe">BBE</option>
+            <option value="asv">ASV</option>
+        </select>
+
+        <div id="currentVerseDisplay"></div>
+
+        <div id="controls">
+            <button id="startBtn">Start Reading</button>
+            <button id="pauseBtn">Pause</button>
+            <button id="stopBtn">Stop Reading</button>
+        </div>
+
+        <select id="listSelect">
+            <option value="1">List 1</option>
+            <option value="2">List 2</option>
+            <option value="3">List 3</option>
+            <option value="all">All Lists</option>
+        </select>
+
+        <button id="saveBtn">Save Verse</button>
+
+
+    </div>
+
+    <script src="bibleData.js"></script>
+    <script src="reader_v8.js"></script>
+
+</body>
+</html>
