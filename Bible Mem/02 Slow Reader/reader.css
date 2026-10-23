@@ -1,0 +1,77 @@
+/* Basic page styling */
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+/* Centered container */
+#app {
+    max-width: 600px;
+    margin: auto;
+    padding: 2rem;
+}
+
+/* Title */
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Input and dropdown */
+#referenceInput,
+#versionSelect {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+}
+
+/* Buttons container */
+#controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+/* Buttons */
+button {
+    flex: 1;
+    padding: 1rem;
+    font-size: 1.2rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    background-color: #4a6cf7;
+    color: white;
+}
+
+button:hover {
+    background-color: #3a56c9;
+}
+
+/* Verse display box */
+#currentVerseDisplay {
+    font-size: 1.4rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    min-height: 100px;
+    line-height: 1.5;
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+#listSelect {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+}
+#saveBtn {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
