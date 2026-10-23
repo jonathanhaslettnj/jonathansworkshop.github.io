@@ -1,35 +1,36 @@
-// bibleData.js — final version for nested JSON Bible structure
+let Bible = {};
+let bibleLoaded = false;
 
-let Bible = {};   // holds the selected version
-
+// Normalize book names
 function normalizeBookName(name) {
-    return name
-        .replace(/\s+/g, " ")   // collapse multiple spaces
-        .trim()
-        .toLowerCase();
+    return name.replace(/\s+/g, " ").trim().toLowerCase();
 }
 
-function loadBible(versionName) {
-    if (versionName === "kjv") Bible = kjv;
-    if (versionName === "bbe") Bible = bbe;
-    if (versionName === "asv") Bible = asv;
-}
-
+// Flexible verse lookup
 function getVerse(book, chapter, verse) {
-    const key = normalizeBookName(book);
+    const normalized = normalizeBookName(book);
 
-    // Find the actual book key in the JSON (case-insensitive)
-    const bookKey = Object.keys(Bible).find(
-        b => normalizeBookName(b) === key
-    );
+    for (const key of Object.keys(Bible)) {
+        if (key.toLowerCase() === normalized) {
+            return Bible[key]?.[chapter]?.[verse] || null;
+        }
+    }
 
-    if (!bookKey) return null;
+    return null;
+}
 
-    const chapterObj = Bible[bookKey][chapter];
-    if (!chapterObj) return null;
+// Load selected Bible version from JSON
+async function loadBible(versionName) {
+    bibleLoaded = false;
 
-    const verseText = chapterObj[verse];
-    if (!verseText) return null;
+    const file = versionName.toLowerCase() + ".json";
 
-    return verseText;
+    try {
+        const response = await fetch(file);
+        Bible = await response.json();
+        bibleLoaded = true;
+    } catch (err) {
+        console.error("Error loading Bible:", err);
+        bibleLoaded = false;
+    }
 }
