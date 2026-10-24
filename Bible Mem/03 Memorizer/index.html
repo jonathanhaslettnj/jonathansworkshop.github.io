@@ -137,16 +137,22 @@
 <body>
 
   <h1>The Talking Bible Verse Memorizer</h1>
-  <h2>High Speed</h2>
+  <h2>Voice Control</h2>
 
   <!-- LIST SELECTOR -->
   <label for="mv_list_selector"><strong>Choose verse list:</strong></label>
   <select id="mv_list_selector">
-    <option value="A">List A</option>
-    <option value="B">List B</option>
-    <option value="C">List C</option>
+    <option value="A">List A (mem_list_1)</option>
+    <option value="B">List B (mem_list_2)</option>
+    <option value="C">List C (mem_list_3)</option>
   </select>
   <button id="mv_load_list_btn">Load Selected List</button>
+
+  <!-- VOICE CONTROL -->
+  <div class="button-row">
+    <button id="voiceStartBtn">🎤 Start Voice Control</button>
+    <button id="voiceStopBtn">🛑 Stop Voice Control</button>
+  </div>
 
   <!-- Memorizer -->
   <label for="refInput">Reference: (Type then press Enter)</label>
@@ -181,11 +187,8 @@
   <h2>Your Verses</h2>
   <div id="user-verses"></div>
 
-
-      <script src="memorizer_core.js?v=8"></script>
-      <script src="memorizer_input.js?v=8"></script>
-
-
+  <script src="memorizer_core.js?v=9"></script>
+  <script src="memorizer_input.js?v=9"></script>
 
   <div class="return-box">
     <a href="https://literalword.com/esv">Literal Word,ESV</a>

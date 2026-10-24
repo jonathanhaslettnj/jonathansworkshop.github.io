@@ -1,12 +1,10 @@
 // =====================================
 // memorizer_input.js
-// Version 8 — Option C Strict Letter-by-Letter
-// Last updated: 2026-10-08
+// Version 9 — Option C Strict Letter-by-Letter
+// Last updated: 2026-10-19
 // =====================================
 
-
-console.log("Loaded memorizer_input.js — Version 8 (Option C Strict)");
-
+console.log("Loaded memorizer_input.js — Version 9 (Option C Strict)");
 
 // =====================================
 // NORMALIZE WORDS
@@ -15,7 +13,6 @@ console.log("Loaded memorizer_input.js — Version 8 (Option C Strict)");
 function normalizeWord(w) {
     return w.replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "").toLowerCase();
 }
-
 
 // =====================================
 // CHECK WORD (Option C strict)
@@ -50,7 +47,6 @@ function checkWord(typed) {
         onIncorrectWord(expectedRaw, typed);
     }
 }
-
 
 // =====================================
 // INPUT HANDLING — OPTION C STRICT
@@ -98,7 +94,6 @@ wordInput.addEventListener("input", () => {
     }
 });
 
-
 // =====================================
 // CLEAR INPUT ON FOCUS
 // =====================================
@@ -106,7 +101,6 @@ wordInput.addEventListener("input", () => {
 wordInput.addEventListener("focus", () => {
     wordInput.value = "";
 });
-
 
 // =====================================
 // INTEGRITY CHECK
@@ -116,7 +110,6 @@ if (typeof normalizeWord !== "function" ||
     typeof checkWord !== "function") {
     console.error("ERROR: memorizer_input.js is corrupted or incomplete.");
 }
-
 
 // =====================================
 // END OF FILE — NOTHING SHOULD BE BELOW THIS LINE
