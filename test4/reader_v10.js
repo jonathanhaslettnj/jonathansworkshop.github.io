@@ -40,6 +40,9 @@ document.getElementById("pauseBtn")
 document.getElementById("stopBtn")
     .onclick = stopReading;
 
+document.getElementById("saveBtn")
+    .onclick = saveCurrentVerse;
+
 function startReading() {
 
     if (!bibleLoaded) {
@@ -217,6 +220,8 @@ function parseReference(text) {
 // ------------------------------------------------------------
 
 function saveCurrentVerse() {
+
+    alert("SAVE BUTTON WORKS");
 
     const verseText =
         getVerse(

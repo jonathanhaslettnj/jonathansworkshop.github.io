@@ -1,240 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Bible Memory Verse Module</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- IMPORTANT FOR iPHONE -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 15px;
-            line-height: 1.6;
-        }
+    <title>Bible Slow Reader</title>
 
-        h1 {
-            color: #003399;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+    <link rel="stylesheet" href="reader.css">
 
-        h2 {
-            text-align: center;
-            margin-top: -10px;
-            color: #444;
-        }
-
-        /* Input boxes set to 30ch */
-        #mv_translation,
-        #mv_reference_input,
-        #mv_input {
-            width: 30ch;
-            display: inline-block;
-        }
-
-        select,
-        input[type="text"] {
-            padding: 10px;
-            font-size: 18px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        #mv_instruction {
-            font-size: 12px;
-            color: #555;
-            margin-bottom: 10px;
-        }
-
-        #mv_progress {
-            white-space: pre-wrap;
-            margin-top: 5px;
-            min-height: 1.2rem;
-        }
-
-        #mv_status {
-            margin-top: 5px;
-            min-height: 1.2rem;
-        }
-
-        .button-line {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-        }
-
-        @media (max-width: 480px) {
-            body {
-                margin: 10px;
-                padding: 10px;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            select,
-            input[type="text"] {
-                font-size: 16px;
-                padding: 8px;
-            }
-
-            button {
-                font-size: 15px;
-                padding: 10px 16px;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
-    <h1>Bible Verse Memorizer</h1>
-    <h2>Translations in the Public Domain</h2>
+<div id="app">
 
-    <!-- ⭐ Translation Banner -->
-    <div id="mv_translation_banner"
-         style="
-            background:#eee;
-            padding:6px 10px;
-            margin:10px 0;
-            border-radius:6px;
-            font-size:14px;
-            font-weight:bold;
-            color:#003399;
-         ">
-        KJV loaded
-    </div>
+    <h1>Bible Slow Reader</h1>
 
-    <!-- Translation Selector -->
-    <select id="mv_translation">
-        <option value="kjv">King James Version (KJV)</option>
-        <option value="asv">American Standard Version (ASV)</option>
-        <option value="bbe">Bible in Basic English (BBE)</option>
+    <input
+        id="referenceInput"
+        type="text"
+        value="John 3:16"
+        placeholder="Enter verse (John 3:16)"
+    >
+
+    <select id="versionSelect">
+        <option value="kjv">KJV</option>
+        <option value="bbe">BBE</option>
+        <option value="asv">ASV</option>
     </select>
 
-    <!-- Reference Input -->
-    <input id="mv_reference_input" type="text" placeholder="Type verse (e.g. Genesis 1:1)">
-    <div id="mv_instruction">Type the full name, chapter, and verse, then hit Enter.</div>
-
-    <!-- Verse Reference Display -->
-    <div id="mv_reference" style="display:none;"></div>   
- 
-    <!-- Memorizer Output -->
-    <div id="mv_progress"></div>
-    <div id="mv_next"></div>
-    <div id="mv_reveal"></div>
-    <div id="mv_status"></div>
-
-    <!-- Word Input -->
-    <input id="mv_input" type="text" placeholder="Type next word">
-
-    <div class="button-line">
-        <button id="mv_next_verse" onclick="window.loadNextVerse()">Next Verse ▶</button>
+    <div id="currentVerseDisplay">
+        Ready
     </div>
 
-    <div class="button-line">
-        <button onclick="window.restartCurrentVerse()">Repeat Verse 🔁</button>
+    <div id="speedControl">
+
+        <label for="speedSlider">
+
+            Pause Between Words:
+
+            <span id="speedLabel">1500</span>
+
+            ms
+
+        </label>
+
+        <input
+            type="range"
+            id="speedSlider"
+            min="200"
+            max="5000"
+            step="100"
+            value="1500">
+
     </div>
 
-    <div class="button-line">
-        <button id="mv_restart" onclick="window.location.reload()">Start Over</button>
+    <div id="controls">
+
+        <button id="startBtn">
+            Start
+        </button>
+
+        <button id="pauseBtn">
+            Pause
+        </button>
+
+        <button id="stopBtn">
+            Stop
+        </button>
+
     </div>
 
-    <!-- Voice Controls -->
-    <button onclick="startListening(); speechSynthesis.resume()">🎤 Start Voice</button>
-    <button onclick="stopListening()">🛑 Stop Voice</button>
+    <select id="listSelect">
 
-    <!-- Developer Mode -->
-    <button id="testVoiceConfigBtn">Test Voice Config</button>
+        <option value="1">List 1</option>
+        <option value="2">List 2</option>
+        <option value="3">List 3</option>
+        <option value="all">All Lists</option>
 
-    <div id="devModePanel"
-         style="
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            background: #f9f9f9;
-         ">
+    </select>
 
-        <div id="voiceDashboard" style="margin-top:20px;">
-            <h3>Voice Dashboard</h3>
+    <button id="saveBtn">
+        Save Verse
+    </button>
 
-            <div><strong>Listening:</strong> <span id="vd_listening">OFF</span></div>
-            <div><strong>Last Transcript:</strong> <span id="vd_transcript"></span></div>
-            <div><strong>Last Command:</strong> <span id="vd_command"></span></div>
-            <div><strong>Last Spoken Word:</strong> <span id="vd_spoken"></span></div>
-            <div><strong>Mistakes:</strong> <span id="vd_mistakes">0</span></div>
-
-            <button id="vd_clear">Clear Dashboard</button>
-        </div>
-    </div>
+</div>
 
 <script>
-    const translationSelector = document.getElementById("mv_translation");
 
-    translationSelector.addEventListener("change", () => {
-        loadTranslation(translationSelector.value);
-    });
+let kjv = {};
+let bbe = {};
+let asv = {};
+
+let bibleLoaded = false;
+
+async function loadJsonBibleFiles() {
+
+    kjv =
+        await fetch("kjv.json")
+        .then(r => r.json());
+
+    bbe =
+        await fetch("bbe.json")
+        .then(r => r.json());
+
+    asv =
+        await fetch("asv.json")
+        .then(r => r.json());
+
+    bibleLoaded = true;
+}
+
+loadJsonBibleFiles();
+
 </script>
 
-    <script src="mv_core.js?v=17"></script>
-    <script src="mv_input.js?v=17"></script>
-
-    <script type="module">
-        import { initDeveloperModeUI } from "./devModeUI.js";
-        initDeveloperModeUI();
-    </script>
-
-    <script type="module">
-        import { routeVoiceCommand, executeVoiceCommand } from "./voiceRouter.js";
-
-        window.testVoice = function (phrase) {
-            const cmd = routeVoiceCommand(phrase);
-            executeVoiceCommand(cmd);
-        };
-    </script>
-
-    <script type="module">
-        import { clearDashboard } from "./voiceDashboard.js";
-
-        document.getElementById("vd_clear").addEventListener("click", () => {
-            clearDashboard();
-        });
-    </script>
-
-    <!-- ⭐ FIXED: merged into ONE module block -->
-    <script type="module">
-        import { initSpeechRecognition, startListening, stopListening }
-            from "./voiceRecognition.js";
-
-        window.startListening = startListening;
-        window.stopListening = stopListening;
-
-        initSpeechRecognition();
-    </script>
-
-    <div id="mv_version_banner"
-         style="
-            background:#003399;
-            color:white;
-            padding:8px 12px;
-            font-size:14px;
-            font-weight:bold;
-            text-align:center;
-            border-radius:6px;
-            margin-bottom:15px;
-         ">
-        v12 – Developer Mode – lbyl – Multi‑Version
-    </div>
+<script src="bibleData.js"></script>
+<script src="reader_v10.js"></script>
 
 </body>
 </html>
-
