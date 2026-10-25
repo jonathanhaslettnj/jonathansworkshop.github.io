@@ -1,3 +1,4 @@
+
 let isReading = false;
 let isPaused = false;
 
@@ -5,8 +6,6 @@ let currentBook = "";
 let currentChapter = 0;
 let currentVerse = 0;
 
-let currentWords = [];
-let currentWordIndex = 0;
 
 const display = document.getElementById("currentVerseDisplay");
 const input = document.getElementById("referenceInput");
@@ -19,26 +18,29 @@ document.getElementById("saveBtn").onclick = saveCurrentVerse;
 // ------------------------------------------------------------
 // Start Reading
 // ------------------------------------------------------------
+
 async function startReading() {
 
-    if (isPaused) {
-        isPaused = false;
-        isReading = true;
-        readNextWord();
-        return;
-    }
+if (isPaused) {
+    isPaused = false;
+    isReading = true;
+    readNextVerse();   // ✔ Resume reading the current verse smoothly
+    return;
+}
 
+
+    // Load the selected Bible version FIRST
     const versionName = document.getElementById("versionSelect").value;
-
     await loadBible(versionName);
 
+    // NOW check if the Bible finished loading
     if (!bibleLoaded) {
         display.textContent = "Bible files are still loading...";
         return;
     }
 
+    // Parse reference
     const ref = parseReference(input.value);
-
     if (!ref) {
         display.textContent = "Invalid reference.";
         return;
@@ -49,9 +51,9 @@ async function startReading() {
     currentVerse = ref.verse;
 
     isReading = true;
-
     readNextVerse();
 }
+
 
 // ------------------------------------------------------------
 // Pause / Stop
@@ -63,30 +65,19 @@ function pauseReading() {
 }
 
 function stopReading() {
-
     isPaused = false;
     isReading = false;
-
     speechSynthesis.cancel();
-
-    display.textContent = "";
-
-    currentWords = [];
-    currentWordIndex = 0;
 }
 
 // ------------------------------------------------------------
-// Load verse and split into words
+// Read next verse
 // ------------------------------------------------------------
-function readNextVerse() {
 
+function readNextVerse() {
     if (!isReading) return;
 
-    const verseText = getVerse(
-        currentBook,
-        currentChapter,
-        currentVerse
-    );
+    const verseText = getVerse(currentBook, currentChapter, currentVerse);
 
     if (!verseText) {
         display.textContent = "End of chapter or book.";
@@ -94,79 +85,34 @@ function readNextVerse() {
         return;
     }
 
+    // ⭐ Update input box with current reference
     input.value = `${currentBook} ${currentChapter}:${currentVerse}`;
 
-    currentWords = verseText.split(/\s+/);
+    // Display full verse (no reference here, because Option A puts it in the input box)
+    display.textContent = verseText;
 
-    currentWordIndex = 0;
-
-    readNextWord();
-}
-
-// ------------------------------------------------------------
-// Display and speak ONE word at a time
-// ------------------------------------------------------------
-function readNextWord() {
-
-    if (!isReading) return;
-
-    if (currentWordIndex >= currentWords.length) {
-
+    // Speak entire verse smoothly
+    speakVerse(verseText, () => {
+        if (!isReading) return;
         currentVerse++;
-
-        setTimeout(() => {
-
-            if (isReading) {
-                readNextVerse();
-            }
-
-        }, 1000);
-
-        return;
-    }
-
-    const word = currentWords[currentWordIndex];
-
-    display.textContent = word;
-
-    speakWord(word, () => {
-
-        setTimeout(() => {
-
-            if (!isReading) return;
-
-            currentWordIndex++;
-
-            readNextWord();
-
-        }, 750);   // pause between words
-
+        readNextVerse();
     });
 }
 
-// ------------------------------------------------------------
-// Speak the current word
-// ------------------------------------------------------------
-function speakWord(text, callback) {
 
+function speakVerse(text, callback) {
     const utter = new SpeechSynthesisUtterance(text);
-
-    utter.rate = 0.8;
-    utter.pitch = 1.0;
-    utter.volume = 1.0;
-
+    utter.rate = 1.1;   // Smooth and natural speed
     utter.onend = () => callback();
-
     speechSynthesis.speak(utter);
 }
 
+
 // ------------------------------------------------------------
-// Parse reference
+// Parse reference (John 3:16)
 // ------------------------------------------------------------
 function parseReference(text) {
-
     const match = text.match(/([1-3]?\s?[A-Za-z]+)\s+(\d+):(\d+)/);
-
     if (!match) return null;
 
     return {
@@ -180,32 +126,17 @@ function parseReference(text) {
 // Save current verse
 // ------------------------------------------------------------
 function saveCurrentVerse() {
-
-    const verseText =
-        getVerse(currentBook, currentChapter, currentVerse);
-
+    const verseText = getVerse(currentBook, currentChapter, currentVerse);
     if (!verseText) return;
 
-    const verseRef =
-        `${currentBook} ${currentChapter}:${currentVerse}`;
+    const verseRef = `${currentBook} ${currentChapter}:${currentVerse}`;
+    const choice = document.getElementById("listSelect").value;
 
-    const choice =
-        document.getElementById("listSelect").value;
+    const verseObj = { ref: verseRef, text: verseText };
 
-    const verseObj = {
-        ref: verseRef,
-        text: verseText
-    };
-
-    if (choice === "1")
-        saveToList("mem_list_1", verseObj);
-
-    else if (choice === "2")
-        saveToList("mem_list_2", verseObj);
-
-    else if (choice === "3")
-        saveToList("mem_list_3", verseObj);
-
+    if (choice === "1") saveToList("mem_list_1", verseObj);
+    else if (choice === "2") saveToList("mem_list_2", verseObj);
+    else if (choice === "3") saveToList("mem_list_3", verseObj);
     else {
         saveToList("mem_list_1", verseObj);
         saveToList("mem_list_2", verseObj);
@@ -216,17 +147,10 @@ function saveCurrentVerse() {
 }
 
 function saveToList(key, verseObj) {
-
-    let list =
-        JSON.parse(localStorage.getItem(key) || "[]");
+    let list = JSON.parse(localStorage.getItem(key) || "[]");
 
     if (!list.some(v => v.ref === verseObj.ref)) {
-
         list.push(verseObj);
-
-        localStorage.setItem(
-            key,
-            JSON.stringify(list)
-        );
+        localStorage.setItem(key, JSON.stringify(list));
     }
 }
