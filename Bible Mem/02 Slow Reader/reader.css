@@ -1,108 +1,131 @@
+/* =====================================================
+   Bible Slow Reader v10
+   iPhone Optimized
+   ===================================================== */
+
 body {
-
     font-family: Arial, sans-serif;
-
     margin: 0;
-
     padding: 0;
-
     background: #f5f5f5;
+    color: #222;
 }
 
 #app {
-
     max-width: 700px;
-
     margin: auto;
-
     padding: 15px;
 }
 
 h1 {
-
     text-align: center;
+    margin-bottom: 15px;
 }
+
+/* -----------------------------------------------------
+   Inputs
+   ----------------------------------------------------- */
 
 #referenceInput,
 #versionSelect,
 #listSelect {
 
     width: 100%;
-
     padding: 12px;
-
     font-size: 1.1rem;
-
     margin-bottom: 12px;
-
     box-sizing: border-box;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
 }
 
-#speedControl {
-
-    margin-bottom: 20px;
-}
-
-#speedSlider {
-
-    width: 100%;
-}
+/* -----------------------------------------------------
+   Word Display Box
+   ----------------------------------------------------- */
 
 #currentVerseDisplay {
 
     background: white;
-
     border-radius: 16px;
 
     height: 25vh;
 
     display: flex;
-
     justify-content: center;
-
     align-items: center;
 
     text-align: center;
 
     font-size: clamp(3rem, 10vw, 6rem);
-
     font-weight: bold;
 
     color: #222;
 
     margin-bottom: 20px;
 
-    box-shadow: 0 0 10px rgba(0,0,0,.1);
-
     padding: 15px;
+
+    box-shadow: 0 0 10px rgba(0,0,0,.10);
 
     word-break: break-word;
 }
 
+/* -----------------------------------------------------
+   Speed Slider
+   ----------------------------------------------------- */
+
+#speedControl {
+
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+#speedControl label {
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+#speedSlider {
+
+    width: 100%;
+    height: 36px;
+    cursor: pointer;
+}
+
+/* -----------------------------------------------------
+   Buttons
+   ----------------------------------------------------- */
+
 #controls {
 
-    display: flex;
+    display: grid;
 
-    gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    gap: 8px;
 
     margin-bottom: 15px;
 }
 
 button {
 
-    flex: 1;
-
     min-height: 60px;
 
     border: none;
+
+    border-radius: 8px;
 
     background: #4a6cf7;
 
     color: white;
 
     font-size: 1.1rem;
-
-    border-radius: 8px;
 
     cursor: pointer;
 }
@@ -115,41 +138,55 @@ button:hover {
 #saveBtn {
 
     width: 100%;
+    margin-top: 10px;
 }
+
+/* -----------------------------------------------------
+   iPhone Layout
+   ----------------------------------------------------- */
 
 @media (max-width: 600px) {
 
-    #controls {
+    #app {
 
-        flex-direction: column;
-    }
-
-    button {
-
-        width: 100%;
+        padding: 10px;
     }
 
     #currentVerseDisplay {
 
-        height: 65vh;
+        height: 20vh;
 
-        font-size: clamp(3rem, 12vw, 5rem);
+        font-size: clamp(4rem, 14vw, 7rem);
+    }
+
+    button {
+
+        min-height: 65px;
+
+        font-size: 1.15rem;
+    }
+
+    #speedControl label {
+
+        font-size: 1.05rem;
     }
 }
+
+/* -----------------------------------------------------
+   Dark Mode
+   ----------------------------------------------------- */
 
 @media (prefers-color-scheme: dark) {
 
     body {
 
         background: #111;
-
         color: white;
     }
 
     #currentVerseDisplay {
 
         background: #222;
-
         color: white;
     }
 
@@ -158,9 +195,17 @@ button:hover {
     #listSelect {
 
         background: #333;
-
         color: white;
-
         border: 1px solid #555;
+    }
+
+    button {
+
+        background: #5a7cff;
+    }
+
+    button:hover {
+
+        background: #7390ff;
     }
 }
