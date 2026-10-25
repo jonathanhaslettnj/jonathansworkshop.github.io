@@ -1,15 +1,17 @@
-let Bible = {};
-let bibleLoaded = false;
+// bibleData.js — unified Bible lookup system
 
-// Normalize book names
+let Bible = {};   // Active version (kjv, bbe, asv)
+
+// Normalize book names (collapse spaces, lowercase)
 function normalizeBookName(name) {
     return name.replace(/\s+/g, " ").trim().toLowerCase();
 }
 
-// Flexible verse lookup
+// Flexible verse lookup that matches ANY book key format
 function getVerse(book, chapter, verse) {
     const normalized = normalizeBookName(book);
 
+    // Match JSON keys regardless of case or spacing
     for (const key of Object.keys(Bible)) {
         if (key.toLowerCase() === normalized) {
             return Bible[key]?.[chapter]?.[verse] || null;
@@ -19,18 +21,11 @@ function getVerse(book, chapter, verse) {
     return null;
 }
 
-// Load selected Bible version from JSON
-async function loadBible(versionName) {
-    bibleLoaded = false;
+// Load selected Bible version
+function loadBible(versionName) {
+    versionName = versionName.toLowerCase();
 
-    const file = versionName.toLowerCase() + ".json";
-
-    try {
-        const response = await fetch(file);
-        Bible = await response.json();
-        bibleLoaded = true;
-    } catch (err) {
-        console.error("Error loading Bible:", err);
-        bibleLoaded = false;
-    }
+    if (versionName === "kjv") Bible = kjv;
+    if (versionName === "bbe") Bible = bbe;
+    if (versionName === "asv") Bible = asv;
 }

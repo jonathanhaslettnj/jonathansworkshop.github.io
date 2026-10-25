@@ -1,105 +1,166 @@
 body {
+
     font-family: Arial, sans-serif;
-    background: #f7f7f7;
+
     margin: 0;
+
     padding: 0;
+
+    background: #f5f5f5;
 }
 
 #app {
+
     max-width: 700px;
+
     margin: auto;
-    padding: 2rem;
+
+    padding: 15px;
 }
 
 h1 {
+
     text-align: center;
-    margin-bottom: 2rem;
 }
 
 #referenceInput,
 #versionSelect,
 #listSelect {
+
     width: 100%;
-    padding: 1rem;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
+
+    padding: 12px;
+
+    font-size: 1.1rem;
+
+    margin-bottom: 12px;
+
     box-sizing: border-box;
 }
 
-#controls {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1.5rem;
-}
 #speedControl {
+
     margin-bottom: 20px;
 }
 
 #speedSlider {
+
     width: 100%;
 }
+
+#currentVerseDisplay {
+
+    background: white;
+
+    border-radius: 16px;
+
+    height: 25vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    font-size: clamp(3rem, 10vw, 6rem);
+
+    font-weight: bold;
+
+    color: #222;
+
+    margin-bottom: 20px;
+
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+
+    padding: 15px;
+
+    word-break: break-word;
+}
+
+#controls {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+}
+
 button {
+
     flex: 1;
-    padding: 1rem;
-    font-size: 1.1rem;
-    margin: 0 0.5rem;
-    cursor: pointer;
+
+    min-height: 60px;
+
     border: none;
-    border-radius: 6px;
-    background-color: #4a6cf7;
+
+    background: #4a6cf7;
+
     color: white;
+
+    font-size: 1.1rem;
+
+    border-radius: 8px;
+
+    cursor: pointer;
 }
 
 button:hover {
-    background-color: #3a56c9;
+
+    background: #3554d4;
 }
 
 #saveBtn {
+
     width: 100%;
-    margin-top: 1rem;
 }
 
-/* One-word display area */
-
-#currentVerseDisplay {
-    background: white;
-    border-radius: 12px;
-    min-height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 4rem;
-    font-weight: bold;
-    color: #222;
-    margin-bottom: 25px;
-    padding: 20px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.1);
-    word-break: break-word;
-}
 @media (max-width: 600px) {
 
-    #app {
-        padding: 10px;
-    }
-
     #controls {
+
         flex-direction: column;
     }
 
     button {
+
         width: 100%;
-        margin: 4px 0;
     }
 
     #currentVerseDisplay {
-        min-height: 350px;
-        font-size: 3.5rem;
+
+        height: 65vh;
+
+        font-size: clamp(3rem, 12vw, 5rem);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+
+    body {
+
+        background: #111;
+
+        color: white;
+    }
+
+    #currentVerseDisplay {
+
+        background: #222;
+
+        color: white;
     }
 
     #referenceInput,
     #versionSelect,
     #listSelect {
-        font-size: 1.2rem;
+
+        background: #333;
+
+        color: white;
+
+        border: 1px solid #555;
     }
 }

@@ -1,69 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Bible Reader</title>
+
+    <!-- IMPORTANT FOR iPHONE -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Bible Slow Reader</title>
+
     <link rel="stylesheet" href="reader.css">
 
-    <style>
-        .highlight {
-            color: red;
-            font-weight: bold;
-        }
-    </style>
 </head>
+
 <body>
 
-    <div id="app">
-        <h1>Bible Reader</h1>
+<div id="app">
 
-        <input id="referenceInput" type="text" placeholder="Enter verse (e.g., John 3:16)">
-
-        <select id="versionSelect">
-            <option value="kjv">KJV</option>
-            <option value="bbe">BBE</option>
-            <option value="asv">ASV</option>
-        </select>
-
-        <div id="currentVerseDisplay"></div>
-
-        <div id="controls">
-<div id="speedControl">
-
-    <label for="speedSlider">
-        Pause Between Words:
-        <span id="speedLabel">1500</span> ms
-        (300-5000)
-    </label>
+    <h1>Bible Slow Reader</h1>
 
     <input
-        type="range"
-        id="speedSlider"
-        min="200"
-        max="5000"
-        step="100"
-        value="1500">
+        id="referenceInput"
+        type="text"
+        value="John 3:16"
+        placeholder="Enter verse (John 3:16)"
+    >
 
-</div>
-            <button id="startBtn">Start Reading</button>
-            <button id="pauseBtn">Pause</button>
-            <button id="stopBtn">Stop Reading</button>
-        </div>
+    <select id="versionSelect">
+        <option value="kjv">KJV</option>
+        <option value="bbe">BBE</option>
+        <option value="asv">ASV</option>
+    </select>
 
-        <select id="listSelect">
-            <option value="1">List 1</option>
-            <option value="2">List 2</option>
-            <option value="3">List 3</option>
-            <option value="all">All Lists</option>
-        </select>
+    <div id="currentVerseDisplay">
+        Ready
+    </div>
 
-        <button id="saveBtn">Save Verse</button>
+    <div id="speedControl">
 
+        <label for="speedSlider">
+
+            Pause Between Words:
+
+            <span id="speedLabel">1500</span>
+
+            ms
+
+        </label>
+
+        <input
+            type="range"
+            id="speedSlider"
+            min="200"
+            max="5000"
+            step="100"
+            value="1500">
 
     </div>
 
-    <script src="bibleData.js"></script>
-    <script src="reader_v9.js"></script>
+    <div id="controls">
+
+        <button id="startBtn">
+            Start
+        </button>
+
+        <button id="pauseBtn">
+            Pause
+        </button>
+
+        <button id="stopBtn">
+            Stop
+        </button>
+
+    </div>
+
+    <select id="listSelect">
+
+        <option value="1">List 1</option>
+        <option value="2">List 2</option>
+        <option value="3">List 3</option>
+        <option value="all">All Lists</option>
+
+    </select>
+
+    <button id="saveBtn">
+        Save Verse
+    </button>
+
+</div>
+
+<script>
+
+let kjv = {};
+let bbe = {};
+let asv = {};
+
+let bibleLoaded = false;
+
+async function loadJsonBibleFiles() {
+
+    kjv =
+        await fetch("kjv.json")
+        .then(r => r.json());
+
+    bbe =
+        await fetch("bbe.json")
+        .then(r => r.json());
+
+    asv =
+        await fetch("asv.json")
+        .then(r => r.json());
+
+    bibleLoaded = true;
+}
+
+loadJsonBibleFiles();
+
+</script>
+
+<script src="bibleData.js"></script>
+<script src="reader_v8.js"></script>
 
 </body>
 </html>
