@@ -40,6 +40,9 @@ document.getElementById("pauseBtn")
 document.getElementById("stopBtn")
     .onclick = stopReading;
 
+document.getElementById("saveBtn")
+    .onclick = saveCurrentVerse;
+
 function startReading() {
 
     if (!bibleLoaded) {
@@ -211,4 +214,99 @@ function parseReference(text) {
         verse:
             parseInt(match[3])
     };
+}
+// ------------------------------------------------------------
+// Save current verse
+// ------------------------------------------------------------
+
+function saveCurrentVerse() {
+
+    alert("SAVE BUTTON WORKS");
+
+    const verseText =
+        getVerse(
+            currentBook,
+            currentChapter,
+            currentVerse
+        );
+
+    if (!verseText) return;
+
+    const verseRef =
+        `${currentBook} ${currentChapter}:${currentVerse}`;
+
+    const choice =
+        document.getElementById("listSelect").value;
+
+    const verseObj = {
+        ref: verseRef,
+        text: verseText
+    };
+
+    if (choice === "1") {
+
+        saveToList(
+            "mem_list_1",
+            verseObj
+        );
+
+    } else if (choice === "2") {
+
+        saveToList(
+            "mem_list_2",
+            verseObj
+        );
+
+    } else if (choice === "3") {
+
+        saveToList(
+            "mem_list_3",
+            verseObj
+        );
+
+    } else {
+
+        saveToList(
+            "mem_list_1",
+            verseObj
+        );
+
+        saveToList(
+            "mem_list_2",
+            verseObj
+        );
+
+        saveToList(
+            "mem_list_3",
+            verseObj
+        );
+    }
+
+    alert(
+        `Saved ${verseRef}`
+    );
+}
+
+function saveToList(
+    key,
+    verseObj
+) {
+
+    let list =
+        JSON.parse(
+            localStorage.getItem(key)
+            || "[]"
+        );
+
+    if (!list.some(v =>
+        v.ref === verseObj.ref
+    )) {
+
+        list.push(verseObj);
+
+        localStorage.setItem(
+            key,
+            JSON.stringify(list)
+        );
+    }
 }
