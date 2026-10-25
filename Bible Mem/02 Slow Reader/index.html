@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bible Reader</title>
     <link rel="stylesheet" href="reader.css">
 
@@ -30,6 +28,22 @@
         <div id="currentVerseDisplay"></div>
 
         <div id="controls">
+<div id="speedControl">
+
+    <label for="speedSlider">
+        Pause Between Words:
+        <span id="speedLabel">1500</span> ms
+    </label>
+
+    <input
+        type="range"
+        id="speedSlider"
+        min="500"
+        max="3000"
+        step="100"
+        value="1500">
+
+</div>
             <button id="startBtn">Start Reading</button>
             <button id="pauseBtn">Pause</button>
             <button id="stopBtn">Stop Reading</button>
@@ -48,7 +62,7 @@
     </div>
 
     <script src="bibleData.js"></script>
-    <script src="reader_v8.js"></script>
+    <script src="reader_v9.js"></script>
 
 </body>
 </html>

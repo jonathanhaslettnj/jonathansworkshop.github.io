@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background: #f4f4f4;
+    background: #f7f7f7;
     margin: 0;
     padding: 0;
 }
@@ -8,61 +8,80 @@ body {
 #app {
     max-width: 700px;
     margin: auto;
-    padding: 12px;
+    padding: 2rem;
 }
 
 h1 {
     text-align: center;
-    margin: 15px 0;
-    color: #333;
-    font-size: 1.8rem;
+    margin-bottom: 2rem;
 }
 
 #referenceInput,
 #versionSelect,
 #listSelect {
     width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
     box-sizing: border-box;
-    padding: 14px;
-    margin-bottom: 12px;
-    font-size: 18px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
-
-#currentVerseDisplay {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    min-height: 150px;
-    font-size: 1.6rem;
-    line-height: 1.8;
-    box-shadow: 0 2px 6px rgba(0,0,0,.1);
-    margin-bottom: 15px;
 }
 
 #controls {
     display: flex;
-    gap: 8px;
-    margin-bottom: 12px;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+#speedControl {
+    margin-bottom: 20px;
 }
 
+#speedSlider {
+    width: 100%;
+}
 button {
     flex: 1;
-    border: none;
-    border-radius: 8px;
-    padding: 14px;
-    background: #4a6cf7;
-    color: white;
-    font-size: 1rem;
+    padding: 1rem;
+    font-size: 1.1rem;
+    margin: 0 0.5rem;
     cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    background-color: #4a6cf7;
+    color: white;
+}
+
+button:hover {
+    background-color: #3a56c9;
 }
 
 #saveBtn {
     width: 100%;
+    margin-top: 1rem;
 }
 
+/* One-word display area */
+
+#currentVerseDisplay {
+    background: white;
+    border-radius: 12px;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 4rem;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 25px;
+    padding: 20px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    word-break: break-word;
+}
 @media (max-width: 600px) {
+
+    #app {
+        padding: 10px;
+    }
 
     #controls {
         flex-direction: column;
@@ -70,15 +89,17 @@ button {
 
     button {
         width: 100%;
-        margin: 2px 0;
-    }
-
-    h1 {
-        font-size: 1.5rem;
+        margin: 4px 0;
     }
 
     #currentVerseDisplay {
-        font-size: 1.8rem;
-        min-height: 200px;
+        min-height: 350px;
+        font-size: 3.5rem;
+    }
+
+    #referenceInput,
+    #versionSelect,
+    #listSelect {
+        font-size: 1.2rem;
     }
 }
