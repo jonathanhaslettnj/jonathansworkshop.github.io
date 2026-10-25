@@ -154,7 +154,7 @@ button:hover {
 
     #currentVerseDisplay {
 
-        height: 30vh;
+        height: 20vh;
 
         font-size: clamp(4rem, 14vw, 7rem);
     }
