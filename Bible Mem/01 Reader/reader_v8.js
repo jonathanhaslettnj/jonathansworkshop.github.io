@@ -1,3 +1,4 @@
+
 let isReading = false;
 let isPaused = false;
 
