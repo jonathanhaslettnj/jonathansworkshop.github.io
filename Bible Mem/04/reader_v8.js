@@ -218,7 +218,7 @@ function speakVerse(text, callback) {
         utter.lang = "en-US";
     }
 
-    utter.rate = 1.1;
+    utter.rate = .7;
 
     utter.onend = () => callback();
 
