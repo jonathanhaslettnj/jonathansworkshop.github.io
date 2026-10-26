@@ -1,211 +1,148 @@
-/* =====================================================
-   Bible Slow Reader v10
-   iPhone Optimized
-   ===================================================== */
 
 body {
     font-family: Arial, sans-serif;
+    background: #f4f4f4;
     margin: 0;
     padding: 0;
-    background: #f5f5f5;
-    color: #222;
 }
 
 #app {
     max-width: 700px;
     margin: auto;
-    padding: 15px;
+    padding: 12px;
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 15px;
+    margin: 15px 0;
+    color: #333;
+    font-size: 1.8rem;
 }
-
-/* -----------------------------------------------------
-   Inputs
-   ----------------------------------------------------- */
 
 #referenceInput,
 #versionSelect,
-#listSelect {
-
+#listSelect,
+#bookSelect,
+#chapterInput,
+#verseInput {
     width: 100%;
-    padding: 12px;
-    font-size: 1.1rem;
-    margin-bottom: 12px;
     box-sizing: border-box;
-
+    padding: 14px;
+    margin-bottom: 12px;
+    font-size: 18px;
     border: 1px solid #ccc;
     border-radius: 8px;
 }
 
-/* -----------------------------------------------------
-   Word Display Box
-   ----------------------------------------------------- */
-
 #currentVerseDisplay {
-
     background: white;
-    border-radius: 16px;
-
-    height: 25vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-
-    font-size: clamp(3rem, 10vw, 6rem);
-    font-weight: bold;
-
-    color: #222;
-
-    margin-bottom: 20px;
-
-    padding: 15px;
-
-    box-shadow: 0 0 10px rgba(0,0,0,.10);
-
-    word-break: break-word;
-}
-
-/* -----------------------------------------------------
-   Speed Slider
-   ----------------------------------------------------- */
-
-#speedControl {
-
-    margin-top: 10px;
-    margin-bottom: 25px;
-}
-
-#speedControl label {
-
-    display: block;
-
-    margin-bottom: 10px;
-
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-#speedSlider {
-
-    width: 100%;
-    height: 36px;
-    cursor: pointer;
-}
-
-/* -----------------------------------------------------
-   Buttons
-   ----------------------------------------------------- */
-
-#controls {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr 1fr;
-
-    gap: 8px;
-
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 150px;
+    font-size: 1.6rem;
+    line-height: 1.8;
+    box-shadow: 0 2px 6px rgba(0,0,0,.1);
     margin-bottom: 15px;
 }
 
+#controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
 button {
-
-    min-height: 60px;
-
+    flex: 1;
     border: none;
-
     border-radius: 8px;
-
+    padding: 14px;
     background: #4a6cf7;
-
     color: white;
-
-    font-size: 1.1rem;
-
+    font-size: 1rem;
     cursor: pointer;
 }
 
-button:hover {
-
-    background: #3554d4;
-}
-
 #saveBtn {
-
     width: 100%;
-    margin-top: 10px;
 }
 
-/* -----------------------------------------------------
-   iPhone Layout
-   ----------------------------------------------------- */
+/* ---------------- */
+/* Theme Toggle     */
+/* ---------------- */
+
+#themeToggle {
+    width: 100%;
+    margin-bottom: 12px;
+    background: #333;
+}
+
+#themeToggle:hover {
+    background: #555;
+}
+
+/* ---------------- */
+/* Dark Mode        */
+/* ---------------- */
+
+body.dark-mode {
+    background: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode #app {
+    background: #121212;
+}
+
+body.dark-mode h1 {
+    color: #ffffff;
+}
+
+body.dark-mode #referenceInput,
+body.dark-mode #versionSelect,
+body.dark-mode #listSelect,
+body.dark-mode #bookSelect,
+body.dark-mode #chapterInput,
+body.dark-mode #verseInput {
+    background: #1e1e1e;
+    color: #ffffff;
+    border: 1px solid #444;
+}
+
+body.dark-mode #currentVerseDisplay {
+    background: #1e1e1e;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,.5);
+}
+
+body.dark-mode button {
+    background: #5c7cff;
+}
+
+body.dark-mode button:hover {
+    background: #7994ff;
+}
+
+/* ---------------- */
+/* Mobile Layout    */
+/* ---------------- */
 
 @media (max-width: 600px) {
 
-    #app {
-
-        padding: 10px;
-    }
-
-    #currentVerseDisplay {
-
-        height: 20vh;
-
-        font-size: clamp(4rem, 14vw, 7rem);
+    #controls {
+        flex-direction: column;
     }
 
     button {
-
-        min-height: 65px;
-
-        font-size: 1.15rem;
+        width: 100%;
+        margin: 2px 0;
     }
 
-    #speedControl label {
-
-        font-size: 1.05rem;
-    }
-}
-
-/* -----------------------------------------------------
-   Dark Mode
-   ----------------------------------------------------- */
-
-@media (prefers-color-scheme: dark) {
-
-    body {
-
-        background: #111;
-        color: white;
+    h1 {
+        font-size: 1.5rem;
     }
 
     #currentVerseDisplay {
-
-        background: #222;
-        color: white;
-    }
-
-    #referenceInput,
-    #versionSelect,
-    #listSelect {
-
-        background: #333;
-        color: white;
-        border: 1px solid #555;
-    }
-
-    button {
-
-        background: #5a7cff;
-    }
-
-    button:hover {
-
-        background: #7390ff;
+        font-size: 1.8rem;
+        min-height: 200px;
     }
 }
