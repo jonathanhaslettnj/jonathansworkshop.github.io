@@ -232,4 +232,6 @@ function saveToList(key, verseObj) {
         localStorage.setItem(key, JSON.stringify(list));
     }
 }
-initializeBible();
+window.addEventListener("load", () => {
+    initializeBible();
+});

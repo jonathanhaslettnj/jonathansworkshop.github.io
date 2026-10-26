@@ -32,8 +32,15 @@ async function loadBible(versionName) {
         const response =
             await fetch(file);
 
+        console.log("Fetched:", file);
+
         Bible =
             await response.json();
+
+        console.log(
+            "Books loaded:",
+            Object.keys(Bible).length
+        );
 
         bibleLoaded = true;
 
