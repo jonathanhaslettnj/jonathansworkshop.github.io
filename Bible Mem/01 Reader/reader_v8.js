@@ -1,7 +1,6 @@
 
 let isReading = false;
 let isPaused = false;
-
 let currentBook = "";
 let currentChapter = 0;
 let currentVerse = 0;
@@ -9,7 +8,6 @@ let currentVerse = 0;
 
 const display = document.getElementById("currentVerseDisplay");
 const input = document.getElementById("referenceInput");
-
 async function initializeBible() {
 
     const versionName =

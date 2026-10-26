@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     background: #f4f4f4;
@@ -20,7 +21,10 @@ h1 {
 
 #referenceInput,
 #versionSelect,
-#listSelect {
+#listSelect,
+#bookSelect,
+#chapterInput,
+#verseInput {
     width: 100%;
     box-sizing: border-box;
     padding: 14px;
@@ -61,6 +65,66 @@ button {
 #saveBtn {
     width: 100%;
 }
+
+/* ---------------- */
+/* Theme Toggle     */
+/* ---------------- */
+
+#themeToggle {
+    width: 100%;
+    margin-bottom: 12px;
+    background: #333;
+}
+
+#themeToggle:hover {
+    background: #555;
+}
+
+/* ---------------- */
+/* Dark Mode        */
+/* ---------------- */
+
+body.dark-mode {
+    background: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode #app {
+    background: #121212;
+}
+
+body.dark-mode h1 {
+    color: #ffffff;
+}
+
+body.dark-mode #referenceInput,
+body.dark-mode #versionSelect,
+body.dark-mode #listSelect,
+body.dark-mode #bookSelect,
+body.dark-mode #chapterInput,
+body.dark-mode #verseInput {
+    background: #1e1e1e;
+    color: #ffffff;
+    border: 1px solid #444;
+}
+
+body.dark-mode #currentVerseDisplay {
+    background: #1e1e1e;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,.5);
+}
+
+body.dark-mode button {
+    background: #5c7cff;
+}
+
+body.dark-mode button:hover {
+    background: #7994ff;
+}
+
+/* ---------------- */
+/* Mobile Layout    */
+/* ---------------- */
 
 @media (max-width: 600px) {
 
