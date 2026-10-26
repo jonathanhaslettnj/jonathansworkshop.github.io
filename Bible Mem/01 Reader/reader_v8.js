@@ -10,10 +10,80 @@ let currentVerse = 0;
 const display = document.getElementById("currentVerseDisplay");
 const input = document.getElementById("referenceInput");
 
+async function initializeBible() {
+
+    const versionName =
+        document.getElementById("versionSelect").value;
+
+    await loadBible(versionName);
+
+    if (bibleLoaded) {
+        populateBooks();
+    }
+}
+
+function populateBooks() {
+
+    const select =
+        document.getElementById("bookSelect");
+
+    select.innerHTML = "";
+
+    Object.keys(Bible).forEach(book => {
+
+        const option =
+            document.createElement("option");
+
+        option.value = book;
+        option.textContent = book;
+
+        select.appendChild(option);
+    });
+}
+
+function goToSelectedVerse() {
+
+    console.log("GO clicked");
+
+    const book =
+        document.getElementById("bookSelect").value;
+
+    const chapter =
+        document.getElementById("chapterInput").value;
+
+    const verse =
+        document.getElementById("verseInput").value;
+
+    console.log(book, chapter, verse);
+
+    const verseText =
+        getVerse(book, chapter, verse);
+
+    console.log("Verse:", verseText);
+
+    if (!verseText) {
+        display.textContent = "Verse not found";
+        return;
+    }
+
+    currentBook = book;
+    currentChapter = parseInt(chapter);
+    currentVerse = parseInt(verse);
+
+    input.value = `${book} ${chapter}:${verse}`;
+
+    display.textContent = verseText;
+}
+
+
+
+
 document.getElementById("startBtn").onclick = startReading;
 document.getElementById("pauseBtn").onclick = pauseReading;
 document.getElementById("stopBtn").onclick = stopReading;
 document.getElementById("saveBtn").onclick = saveCurrentVerse;
+document.getElementById("goToVerseBtn").onclick =
+    goToSelectedVerse;
 
 // ------------------------------------------------------------
 // Start Reading
@@ -87,6 +157,14 @@ function readNextVerse() {
 
     // ⭐ Update input box with current reference
     input.value = `${currentBook} ${currentChapter}:${currentVerse}`;
+document.getElementById("bookSelect").value =
+    currentBook;
+
+document.getElementById("chapterInput").value =
+    currentChapter;
+
+document.getElementById("verseInput").value =
+    currentVerse;
 
     // Display full verse (no reference here, because Option A puts it in the input box)
     display.textContent = verseText;
@@ -154,3 +232,4 @@ function saveToList(key, verseObj) {
         localStorage.setItem(key, JSON.stringify(list));
     }
 }
+initializeBible();

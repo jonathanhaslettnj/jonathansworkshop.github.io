@@ -21,16 +21,29 @@ function getVerse(book, chapter, verse) {
 
 // Load selected Bible version from JSON
 async function loadBible(versionName) {
+
     bibleLoaded = false;
 
-    const file = versionName.toLowerCase() + ".json";
+    const file =
+        versionName.toLowerCase() + ".json";
 
     try {
-        const response = await fetch(file);
-        Bible = await response.json();
+
+        const response =
+            await fetch(file);
+
+        Bible =
+            await response.json();
+
         bibleLoaded = true;
+
     } catch (err) {
-        console.error("Error loading Bible:", err);
+
+        console.error(
+            "Error loading Bible:",
+            err
+        );
+
         bibleLoaded = false;
     }
 }

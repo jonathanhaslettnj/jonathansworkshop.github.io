@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bible Reader</title>
+
     <link rel="stylesheet" href="reader.css">
 
     <style>
@@ -12,43 +12,96 @@
             color: red;
             font-weight: bold;
         }
+
+        #verseSelector {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        #verseSelector select,
+        #verseSelector input {
+            flex: 1;
+            padding: 10px;
+        }
+
+        #goToVerseBtn {
+            flex: 1;
+        }
+
+        @media (max-width: 600px) {
+            #verseSelector {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
+
 <body>
 
-    <div id="app">
-        <h1>Bible Reader</h1>
+<div id="app">
 
-        <input id="referenceInput" type="text" placeholder="Enter verse (e.g., John 3:16)">
+    <h1>Bible Reader</h1>
 
-        <select id="versionSelect">
-            <option value="kjv">KJV</option>
-            <option value="bbe">BBE</option>
-            <option value="asv">ASV</option>
+    <input
+        id="referenceInput"
+        type="text"
+        placeholder="Enter verse (e.g., John 3:16)"
+    >
+
+    <div id="verseSelector">
+
+        <select id="bookSelect">
+            <option>Loading Bible...</option>
         </select>
 
-        <div id="currentVerseDisplay"></div>
+        <input
+            type="number"
+            id="chapterInput"
+            min="1"
+            value="1"
+        >
 
-        <div id="controls">
-            <button id="startBtn">Start Reading</button>
-            <button id="pauseBtn">Pause</button>
-            <button id="stopBtn">Stop Reading</button>
-        </div>
+        <input
+            type="number"
+            id="verseInput"
+            min="1"
+            value="1"
+        >
 
-        <select id="listSelect">
-            <option value="1">List 1</option>
-            <option value="2">List 2</option>
-            <option value="3">List 3</option>
-            <option value="all">All Lists</option>
-        </select>
-
-        <button id="saveBtn">Save Verse</button>
-
+        <button id="goToVerseBtn">
+            Go
+        </button>
 
     </div>
 
-    <script src="bibleData.js"></script>
-    <script src="reader_v8.js"></script>
+    <select id="versionSelect">
+        <option value="kjv">KJV</option>
+        <option value="bbe">BBE</option>
+        <option value="asv">ASV</option>
+    </select>
+
+    <div id="currentVerseDisplay"></div>
+
+    <div id="controls">
+        <button id="startBtn">Start Reading</button>
+        <button id="pauseBtn">Pause</button>
+        <button id="stopBtn">Stop Reading</button>
+    </div>
+
+    <select id="listSelect">
+        <option value="1">List 1</option>
+        <option value="2">List 2</option>
+        <option value="3">List 3</option>
+        <option value="all">All Lists</option>
+    </select>
+
+    <button id="saveBtn">Save Verse</button>
+
+</div>
+
+<script src="bibleData.js"></script>
+<script src="reader_v8.js"></script>
 
 </body>
 </html>
