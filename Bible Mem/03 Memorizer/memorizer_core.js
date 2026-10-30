@@ -29,7 +29,7 @@ const statusDisplay = document.getElementById("statusDisplay");
 const wordInput = document.getElementById("wordInput");
 
 const nextBtn = document.getElementById("nextBtn");
-const repeatBtn = document.getElementById("repeatBtn");
+const playBtn = document.getElementById("playBtn");
 const resetBtn = document.getElementById("resetBtn");
 
 const userRefInput = document.getElementById("userRefInput");
@@ -38,26 +38,93 @@ const addUserVerseBtn = document.getElementById("addUserVerseBtn");
 const userVersesDiv = document.getElementById("user-verses");
 
 const listSelector = document.getElementById("mv_list_selector");
-const loadListBtn = document.getElementById("mv_load_list_btn");
 
-const voiceStartBtn = document.getElementById("voiceStartBtn");
-const voiceStopBtn = document.getElementById("voiceStopBtn");
+const voiceToggleBtn =
+    document.getElementById("voiceToggleBtn");
 
 let currentWords = [];
 let index = 0;
 let mistakes = 0;
 
+let voiceControlEnabled = false;
+
+// =====================================
+// TEXT-TO-SPEECH
+// =====================================
 // =====================================
 // TEXT-TO-SPEECH
 // =====================================
 
+let speechVoices = [];
+
+function loadVoices() {
+    speechVoices = speechSynthesis.getVoices();
+}
+
+loadVoices();
+
+if (speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = loadVoices;
+}
+
+function detectSpanish(text) {
+    return (
+        /[áéíóúñü¿¡]/i.test(text) ||
+        /\b(dios|jesús|jesucristo|señor|porque|amor|vida|verdad|cielo|tierra|gracia|fe|pecado|salvación|mundo|padre|hijo)\b/i.test(text)
+    );
+}
+
+function findVoice(langPrefix) {
+    return speechVoices.find(v =>
+        v.lang &&
+        v.lang.toLowerCase().startsWith(langPrefix.toLowerCase())
+    );
+}
+
 function speak(text) {
     if (!text) return;
+
     const u = new SpeechSynthesisUtterance(text);
+
     u.rate = 1.0;
     u.pitch = 1.0;
+
+    if (detectSpanish(text)) {
+        u.lang = "es-ES";
+
+        const spanishVoice =
+            findVoice("es") ||
+            findVoice("es-es") ||
+            findVoice("es-mx");
+
+        if (spanishVoice) {
+            u.voice = spanishVoice;
+        }
+
+        if (DEV_MODE) {
+            console.log("Spanish voice:", spanishVoice ? spanishVoice.name : "none found");
+        }
+    } else {
+        u.lang = "en-US";
+
+        const englishVoice = findVoice("en");
+
+        if (englishVoice) {
+            u.voice = englishVoice;
+        }
+
+        if (DEV_MODE) {
+            console.log("English voice:", englishVoice ? englishVoice.name : "none found");
+        }
+    }
+
     speechSynthesis.speak(u);
 }
+
+
+
+
+
 
 // =====================================
 // BEEP SOUND
@@ -78,17 +145,31 @@ function beep() {
 // =====================================
 
 function onLoadVerse(text, reference) {
-    let [bookAndChapter, verseStr] = reference.split(":");
-    let parts = bookAndChapter.trim().split(" ");
 
+    let [bookAndChapter, verseStr] = reference.split(":");
+
+    let parts = bookAndChapter.trim().split(" ");
     let verse = verseStr;
     let chapter = parts.pop();
     let book = parts.join(" ");
 
-    speak(book + " chapter " + chapter + ", verse " + verse);
+    if (detectSpanish(text)) {
+
+        // Spanish reference announcement
+        speak(book + " capítulo " + chapter + ", versículo " + verse);
+
+    } else {
+
+        // English reference announcement
+        speak(book + " chapter " + chapter + ", verse " + verse);
+
+    }
+
     speak(text);
 
-    if (DEV_MODE) console.log("Loaded verse:", reference);
+    if (DEV_MODE) {
+        console.log("Loaded verse:", reference);
+    }
 }
 
 function onCorrectWord(expected) {
@@ -178,33 +259,59 @@ function updateVerseDisplay() {
 // BUTTONS
 // =====================================
 
-repeatBtn.addEventListener("click", () => {
+playBtn.addEventListener("click", () => {
     index = 0;
     mistakes = 0;
     updateVerseDisplay();
-    statusDisplay.textContent = "Repeat verse. Type the first word.";
+    statusDisplay.textContent = "Play verse. Type the first word.";
     wordInput.value = "";
     wordInput.focus();
 
-    let reference = refInput.value.trim();
-    if (!reference) return;
+let reference = refInput.value.trim();
+
+if (!reference) {
+
+    if (currentList.length === 0) {
+        statusDisplay.textContent =
+            "No verses in this list.";
+        return;
+    }
+
+    currentVerseIndex = 0;
+
+    reference = currentList[0].ref;
+
+    refInput.value = reference;
+}
 
     let match = currentList.find(v => v.ref.toLowerCase() === reference.toLowerCase());
     if (match) onLoadVerse(match.text, match.ref);
 });
 
 resetBtn.addEventListener("click", () => {
-    refInput.value = "";
-    verseDisplay.textContent = "";
-    statusDisplay.textContent = "";
-    wordInput.value = "";
-    currentWords = [];
-    index = 0;
-    mistakes = 0;
 
-    if (DEV_MODE) console.log("Reset memorizer");
+    if (currentList.length === 0) {
+        statusDisplay.textContent =
+            "No verses in this list.";
+        return;
+    }
+
+    currentVerseIndex = 0;
+
+    const firstVerse =
+        currentList[0].ref;
+
+    refInput.value = firstVerse;
+
+    loadVerse(firstVerse);
+
+    statusDisplay.textContent =
+        "Restarted at beginning of list.";
+
+    if (DEV_MODE) {
+        console.log("Restarted list.");
+    }
 });
-
 // =====================================
 // ADD VERSE (TO CURRENT LIST)
 // =====================================
@@ -280,6 +387,11 @@ function renderUserVerses() {
             loadSelectedList();
 
             if (DEV_MODE) console.log("Deleted verse at index:", idx, "from list", currentListName);
+
+if (currentList.length > 0) {
+    refInput.value = currentList[0].ref;
+}
+
         });
     });
 }
@@ -312,10 +424,14 @@ function loadSelectedList() {
     if (DEV_MODE) console.log("Loaded list:", currentListName);
 }
 
-loadListBtn.addEventListener("click", loadSelectedList);
+listSelector.addEventListener(
+    "change",
+    loadSelectedList
+);
 
 // Load list C by default
 loadSelectedList();
+updateVoiceButton();
 
 // =====================================
 // VOICE COMMANDS
@@ -337,7 +453,8 @@ if (window.SpeechRecognition) {
         if (DEV_MODE) console.log("Voice command:", transcript);
 
         if (transcript.includes("next")) loadNextVerse();
-        else if (transcript.includes("repeat")) repeatBtn.click();
+else if (transcript.includes("repeat")) playBtn.click();
+else if (transcript.includes("play")) playBtn.click();
         else if (transcript.includes("start over")) resetBtn.click();
         else if (transcript.includes("load list a")) {
             listSelector.value = "A";
@@ -366,25 +483,75 @@ if (window.SpeechRecognition) {
     console.warn("SpeechRecognition not supported in this browser.");
 }
 
+function updateVoiceButton() {
+
+    if (!voiceToggleBtn) return;
+
+    if (voiceControlEnabled) {
+
+        voiceToggleBtn.textContent =
+            "🟢 Voice Control ON";
+
+    } else {
+
+        voiceToggleBtn.textContent =
+            "🔴 Voice Control OFF";
+    }
+}
+
+
+
+
 function startVoiceControl() {
     if (!recognizer) {
         statusDisplay.textContent = "Voice control not supported in this browser.";
         return;
     }
     recognizer.start();
-    statusDisplay.textContent = "Voice control started. Say: 'next', 'repeat', 'start over', 'load list A/B/C', 'read verse', 'stop'.";
+   
+statusDisplay.textContent =
+"Voice control ON.";
+
+
+
     if (DEV_MODE) console.log("Voice control started.");
 }
 
 function stopVoiceControl() {
     if (!recognizer) return;
     recognizer.stop();
-    statusDisplay.textContent = "Voice control stopped.";
+
+
+statusDisplay.textContent =
+"Voice control OFF.";
+
+
+
     if (DEV_MODE) console.log("Voice control stopped.");
 }
 
-voiceStartBtn.addEventListener("click", startVoiceControl);
-voiceStopBtn.addEventListener("click", stopVoiceControl);
+
+voiceToggleBtn.addEventListener(
+    "click",
+    () => {
+
+        if (!voiceControlEnabled) {
+
+            startVoiceControl();
+            voiceControlEnabled = true;
+
+        } else {
+
+            stopVoiceControl();
+            voiceControlEnabled = false;
+        }
+
+        updateVoiceButton();
+    }
+);
+
+
+
 
 // =====================================
 // INTEGRITY CHECK

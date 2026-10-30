@@ -1,207 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>The Talking Bible Verse Memorizer</title>
+<meta charset="UTF-8">
+<title>The Talking Bible Verse Memorizer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
 
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 1rem;
-      background: #f7f7f7;
-      font-size: 1.2rem;
-      line-height: 1.5;
-    }
+body{
+    font-family:sans-serif;
+    margin:0;
+    padding:1rem;
+    background:#f7f7f7;
+    font-size:1.2rem;
+    line-height:1.5;
+}
 
-    h1, h2 {
-      color: darkblue;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
+h1,h2{
+    color:darkblue;
+    text-align:center;
+    margin-bottom:1rem;
+}
 
-    label {
-      display: block;
-      margin-top: 1rem;
-      font-weight: bold;
-    }
+label{
+    display:block;
+    margin-top:1rem;
+    font-weight:bold;
+}
 
-    input[type="text"], select {
-      width: 100%;
-      padding: 0.8rem;
-      font-size: 1.2rem;
-      border-radius: 8px;
-      border: 1px solid #999;
-      margin-top: 0.3rem;
-      box-sizing: border-box;
-    }
+input[type="text"],
+select{
+    width:100%;
+    padding:0.8rem;
+    font-size:1.2rem;
+    border-radius:8px;
+    border:1px solid #999;
+    margin-top:0.3rem;
+    box-sizing:border-box;
+}
 
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 1rem;
-    }
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:1rem;
+}
 
-    button {
-      padding: 0.6rem 1rem;
-      font-size: 1rem;
-      border-radius: 8px;
-      border: none;
-      background: #005bbb;
-      color: white;
-      flex: 0 0 auto;
-    }
+button{
+    padding:0.6rem 1rem;
+    font-size:1rem;
+    border-radius:8px;
+    border:none;
+    background:#005bbb;
+    color:white;
+    flex:0 0 auto;
+    cursor:pointer;
+}
 
-    button:active {
-      background: #004999;
-    }
+button:active{
+    background:#004999;
+}
 
-    .delete-btn {
-      background: #bb0000;
-    }
+.delete-btn{
+    background:#bb0000;
+}
 
-    #verseDisplay {
-      font-size: 1.3rem;
-      margin-top: 1rem;
-      min-height: 2rem;
-    }
+#verseDisplay{
+    font-size:1.3rem;
+    margin-top:1rem;
+    min-height:2rem;
+}
 
-    #statusDisplay {
-      font-size: 1.1rem;
-      margin-top: 0.5rem;
-      color: #444;
-      min-height: 1.5rem;
-    }
+#statusDisplay{
+    font-size:1.1rem;
+    margin-top:0.5rem;
+    color:#444;
+    min-height:1.5rem;
+}
 
-    #user-verses {
-      margin-top: 1rem;
-      font-size: 1.1rem;
-    }
+#user-verses{
+    margin-top:1rem;
+    font-size:1.1rem;
+}
 
-    .verse-item {
-      background: white;
-      padding: 0.8rem;
-      border-radius: 8px;
-      margin-bottom: 0.8rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-    }
+.verse-item{
+    background:white;
+    padding:0.8rem;
+    border-radius:8px;
+    margin-bottom:0.8rem;
+    box-shadow:0 1px 3px rgba(0,0,0,0.15);
+}
 
-    hr {
-      margin: 2rem 0;
-    }
+hr{
+    margin:2rem 0;
+}
 
-    .return-box {
-      background: #e6f2ff;
-      border: 2px solid #7aaee6;
-      padding: 12px;
-      margin: 40px auto 0 auto;
-      width: 70%;
-      max-width: 350px;
-      border-radius: 8px;
-      font-size: 20px;
-      text-align: center;
-    }
+.return-box{
+    background:#e6f2ff;
+    border:2px solid #7aaee6;
+    padding:12px;
+    margin:40px auto 0 auto;
+    width:70%;
+    max-width:350px;
+    border-radius:8px;
+    font-size:20px;
+    text-align:center;
+}
 
-    .qr-section {
-      text-align: center;
-      margin-top: 40px;
-    }
+.qr-section{
+    text-align:center;
+    margin-top:40px;
+}
 
-    .qr-section img {
-      max-width: 200px;
-      display: inline-block;
-    }
+.qr-section img{
+    max-width:200px;
+    display:inline-block;
+}
 
-    /* Short input boxes — about 20 characters wide */
-    #refInput,
-    #wordInput,
-    #userRefInput {
-      width: 20ch;
-    }
+/* Short input boxes */
 
-    #wordInput {
-      display: inline-block;
-    }
+#refInput,
+#wordInput,
+#userRefInput{
+    width:20ch;
+}
 
-    /* Shorten the verse list selector */
-    #mv_list_selector {
-      width: 10ch;
-      display: inline-block;
-    }
-  </style>
+#wordInput{
+    display:inline-block;
+}
+
+/* List selector */
+
+#mv_list_selector{
+    width:10ch;
+    display:inline-block;
+}
+
+/* Voice toggle */
+
+#voiceToggleBtn{
+    min-width:220px;
+    font-weight:bold;
+}
+
+</style>
 </head>
 
 <body>
 
-  <h1>The Talking Bible Verse Memorizer</h1>
-  <h2>Voice Control</h2>
+<h1>The Talking Bible Verse Memorizer</h1>
 
-  <!-- LIST SELECTOR -->
-  <label for="mv_list_selector"><strong>Choose verse list:</strong></label>
-  <select id="mv_list_selector">
+<h2>Voice Control</h2>
+
+<label for="mv_list_selector">
+    <strong>Choose verse list:</strong>
+</label>
+
+<select id="mv_list_selector">
     <option value="A">List A (mem_list_1)</option>
     <option value="B">List B (mem_list_2)</option>
     <option value="C">List C (mem_list_3)</option>
-  </select>
-  <button id="mv_load_list_btn">Load Selected List</button>
+</select>
 
-  <!-- VOICE CONTROL -->
-  <div class="button-row">
-    <button id="voiceStartBtn">🎤 Start Voice Control</button>
-    <button id="voiceStopBtn">🛑 Stop Voice Control</button>
-  </div>
+<div class="button-row">
+    <button id="voiceToggleBtn">
+        🔴 Voice Control OFF
+    </button>
+</div>
 
-  <!-- Memorizer -->
-  <label for="refInput">Reference: (Type then press Enter)</label>
-  <input id="refInput" type="text" placeholder="John 1:1">
+<label for="refInput">
+    Reference: (Type then press Enter)
+</label>
 
-  <p id="verseDisplay"></p>
-  <p id="statusDisplay"></p>
+<input
+    id="refInput"
+    type="text"
+    placeholder="John 1:1"
+>
 
-  <label for="wordInput">Type next word:</label>
-  <input id="wordInput" type="text">
+<p id="verseDisplay"></p>
 
-  <div class="button-row">
-    <button id="nextBtn">Next Verse ▶</button>
-    <button id="repeatBtn">Repeat Verse ↻</button>
-    <button id="resetBtn">Start Over</button>
-  </div>
+<p id="statusDisplay"></p>
 
-  <hr>
+<label for="wordInput">
+    Type next word:
+</label>
 
-  <h2>Add to Your List of Verses</h2>
+<input
+    id="wordInput"
+    type="text"
+>
 
-  <label for="userRefInput">Reference:</label>
-  <input id="userRefInput" type="text" placeholder="John 1:1">
+<div class="button-row">
 
-  <label for="userTextInput">Verse text:</label>
-  <input id="userTextInput" type="text" placeholder="In the beginning was the Word...">
+    <button id="playBtn">
+        ▶ Play
+    </button>
 
-  <div class="button-row">
-    <button id="addUserVerseBtn">Add to My List of Verses</button>
-  </div>
+    <button id="nextBtn">
+        ⏭ Next Verse
+    </button>
 
-  <h2>Your Verses</h2>
-  <div id="user-verses"></div>
+    <button id="resetBtn">
+        ⟲ Start Over
+    </button>
 
-  <script src="memorizer_core.js?v=9"></script>
-  <script src="memorizer_input.js?v=9"></script>
+</div>
 
-  <div class="return-box">
-    <a href="https://literalword.com/esv">Literal Word,ESV</a>
-  </div>
+<hr>
 
-  <div class="return-box">
-    <a href="https://jonathansworkshop.online/memorizer/index.html">Bible Memorizer Information</a>
-  </div>
+<h2>Add to Your List of Verses</h2>
 
-  <div class="qr-section">
+<label for="userRefInput">
+    Reference:
+</label>
+
+<input
+    id="userRefInput"
+    type="text"
+    placeholder="John 1:1"
+>
+
+<label for="userTextInput">
+    Verse text:
+</label>
+
+<input
+    id="userTextInput"
+    type="text"
+    placeholder="In the beginning was the Word..."
+>
+
+<div class="button-row">
+    <button id="addUserVerseBtn">
+        Add to My List of Verses
+    </button>
+</div>
+
+<h2>Your Verses</h2>
+
+<div id="user-verses"></div>
+
+<script src="memorizer_core.js?v=10"></script>
+<script src="memorizer_input.js?v=10"></script>
+
+<div class="return-box">
+    <a href="https://literalword.com/esv">
+        Literal Word.ESV
+    </a>
+</div>
+
+<div class="return-box">
+    <a href="https://jonathansworkshop.online/memorizer/index.html">
+        Bible Memorizer Information
+    </a>
+</div>
+
+<div class="qr-section">
     <h2>Scan to Share the Bible Memorizer</h2>
     <img src="QR Code.jpg" alt="QR Code">
-  </div>
+</div>
 
 </body>
 </html>
