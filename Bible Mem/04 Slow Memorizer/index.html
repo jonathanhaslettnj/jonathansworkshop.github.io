@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Slow Bible Memorizer</title>
+
+    <link rel="stylesheet"
+          href="slowmemorizer.css?v=4">
+</head>
+
+<body>
+
+<div id="app">
+
+    <h1>Slow Bible Memorizer</h1>
+
+    <select id="listSelect">
+        <option value="1">List 1</option>
+        <option value="2">List 2</option>
+        <option value="3">List 3</option>
+    </select>
+
+    <div id="verseReferenceDisplay"></div>
+
+    <div id="currentVerseDisplay">
+        Ready
+    </div>
+
+    <div id="fullVerseDisplay"></div>
+
+    <div id="speedControl">
+
+        <label for="speedSlider">
+            Pause Between Words:
+            <span id="speedLabel">3000</span> ms
+        </label>
+
+        <input
+            id="speedSlider"
+            type="range"
+            min="50"
+            max="10000"
+            step="100"
+            value="3000">
+
+    </div>
+
+    <div id="controls">
+
+        <button id="playBtn">
+            Play
+        </button>
+
+        <button id="pauseBtn">
+            Pause
+        </button>
+
+        <button id="stopBtn">
+            Stop
+        </button>
+
+    </div>
+
+    <div id="navControls">
+
+        <button id="prevBtn">
+            Previous Verse
+        </button>
+
+        <button id="nextBtn">
+            Next Verse
+        </button>
+
+    </div>
+
+    <h2>Verses in Current List</h2>
+
+    <div id="savedVerses"></div>
+
+</div>
+
+<script src="slowmemorizer.js?v=4"></script>
+
+</body>
+</html>
