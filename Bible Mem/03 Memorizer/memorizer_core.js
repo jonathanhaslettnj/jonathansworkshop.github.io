@@ -26,8 +26,6 @@ const toggleVerseBtn =
     document.getElementById("toggleVerseBtn");
 const refInput = document.getElementById("refInput");
 const verseDisplay = document.getElementById("verseDisplay");
-const helpVerseDisplay =
-    document.getElementById("helpVerseDisplay");
 const statusDisplay = document.getElementById("statusDisplay");
 const wordInput = document.getElementById("wordInput");
 
@@ -45,11 +43,25 @@ const listSelector = document.getElementById("mv_list_selector");
 const voiceToggleBtn =
     document.getElementById("voiceToggleBtn");
 
+const verseDialog =
+    document.getElementById("verseDialog");
+
+const verseDialogReference =
+    document.getElementById("verseDialogReference");
+
+const verseDialogText =
+    document.getElementById("verseDialogText");
+
+const closeVerseDialogBtn =
+    document.getElementById("closeVerseDialogBtn");
+
+
 let currentWords = [];
 let index = 0;
 let mistakes = 0;
-let verseVisible = false;
+
 let currentVerseText = "";
+let currentVerseReference = "";
 let voiceControlEnabled = false;
 
 // =====================================
@@ -157,6 +169,8 @@ function onLoadVerse(text, reference) {
     let chapter = parts.pop();
     let book = parts.join(" ");
 
+
+
     if (detectSpanish(text)) {
 
         // Spanish reference announcement
@@ -224,12 +238,11 @@ function loadVerse(reference) {
 currentVerseText = match.text;
     index = 0;
     mistakes = 0;
+currentVerseReference = match.ref;
 
 verseDisplay.textContent = "";
-verseVisible = false;
 toggleVerseBtn.textContent =
     "👁 Show Verse";
-helpVerseDisplay.textContent = "";
 
     statusDisplay.textContent =
         "Listen to the verse, then begin typing.";
@@ -241,33 +254,38 @@ helpVerseDisplay.textContent = "";
 }
 
 
+
 toggleVerseBtn.addEventListener("click", () => {
-    console.log("SHOW VERSE BUTTON CLICKED");
+
     if (!currentVerseText) return;
 
-    if (!verseVisible) {
+    verseDialogReference.textContent =
+        currentVerseReference;
 
-        helpVerseDisplay.textContent =
-            currentVerseText;
+    verseDialogText.textContent =
+        currentVerseText;
 
-        verseVisible = true;
+    verseDialog.showModal();
 
-        toggleVerseBtn.textContent =
-            "🙈 Hide Verse";
+});
+closeVerseDialogBtn.addEventListener("click", () => {
+    verseDialog.close();
+});
+verseDialog.addEventListener("click", (e) => {
 
-    } else {
+    const rect = verseDialog.getBoundingClientRect();
 
-        helpVerseDisplay.textContent = "";
+    const inside =
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom;
 
-        verseVisible = false;
-
-        toggleVerseBtn.textContent =
-            "👁 Show Verse";
-
+    if (!inside) {
+        verseDialog.close();
     }
 
 });
-
 // =====================================
 // NEXT VERSE
 // =====================================
@@ -331,8 +349,7 @@ if (!reference) {
 }
 
     let match = currentList.find(v => v.ref.toLowerCase() === reference.toLowerCase());
-console.log("MATCH OBJECT =", match);
-console.log("MATCH TEXT =", match.text);
+
     if (match) onLoadVerse(match.text, match.ref);
 });
 

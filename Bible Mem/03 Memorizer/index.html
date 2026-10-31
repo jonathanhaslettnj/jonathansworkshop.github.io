@@ -104,17 +104,6 @@ button:active{
     text-align:center;
 }
 
-#helpVerseDisplay{
-    font-size:1.2rem;
-    margin-top:1rem;
-    margin-bottom:1rem;
-    padding:10px;
-    background:#eef6ff;
-    border:1px solid #99c2ff;
-    border-radius:8px;
-    min-height:2rem;
-    text-align:center;
-}
 
 #statusDisplay{
     font-size:1.1rem;
@@ -166,6 +155,34 @@ hr{
     max-width:200px;
     display:inline-block;
 }
+#verseDialog{
+    width:min(90vw,700px);
+    max-height:80vh;
+    padding:20px;
+    border:none;
+    border-radius:12px;
+    box-shadow:0 0 20px rgba(0,0,0,0.30);
+    text-align:center;
+    font-size:1.2rem;
+}
+
+#verseDialog::backdrop{
+    background:rgba(0,0,0,0.55);
+}
+
+#verseDialogReference{
+    color:darkblue;
+    margin-top:0;
+    margin-bottom:15px;
+}
+
+#verseDialogText{
+    line-height:1.8;
+    margin-bottom:20px;
+    white-space:normal;
+    overflow-y:auto;
+}
+
 
 @media (max-width:600px){
 
@@ -190,6 +207,8 @@ hr{
         width:95%;
         max-width:320px;
     }
+
+
 }</style>
 </head>
 
@@ -224,7 +243,7 @@ hr{
     placeholder="John 1:1"
 >
 
-<p id="helpVerseDisplay"></p>
+
 
 <p id="verseDisplay"></p>
 
@@ -312,6 +331,20 @@ hr{
     <h2>Scan to Share the Bible Memorizer</h2>
     <img src="QR Code.jpg" alt="QR Code">
 </div>
+
+<dialog id="verseDialog">
+
+    <h2 id="verseDialogReference"></h2>
+
+    <div id="verseDialogText"></div>
+
+    <div class="button-row">
+        <button id="closeVerseDialogBtn">
+            Close
+        </button>
+    </div>
+
+</dialog>
 </div>
 </body>
 </html>

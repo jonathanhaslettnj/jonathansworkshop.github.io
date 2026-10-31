@@ -61,7 +61,7 @@ wordInput.addEventListener("input", () => {
 
     if (!typed) return;
 
-    /* First keystroke hides full verse */
+
 
 
     let expectedRaw = currentWords[index] || "";
