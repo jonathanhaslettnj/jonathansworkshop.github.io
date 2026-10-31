@@ -1,4 +1,6 @@
 In this v8
 
-This is Spanish capable, has dark mode enabled, but book names in Spanish are not yet correct.
+previous v6 had memory storage working correctly, and worked as a slow, one word at a time reader.
+
+This v8 will have a continuous reader of one verse at a time. 
 
