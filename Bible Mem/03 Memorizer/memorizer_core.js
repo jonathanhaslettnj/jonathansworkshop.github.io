@@ -331,6 +331,8 @@ if (!reference) {
 }
 
     let match = currentList.find(v => v.ref.toLowerCase() === reference.toLowerCase());
+console.log("MATCH OBJECT =", match);
+console.log("MATCH TEXT =", match.text);
     if (match) onLoadVerse(match.text, match.ref);
 });
 
