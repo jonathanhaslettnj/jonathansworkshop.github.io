@@ -5,11 +5,10 @@ let currentBook = "";
 let currentChapter = 0;
 let currentVerse = 0;
 
-
 const display = document.getElementById("currentVerseDisplay");
 const input = document.getElementById("referenceInput");
-async function initializeBible() {
 
+async function initializeBible() {
     const versionName =
         document.getElementById("versionSelect").value;
 
@@ -36,6 +35,7 @@ function populateBooks() {
         option.textContent = book;
 
         select.appendChild(option);
+
     });
 }
 
@@ -68,13 +68,11 @@ function goToSelectedVerse() {
     currentChapter = parseInt(chapter);
     currentVerse = parseInt(verse);
 
-    input.value = `${book} ${chapter}:${verse}`;
+    input.value =
+        `${book} ${chapter}:${verse}`;
 
     display.textContent = verseText;
 }
-
-
-
 
 document.getElementById("startBtn").onclick = startReading;
 document.getElementById("pauseBtn").onclick = pauseReading;
@@ -89,28 +87,37 @@ document.getElementById("goToVerseBtn").onclick =
 
 async function startReading() {
 
-if (isPaused) {
-    isPaused = false;
-    isReading = true;
-    readNextVerse();   // ✔ Resume reading the current verse smoothly
-    return;
-}
+    if (isPaused) {
 
+        isPaused = false;
+        isReading = true;
 
-    // Load the selected Bible version FIRST
-    const versionName = document.getElementById("versionSelect").value;
-    await loadBible(versionName);
+        readNextVerse();
 
-    // NOW check if the Bible finished loading
-    if (!bibleLoaded) {
-        display.textContent = "Bible files are still loading...";
         return;
     }
 
-    // Parse reference
-    const ref = parseReference(input.value);
+    const versionName =
+        document.getElementById("versionSelect").value;
+
+    await loadBible(versionName);
+
+    if (!bibleLoaded) {
+
+        display.textContent =
+            "Bible files are still loading...";
+
+        return;
+    }
+
+    const ref =
+        parseReference(input.value);
+
     if (!ref) {
-        display.textContent = "Invalid reference.";
+
+        display.textContent =
+            "Invalid reference.";
+
         return;
     }
 
@@ -119,22 +126,27 @@ if (isPaused) {
     currentVerse = ref.verse;
 
     isReading = true;
+
     readNextVerse();
 }
-
 
 // ------------------------------------------------------------
 // Pause / Stop
 // ------------------------------------------------------------
+
 function pauseReading() {
+
     isPaused = true;
     isReading = false;
+
     speechSynthesis.cancel();
 }
 
 function stopReading() {
+
     isPaused = false;
     isReading = false;
+
     speechSynthesis.cancel();
 }
 
@@ -143,52 +155,87 @@ function stopReading() {
 // ------------------------------------------------------------
 
 function readNextVerse() {
+
     if (!isReading) return;
 
-    const verseText = getVerse(currentBook, currentChapter, currentVerse);
+    const verseText =
+        getVerse(
+            currentBook,
+            currentChapter,
+            currentVerse
+        );
 
     if (!verseText) {
-        display.textContent = "End of chapter or book.";
+
+        display.textContent =
+            "End of chapter or book.";
+
         isReading = false;
+
         return;
     }
 
-    // ⭐ Update input box with current reference
-    input.value = `${currentBook} ${currentChapter}:${currentVerse}`;
-document.getElementById("bookSelect").value =
-    currentBook;
+    input.value =
+        `${currentBook} ${currentChapter}:${currentVerse}`;
 
-document.getElementById("chapterInput").value =
-    currentChapter;
+    document.getElementById("bookSelect").value =
+        currentBook;
 
-document.getElementById("verseInput").value =
-    currentVerse;
+    document.getElementById("chapterInput").value =
+        currentChapter;
 
-    // Display full verse (no reference here, because Option A puts it in the input box)
+    document.getElementById("verseInput").value =
+        currentVerse;
+
     display.textContent = verseText;
 
-    // Speak entire verse smoothly
     speakVerse(verseText, () => {
+
         if (!isReading) return;
+
         currentVerse++;
+
         readNextVerse();
+
     });
 }
 
+// ------------------------------------------------------------
+// Speech
+// ------------------------------------------------------------
 
 function speakVerse(text, callback) {
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.rate = 1.1;   // Smooth and natural speed
+
+    const utter =
+        new SpeechSynthesisUtterance(text);
+
+    const version =
+        document.getElementById("versionSelect").value;
+
+    if (version === "srv") {
+        utter.lang = "es-ES";
+    } else {
+        utter.lang = "en-US";
+    }
+
+    utter.rate = .7;
+
     utter.onend = () => callback();
+
     speechSynthesis.speak(utter);
 }
 
+// ------------------------------------------------------------
+// Parse reference
+// ------------------------------------------------------------
 
-// ------------------------------------------------------------
-// Parse reference (John 3:16)
-// ------------------------------------------------------------
 function parseReference(text) {
-    const match = text.match(/([1-3]?\s?[A-Za-z]+)\s+(\d+):(\d+)/);
+
+    const match =
+        text.match(
+            /([1-3]?\s?[A-Za-zÀ-ÿ]+)\s+(\d+):(\d+)/
+        );
+
     if (!match) return null;
 
     return {
@@ -201,35 +248,96 @@ function parseReference(text) {
 // ------------------------------------------------------------
 // Save current verse
 // ------------------------------------------------------------
+
 function saveCurrentVerse() {
-    const verseText = getVerse(currentBook, currentChapter, currentVerse);
+
+    const verseText =
+        getVerse(
+            currentBook,
+            currentChapter,
+            currentVerse
+        );
+
     if (!verseText) return;
 
-    const verseRef = `${currentBook} ${currentChapter}:${currentVerse}`;
-    const choice = document.getElementById("listSelect").value;
+    const verseRef =
+        `${currentBook} ${currentChapter}:${currentVerse}`;
 
-    const verseObj = { ref: verseRef, text: verseText };
+    const choice =
+        document.getElementById("listSelect").value;
 
-    if (choice === "1") saveToList("mem_list_1", verseObj);
-    else if (choice === "2") saveToList("mem_list_2", verseObj);
-    else if (choice === "3") saveToList("mem_list_3", verseObj);
+    const verseObj = {
+        ref: verseRef,
+        text: verseText
+    };
+
+    if (choice === "1")
+        saveToList("mem_list_1", verseObj);
+
+    else if (choice === "2")
+        saveToList("mem_list_2", verseObj);
+
+    else if (choice === "3")
+        saveToList("mem_list_3", verseObj);
+
     else {
+
         saveToList("mem_list_1", verseObj);
         saveToList("mem_list_2", verseObj);
         saveToList("mem_list_3", verseObj);
+
     }
 
-    alert(`Saved to list ${choice}: ${verseRef}`);
+    alert(
+        `Saved to list ${choice}: ${verseRef}`
+    );
 }
 
 function saveToList(key, verseObj) {
-    let list = JSON.parse(localStorage.getItem(key) || "[]");
+
+    let list =
+        JSON.parse(
+            localStorage.getItem(key) || "[]"
+        );
 
     if (!list.some(v => v.ref === verseObj.ref)) {
+
         list.push(verseObj);
-        localStorage.setItem(key, JSON.stringify(list));
+
+        localStorage.setItem(
+            key,
+            JSON.stringify(list)
+        );
     }
 }
+
+// ------------------------------------------------------------
+// Version changed
+// ------------------------------------------------------------
+
+document.getElementById("versionSelect")
+    .addEventListener("change", async () => {
+
+        const version =
+            document.getElementById("versionSelect").value;
+
+        await loadBible(version);
+
+        if (bibleLoaded) {
+
+            populateBooks();
+
+            document.getElementById("chapterInput").value = 1;
+            document.getElementById("verseInput").value = 1;
+
+            display.textContent = "";
+        }
+    });
+
+// ------------------------------------------------------------
+// Startup
+// ------------------------------------------------------------
+
 window.addEventListener("load", () => {
     initializeBible();
 });
