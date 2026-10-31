@@ -22,9 +22,12 @@ let currentVerseIndex = 0;
 // =====================================
 // DOM ELEMENTS
 // =====================================
-
+const toggleVerseBtn =
+    document.getElementById("toggleVerseBtn");
 const refInput = document.getElementById("refInput");
 const verseDisplay = document.getElementById("verseDisplay");
+const helpVerseDisplay =
+    document.getElementById("helpVerseDisplay");
 const statusDisplay = document.getElementById("statusDisplay");
 const wordInput = document.getElementById("wordInput");
 
@@ -45,7 +48,8 @@ const voiceToggleBtn =
 let currentWords = [];
 let index = 0;
 let mistakes = 0;
-
+let verseVisible = false;
+let currentVerseText = "";
 let voiceControlEnabled = false;
 
 // =====================================
@@ -200,12 +204,16 @@ refInput.addEventListener("keydown", e => {
 });
 
 function loadVerse(reference) {
+
     if (!reference) return;
 
-    let match = currentList.find(v => v.ref.toLowerCase() === reference.toLowerCase());
+    let match = currentList.find(
+        v => v.ref.toLowerCase() === reference.toLowerCase()
+    );
 
     if (!match) {
-        verseDisplay.textContent = "Verse not found in selected list.";
+        verseDisplay.textContent =
+            "Verse not found in selected list.";
         currentWords = [];
         index = 0;
         mistakes = 0;
@@ -213,16 +221,52 @@ function loadVerse(reference) {
     }
 
     currentWords = match.text.split(/\s+/);
+currentVerseText = match.text;
     index = 0;
     mistakes = 0;
 
-    verseDisplay.textContent = "";
-    statusDisplay.textContent = "Begin typing the first word.";
+verseDisplay.textContent = "";
+verseVisible = false;
+toggleVerseBtn.textContent =
+    "👁 Show Verse";
+helpVerseDisplay.textContent = "";
+
+    statusDisplay.textContent =
+        "Listen to the verse, then begin typing.";
+
     wordInput.value = "";
     wordInput.focus();
 
     onLoadVerse(match.text, match.ref);
 }
+
+
+toggleVerseBtn.addEventListener("click", () => {
+
+    if (!currentVerseText) return;
+
+    if (!verseVisible) {
+
+        helpVerseDisplay.textContent =
+            currentVerseText;
+
+        verseVisible = true;
+
+        toggleVerseBtn.textContent =
+            "🙈 Hide Verse";
+
+    } else {
+
+        helpVerseDisplay.textContent = "";
+
+        verseVisible = false;
+
+        toggleVerseBtn.textContent =
+            "👁 Show Verse";
+
+    }
+
+});
 
 // =====================================
 // NEXT VERSE
@@ -252,7 +296,9 @@ nextBtn.addEventListener("click", loadNextVerse);
 // =====================================
 
 function updateVerseDisplay() {
-    verseDisplay.textContent = currentWords.slice(0, index).join(" ");
+
+    verseDisplay.textContent =
+        currentWords.slice(0, index).join(" ");
 }
 
 // =====================================
@@ -475,6 +521,7 @@ else if (transcript.includes("play")) playBtn.click();
             speechSynthesis.cancel();
         }
     };
+
 
     recognizer.onerror = (event) => {
         if (DEV_MODE) console.log("Voice error:", event.error);

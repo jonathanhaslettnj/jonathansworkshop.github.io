@@ -104,6 +104,18 @@ button:active{
     text-align:center;
 }
 
+#helpVerseDisplay{
+    font-size:1.2rem;
+    margin-top:1rem;
+    margin-bottom:1rem;
+    padding:10px;
+    background:#eef6ff;
+    border:1px solid #99c2ff;
+    border-radius:8px;
+    min-height:2rem;
+    text-align:center;
+}
+
 #statusDisplay{
     font-size:1.1rem;
     margin-top:0.5rem;
@@ -195,6 +207,7 @@ hr{
     <option value="C">List 3</option>
 </select>
 
+
 <div class="button-row">
     <button id="voiceToggleBtn">
         🔴 Voice Control OFF
@@ -202,7 +215,7 @@ hr{
 </div>
 
 <label for="refInput">
-    Reference
+    Reference: 
 </label>
 
 <input
@@ -210,6 +223,8 @@ hr{
     type="text"
     placeholder="John 1:1"
 >
+
+<p id="helpVerseDisplay"></p>
 
 <p id="verseDisplay"></p>
 
@@ -228,6 +243,10 @@ hr{
 
     <button id="playBtn">
         ▶ Play
+    </button>
+
+    <button id="toggleVerseBtn">
+        👁 Show Verse
     </button>
 
     <button id="nextBtn">
