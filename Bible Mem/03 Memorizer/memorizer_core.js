@@ -45,16 +45,19 @@ const voiceToggleBtn =
 
 const verseDialog =
     document.getElementById("verseDialog");
+console.log("verseDialog =", verseDialog);
 
 const verseDialogReference =
     document.getElementById("verseDialogReference");
+console.log("verseDialogReference =", verseDialogReference);
 
 const verseDialogText =
     document.getElementById("verseDialogText");
+console.log("verseDialogText =", verseDialogText);
 
 const closeVerseDialogBtn =
     document.getElementById("closeVerseDialogBtn");
-
+console.log("closeVerseDialogBtn =", closeVerseDialogBtn);
 
 let currentWords = [];
 let index = 0;
@@ -257,7 +260,10 @@ toggleVerseBtn.textContent =
 
 toggleVerseBtn.addEventListener("click", () => {
 
-    if (!currentVerseText) return;
+
+console.log("Reference =", currentVerseReference);
+console.log("Text =", currentVerseText);
+
 
     verseDialogReference.textContent =
         currentVerseReference;
@@ -265,27 +271,20 @@ toggleVerseBtn.addEventListener("click", () => {
     verseDialogText.textContent =
         currentVerseText;
 
+
+
+
     verseDialog.showModal();
 
 });
+
 closeVerseDialogBtn.addEventListener("click", () => {
+
     verseDialog.close();
-});
-verseDialog.addEventListener("click", (e) => {
-
-    const rect = verseDialog.getBoundingClientRect();
-
-    const inside =
-        e.clientX >= rect.left &&
-        e.clientX <= rect.right &&
-        e.clientY >= rect.top &&
-        e.clientY <= rect.bottom;
-
-    if (!inside) {
-        verseDialog.close();
-    }
 
 });
+
+
 // =====================================
 // NEXT VERSE
 // =====================================
@@ -485,6 +484,13 @@ function loadSelectedList() {
 
     currentVerseIndex = 0;
     renderUserVerses();
+if (currentList.length > 0) {
+
+    refInput.value = currentList[0].ref;
+
+    loadVerse(currentList[0].ref);
+
+}
 
     if (DEV_MODE) console.log("Loaded list:", currentListName);
 }
