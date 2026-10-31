@@ -16,6 +16,12 @@ body{
     line-height:1.5;
 }
 
+.container{
+    max-width:900px;
+    margin:0 auto;
+    text-align:center;
+}
+
 h1,h2{
     color:darkblue;
     text-align:center;
@@ -26,17 +32,38 @@ label{
     display:block;
     margin-top:1rem;
     font-weight:bold;
+    text-align:center;
 }
 
 input[type="text"],
 select{
-    width:100%;
     padding:0.8rem;
     font-size:1.2rem;
     border-radius:8px;
     border:1px solid #999;
     margin-top:0.3rem;
     box-sizing:border-box;
+    text-align:center;
+}
+
+#refInput,
+#wordInput,
+#userRefInput{
+    width:20ch;
+}
+
+#userTextInput{
+    width:40ch;
+    max-width:95%;
+}
+
+#wordInput{
+    display:inline-block;
+}
+
+#mv_list_selector{
+    width:10ch;
+    display:inline-block;
 }
 
 .button-row{
@@ -44,6 +71,7 @@ select{
     flex-wrap:wrap;
     gap:10px;
     margin-top:1rem;
+    justify-content:center;
 }
 
 button{
@@ -53,7 +81,6 @@ button{
     border:none;
     background:#005bbb;
     color:white;
-    flex:0 0 auto;
     cursor:pointer;
 }
 
@@ -65,10 +92,16 @@ button:active{
     background:#bb0000;
 }
 
+#voiceToggleBtn{
+    min-width:220px;
+    font-weight:bold;
+}
+
 #verseDisplay{
     font-size:1.3rem;
     margin-top:1rem;
     min-height:2rem;
+    text-align:center;
 }
 
 #statusDisplay{
@@ -76,23 +109,28 @@ button:active{
     margin-top:0.5rem;
     color:#444;
     min-height:1.5rem;
+    text-align:center;
 }
 
 #user-verses{
     margin-top:1rem;
     font-size:1.1rem;
+    text-align:center;
 }
 
 .verse-item{
     background:white;
     padding:0.8rem;
     border-radius:8px;
-    margin-bottom:0.8rem;
+    margin:0 auto 0.8rem auto;
+    max-width:700px;
     box-shadow:0 1px 3px rgba(0,0,0,0.15);
+    text-align:center;
 }
 
 hr{
-    margin:2rem 0;
+    margin:2rem auto;
+    max-width:700px;
 }
 
 .return-box{
@@ -117,49 +155,44 @@ hr{
     display:inline-block;
 }
 
-/* Short input boxes */
+@media (max-width:600px){
 
-#refInput,
-#wordInput,
-#userRefInput{
-    width:20ch;
-}
+    #refInput,
+    #wordInput,
+    #userRefInput,
+    #userTextInput{
+        width:95%;
+    }
 
-#wordInput{
-    display:inline-block;
-}
+    .button-row{
+        flex-direction:column;
+        align-items:center;
+    }
 
-/* List selector */
+    button{
+        width:95%;
+        max-width:320px;
+    }
 
-#mv_list_selector{
-    width:10ch;
-    display:inline-block;
-}
-
-/* Voice toggle */
-
-#voiceToggleBtn{
-    min-width:220px;
-    font-weight:bold;
-}
-
-</style>
+    #mv_list_selector{
+        width:95%;
+        max-width:320px;
+    }
+}</style>
 </head>
 
 <body>
 
-<h1>The Talking Bible Verse Memorizer</h1>
+<div class="container">
+<h1>Bible Verse Memorizer</h1>
 
-<h2>Voice Control</h2>
+<h2>With Voice Commands</h2>
 
-<label for="mv_list_selector">
-    <strong>Choose verse list:</strong>
-</label>
 
 <select id="mv_list_selector">
-    <option value="A">List A (mem_list_1)</option>
-    <option value="B">List B (mem_list_2)</option>
-    <option value="C">List C (mem_list_3)</option>
+    <option value="A">List 1</option>
+    <option value="B">List 2</option>
+    <option value="C">List 3</option>
 </select>
 
 <div class="button-row">
@@ -169,7 +202,7 @@ hr{
 </div>
 
 <label for="refInput">
-    Reference: (Type then press Enter)
+    Reference
 </label>
 
 <input
@@ -260,6 +293,6 @@ hr{
     <h2>Scan to Share the Bible Memorizer</h2>
     <img src="QR Code.jpg" alt="QR Code">
 </div>
-
+</div>
 </body>
 </html>
