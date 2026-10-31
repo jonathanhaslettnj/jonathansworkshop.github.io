@@ -18921,7 +18921,7 @@
       "14": "Porque Dios traerá toda obra á juicio, el cual se hará sobre toda cosa oculta, buena ó mala."
     }
   },
-  "Sol": {
+  "Cantares": {
     "1": {
       "1": "CANCIÓN de canciones, la cual es de Salomón.",
       "2": "¡Oh si él me besara con ósculos de su boca! Porque mejores son tus amores que el vino.",
@@ -19056,7 +19056,7 @@
       "14": "Huye, amado mío; Y sé semejante al gamo, ó al cervatillo, Sobre las montañas de los aromas."
     }
   },
-  "Isaiah": {
+  "Isaias": {
     "1": {
       "1": "VISIÓN de Isaías hijo de Amoz, la cual vió sobre Judá y Jerusalem, en días de Uzzías, Jotham, Achâz y Ezechîas, reyes de Judá.",
       "2": "Oíd, cielos, y escucha tú, tierra; porque habla Jehová: Crié hijos, y engrandecílos, y ellos se rebelaron contra mí.",
@@ -24605,7 +24605,7 @@
       "19": "No hay cura para tu quebradura; tu herida se encrudeció: todos los que oyeron tu fama, batirán las manos sobre ti, porque ¿sobre quién no pasó continuamente tu malicia?"
     }
   },
-  "Habakkuk": {
+  "Hageo":{
     "1": {
       "1": "LA carga que vió Habacuc profeta.",
       "2": "¿Hasta cuándo, oh Jehová, clamaré, y no oirás; y daré voces á ti á causa de la violencia, y no salvarás?",
@@ -26921,7 +26921,7 @@
       "20": "Y ellos, saliendo, predicaron en todas partes, obrando con ellos el Señor, y confirmando la palabra con las señales que se seguían. Amen."
     }
   },
-  "Luk": {
+  "Lucas":{
     "1": {
       "1": "HABIENDO muchos tentado á poner en orden la historia de las cosas que entre nosotros han sido ciertísimas,",
       "2": "Como nos lo enseñaron los que desde el principio lo vieron por sus ojos, y fueron ministros de la palabra;",
@@ -28122,7 +28122,7 @@
       "53": "Y estaban siempre en el templo, alabando y bendiciendo á Dios. Amén."
     }
   },
-  "Joh": {
+  "Juan":{
     "1": {
       "1": "EN el principio era el Verbo, y el Verbo era con Dios, y el Verbo era Dios.",
       "2": "Éste era en el principio con Dios.",
@@ -29045,7 +29045,7 @@
       "25": "Y hay también otras muchas cosas que hizo Jesús, que si se escribiesen cada una por sí, ni aun en el mundo pienso que cabrían los libros que se habrían de escribir. Amén."
     }
   },
-  "Act": {
+  "Hechos":{
     "1": {
       "1": "EN el primer tratado, oh Teófilo, he hablado de todas las cosas que Jesús comenzó á hacer y á enseñar,",
       "2": "Hasta el día en que, habiendo dado mandamientos por el Espíritu Santo á los apóstoles que escogió, fué recibido arriba;",
@@ -30110,7 +30110,7 @@
       "31": "Predicando el reino de Dios y enseñando lo que es del Señor Jesucristo con toda libertad, sin impedimento."
     }
   },
-  "Romans": {
+  "Romanos":{
     "1": {
       "1": "PABLO, siervo de Jesucristo, llamado á ser apóstol, apartado para el evangelio de Dios,",
       "2": "Que él había antes prometido por sus profetas en las santas Escrituras,",
@@ -31333,7 +31333,7 @@
       "14": "(13-13) La gracia del Señor Jesucristo, y el amor de Dios, y la participación del Espíritu Santo sea con vosotros todos. Amén."
     }
   },
-  "Galatians": {
+  "Gálatas":{
     "1": {
       "1": "PABLO, apóstol, (no de los hombres ni por hombre, mas por Jesucristo y por Dios el Padre, que lo resucitó de los muertos),",
       "2": "Y todos los hermanos que están conmigo, á las iglesias de Galacia:",
@@ -31496,7 +31496,7 @@
       "18": "Hermanos, la gracia de nuestro Señor Jesucristo sea con vuestro espíritu. Amén."
     }
   },
-  "Ephesians": {
+  "Efesios":{
     "1": {
       "1": "PABLO, apóstol de Jesucristo por la voluntad de Dios, á los santos y fieles en Cristo Jesús que están en Éfeso:",
       "2": "Gracia sea á vosotros, y paz de Dios Padre nuestro, y del Señor Jesucristo.",
@@ -32343,7 +32343,7 @@
       "25": "La gracia de nuestro Señor Jesucristo sea con vuestro espíritu. Amén."
     }
   },
-  "Hebrews": {
+  "Hebreos":{
     "1": {
       "1": "DIOS, habiendo hablado muchas veces y en muchas maneras en otro tiempo á los padres por los profetas,",
       "2": "En estos postreros días nos ha hablado por el Hijo, al cual constituyó heredero de todo, por el cual asimismo hizo el universo:",
@@ -32980,7 +32980,7 @@
       "18": "Mas creced en la gracia y conocimiento de nuestro Señor y Salvador Jesucristo. Á él sea gloria ahora y hasta el día de la eternidad. Amén."
     }
   },
-  "1Jo": {
+  "1Juan":{
     "1": {
       "1": "LO que era desde el principio, lo que hemos oído, lo que hemos visto con nuestros ojos, lo que hemos mirado, y palparon nuestras manos tocante al Verbo de vida;",
       "2": "(Porque la vida fué manifestada, y vimos, y testificamos, y os anunciamos aquella vida eterna, la cual estaba con el Padre, y nos ha aparecido;)",
@@ -33097,7 +33097,7 @@
       "21": "Hijitos, guardaos de los ídolos. Amén."
     }
   },
-  "2Jo": {
+  "2Juan":{
     "1": {
       "1": "EL anciano á la señora elegida y á sus hijos, á los cuales yo amo en verdad y no yo solo, sino también todos los que han conocido la verdad,",
       "2": "Por la verdad que está en nosotros, y será perpetuamente con nosotros:",
@@ -33114,7 +33114,7 @@
       "13": "Los hijos de tu hermana elegida te saludan. Amén."
     }
   },
-  "3Jo": {
+  "3Juan":{
     "1": {
       "1": "EL anciano al muy amado Gaio, al cual yo amo en verdad.",
       "2": "Amado, yo deseo que tú seas prosperado en todas cosas, y que tengas salud, así como tu alma está en prosperidad.",
@@ -33161,7 +33161,7 @@
       "25": "Al Dios solo sabio, nuestro Salvador, sea gloria y magnificencia, imperio y potencia, ahora y en todos los siglos. Amén."
     }
   },
-  "Revelation": {
+  "Apocalipsis":{
     "1": {
       "1": "LA revelación de Jesucristo, que Dios le dió, para manifestar á sus siervos las cosas que deben suceder presto; y la declaró, enviándola por su ángel á Juan su siervo,",
       "2": "El cual ha dado testimonio de la palabra de Dios, y del testimonio de Jesucristo, y de todas las cosas que ha visto.",
