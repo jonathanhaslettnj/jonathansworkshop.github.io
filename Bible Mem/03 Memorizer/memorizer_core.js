@@ -242,7 +242,7 @@ helpVerseDisplay.textContent = "";
 
 
 toggleVerseBtn.addEventListener("click", () => {
-
+    console.log("SHOW VERSE BUTTON CLICKED");
     if (!currentVerseText) return;
 
     if (!verseVisible) {
