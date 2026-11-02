@@ -216,6 +216,7 @@ function speakWithVoiceName(targetName){
     utt.onstart = () => log("Started");
     utt.onend = () => log("Finished");
     utt.onerror = e => log("ERROR: " + e.error);
+    utt.rate = 0.5;
 
     speechSynthesis.speak(utt);
 }
