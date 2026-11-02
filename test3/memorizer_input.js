@@ -27,12 +27,9 @@ function checkWord(typed) {
         console.log("checkWord(): typed =", typedNorm, "expected =", expectedNorm);
     }
 
-if (typedNorm === expectedNorm) {
-
-   
-    index++;
-
-    updateVerseDisplay();
+    if (typedNorm === expectedNorm) {
+        index++;
+        updateVerseDisplay();
         onCorrectWord(expectedRaw);
 
         if (index >= currentWords.length) {
@@ -56,13 +53,8 @@ if (typedNorm === expectedNorm) {
 // =====================================
 
 wordInput.addEventListener("input", () => {
-
     let typed = wordInput.value;
-
     if (!typed) return;
-
-
-
 
     let expectedRaw = currentWords[index] || "";
     let expectedNorm = normalizeWord(expectedRaw);

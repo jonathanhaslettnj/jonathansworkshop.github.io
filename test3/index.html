@@ -104,7 +104,6 @@ button:active{
     text-align:center;
 }
 
-
 #statusDisplay{
     font-size:1.1rem;
     margin-top:0.5rem;
@@ -155,34 +154,6 @@ hr{
     max-width:200px;
     display:inline-block;
 }
-#verseDialog{
-    width:min(90vw,700px);
-    max-height:80vh;
-    padding:20px;
-    border:none;
-    border-radius:12px;
-    box-shadow:0 0 20px rgba(0,0,0,0.30);
-    text-align:center;
-    font-size:1.2rem;
-}
-
-#verseDialog::backdrop{
-    background:rgba(0,0,0,0.55);
-}
-
-#verseDialogReference{
-    color:darkblue;
-    margin-top:0;
-    margin-bottom:15px;
-}
-
-#verseDialogText{
-    line-height:1.8;
-    margin-bottom:20px;
-    white-space:normal;
-    overflow-y:auto;
-}
-
 
 @media (max-width:600px){
 
@@ -207,8 +178,6 @@ hr{
         width:95%;
         max-width:320px;
     }
-
-
 }</style>
 </head>
 
@@ -226,7 +195,6 @@ hr{
     <option value="C">List 3</option>
 </select>
 
-
 <div class="button-row">
     <button id="voiceToggleBtn">
         🔴 Voice Control OFF
@@ -234,7 +202,7 @@ hr{
 </div>
 
 <label for="refInput">
-    Reference: 
+    Reference
 </label>
 
 <input
@@ -242,8 +210,6 @@ hr{
     type="text"
     placeholder="John 1:1"
 >
-
-
 
 <p id="verseDisplay"></p>
 
@@ -262,10 +228,6 @@ hr{
 
     <button id="playBtn">
         ▶ Play
-    </button>
-
-    <button id="toggleVerseBtn">
-        👁 Show Verse
     </button>
 
     <button id="nextBtn">
@@ -312,6 +274,9 @@ hr{
 
 <div id="user-verses"></div>
 
+<script src="memorizer_core.js?v=10"></script>
+<script src="memorizer_input.js?v=10"></script>
+
 <div class="return-box">
     <a href="https://literalword.com/esv">
         Literal Word.ESV
@@ -328,26 +293,6 @@ hr{
     <h2>Scan to Share the Bible Memorizer</h2>
     <img src="QR Code.jpg" alt="QR Code">
 </div>
-
-<dialog id="verseDialog">
-
-    <h2 id="verseDialogReference"></h2>
-
-    <div id="verseDialogText"></div>
-
-    <div class="button-row">
-        <button id="closeVerseDialogBtn">
-            Close
-        </button>
-    </div>
-
-</dialog>
-<script src="memorizer_core.js?v=10"></script>
-<script src="memorizer_input.js?v=10"></script>
-
-
-
-
 </div>
 </body>
 </html>

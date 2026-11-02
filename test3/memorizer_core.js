@@ -22,8 +22,7 @@ let currentVerseIndex = 0;
 // =====================================
 // DOM ELEMENTS
 // =====================================
-const toggleVerseBtn =
-    document.getElementById("toggleVerseBtn");
+
 const refInput = document.getElementById("refInput");
 const verseDisplay = document.getElementById("verseDisplay");
 const statusDisplay = document.getElementById("statusDisplay");
@@ -43,28 +42,10 @@ const listSelector = document.getElementById("mv_list_selector");
 const voiceToggleBtn =
     document.getElementById("voiceToggleBtn");
 
-const verseDialog =
-    document.getElementById("verseDialog");
-console.log("verseDialog =", verseDialog);
-
-const verseDialogReference =
-    document.getElementById("verseDialogReference");
-console.log("verseDialogReference =", verseDialogReference);
-
-const verseDialogText =
-    document.getElementById("verseDialogText");
-console.log("verseDialogText =", verseDialogText);
-
-const closeVerseDialogBtn =
-    document.getElementById("closeVerseDialogBtn");
-console.log("closeVerseDialogBtn =", closeVerseDialogBtn);
-
 let currentWords = [];
 let index = 0;
 let mistakes = 0;
 
-let currentVerseText = "";
-let currentVerseReference = "";
 let voiceControlEnabled = false;
 
 // =====================================
@@ -172,8 +153,6 @@ function onLoadVerse(text, reference) {
     let chapter = parts.pop();
     let book = parts.join(" ");
 
-
-
     if (detectSpanish(text)) {
 
         // Spanish reference announcement
@@ -221,16 +200,12 @@ refInput.addEventListener("keydown", e => {
 });
 
 function loadVerse(reference) {
-
     if (!reference) return;
 
-    let match = currentList.find(
-        v => v.ref.toLowerCase() === reference.toLowerCase()
-    );
+    let match = currentList.find(v => v.ref.toLowerCase() === reference.toLowerCase());
 
     if (!match) {
-        verseDisplay.textContent =
-            "Verse not found in selected list.";
+        verseDisplay.textContent = "Verse not found in selected list.";
         currentWords = [];
         index = 0;
         mistakes = 0;
@@ -238,52 +213,16 @@ function loadVerse(reference) {
     }
 
     currentWords = match.text.split(/\s+/);
-currentVerseText = match.text;
     index = 0;
     mistakes = 0;
-currentVerseReference = match.ref;
 
-verseDisplay.textContent = "";
-toggleVerseBtn.textContent =
-    "👁 Show Verse";
-
-    statusDisplay.textContent =
-        "Listen to the verse, then begin typing.";
-
+    verseDisplay.textContent = "";
+    statusDisplay.textContent = "Begin typing the first word.";
     wordInput.value = "";
     wordInput.focus();
 
     onLoadVerse(match.text, match.ref);
 }
-
-
-
-toggleVerseBtn.addEventListener("click", () => {
-
-
-console.log("Reference =", currentVerseReference);
-console.log("Text =", currentVerseText);
-
-
-    verseDialogReference.textContent =
-        currentVerseReference;
-
-    verseDialogText.textContent =
-        currentVerseText;
-
-
-
-
-    verseDialog.showModal();
-
-});
-
-closeVerseDialogBtn.addEventListener("click", () => {
-
-    verseDialog.close();
-
-});
-
 
 // =====================================
 // NEXT VERSE
@@ -313,9 +252,7 @@ nextBtn.addEventListener("click", loadNextVerse);
 // =====================================
 
 function updateVerseDisplay() {
-
-    verseDisplay.textContent =
-        currentWords.slice(0, index).join(" ");
+    verseDisplay.textContent = currentWords.slice(0, index).join(" ");
 }
 
 // =====================================
@@ -348,7 +285,6 @@ if (!reference) {
 }
 
     let match = currentList.find(v => v.ref.toLowerCase() === reference.toLowerCase());
-
     if (match) onLoadVerse(match.text, match.ref);
 });
 
@@ -484,13 +420,6 @@ function loadSelectedList() {
 
     currentVerseIndex = 0;
     renderUserVerses();
-if (currentList.length > 0) {
-
-    refInput.value = currentList[0].ref;
-
-    loadVerse(currentList[0].ref);
-
-}
 
     if (DEV_MODE) console.log("Loaded list:", currentListName);
 }
@@ -546,7 +475,6 @@ else if (transcript.includes("play")) playBtn.click();
             speechSynthesis.cancel();
         }
     };
-
 
     recognizer.onerror = (event) => {
         if (DEV_MODE) console.log("Voice error:", event.error);
