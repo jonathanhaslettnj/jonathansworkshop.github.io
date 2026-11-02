@@ -1,207 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>The Talking Bible Verse Memorizer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greek Speech Test</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+    font-family:Arial, sans-serif;
+    max-width:900px;
+    margin:20px auto;
+    padding:20px;
+    line-height:1.6;
+}
 
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 1rem;
-      background: #f7f7f7;
-      font-size: 1.2rem;
-      line-height: 1.5;
-    }
+button{
+    padding:10px 20px;
+    margin:5px;
+    font-size:16px;
+    cursor:pointer;
+}
 
-    h1, h2 {
-      color: darkblue;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
+select{
+    width:100%;
+    padding:8px;
+    margin-bottom:10px;
+}
 
-    label {
-      display: block;
-      margin-top: 1rem;
-      font-weight: bold;
-    }
+textarea{
+    width:100%;
+    height:140px;
+    font-size:24px;
+    padding:10px;
+}
 
-    input[type="text"], select {
-      width: 100%;
-      padding: 0.8rem;
-      font-size: 1.2rem;
-      border-radius: 8px;
-      border: 1px solid #999;
-      margin-top: 0.3rem;
-      box-sizing: border-box;
-    }
-
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 1rem;
-    }
-
-    button {
-      padding: 0.6rem 1rem;
-      font-size: 1rem;
-      border-radius: 8px;
-      border: none;
-      background: #005bbb;
-      color: white;
-      flex: 0 0 auto;
-    }
-
-    button:active {
-      background: #004999;
-    }
-
-    .delete-btn {
-      background: #bb0000;
-    }
-
-    #verseDisplay {
-      font-size: 1.3rem;
-      margin-top: 1rem;
-      min-height: 2rem;
-    }
-
-    #statusDisplay {
-      font-size: 1.1rem;
-      margin-top: 0.5rem;
-      color: #444;
-      min-height: 1.5rem;
-    }
-
-    #user-verses {
-      margin-top: 1rem;
-      font-size: 1.1rem;
-    }
-
-    .verse-item {
-      background: white;
-      padding: 0.8rem;
-      border-radius: 8px;
-      margin-bottom: 0.8rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-    }
-
-    hr {
-      margin: 2rem 0;
-    }
-
-    .return-box {
-      background: #e6f2ff;
-      border: 2px solid #7aaee6;
-      padding: 12px;
-      margin: 40px auto 0 auto;
-      width: 70%;
-      max-width: 350px;
-      border-radius: 8px;
-      font-size: 20px;
-      text-align: center;
-    }
-
-    .qr-section {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .qr-section img {
-      max-width: 200px;
-      display: inline-block;
-    }
-
-    /* Short input boxes — about 20 characters wide */
-    #refInput,
-    #wordInput,
-    #userRefInput {
-      width: 20ch;
-    }
-
-    #wordInput {
-      display: inline-block;
-    }
-
-    /* Shorten the verse list selector */
-    #mv_list_selector {
-      width: 10ch;
-      display: inline-block;
-    }
-  </style>
+#log{
+    margin-top:20px;
+    padding:10px;
+    border:1px solid #ccc;
+    background:#f5f5f5;
+    white-space:pre-wrap;
+    min-height:150px;
+}
+</style>
 </head>
-
 <body>
 
-  <h1>The Talking Bible Verse Memorizer</h1>
-  <h2>Voice Control</h2>
+<h1>Greek Speech Test</h1>
 
-  <!-- LIST SELECTOR -->
-  <label for="mv_list_selector"><strong>Choose verse list:</strong></label>
-  <select id="mv_list_selector">
-    <option value="A">List A (mem_list_1)</option>
-    <option value="B">List B (mem_list_2)</option>
-    <option value="C">List C (mem_list_3)</option>
-  </select>
-  <button id="mv_load_list_btn">Load Selected List</button>
+<label for="voiceSelect">Voice:</label>
+<select id="voiceSelect"></select>
 
-  <!-- VOICE CONTROL -->
-  <div class="button-row">
-    <button id="voiceStartBtn">🎤 Start Voice Control</button>
-    <button id="voiceStopBtn">🛑 Stop Voice Control</button>
-  </div>
+<textarea id="greekText">
+Βίβλος γενέσεως Ἰησοῦ Χριστοῦ υἱοῦ Δαυὶδ υἱοῦ Ἀβραάμ
+</textarea>
 
-  <!-- Memorizer -->
-  <label for="refInput">Reference: (Type then press Enter)</label>
-  <input id="refInput" type="text" placeholder="John 1:1">
+<br>
 
-  <p id="verseDisplay"></p>
-  <p id="statusDisplay"></p>
+<button id="speakBtn">Speak</button>
+<button id="stopBtn">Stop</button>
+<button id="listBtn">List Voices</button>
+<button id="athenaBtn">Test Αθηνά</button>
+<button id="nestorBtn">Test Νέστορας</button>
 
-  <label for="wordInput">Type next word:</label>
-  <input id="wordInput" type="text">
+<div id="log"></div>
 
-  <div class="button-row">
-    <button id="nextBtn">Next Verse ▶</button>
-    <button id="repeatBtn">Repeat Verse ↻</button>
-    <button id="resetBtn">Start Over</button>
-  </div>
+<script>
 
-  <hr>
+const voiceSelect = document.getElementById("voiceSelect");
+const logDiv = document.getElementById("log");
 
-  <h2>Add to Your List of Verses</h2>
+let voices = [];
 
-  <label for="userRefInput">Reference:</label>
-  <input id="userRefInput" type="text" placeholder="John 1:1">
+function log(msg){
+    console.log(msg);
+    logDiv.textContent += msg + "\n";
+}
 
-  <label for="userTextInput">Verse text:</label>
-  <input id="userTextInput" type="text" placeholder="In the beginning was the Word...">
+function populateVoices(){
 
-  <div class="button-row">
-    <button id="addUserVerseBtn">Add to My List of Verses</button>
-  </div>
+    voices = speechSynthesis.getVoices();
 
-  <h2>Your Verses</h2>
-  <div id="user-verses"></div>
+    voiceSelect.innerHTML = "";
 
-  <script src="memorizer_core.js?v=9"></script>
-  <script src="memorizer_input.js?v=9"></script>
+    voices.forEach((voice,index)=>{
 
-  <div class="return-box">
-    <a href="https://literalword.com/esv">Literal Word,ESV</a>
-  </div>
+        const opt=document.createElement("option");
 
-  <div class="return-box">
-    <a href="https://jonathansworkshop.online/memorizer/index.html">Bible Memorizer Information</a>
-  </div>
+        opt.value=index;
 
-  <div class="qr-section">
-    <h2>Scan to Share the Bible Memorizer</h2>
-    <img src="QR Code.jpg" alt="QR Code">
-  </div>
+        opt.textContent=
+            `${voice.name} (${voice.lang})`;
+
+        voiceSelect.appendChild(opt);
+    });
+
+    log("Voices Found: " + voices.length);
+
+    voices.forEach(v=>{
+        if(v.lang.toLowerCase().startsWith("el")){
+            log("Greek Voice: " + v.name + " [" + v.lang + "]");
+        }
+    });
+}
+
+speechSynthesis.onvoiceschanged = populateVoices;
+
+populateVoices();
+
+document.getElementById("listBtn").addEventListener("click",()=>{
+
+    logDiv.textContent="";
+
+    voices.forEach((v,i)=>{
+
+        log(
+            i +
+            " | " +
+            v.name +
+            " | " +
+            v.lang
+        );
+
+    });
+
+});
+
+document.getElementById("speakBtn").addEventListener("click",()=>{
+
+    speechSynthesis.cancel();
+
+    const text =
+        document.getElementById("greekText").value;
+
+    const utterance =
+        new SpeechSynthesisUtterance(text);
+
+    const selected =
+        voices[voiceSelect.value];
+
+    if(selected){
+        utterance.voice = selected;
+        utterance.lang = selected.lang;
+    }
+    else{
+        utterance.lang = "el-GR";
+    }
+
+    logDiv.textContent = "";
+
+    log("TEXT:");
+    log(text);
+
+    log("");
+    log("LANG:");
+    log(utterance.lang);
+
+    log("");
+    log("VOICE:");
+    log(
+        selected
+        ? selected.name
+        : "none"
+    );
+
+    utterance.onstart = () => {
+        log("");
+        log("Speech Started");
+    };
+
+    utterance.onend = () => {
+        log("Speech Finished");
+    };
+
+    utterance.onerror = (e) => {
+        log("Speech Error: " + e.error);
+    };
+
+    speechSynthesis.speak(utterance);
+
+});
+
+document.getElementById("stopBtn").addEventListener("click",()=>{
+
+    speechSynthesis.cancel();
+
+    log("Speech Cancelled");
+
+});
+function speakWithVoiceName(targetName){
+
+    speechSynthesis.cancel();
+
+    const voice = voices.find(v =>
+        v.name.includes(targetName)
+    );
+
+    if(!voice){
+        log("Voice not found: " + targetName);
+        return;
+    }
+
+    const utt = new SpeechSynthesisUtterance(
+        "Βίβλος γενέσεως Ἰησοῦ Χριστοῦ"
+    );
+
+    utt.voice = voice;
+    utt.lang = voice.lang;
+
+    logDiv.textContent = "";
+
+    log("Testing voice: " + voice.name);
+    log("Language: " + voice.lang);
+
+    utt.onstart = () => log("Started");
+    utt.onend = () => log("Finished");
+    utt.onerror = e => log("ERROR: " + e.error);
+
+    speechSynthesis.speak(utt);
+}
+</script>
 
 </body>
 </html>
