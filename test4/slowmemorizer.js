@@ -302,15 +302,6 @@ function startCurrentVerse() {
         return;
     }
 
-
-console.log(
-    "Speaking:",
-    currentWordIndex,
-    word
-);
-
-    speechSynthesis.cancel();
-
     if (!isPaused) {
         currentWordIndex = 0;
     }
@@ -376,6 +367,12 @@ pendingTimeout =
         currentWords[
             currentWordIndex
         ];
+
+console.log(
+    "Speaking:",
+    currentWordIndex,
+    word
+);
 
     display.textContent =
         word;
@@ -480,7 +477,7 @@ function pauseReading() {
     isPaused = true;
     isReading = false;
 
-    speechSynthesis.cancel();
+//    speechSynthesis.cancel();
 
     if (pendingTimeout) {
         clearTimeout(
