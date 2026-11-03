@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Reader v2 Prototype</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:#f5f5f5;
+    color:#222;
+    font-family:Arial,sans-serif;
+}
+
+#app{
+    max-width:700px;
+    margin:auto;
+    padding:20px;
+}
+
+/* =====================
+   REFERENCE BAR
+===================== */
+
+.referenceBar{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:34px;
+}
+
+.refBtn{
+    min-height:50px;
+    min-width:70px;
+    padding:0 18px;
+    border:none;
+    border-radius:12px;
+    background:#fff;
+    font-size:1rem;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 1px 4px rgba(0,0,0,.12);
+}
+
+/* =====================
+   SCRIPTURE
+===================== */
+
+.scripture{
+    max-width:36ch;
+    margin:0 auto 40px auto;
+    font-size:1.35rem;
+    line-height:1.9;
+    text-align:left;
+}
+
+/* =====================
+   PLAY + SAVE ROW
+===================== */
+
+.actionRow{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
+
+.playBtn,
+.saveBtn{
+    min-height:56px;
+    padding:0 24px;
+    border:none;
+    border-radius:12px;
+    background:#3568ff;
+    color:white;
+    font-size:1rem;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.saveArea{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.listDots{
+    display:flex;
+    gap:10px;
+}
+
+.dot{
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    border:2px solid #777;
+    background:white;
+    cursor:pointer;
+}
+
+.dot.active{
+    background:#25c14f;
+    border-color:#25c14f;
+}
+
+/* =====================
+   TAB BAR
+===================== */
+
+.tabBar{
+    display:flex;
+    gap:10px;
+    margin-bottom:16px;
+}
+
+.tab{
+    flex:1;
+    min-height:54px;
+    border:none;
+    border-radius:12px;
+    background:white;
+    font-size:1rem;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 1px 4px rgba(0,0,0,.08);
+    transition:.2s;
+}
+
+.tab.active{
+    background:#3568ff;
+    color:white;
+}
+
+/* =====================
+   WORKSPACE
+===================== */
+
+.workspace{
+    background:white;
+    border-radius:14px;
+    padding:20px;
+    min-height:260px;
+    box-shadow:0 1px 5px rgba(0,0,0,.08);
+}
+
+.tabPanel{
+    display:none;
+}
+
+.tabPanel.active{
+    display:block;
+}
+
+/* =====================
+   SETTINGS
+===================== */
+
+.settingGroup{
+    margin-bottom:24px;
+}
+
+.settingLabel{
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.mockControl{
+    background:#f3f3f3;
+    border-radius:10px;
+    padding:12px;
+}
+
+/* =====================
+   LISTS
+===================== */
+
+.listBlock{
+    border:1px solid #e6e6e6;
+    border-radius:10px;
+    margin-bottom:10px;
+    overflow:hidden;
+}
+
+.listHeader{
+    padding:16px;
+    font-weight:bold;
+    background:#fafafa;
+    cursor:pointer;
+}
+
+.listContent{
+    padding:0 16px 16px 16px;
+}
+
+.verseItem{
+    padding:10px 0;
+    border-bottom:1px solid #eeeeee;
+}
+
+.verseItem:last-child{
+    border-bottom:none;
+}
+
+/* =====================
+   MOBILE
+===================== */
+
+@media(max-width:600px){
+
+    #app{
+        padding:16px;
+    }
+
+    .scripture{
+        font-size:1.25rem;
+    }
+
+    .actionRow{
+        justify-content:space-between;
+    }
+
+    .playBtn,
+    .saveBtn{
+        min-height:54px;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<div id="app">
+
+    <!-- Reference Bar -->
+
+    <div class="referenceBar">
+
+        <button class="refBtn">KJV</button>
+
+        <button class="refBtn">John</button>
+
+        <button class="refBtn">3</button>
+
+        <button class="refBtn">16</button>
+
+    </div>
+
+    <!-- Scripture -->
+
+    <div class="scripture">
+
+        For God so loved the world,
+        that he gave his only begotten
+        Son, that whosoever believeth
+        in him should not perish,
+        but have everlasting life.
+
+    </div>
+
+    <!-- Play / Save Row -->
+
+    <div class="actionRow">
+
+        <button class="playBtn">
+            ► Play
+        </button>
+
+        <div class="saveArea">
+
+            <button class="saveBtn">
+                Save
+            </button>
+
+            <div class="listDots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Tabs -->
+
+    <div class="tabBar">
+
+        <button class="tab active"
+                data-tab="audio">
+            Audio
+        </button>
+
+        <button class="tab"
+                data-tab="display">
+            Display
+        </button>
+
+        <button class="tab"
+                data-tab="lists">
+            Lists
+        </button>
+
+    </div>
+
+    <!-- Workspace -->
+
+    <div class="workspace">
+
+        <!-- AUDIO TAB -->
+
+        <div id="audio"
+             class="tabPanel active">
+
+            <div class="settingGroup">
+
+                <div class="settingLabel">
+                    Voice
+                </div>
+
+                <div class="mockControl">
+                    Default ▼
+                </div>
+
+            </div>
+
+            <div class="settingGroup">
+
+                <div class="settingLabel">
+                    Speed
+                </div>
+
+                <div class="mockControl">
+                    ────●────
+                </div>
+
+            </div>
+
+            <div class="settingGroup">
+
+                <div class="settingLabel">
+                    Highlight While Reading
+                </div>
+
+                <div class="mockControl">
+                    On
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- DISPLAY TAB -->
+
+        <div id="display"
+             class="tabPanel">
+
+            <div class="settingGroup">
+
+                <div class="settingLabel">
+                    Font Size
+                </div>
+
+                <div class="mockControl">
+                    ────●────
+                </div>
+
+            </div>
+
+            <div class="settingGroup">
+
+                <div class="settingLabel">
+                    Reading Width
+                </div>
+
+                <div class="mockControl">
+                    Narrow
+                </div>
+
+            </div>
+
+            <div class="settingGroup">
+
+                <div class="settingLabel">
+                    Theme
+                </div>
+
+                <div class="mockControl">
+                    Light
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- LISTS TAB -->
+
+        <div id="lists"
+             class="tabPanel">
+
+            <div class="listBlock">
+
+                <div class="listHeader">
+                    ▶ List 1 (24)
+                </div>
+
+            </div>
+
+            <div class="listBlock">
+
+                <div class="listHeader">
+                    ▶ List 2 (11)
+                </div>
+
+            </div>
+
+            <div class="listBlock">
+
+                <div class="listHeader">
+                    ▶ List 3 (37)
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* Tabs */
+
+const tabs =
+    document.querySelectorAll('.tab');
+
+const panels =
+    document.querySelectorAll('.tabPanel');
+
+tabs.forEach(tab => {
+
+    tab.addEventListener(
+        'click',
+        () => {
+
+            tabs.forEach(
+                t => t.classList.remove('active')
+            );
+
+            panels.forEach(
+                p => p.classList.remove('active')
+            );
+
+            tab.classList.add('active');
+
+            document
+                .getElementById(
+                    tab.dataset.tab
+                )
+                .classList
+                .add('active');
+
+        }
+    );
+
+});
+
+/* Demo List Selector */
+
+const dots =
+    document.querySelectorAll('.dot');
+
+dots.forEach(dot => {
+
+    dot.addEventListener(
+        'click',
+        () => {
+
+            dots.forEach(
+                d => d.classList.remove('active')
+            );
+
+            dot.classList.add('active');
+
+        }
+    );
+
+});
+
+</script>
+
+</body>
+</html>
