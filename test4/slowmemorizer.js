@@ -368,11 +368,7 @@ pendingTimeout =
             currentWordIndex
         ];
 
-console.log(
-    "Speaking:",
-    currentWordIndex,
-    word
-);
+
 
     display.textContent =
         word;
