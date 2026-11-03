@@ -469,15 +469,8 @@ if (voice) {
 
 };
 
-speechSynthesis.cancel();
-
-setTimeout(
-    () => {
-        speechSynthesis.speak(
-            utter
-        );
-    },
-    50
+speechSynthesis.speak(
+    utter
 );
 
 } // closes readNextWord()
