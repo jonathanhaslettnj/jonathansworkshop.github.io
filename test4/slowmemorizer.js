@@ -1,4 +1,4 @@
-alert("THIS IS THE NEW FILE");
+
 
 console.log("Slow Memorizer Single Verse Mode");
 
@@ -102,7 +102,7 @@ function getCurrentListKey() {
 
 function loadCurrentList() {
 
-    alert("loadCurrentList running");
+
 
     currentList =
         JSON.parse(
@@ -110,43 +110,6 @@ function loadCurrentList() {
                 getCurrentListKey()
             ) || "[]"
         );
-
-const key = getCurrentListKey();
-
-console.log("KEY:", key);
-
-console.log(
-    "VALUE:",
-    localStorage.getItem(key)
-);
-
-currentList =
-    JSON.parse(
-        localStorage.getItem(key)
-        || "[]"
-    );
-
-console.log(
-    "LENGTH:",
-    currentList.length
-);
-
-console.log(
-    "Loading:",
-    getCurrentListKey()
-);
-
-console.log(
-    "Raw Data:",
-    localStorage.getItem(
-        getCurrentListKey()
-    )
-);
-
-console.log(
-    "List Length:",
-    currentList.length
-);
 
 
     renderVerseList();
@@ -339,6 +302,13 @@ function startCurrentVerse() {
         return;
     }
 
+
+console.log(
+    "Speaking:",
+    currentWordIndex,
+    word
+);
+
     speechSynthesis.cancel();
 
     if (!isPaused) {
@@ -499,10 +469,18 @@ if (voice) {
 
 };
 
-speechSynthesis.speak(
-    utter
+speechSynthesis.cancel();
+
+setTimeout(
+    () => {
+        speechSynthesis.speak(
+            utter
+        );
+    },
+    50
 );
-}
+
+} // closes readNextWord()
 
 function pauseReading() {
 
@@ -517,7 +495,9 @@ function pauseReading() {
         );
         pendingTimeout = null;
     }
-}
+
+} // closes pauseReading()
+
 function stopReading() {
 
     isReading = false;
@@ -651,6 +631,6 @@ document
         loadCurrentList
     );
 
-alert("BOTTOM OF SCRIPT");
+
 
 loadCurrentList();
