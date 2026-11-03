@@ -102,6 +102,15 @@ function getCurrentListKey() {
 
 function loadCurrentList() {
 
+    alert("loadCurrentList running");
+
+    currentList =
+        JSON.parse(
+            localStorage.getItem(
+                getCurrentListKey()
+            ) || "[]"
+        );
+
 const key = getCurrentListKey();
 
 console.log("KEY:", key);
