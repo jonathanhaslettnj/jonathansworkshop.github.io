@@ -475,7 +475,6 @@ if (voice) {
     );
 
 }
-    }
 
   utter.onend = () => {
 
@@ -651,5 +650,7 @@ document
         "change",
         loadCurrentList
     );
+
+alert("BOTTOM OF SCRIPT");
 
 loadCurrentList();
