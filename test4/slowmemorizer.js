@@ -302,6 +302,8 @@ function startCurrentVerse() {
         return;
     }
 
+    speechSynthesis.cancel();
+
     if (!isPaused) {
         currentWordIndex = 0;
     }
