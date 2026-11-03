@@ -1,4 +1,4 @@
-
+alert("THIS IS THE NEW FILE");
 
 console.log("Slow Memorizer Single Verse Mode");
 
