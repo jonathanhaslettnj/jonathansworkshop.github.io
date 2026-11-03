@@ -102,12 +102,25 @@ function getCurrentListKey() {
 
 function loadCurrentList() {
 
-    currentList =
-        JSON.parse(
-            localStorage.getItem(
-                getCurrentListKey()
-            ) || "[]"
-        );
+const key = getCurrentListKey();
+
+console.log("KEY:", key);
+
+console.log(
+    "VALUE:",
+    localStorage.getItem(key)
+);
+
+currentList =
+    JSON.parse(
+        localStorage.getItem(key)
+        || "[]"
+    );
+
+console.log(
+    "LENGTH:",
+    currentList.length
+);
 
 console.log(
     "Loading:",
