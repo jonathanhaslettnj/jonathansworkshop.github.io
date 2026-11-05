@@ -1,505 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Reader</title>
 
-<title>Reader v2 Prototype</title>
+    <link rel="stylesheet" href="reader.css">
 
-<style>
+    <style>
+        .highlight {
+            color: red;
+            font-weight: bold;
+        }
 
-*{
-    box-sizing:border-box;
-}
+        #verseSelector {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
 
-body{
-    margin:0;
-    background:#f5f5f5;
-    color:#222;
-    font-family:Arial,sans-serif;
-}
+        #verseSelector select,
+        #verseSelector input {
+            flex: 1;
+            padding: 10px;
+        }
 
-#app{
-    max-width:700px;
-    margin:auto;
-    padding:20px;
-}
+        #goToVerseBtn {
+            flex: 1;
+        }
 
-/* =====================
-   REFERENCE BAR
-===================== */
-
-.referenceBar{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-bottom:34px;
-}
-
-.refBtn{
-    min-height:50px;
-    min-width:70px;
-    padding:0 18px;
-    border:none;
-    border-radius:12px;
-    background:#fff;
-    font-size:1rem;
-    font-weight:bold;
-    cursor:pointer;
-    box-shadow:0 1px 4px rgba(0,0,0,.12);
-}
-
-/* =====================
-   SCRIPTURE
-===================== */
-
-.scripture{
-    max-width:36ch;
-    margin:0 auto 40px auto;
-    font-size:1.35rem;
-    line-height:1.9;
-    text-align:left;
-}
-
-/* =====================
-   PLAY + SAVE ROW
-===================== */
-
-.actionRow{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
-    flex-wrap:wrap;
-    margin-bottom:30px;
-}
-
-.playBtn,
-.saveBtn{
-    min-height:56px;
-    padding:0 24px;
-    border:none;
-    border-radius:12px;
-    background:#3568ff;
-    color:white;
-    font-size:1rem;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.saveArea{
-    display:flex;
-    align-items:center;
-    gap:14px;
-}
-
-.listDots{
-    display:flex;
-    gap:10px;
-}
-
-.dot{
-    width:18px;
-    height:18px;
-    border-radius:50%;
-    border:2px solid #777;
-    background:white;
-    cursor:pointer;
-}
-
-.dot.active{
-    background:#25c14f;
-    border-color:#25c14f;
-}
-
-/* =====================
-   TAB BAR
-===================== */
-
-.tabBar{
-    display:flex;
-    gap:10px;
-    margin-bottom:16px;
-}
-
-.tab{
-    flex:1;
-    min-height:54px;
-    border:none;
-    border-radius:12px;
-    background:white;
-    font-size:1rem;
-    font-weight:bold;
-    cursor:pointer;
-    box-shadow:0 1px 4px rgba(0,0,0,.08);
-    transition:.2s;
-}
-
-.tab.active{
-    background:#3568ff;
-    color:white;
-}
-
-/* =====================
-   WORKSPACE
-===================== */
-
-.workspace{
-    background:white;
-    border-radius:14px;
-    padding:20px;
-    min-height:260px;
-    box-shadow:0 1px 5px rgba(0,0,0,.08);
-}
-
-.tabPanel{
-    display:none;
-}
-
-.tabPanel.active{
-    display:block;
-}
-
-/* =====================
-   SETTINGS
-===================== */
-
-.settingGroup{
-    margin-bottom:24px;
-}
-
-.settingLabel{
-    font-weight:bold;
-    margin-bottom:8px;
-}
-
-.mockControl{
-    background:#f3f3f3;
-    border-radius:10px;
-    padding:12px;
-}
-
-/* =====================
-   LISTS
-===================== */
-
-.listBlock{
-    border:1px solid #e6e6e6;
-    border-radius:10px;
-    margin-bottom:10px;
-    overflow:hidden;
-}
-
-.listHeader{
-    padding:16px;
-    font-weight:bold;
-    background:#fafafa;
-    cursor:pointer;
-}
-
-.listContent{
-    padding:0 16px 16px 16px;
-}
-
-.verseItem{
-    padding:10px 0;
-    border-bottom:1px solid #eeeeee;
-}
-
-.verseItem:last-child{
-    border-bottom:none;
-}
-
-/* =====================
-   MOBILE
-===================== */
-
-@media(max-width:600px){
-
-    #app{
-        padding:16px;
-    }
-
-    .scripture{
-        font-size:1.25rem;
-    }
-
-    .actionRow{
-        justify-content:space-between;
-    }
-
-    .playBtn,
-    .saveBtn{
-        min-height:54px;
-    }
-
-}
-
-</style>
+        @media (max-width: 600px) {
+            #verseSelector {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
 <div id="app">
 
-    <!-- Reference Bar -->
+    <!-- Verse Display First -->
+    <div id="currentVerseDisplay"></div>
 
-    <div class="referenceBar">
+    <!-- Direct Reference Entry -->
 
-        <button class="refBtn">KJV</button>
+    <!-- Book / Chapter / Verse Navigation -->
+    <div id="verseSelector">
+    <!-- Bible Version -->
+    <select id="versionSelect">
 
-        <button class="refBtn">John</button>
+        <option value="kjv">KJV</option>
+        <option value="bbe">BBE</option>
+        <option value="asv">ASV</option>
+        <option value="web">WEB</option>
+        <option value="srv">SRV1909</option>
 
-        <button class="refBtn">3</button>
+        <option value="westcotthortnt">
+            Westcott-Hort Greek NT
+        </option>
 
-        <button class="refBtn">16</button>
+        <option value="rahlfslxx">
+            Rahlfs LXX
+        </option>
 
-    </div>
+    </select>
 
-    <!-- Scripture -->
+        <select id="bookSelect">
+            <option>Loading Bible...</option>
+        </select>
 
-    <div class="scripture">
+        <input
+            type="number"
+            id="chapterInput"
+            min="1"
+            value="1"
+        >
 
-        For God so loved the world,
-        that he gave his only begotten
-        Son, that whosoever believeth
-        in him should not perish,
-        but have everlasting life.
+        <input
+            type="number"
+            id="verseInput"
+            min="1"
+            value="1"
+        >
 
-    </div>
-
-    <!-- Play / Save Row -->
-
-    <div class="actionRow">
-
-        <button class="playBtn">
-            ► Play
-        </button>
-
-        <div class="saveArea">
-
-            <button class="saveBtn">
-                Save
-            </button>
-
-            <div class="listDots">
-                <div class="dot active"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- Tabs -->
-
-    <div class="tabBar">
-
-        <button class="tab active"
-                data-tab="audio">
-            Audio
-        </button>
-
-        <button class="tab"
-                data-tab="display">
-            Display
-        </button>
-
-        <button class="tab"
-                data-tab="lists">
-            Lists
+        <button id="goToVerseBtn">
+            Go
         </button>
 
     </div>
 
-    <!-- Workspace -->
+  
+    <!-- Audio Controls -->
+    <div id="controls">
 
-    <div class="workspace">
+        <button id="startBtn">
+            Start Reading
+        </button>
 
-        <!-- AUDIO TAB -->
+        <button id="pauseBtn">
+            Pause
+        </button>
 
-        <div id="audio"
-             class="tabPanel active">
-
-            <div class="settingGroup">
-
-                <div class="settingLabel">
-                    Voice
-                </div>
-
-                <div class="mockControl">
-                    Default ▼
-                </div>
-
-            </div>
-
-            <div class="settingGroup">
-
-                <div class="settingLabel">
-                    Speed
-                </div>
-
-                <div class="mockControl">
-                    ────●────
-                </div>
-
-            </div>
-
-            <div class="settingGroup">
-
-                <div class="settingLabel">
-                    Highlight While Reading
-                </div>
-
-                <div class="mockControl">
-                    On
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- DISPLAY TAB -->
-
-        <div id="display"
-             class="tabPanel">
-
-            <div class="settingGroup">
-
-                <div class="settingLabel">
-                    Font Size
-                </div>
-
-                <div class="mockControl">
-                    ────●────
-                </div>
-
-            </div>
-
-            <div class="settingGroup">
-
-                <div class="settingLabel">
-                    Reading Width
-                </div>
-
-                <div class="mockControl">
-                    Narrow
-                </div>
-
-            </div>
-
-            <div class="settingGroup">
-
-                <div class="settingLabel">
-                    Theme
-                </div>
-
-                <div class="mockControl">
-                    Light
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- LISTS TAB -->
-
-        <div id="lists"
-             class="tabPanel">
-
-            <div class="listBlock">
-
-                <div class="listHeader">
-                    ▶ List 1 (24)
-                </div>
-
-            </div>
-
-            <div class="listBlock">
-
-                <div class="listHeader">
-                    ▶ List 2 (11)
-                </div>
-
-            </div>
-
-            <div class="listBlock">
-
-                <div class="listHeader">
-                    ▶ List 3 (37)
-                </div>
-
-            </div>
-
-        </div>
+        <button id="stopBtn">
+            Stop Reading
+        </button>
 
     </div>
+
+    <!-- Save Lists -->
+    <select id="listSelect">
+
+        <option value="1">List 1</option>
+        <option value="2">List 2</option>
+        <option value="3">List 3</option>
+        <option value="all">All Lists</option>
+
+    </select>
+
+    <button id="saveBtn">
+        Save Verse
+    </button>
 
 </div>
 
-<script>
-
-/* Tabs */
-
-const tabs =
-    document.querySelectorAll('.tab');
-
-const panels =
-    document.querySelectorAll('.tabPanel');
-
-tabs.forEach(tab => {
-
-    tab.addEventListener(
-        'click',
-        () => {
-
-            tabs.forEach(
-                t => t.classList.remove('active')
-            );
-
-            panels.forEach(
-                p => p.classList.remove('active')
-            );
-
-            tab.classList.add('active');
-
-            document
-                .getElementById(
-                    tab.dataset.tab
-                )
-                .classList
-                .add('active');
-
-        }
-    );
-
-});
-
-/* Demo List Selector */
-
-const dots =
-    document.querySelectorAll('.dot');
-
-dots.forEach(dot => {
-
-    dot.addEventListener(
-        'click',
-        () => {
-
-            dots.forEach(
-                d => d.classList.remove('active')
-            );
-
-            dot.classList.add('active');
-
-        }
-    );
-
-});
-
-</script>
+<script src="bibleData.js"></script>
+<script src="reader_v8.js"></script>
 
 </body>
 </html>
