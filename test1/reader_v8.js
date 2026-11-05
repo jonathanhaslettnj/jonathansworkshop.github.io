@@ -68,8 +68,7 @@ function goToSelectedVerse() {
     currentChapter = parseInt(chapter);
     currentVerse = parseInt(verse);
 
-    input.value =
-        `${book} ${chapter}:${verse}`;
+
 
     display.textContent = verseText;
 }
@@ -110,8 +109,15 @@ async function startReading() {
         return;
     }
 
-    const ref =
-        parseReference(input.value);
+const ref = {
+    book: document.getElementById("bookSelect").value,
+    chapter: parseInt(
+        document.getElementById("chapterInput").value
+    ),
+    verse: parseInt(
+        document.getElementById("verseInput").value
+    )
+};
 
     if (!ref) {
 
@@ -175,8 +181,15 @@ function readNextVerse() {
         return;
     }
 
-    input.value =
-        `${currentBook} ${currentChapter}:${currentVerse}`;
+document.getElementById("bookSelect").value =
+    currentBook;
+
+document.getElementById("chapterInput").value =
+    currentChapter;
+
+document.getElementById("verseInput").value =
+    currentVerse;
+
 
     document.getElementById("bookSelect").value =
         currentBook;

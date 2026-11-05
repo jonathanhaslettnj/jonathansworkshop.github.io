@@ -13,26 +13,75 @@
             font-weight: bold;
         }
 
+        /* Main Navigation Row */
+
         #verseSelector {
             display: flex;
             gap: 8px;
             margin-bottom: 12px;
         }
 
+        /* Make all controls the same height */
+
+        #verseSelector select,
+        #verseSelector input,
+        #verseSelector button,
+        #saveControls select,
+        #saveControls button,
+        #controls button {
+            height: 44px;
+            box-sizing: border-box;
+            padding: 0 12px;
+            font-size: 16px;
+        }
+
         #verseSelector select,
         #verseSelector input {
             flex: 1;
-            padding: 10px;
         }
 
         #goToVerseBtn {
             flex: 1;
         }
 
+        /* Audio Controls */
+
+        #controls {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        #controls button {
+            flex: 1;
+        }
+
+        /* Save Controls */
+
+        #saveControls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        #saveControls select {
+            flex: 1;
+            max-width: 150px;
+        }
+
+        #saveControls button {
+            white-space: nowrap;
+        }
+
+        /* Mobile */
+
         @media (max-width: 600px) {
+
             #verseSelector {
                 flex-direction: column;
             }
+
         }
     </style>
 </head>
@@ -44,28 +93,23 @@
     <!-- Verse Display First -->
     <div id="currentVerseDisplay"></div>
 
-    <!-- Direct Reference Entry -->
-
     <!-- Book / Chapter / Verse Navigation -->
     <div id="verseSelector">
-    <!-- Bible Version -->
-    <select id="versionSelect">
 
-        <option value="kjv">KJV</option>
-        <option value="bbe">BBE</option>
-        <option value="asv">ASV</option>
-        <option value="web">WEB</option>
-        <option value="srv">SRV1909</option>
-
-        <option value="westcotthortnt">
-            Westcott-Hort Greek NT
-        </option>
-
-        <option value="rahlfslxx">
-            Rahlfs LXX
-        </option>
-
-    </select>
+        <!-- Bible Version -->
+        <select id="versionSelect">
+            <option value="kjv">KJV</option>
+            <option value="bbe">BBE</option>
+            <option value="asv">ASV</option>
+            <option value="web">WEB</option>
+            <option value="srv">SRV1909</option>
+            <option value="westcotthortnt">
+                Westcott-Hort Greek NT
+            </option>
+            <option value="rahlfslxx">
+                Rahlfs LXX
+            </option>
+        </select>
 
         <select id="bookSelect">
             <option>Loading Bible...</option>
@@ -91,7 +135,6 @@
 
     </div>
 
-  
     <!-- Audio Controls -->
     <div id="controls">
 
@@ -110,18 +153,20 @@
     </div>
 
     <!-- Save Lists -->
-    <select id="listSelect">
+    <div id="saveControls">
 
-        <option value="1">List 1</option>
-        <option value="2">List 2</option>
-        <option value="3">List 3</option>
-        <option value="all">All Lists</option>
+        <select id="listSelect">
+            <option value="1">List 1</option>
+            <option value="2">List 2</option>
+            <option value="3">List 3</option>
+            <option value="all">All Lists</option>
+        </select>
 
-    </select>
+        <button id="saveBtn">
+            Save Verse
+        </button>
 
-    <button id="saveBtn">
-        Save Verse
-    </button>
+    </div>
 
 </div>
 
