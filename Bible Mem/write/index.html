@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Talking Bible Verse Memorizer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+    font-family:sans-serif;
+    margin:0;
+    padding:1rem;
+    background:#f7f7f7;
+    font-size:1.2rem;
+    line-height:1.5;
+}
+
+.container{
+    max-width:900px;
+    margin:0 auto;
+    text-align:center;
+}
+
+h1,h2{
+    color:darkblue;
+    text-align:center;
+    margin-bottom:1rem;
+}
+
+label{
+    display:block;
+    margin-top:1rem;
+    font-weight:bold;
+    text-align:center;
+}
+
+input[type="text"],
+select{
+    padding:0.8rem;
+    font-size:1.2rem;
+    border-radius:8px;
+    border:1px solid #999;
+    margin-top:0.3rem;
+    box-sizing:border-box;
+    text-align:center;
+}
+
+#refInput,
+#wordInput,
+#userRefInput{
+    width:20ch;
+}
+
+#userTextInput{
+    width:40ch;
+    max-width:95%;
+}
+
+#wordInput{
+    display:inline-block;
+}
+
+#mv_list_selector{
+    width:10ch;
+    display:inline-block;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:1rem;
+    justify-content:center;
+}
+
+button{
+    padding:0.6rem 1rem;
+    font-size:1rem;
+    border-radius:8px;
+    border:none;
+    background:#005bbb;
+    color:white;
+    cursor:pointer;
+}
+
+button:active{
+    background:#004999;
+}
+
+.delete-btn{
+    background:#bb0000;
+}
+
+#voiceToggleBtn{
+    min-width:220px;
+    font-weight:bold;
+}
+
+#verseDisplay{
+    font-size:1.3rem;
+    margin-top:1rem;
+    min-height:2rem;
+    text-align:center;
+}
+
+
+#statusDisplay{
+    font-size:1.1rem;
+    margin-top:0.5rem;
+    color:#444;
+    min-height:1.5rem;
+    text-align:center;
+}
+
+#user-verses{
+    margin-top:1rem;
+    font-size:1.1rem;
+    text-align:center;
+}
+
+.verse-item{
+    background:white;
+    padding:0.8rem;
+    border-radius:8px;
+    margin:0 auto 0.8rem auto;
+    max-width:700px;
+    box-shadow:0 1px 3px rgba(0,0,0,0.15);
+    text-align:center;
+}
+
+hr{
+    margin:2rem auto;
+    max-width:700px;
+}
+
+.return-box{
+    background:#e6f2ff;
+    border:2px solid #7aaee6;
+    padding:12px;
+    margin:40px auto 0 auto;
+    width:70%;
+    max-width:350px;
+    border-radius:8px;
+    font-size:20px;
+    text-align:center;
+}
+
+.qr-section{
+    text-align:center;
+    margin-top:40px;
+}
+
+.qr-section img{
+    max-width:200px;
+    display:inline-block;
+}
+#verseDialog{
+    width:min(90vw,700px);
+    max-height:80vh;
+    padding:20px;
+    border:none;
+    border-radius:12px;
+    box-shadow:0 0 20px rgba(0,0,0,0.30);
+    text-align:center;
+    font-size:1.2rem;
+}
+
+#verseDialog::backdrop{
+    background:rgba(0,0,0,0.55);
+}
+
+#verseDialogReference{
+    color:darkblue;
+    margin-top:0;
+    margin-bottom:15px;
+}
+
+#verseDialogText{
+    line-height:1.8;
+    margin-bottom:20px;
+    white-space:normal;
+    overflow-y:auto;
+}
+
+
+@media (max-width:600px){
+
+    #refInput,
+    #wordInput,
+    #userRefInput,
+    #userTextInput{
+        width:95%;
+    }
+
+    .button-row{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    button{
+        width:95%;
+        max-width:320px;
+    }
+
+    #mv_list_selector{
+        width:95%;
+        max-width:320px;
+    }
+
+#topMenu {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    width: fit-content;
+    margin: 10px auto;
+}
+
+#topMenu button {
+    width: 120px;
+    height: 44px;
+}
+}</style>
+</head>
+
+<body>
+
+
+
+<div class="container">
+<div id="topMenu">
+    <button id="goToWrite">Write It</button>
+    <button id="goToRead">Read It</button>
+    <button id="goToSave">Save It</button>
+    <button id="goToKnow">Know It</button>
+</div>
+
+<label for="refInput">
+</label>
+
+<input
+    id="refInput"
+    type="text"
+    placeholder="John 1:1"
+>
+
+
+
+<p id="verseDisplay"></p>
+
+<p id="statusDisplay"></p>
+
+<label for="wordInput">
+    Type next word:
+</label>
+
+<input
+    id="wordInput"
+    type="text"
+>
+
+<div class="button-row">
+
+    <button id="playBtn">
+        ▶ Play
+    </button>
+
+    <button id="toggleVerseBtn">
+        👁 Show Verse
+    </button>
+
+    <button id="nextBtn">
+        ⏭ Next Verse
+    </button>
+
+    <button id="resetBtn">
+        ⟲ Start Over
+    </button>
+
+</div>
+
+
+<div class="button-row">
+    <button id="voiceToggleBtn">
+        🔴 Voice Control OFF
+    </button>
+</div>
+
+<hr>
+
+<h2>Add to Your List of Verses</h2>
+
+<label for="userRefInput">
+    Reference:
+</label>
+
+<input
+    id="userRefInput"
+    type="text"
+    placeholder="John 1:1"
+>
+
+<label for="userTextInput">
+    Verse text:
+</label>
+
+<input
+    id="userTextInput"
+    type="text"
+    placeholder="In the beginning was the Word..."
+>
+
+<div class="button-row">
+    <button id="addUserVerseBtn">
+        Add to My List of Verses
+    </button>
+</div>
+
+<select id="mv_list_selector">
+    <option value="A">List 1</option>
+    <option value="B">List 2</option>
+    <option value="C">List 3</option>
+</select>
+
+
+<h2>Your Verses</h2>
+
+<div id="user-verses"></div>
+
+<div class="return-box">
+    <a href="https://literalword.com/esv">
+        Literal Word.ESV
+    </a>
+</div>
+
+<div class="return-box">
+    <a href="https://jonathansworkshop.online/memorizer/index.html">
+        Bible Memorizer Information
+    </a>
+</div>
+
+<div class="qr-section">
+    <h2>Scan to Share the Bible Memorizer</h2>
+    <img src="QR Code.jpg" alt="QR Code">
+</div>
+
+<dialog id="verseDialog">
+
+    <h2 id="verseDialogReference"></h2>
+
+    <div id="verseDialogText"></div>
+
+    <div class="button-row">
+        <button id="closeVerseDialogBtn">
+            Close
+        </button>
+    </div>
+
+</dialog>
+<script src="memorizer_core.js?v=10"></script>
+<script src="memorizer_input.js?v=10"></script>
+
+<script>
+document.getElementById("goToRead").onclick = function () {
+    window.location.href = "../read/index.html";
+};
+
+document.getElementById("goToWrite").onclick = function () {
+    window.location.href = "../write/index.html";
+};
+
+document.getElementById("goToSave").onclick = function () {
+    window.location.href = "../save/index.html";
+};
+
+document.getElementById("goToKnow").onclick = function () {
+    window.location.href = "../know/index.html";
+};
+</script>
+
+
+</div>
+</body>
+</html>
