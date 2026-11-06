@@ -1,0 +1,212 @@
+<Reader r1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Reader</title>
+
+    <link rel="stylesheet" href="reader.css">
+
+    <style>
+        .highlight {
+            color: red;
+            font-weight: bold;
+        }
+
+        /* Main Navigation Row */
+
+        #verseSelector {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        /* Make all controls the same height */
+
+        #verseSelector select,
+        #verseSelector input,
+        #verseSelector button,
+        #saveControls select,
+        #saveControls button,
+        #controls button {
+            height: 44px;
+            box-sizing: border-box;
+            padding: 0 12px;
+            font-size: 16px;
+        }
+
+        #verseSelector select,
+        #verseSelector input {
+            flex: 1;
+        }
+
+        #goToVerseBtn {
+            flex: 1;
+        }
+
+        /* Audio Controls */
+
+        #controls {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        #controls button {
+            flex: 1;
+        }
+
+        /* Save Controls */
+
+        #saveControls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        #saveControls select {
+            flex: 1;
+            max-width: 150px;
+        }
+
+        #saveControls button {
+            white-space: nowrap;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 600px) {
+
+            #verseSelector {
+                flex-direction: column;
+            }
+
+        }
+#topMenu {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+#topMenu button {
+    width: 120px;
+    height: 44px;
+}
+    </style>
+</head>
+
+<body>
+
+<div id="app">
+
+<div id="topMenu">
+    <button id="goToWrite">Write It</button>
+    <button id="goToRead">Read It</button>
+    <button id="goToSave">Save It</button>
+    <button id="goToKnow">Know It</button>
+</div>
+    <!-- Verse Display First -->
+    <div id="currentVerseDisplay"></div>
+
+    <!-- Book / Chapter / Verse Navigation -->
+    <div id="verseSelector">
+
+        <!-- Bible Version -->
+        <select id="versionSelect">
+            <option value="kjv">KJV</option>
+            <option value="bbe">BBE</option>
+            <option value="asv">ASV</option>
+            <option value="web">WEB</option>
+            <option value="srv">SRV1909</option>
+            <option value="westcotthortnt">
+                Westcott-Hort Greek NT
+            </option>
+            <option value="rahlfslxx">
+                Rahlfs LXX
+            </option>
+        </select>
+
+        <select id="bookSelect">
+            <option>Loading Bible...</option>
+        </select>
+
+        <input
+            type="number"
+            id="chapterInput"
+            min="1"
+            value="1"
+        >
+
+        <input
+            type="number"
+            id="verseInput"
+            min="1"
+            value="1"
+        >
+
+        <button id="goToVerseBtn">
+            Go
+        </button>
+
+    </div>
+
+    <!-- Audio Controls -->
+    <div id="controls">
+
+        <button id="startBtn">
+            Start Reading
+        </button>
+
+        <button id="pauseBtn">
+            Pause
+        </button>
+
+        <button id="stopBtn">
+            Stop Reading
+        </button>
+
+    </div>
+
+    <!-- Save Lists -->
+    <div id="saveControls">
+
+        <select id="listSelect">
+            <option value="1">List 1</option>
+            <option value="2">List 2</option>
+            <option value="3">List 3</option>
+            <option value="all">All Lists</option>
+        </select>
+
+        <button id="saveBtn">
+            Save Verse
+        </button>
+
+    </div>
+
+</div>
+
+<script src="bibleData.js"></script>
+<script src="reader_v8.js"></script>
+<script>
+document.getElementById("goToRead").onclick = function () {
+    window.location.href = "../read/index.html";
+};
+
+document.getElementById("goToWrite").onclick = function () {
+    window.location.href = "../write/index.html";
+};
+
+document.getElementById("goToSave").onclick = function () {
+    window.location.href = "../save/index.html";
+};
+
+document.getElementById("goToKnow").onclick = function () {
+    window.location.href = "../know/index.html";
+};
+</script>
+
+</body>
+</html>
