@@ -207,18 +207,27 @@ hr{
         max-width:320px;
     }
 
+#topMenu {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+#topMenu button {
+    width: 120px;
+    height: 44px;
+}
+
+@media (max-width: 600px) {
     #topMenu {
-        display:flex;
-        justify-content:center;
-        gap:4px;
-        margin:10px 0;
+        gap: 4px;
     }
 
     #topMenu button {
-        flex:1;
-        height:44px;
-        padding:0 4px;
-        font-size:14px;
+        width: 80px;
+        font-size: 14px;
+        padding: 0 4px;
     }
 }
 </style>
