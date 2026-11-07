@@ -184,7 +184,36 @@ hr{
 }
 
 
+
+    .button-row{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    button{
+        width:95%;
+        max-width:320px;
+    }
+
+    #mv_list_selector{
+        width:95%;
+        max-width:320px;
+    }
+
+#topMenu {
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:10px 0;
+}
+
+#topMenu button {
+    width:120px;
+    height:44px;
+}
+
 @media (max-width:600px){
+
     #refInput,
     #wordInput,
     #userRefInput,
@@ -207,32 +236,21 @@ hr{
         max-width:320px;
     }
 
-#topMenu {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 10px 0;
-}
-
-#topMenu button {
-    width: 120px;
-    height: 44px;
-}
-
-@media (max-width: 600px) {
-    #topMenu {
-        gap: 4px;
+    #topMenu{
+        gap:4px;
     }
 
-    #topMenu button {
-        width: 80px;
-        font-size: 14px;
-        padding: 0 4px;
+    #topMenu button{
+        width:80px;
+        font-size:14px;
+        padding:0 4px;
     }
+}
+
+#futureFeatures {
+    display: none;
 }
 </style>
-
-<body>
 
 <body>
 
@@ -297,9 +315,10 @@ hr{
     </button>
 </div>
 
-<hr>
+<div id="futureFeatures" style="display:none;">
 
 <h2>Add to Your List of Verses</h2>
+
 
 <label for="userRefInput">
     Reference:
@@ -368,6 +387,7 @@ hr{
     </div>
 
 </dialog>
+</div>
 <script src="memorizer_core.js?v=10"></script>
 <script src="memorizer_input.js?v=10"></script>
 
