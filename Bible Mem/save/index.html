@@ -210,18 +210,17 @@ hr{
 
 #topMenu {
     display: flex;
-    gap: 10px;
     justify-content: center;
-    width: fit-content;
-    margin: 10px auto;
+    gap: 4px;
+    margin: 10px 0;
 }
 
 #topMenu button {
-    width: 120px;
+    flex: 1;
     height: 44px;
+    padding: 0 4px;
+    font-size: 14px;
 }
-}</style>
-</head>
 
 <body>
 
@@ -238,29 +237,53 @@ hr{
 <label for="refInput">
 </label>
 
-<div id="hiddenArea" style="display:none;">
+<input
+    id="refInput"
+    type="text"
+    placeholder="John 1:1"
+>
 
-    <!-- Reference input -->
-    <input id="refInput" type="text">
 
-    <!-- Displays -->
-    <p id="verseDisplay"></p>
-    <p id="statusDisplay"></p>
 
-    <!-- Word input -->
-    <input id="wordInput" type="text">
+<p id="verseDisplay"></p>
 
-    <!-- Buttons -->
-    <button id="playBtn"></button>
-    <button id="toggleVerseBtn"></button>
-    <button id="nextBtn"></button>
-    <button id="resetBtn"></button>
+<p id="statusDisplay"></p>
 
-    <button id="voiceToggleBtn"></button>
+<label for="wordInput">
+    Type next word:
+</label>
 
-  
+<input
+    id="wordInput"
+    type="text"
+>
+
+<div class="button-row">
+
+    <button id="playBtn">
+        ▶ Play
+    </button>
+
+    <button id="toggleVerseBtn">
+        👁 Show Verse
+    </button>
+
+    <button id="nextBtn">
+        ⏭ Next Verse
+    </button>
+
+    <button id="resetBtn">
+        ⟲ Start Over
+    </button>
+
 </div>
 
+
+<div class="button-row">
+    <button id="voiceToggleBtn">
+        🔴 Voice Control OFF
+    </button>
+</div>
 
 <hr>
 
