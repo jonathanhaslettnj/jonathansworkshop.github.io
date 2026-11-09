@@ -222,6 +222,9 @@ hr{
     padding: 0 4px;
     font-size: 14px;
 }
+#futureFeatures {
+    display: none;
+}
 
 </style>
 </head>
@@ -232,7 +235,7 @@ hr{
 
 <div class="container">
 <div id="topMenu">
-    <button id="goToWrite">Write It</button>
+    <button id="goToCopy">Copy It</button>
     <button id="goToRead">Read It</button>
     <button id="goToSave">Save It</button>
     <button id="goToKnow">Know It</button>
@@ -301,7 +304,7 @@ hr{
     <option value="C">List 3</option>
 </select>
 
-
+<div id="futureFeatures">
 <h2>Your Verses</h2>
 
 <div id="user-verses"></div>
@@ -344,8 +347,8 @@ document.getElementById("goToRead").onclick = function () {
     window.location.href = "../read/index.html";
 };
 
-document.getElementById("goToWrite").onclick = function () {
-    window.location.href = "../write/index.html";
+document.getElementById("goToCopy").onclick = function () {
+    window.location.href = "../copy/index.html";
 };
 
 document.getElementById("goToSave").onclick = function () {
@@ -357,7 +360,7 @@ document.getElementById("goToKnow").onclick = function () {
 };
 </script>
 
-
+</div>
 </div>
 </body>
 </html>
