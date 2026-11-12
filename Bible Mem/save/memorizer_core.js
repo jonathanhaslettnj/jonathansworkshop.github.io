@@ -137,7 +137,7 @@ function speak(text) {
         }
     }
 
-    speechSynthesis.speak(u);
+
 }
 
 
