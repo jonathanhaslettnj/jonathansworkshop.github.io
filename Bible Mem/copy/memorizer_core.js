@@ -136,7 +136,9 @@ function speak(text) {
             console.log("English voice:", englishVoice ? englishVoice.name : "none found");
         }
     }
-
+u.onend = function () {
+    playBtn.textContent = "▶ Play";
+};
     speechSynthesis.speak(u);
 }
 
@@ -253,7 +255,6 @@ toggleVerseBtn.textContent =
     wordInput.value = "";
     wordInput.focus();
 
-    onLoadVerse(match.text, match.ref);
 }
 
 
