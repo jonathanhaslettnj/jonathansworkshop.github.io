@@ -465,7 +465,10 @@ function renderUserVerses() {
                 localStorage.setItem("mem_list_3", JSON.stringify(listC));
                 currentList = listC;
             }
+            
 
+
+            listSelector.value = "C";
             loadSelectedList();
 
             if (DEV_MODE) console.log("Deleted verse at index:", idx, "from list", currentListName);
