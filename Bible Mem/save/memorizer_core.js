@@ -20,6 +20,56 @@ let currentListName = "C";
 let currentVerseIndex = 0;
 
 // =====================================
+// BACKUP SYSTEM
+// =====================================
+
+function saveListWithBackup(listKey, listData) {
+
+    const existingData = localStorage.getItem(listKey);
+
+    if (existingData !== null) {
+
+        localStorage.setItem(
+            listKey + "_backup",
+            existingData
+        );
+
+        localStorage.setItem(
+            listKey + "_backup_time",
+            new Date().toISOString()
+        );
+
+    }
+
+    localStorage.setItem(
+        listKey,
+        JSON.stringify(listData)
+    );
+
+}
+
+function restoreFromBackup(listKey) {
+
+    const backup =
+        localStorage.getItem(
+            listKey + "_backup"
+        );
+
+    if (!backup) {
+        alert("No backup exists.");
+        return false;
+    }
+
+    localStorage.setItem(
+        listKey,
+        backup
+    );
+
+    return true;
+
+}
+
+// =====================================
 // DOM ELEMENTS
 // =====================================
 const toggleVerseBtn =
@@ -388,16 +438,33 @@ addUserVerseBtn.addEventListener("click", () => {
 
     if (currentListName === "A") {
         listA.push({ ref, text });
-        localStorage.setItem("mem_list_1", JSON.stringify(listA));
-        currentList = listA;
+listA.push({ ref, text });
+
+saveListWithBackup(
+    "mem_list_1",
+    listA
+);
+
+currentList = listA;
     } else if (currentListName === "B") {
-        listB.push({ ref, text });
-        localStorage.setItem("mem_list_2", JSON.stringify(listB));
-        currentList = listB;
+listB.push({ ref, text });
+
+saveListWithBackup(
+    "mem_list_2",
+    listB
+);
+
+currentList = listB;
     } else {
         listC.push({ ref, text });
-        localStorage.setItem("mem_list_3", JSON.stringify(listC));
-        currentList = listC;
+listC.push({ ref, text });
+
+saveListWithBackup(
+    "mem_list_3",
+    listC
+);
+
+currentList = listC;
     }
 
     currentVerseIndex = 0;
@@ -435,17 +502,33 @@ function renderUserVerses() {
             let idx = btn.getAttribute("data-index");
 
             if (currentListName === "A") {
-                listA.splice(idx, 1);
-                localStorage.setItem("mem_list_1", JSON.stringify(listA));
-                currentList = listA;
+listA.splice(idx, 1);
+
+saveListWithBackup(
+    "mem_list_1",
+    listA
+);
+
+currentList = listA;
             } else if (currentListName === "B") {
                 listB.splice(idx, 1);
-                localStorage.setItem("mem_list_2", JSON.stringify(listB));
-                currentList = listB;
+listB.splice(idx, 1);
+
+saveListWithBackup(
+    "mem_list_2",
+    listB
+);
+
+currentList = listB;
             } else {
-                listC.splice(idx, 1);
-                localStorage.setItem("mem_list_3", JSON.stringify(listC));
-                currentList = listC;
+listC.splice(idx, 1);
+
+saveListWithBackup(
+    "mem_list_3",
+    listC
+);
+
+currentList = listC;
             }
 
             loadSelectedList();
